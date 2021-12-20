@@ -4,19 +4,22 @@ import styled from "styled-components";
 
 const TeamContainer = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
 `;
 
 const TeamMenu = styled.div`
-  width: 200px;
-  height: 200px;
+  width: 170px;
+  height: 170px;
   border-radius: 15%;
   display: flex;
   justify-content: center;
   align-items: center;
   border: 3px solid ${(props) => "#" + props.iconBgColor};
+  cursor: pointer;
   &:hover {
-    transition: background-color 0.5s ease-in;
+    transform: scale(1.1);
+    transition: all 0.5s ease-in;
     background-color: ${(props) => "#" + props.iconBgColor};
   }
 `;
@@ -24,11 +27,6 @@ const TeamMenu = styled.div`
 const TeamImage = styled.img`
   width: 100px;
   height: 100px;
-
-  &:hover {
-    transition: transform 0.5s ease-in;
-    transform: scale(1.2);
-  }
 `;
 
 const Introduction = () => {
