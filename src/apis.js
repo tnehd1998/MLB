@@ -8,3 +8,12 @@ export const getTeamData = async () => {
     .then((response) => response.data);
   return info;
 };
+
+export const getCertainTeamData = async (teamName) => {
+  const info = await axios
+    .get(
+      `https://api.sportsdata.io/v3/mlb/scores/json/Players/${teamName}?key=${API_KEY}`
+    )
+    .then((response) => response.data);
+  return info;
+};

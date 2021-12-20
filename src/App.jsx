@@ -7,14 +7,14 @@ import {
 } from "react-router-dom";
 
 import MainPage from "./pages/MainPage";
-import TestPage from "./pages/TestPage";
+import TeamPage from "./pages/TeamPage";
 
 const App = () => {
   return (
     <Router>
       <Routes>
         <Route exact path="/" element={<MainPage />} />
-        <Route exact path=":teamName" element={<TestPage />} />
+        <Route exact path=":teamName" element={<TeamPage />} />
         <Route path="/*" element={<Navigate to="/" />} />
       </Routes>
     </Router>
