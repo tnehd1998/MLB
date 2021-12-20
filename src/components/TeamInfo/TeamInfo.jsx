@@ -19,7 +19,24 @@ const TeamInfo = ({ teamName }) => {
       {!loading ? (
         <h1>Loading...</h1>
       ) : (
-        <button onClick={() => console.log(info)}>Data</button>
+        <div>
+          {info.map((player) =>
+            !player.PhotoUrl.includes("0.png") ? (
+              <div>
+                <img
+                  src={player.PhotoUrl}
+                  alt={`${player.FirstName} ${player.LastName}`}
+                />
+                <div>
+                  <h3>{player.FirstName}</h3>
+                  <h3>{player.LastName}</h3>
+                </div>
+              </div>
+            ) : (
+              ""
+            )
+          )}
+        </div>
       )}
     </div>
   );
