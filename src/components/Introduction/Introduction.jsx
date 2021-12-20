@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getTeamData } from "../../apis";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const TeamContainer = styled.div`
@@ -51,13 +52,11 @@ const Introduction = () => {
         <TeamContainer>
           {info.map((item) =>
             item.WikipediaLogoUrl ? (
-              <TeamMenu key={item.Key} iconBgColor={`${item.PrimaryColor}`}>
-                <TeamImage
-                  key={item.TeamID}
-                  src={`${item.WikipediaLogoUrl}`}
-                  alt={item.City}
-                />
-              </TeamMenu>
+              <Link key={item.TeamID} to={item.Key}>
+                <TeamMenu iconBgColor={`${item.PrimaryColor}`}>
+                  <TeamImage src={`${item.WikipediaLogoUrl}`} alt={item.City} />
+                </TeamMenu>
+              </Link>
             ) : (
               ""
             )

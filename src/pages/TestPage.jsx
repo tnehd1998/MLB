@@ -1,7 +1,9 @@
 import React from "react";
+import { useParams } from "react-router";
 
 const TestPage = () => {
-  return <h1>Test</h1>;
+  const { teamName } = useParams();
+  return <h1>{teamName}</h1>;
 };
 
 export default TestPage;
