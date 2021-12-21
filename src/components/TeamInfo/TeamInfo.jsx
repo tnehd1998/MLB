@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useState } from "react/cjs/react.development";
 import { getCertainTeamData } from "../../apis";
+import Player from "../Player/Player";
 
 const TeamInfo = ({ teamName }) => {
   const [info, setInfo] = useState([]);
@@ -20,18 +21,9 @@ const TeamInfo = ({ teamName }) => {
         <h1>Loading...</h1>
       ) : (
         <div>
-          {info.map((player) =>
-            !player.PhotoUrl.includes("0.png") ? (
-              <div>
-                <img
-                  src={player.PhotoUrl}
-                  alt={`${player.FirstName} ${player.LastName}`}
-                />
-                <div>
-                  <h3>{player.FirstName}</h3>
-                  <h3>{player.LastName}</h3>
-                </div>
-              </div>
+          {info.map((playerInfo) =>
+            !playerInfo.PhotoUrl.includes("0.png") ? (
+              <Player key={playerInfo.PlayerID} playerInfo={playerInfo} />
             ) : (
               ""
             )
