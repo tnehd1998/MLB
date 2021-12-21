@@ -18,17 +18,15 @@ const GlobalStyles = createGlobalStyle`
 
 const App = () => {
   return (
-    <div>
+    <Router>
       <GlobalStyles />
       <Header />
-      <Router>
-        <Routes>
-          <Route exact path="/" element={<MainPage />} />
-          <Route exact path=":teamName" element={<TeamPage />} />
-          <Route path="/*" element={<Navigate to="/" />} />
-        </Routes>
-      </Router>
-    </div>
+      <Routes>
+        <Route exact path="/" element={<MainPage />} />
+        <Route exact path=":teamName" element={<TeamPage />} />
+        <Route path="/*" element={<Navigate to="/" />} />
+      </Routes>
+    </Router>
   );
 };
 

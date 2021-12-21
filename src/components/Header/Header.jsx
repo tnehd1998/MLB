@@ -1,21 +1,60 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const HeaderContainer = styled.div`
-  width: 100vw;
   height: 10vh;
-  background-color: blue;
   display: flex;
+  justify-content: space-between;
+  padding: 0px 10px;
+  margin-bottom: 10px;
+  border-bottom: 2px solid black;
+`;
+
+const LogoLink = styled(Link)``;
+
+const Logo = styled.img`
+  width: 160px;
+  height: 100px;
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.1);
+  }
+`;
+
+const HeaderMenus = styled.div`
+  width: 70vw;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+`;
+
+const HeaderMenu = styled.p`
+  width: 200px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  font-size: 24px;
+  border: 2px solid black;
+  border-radius: 10px;
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.1);
+  }
 `;
 
 const Header = () => {
   return (
     <HeaderContainer>
-      <img
-        src="data:image/png;base64,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"
-        alt=""
-      />
-      <h1>All Star Player</h1>
+      <LogoLink to="/">
+        <Logo src="https://www.mlbstatic.com/team-logos/league-on-dark/1.svg" />
+      </LogoLink>
+      <HeaderMenus>
+        <HeaderMenu>ALL STAR PLAYER</HeaderMenu>
+        <HeaderMenu>POSTSEASON</HeaderMenu>
+        <HeaderMenu>ALL TEAMS</HeaderMenu>
+      </HeaderMenus>
     </HeaderContainer>
   );
 };
