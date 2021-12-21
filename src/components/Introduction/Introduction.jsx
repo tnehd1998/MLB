@@ -45,7 +45,6 @@ const Introduction = () => {
 
   return (
     <div>
-      <button onClick={() => console.log(info)}>Check</button>
       {!loading ? (
         <div>Loading</div>
       ) : (
