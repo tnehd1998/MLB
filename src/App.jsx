@@ -11,6 +11,7 @@ import Header from "./components/Header/Header";
 
 import MainPage from "./pages/MainPage";
 import TeamPage from "./pages/TeamPage";
+import AllStarPage from "./pages/AllStarPage";
 
 const GlobalStyles = createGlobalStyle`
   ${reset};
@@ -24,6 +25,7 @@ const App = () => {
       <Routes>
         <Route exact path="/" element={<MainPage />} />
         <Route exact path=":teamName" element={<TeamPage />} />
+        <Route exact path="/allstar" element={<AllStarPage />} />
         <Route path="/*" element={<Navigate to="/" />} />
       </Routes>
     </Router>

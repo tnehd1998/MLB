@@ -30,6 +30,11 @@ const HeaderMenus = styled.div`
   text-align: center;
 `;
 
+const HeaderMenuLink = styled(Link)`
+  color: black;
+  text-decoration: none;
+`;
+
 const HeaderMenu = styled.p`
   width: 200px;
   height: 40px;
@@ -51,7 +56,9 @@ const Header = () => {
         <Logo src="https://www.mlbstatic.com/team-logos/league-on-dark/1.svg" />
       </LogoLink>
       <HeaderMenus>
-        <HeaderMenu>ALL STAR PLAYER</HeaderMenu>
+        <HeaderMenuLink to="/allstar">
+          <HeaderMenu>ALL STAR PLAYER</HeaderMenu>
+        </HeaderMenuLink>
         <HeaderMenu>POSTSEASON</HeaderMenu>
         <HeaderMenu>ALL TEAMS</HeaderMenu>
       </HeaderMenus>
