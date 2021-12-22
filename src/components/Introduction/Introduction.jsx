@@ -3,6 +3,12 @@ import { getTeamData } from "../../apis";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
+const IntroductionContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 const TeamContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -44,7 +50,7 @@ const Introduction = () => {
   }, []);
 
   return (
-    <div>
+    <IntroductionContainer>
       {!loading ? (
         <div>Loading</div>
       ) : (
@@ -62,7 +68,7 @@ const Introduction = () => {
           )}
         </TeamContainer>
       )}
-    </div>
+    </IntroductionContainer>
   );
 };
 
