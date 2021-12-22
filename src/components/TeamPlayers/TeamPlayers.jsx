@@ -2,15 +2,15 @@ import React from "react";
 import Player from "../Player/Player";
 import styled from "styled-components";
 
-const PlayersContainer = styled.div`
+const TeamPlayersContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   gap: 10px;
 `;
 
-const Players = ({ info }) => {
+const TeamPlayers = ({ info }) => {
   return (
-    <PlayersContainer>
+    <TeamPlayersContainer>
       {info.map((playerInfo) =>
         !playerInfo.PhotoUrl.includes("0.png") ? (
           <Player key={playerInfo.PlayerID} playerInfo={playerInfo} />
@@ -18,8 +18,8 @@ const Players = ({ info }) => {
           ""
         )
       )}
-    </PlayersContainer>
+    </TeamPlayersContainer>
   );
 };
 
-export default Players;
+export default TeamPlayers;

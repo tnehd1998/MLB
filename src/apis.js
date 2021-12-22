@@ -17,3 +17,12 @@ export const getCertainTeamData = async (teamName) => {
     .then((response) => response.data);
   return info;
 };
+
+export const getAllStarPlayerData = async () => {
+  const info = await axios
+    .get(
+      `https://api.sportsdata.io/v3/mlb/projections/json/PlayerSeasonProjectionStats/2021?key=${API_KEY}`
+    )
+    .then((response) => response.data.slice(0, 200));
+  return info;
+};

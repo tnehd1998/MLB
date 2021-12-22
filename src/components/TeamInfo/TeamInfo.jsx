@@ -1,8 +1,5 @@
-import React, { useEffect } from "react";
-import { useState } from "react/cjs/react.development";
-import Player from "../Player/Player";
-import styled from "styled-components";
-import Players from "../Players/Players";
+import React, { useState, useEffect } from "react";
+import TeamPlayers from "../TeamPlayers/TeamPlayers";
 
 const TeamInfo = ({ teamName, getData }) => {
   const [info, setInfo] = useState([]);
@@ -16,7 +13,9 @@ const TeamInfo = ({ teamName, getData }) => {
     }
     fetchData();
   }, []);
-  return <div>{!loading ? <h1>Loading...</h1> : <Players info={info} />}</div>;
+  return (
+    <div>{!loading ? <h1>Loading...</h1> : <TeamPlayers info={info} />}</div>
+  );
 };
 
 export default TeamInfo;

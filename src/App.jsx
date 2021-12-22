@@ -23,9 +23,9 @@ const App = () => {
       <GlobalStyles />
       <Header />
       <Routes>
-        <Route exact path="/" element={<MainPage />} />
-        <Route exact path=":teamName" element={<TeamPage />} />
-        <Route exact path="/allstar" element={<AllStarPage />} />
+        <Route path="/" element={<MainPage />} />
+        <Route path=":teamName" element={<TeamPage />} />
+        <Route path="/allstar" element={<AllStarPage />} />
         <Route path="/*" element={<Navigate to="/" />} />
       </Routes>
     </Router>
