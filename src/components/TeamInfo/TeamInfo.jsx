@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useState } from "react/cjs/react.development";
-import { getCertainTeamData } from "../../apis";
 import Player from "../Player/Player";
 import styled from "styled-components";
 
@@ -10,13 +9,13 @@ const Players = styled.div`
   gap: 10px;
 `;
 
-const TeamInfo = ({ teamName }) => {
+const TeamInfo = ({ teamName, getData }) => {
   const [info, setInfo] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
-      const data = await getCertainTeamData(teamName);
+      const data = await getData(teamName);
       setInfo(data);
       setLoading((loading) => !loading);
     }
