@@ -2,12 +2,7 @@ import React, { useEffect } from "react";
 import { useState } from "react/cjs/react.development";
 import Player from "../Player/Player";
 import styled from "styled-components";
-
-const Players = styled.div`
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 10px;
-`;
+import Players from "../Players/Players";
 
 const TeamInfo = ({ teamName, getData }) => {
   const [info, setInfo] = useState([]);
@@ -21,23 +16,7 @@ const TeamInfo = ({ teamName, getData }) => {
     }
     fetchData();
   }, []);
-  return (
-    <div>
-      {!loading ? (
-        <h1>Loading...</h1>
-      ) : (
-        <Players>
-          {info.map((playerInfo) =>
-            !playerInfo.PhotoUrl.includes("0.png") ? (
-              <Player key={playerInfo.PlayerID} playerInfo={playerInfo} />
-            ) : (
-              ""
-            )
-          )}
-        </Players>
-      )}
-    </div>
-  );
+  return <div>{!loading ? <h1>Loading...</h1> : <Players info={info} />}</div>;
 };
 
 export default TeamInfo;
