@@ -7,17 +7,18 @@ const IntroductionContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 1vw;
 `;
 
 const TeamContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 10px;
+  gap: 1vw;
 `;
 
 const TeamMenu = styled.div`
-  width: 170px;
-  height: 170px;
+  width: 15vw;
+  height: 15vw;
   border-radius: 15%;
   display: flex;
   justify-content: center;
@@ -32,8 +33,8 @@ const TeamMenu = styled.div`
 `;
 
 const TeamImage = styled.img`
-  width: 100px;
-  height: 100px;
+  width: 10vw;
+  height: 10vw;
 `;
 
 const Introduction = () => {
