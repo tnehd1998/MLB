@@ -7,7 +7,7 @@ const IntroductionContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 1vw;
+  padding-top: 12vh;
 `;
 
 const TeamContainer = styled.div`

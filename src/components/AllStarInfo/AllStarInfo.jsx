@@ -5,6 +5,7 @@ const InfoContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding-top: 12vh;
 `;
 
 const InfoTable = styled.table`
@@ -32,7 +33,7 @@ const AllStarInfo = ({ getData }) => {
       setLoading((loading) => !loading);
     }
     fetchData();
-  }, []);
+  }, [getData]);
   return (
     <div>
       {!loading ? (

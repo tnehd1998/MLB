@@ -3,11 +3,13 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const HeaderContainer = styled.div`
+  width: 100vw;
   height: 10vh;
   display: flex;
   justify-content: space-between;
-  padding: 0px 10px;
   border-bottom: 2px solid black;
+  position: fixed;
+  background-color: white;
 `;
 
 const LogoLink = styled(Link)``;
@@ -27,6 +29,7 @@ const HeaderMenus = styled.div`
   justify-content: space-evenly;
   align-items: center;
   text-align: center;
+  margin-right: 1vw;
 `;
 
 const HeaderMenuLink = styled(Link)`

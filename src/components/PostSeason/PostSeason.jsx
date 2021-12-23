@@ -6,6 +6,7 @@ const PostSeasonContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-top: 12vh;
 `;
 
 const Title = styled.p`
