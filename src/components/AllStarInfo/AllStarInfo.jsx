@@ -16,8 +16,8 @@ const InfoTable = styled.table`
   }
 `;
 
-const InfoHeader = styled.p`
-  font-size: 24px;
+const InfoHeader = styled.tr`
+  font-size: 20px;
   margin-bottom: 30px;
 `;
 
@@ -41,12 +41,12 @@ const AllStarInfo = ({ getData }) => {
         <InfoContainer>
           <InfoTable>
             <colgroup span="4" className="columns"></colgroup>
-            <tr>
+            <InfoHeader>
               <th>RANKING</th>
               <th>PLAYER NAME</th>
               <th>POSITION</th>
               <th>TEAM</th>
-            </tr>
+            </InfoHeader>
             {info.map((player, index) => (
               <tr key={player.StatID}>
                 <th>Rank {index + 1}</th>

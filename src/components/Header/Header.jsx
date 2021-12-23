@@ -59,7 +59,10 @@ const Header = () => {
         <HeaderMenuLink to="/allstar">
           <HeaderMenu>ALL STAR PLAYER</HeaderMenu>
         </HeaderMenuLink>
-        <HeaderMenu>POSTSEASON</HeaderMenu>
+        <HeaderMenuLink to="postseason">
+          <HeaderMenu>POSTSEASON</HeaderMenu>
+        </HeaderMenuLink>
+
         <HeaderMenu>ALL TEAMS</HeaderMenu>
       </HeaderMenus>
     </HeaderContainer>
