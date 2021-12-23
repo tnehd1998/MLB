@@ -56,14 +56,15 @@ const Header = () => {
         <Logo src="https://www.mlbstatic.com/team-logos/league-on-dark/1.svg" />
       </LogoLink>
       <HeaderMenus>
-        <HeaderMenuLink to="/allstar">
+        <HeaderMenuLink to="allstar">
           <HeaderMenu>ALL STAR PLAYER</HeaderMenu>
         </HeaderMenuLink>
         <HeaderMenuLink to="postseason">
           <HeaderMenu>POSTSEASON</HeaderMenu>
         </HeaderMenuLink>
-
-        <HeaderMenu>ALL TEAMS</HeaderMenu>
+        <HeaderMenuLink to="dreamteam">
+          <HeaderMenu>MY DREAM TEAM</HeaderMenu>
+        </HeaderMenuLink>
       </HeaderMenus>
     </HeaderContainer>
   );

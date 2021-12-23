@@ -13,6 +13,7 @@ import MainPage from "./pages/MainPage";
 import TeamPage from "./pages/TeamPage";
 import AllStarPage from "./pages/AllStarPage";
 import PostSeasonPage from "./pages/PostSeasonPage";
+import DreamTeam from "./pages/DreamTeam";
 
 const GlobalStyles = createGlobalStyle`
   ${reset};
@@ -28,6 +29,7 @@ const App = () => {
         <Route path=":teamName" element={<TeamPage />} />
         <Route path="/allstar" element={<AllStarPage />} />
         <Route path="/postseason" element={<PostSeasonPage />} />
+        <Route path="/dreamteam" element={<DreamTeam />} />
         <Route path="/*" element={<Navigate to="/" />} />
       </Routes>
     </Router>
