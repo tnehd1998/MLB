@@ -7,7 +7,6 @@ const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 0px 10px;
-  margin-bottom: 10px;
   border-bottom: 2px solid black;
 `;
 
