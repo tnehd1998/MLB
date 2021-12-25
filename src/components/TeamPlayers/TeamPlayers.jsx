@@ -1,6 +1,6 @@
 import React from "react";
-import Player from "../Player/Player";
 import styled from "styled-components";
+import PositionPlayer from "../PostionPlayer/PositionPlayer";
 
 const TeamPlayersContainer = styled.div`
   display: grid;
@@ -11,13 +11,7 @@ const TeamPlayersContainer = styled.div`
 const TeamPlayers = ({ info }) => {
   return (
     <TeamPlayersContainer>
-      {[...info].map((playerInfo) =>
-        playerInfo.Status === "Active" ? (
-          <Player key={playerInfo.PlayerID} playerInfo={playerInfo} />
-        ) : (
-          ""
-        )
-      )}
+      <PositionPlayer info={info} position={"SP"} />
     </TeamPlayersContainer>
   );
 };
