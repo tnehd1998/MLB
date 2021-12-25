@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import PositionPlayer from "../PostionPlayer/PositionPlayer";
+import PositionPlayer from "../PositionPlayer/PositionPlayer";
 
 const TeamPlayersContainer = styled.div`
   display: flex;
@@ -13,14 +13,26 @@ const TeamPlayersContainer = styled.div`
 const TeamPlayers = ({ info }) => {
   return (
     <TeamPlayersContainer>
-      <h1>선발투수</h1>
-      <PositionPlayer info={info} positions={["SP"]} />
-      <h1>불펜투수</h1>
-      <PositionPlayer info={info} positions={["RP"]} />
-      <h1>내야수</h1>
-      <PositionPlayer info={info} positions={["1B", "2B", "3B", "SS", "DH"]} />
-      <h1>외야수</h1>
-      <PositionPlayer info={info} positions={["LF", "CF", "RF"]} />
+      <PositionPlayer
+        info={info}
+        positions={["SP"]}
+        title="선발투수 (Starting Pitcher)"
+      />
+      <PositionPlayer
+        info={info}
+        positions={["RP"]}
+        title="불펜투수 (Relief Pitcher)"
+      />
+      <PositionPlayer
+        info={info}
+        positions={["1B", "2B", "3B", "SS", "DH"]}
+        title="내야수 (Infielder)"
+      />
+      <PositionPlayer
+        info={info}
+        positions={["LF", "CF", "RF"]}
+        title="외야수 (Outfielder)"
+      />
     </TeamPlayersContainer>
   );
 };
