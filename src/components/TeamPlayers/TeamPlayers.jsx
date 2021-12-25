@@ -11,8 +11,8 @@ const TeamPlayersContainer = styled.div`
 const TeamPlayers = ({ info }) => {
   return (
     <TeamPlayersContainer>
-      {info.map((playerInfo) =>
-        !playerInfo.PhotoUrl.includes("0.png") ? (
+      {[...info].map((playerInfo) =>
+        playerInfo.Status === "Active" ? (
           <Player key={playerInfo.PlayerID} playerInfo={playerInfo} />
         ) : (
           ""
