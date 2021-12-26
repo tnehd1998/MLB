@@ -50,9 +50,7 @@ const Introduction = () => {
       setLoading((loading) => !loading);
     }
     fetchData();
-  }, []);
-
-  console.log(info);
+  }, [setInfo]);
 
   return (
     <IntroductionContainer>
