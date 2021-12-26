@@ -44,6 +44,10 @@ const LinkToOfficialPage = styled.a`
   }
 `;
 
+const changeNameForUrl = (teamName) => {
+  return teamName.toLowerCase().replace(/(\s*)/g, "");
+};
+
 const TeamTitle = ({ team }) => {
   return (
     <TeamTitleContainer>
@@ -53,7 +57,9 @@ const TeamTitle = ({ team }) => {
         <TeamTitleName>{team.Name}</TeamTitleName>
       </TeamTitleInfo>
       <LinkToOfficialPage
-        href={`https://www.mlb.com/${team.Name ? team.Name.toLowerCase() : ""}`}
+        href={`https://www.mlb.com/${
+          team.Name ? changeNameForUrl(team.Name) : ""
+        }`}
         target="_blank"
         color={team.PrimaryColor}
       >
