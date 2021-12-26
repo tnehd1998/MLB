@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { getTeamData } from "../../apis";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { useRecoilState } from "recoil";
+import { teamLogo } from "../../atoms";
 
 const IntroductionContainer = styled.div`
   display: flex;
@@ -38,7 +40,7 @@ const TeamImage = styled.img`
 `;
 
 const Introduction = () => {
-  const [info, setInfo] = useState();
+  const [info, setInfo] = useRecoilState(teamLogo);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -49,6 +51,8 @@ const Introduction = () => {
     }
     fetchData();
   }, []);
+
+  console.log(info);
 
   return (
     <IntroductionContainer>

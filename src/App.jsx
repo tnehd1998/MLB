@@ -8,6 +8,7 @@ import {
   Navigate,
 } from "react-router-dom";
 import Header from "./components/Header/Header";
+import { RecoilRoot } from "recoil";
 
 import MainPage from "./pages/MainPage";
 import TeamPage from "./pages/TeamPage";
@@ -22,16 +23,18 @@ const GlobalStyles = createGlobalStyle`
 const App = () => {
   return (
     <Router>
-      <GlobalStyles />
-      <Header />
-      <Routes>
-        <Route path="/" element={<MainPage />} />
-        <Route path=":teamName" element={<TeamPage />} />
-        <Route path="/allstar" element={<AllStarPage />} />
-        <Route path="/postseason" element={<PostSeasonPage />} />
-        <Route path="/dreamteam" element={<DreamTeamPage />} />
-        <Route path="/*" element={<Navigate to="/" />} />
-      </Routes>
+      <RecoilRoot>
+        <GlobalStyles />
+        <Header />
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+          <Route path=":teamName" element={<TeamPage />} />
+          <Route path="/allstar" element={<AllStarPage />} />
+          <Route path="/postseason" element={<PostSeasonPage />} />
+          <Route path="/dreamteam" element={<DreamTeamPage />} />
+          <Route path="/*" element={<Navigate to="/" />} />
+        </Routes>
+      </RecoilRoot>
     </Router>
   );
 };
