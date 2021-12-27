@@ -5,7 +5,6 @@ const TeamTitleContainer = styled.div`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  width: 90vw;
   margin-bottom: 2vh;
 `;
 
@@ -19,15 +18,16 @@ const TeamTitleInfo = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-left: 10vw;
 `;
 
 const TeamTitleCity = styled.p`
   font-size: 2em;
+  color: ${(props) => "#" + props.color};
 `;
 
 const TeamTitleName = styled.p`
   font-size: 2.5em;
+  color: ${(props) => "#" + props.color};
 `;
 
 const LinkToOfficialPage = styled.a`
@@ -49,12 +49,13 @@ const changeNameForUrl = (teamName) => {
 };
 
 const TeamTitle = ({ team }) => {
+  console.log(team);
   return (
     <TeamTitleContainer>
       <TeamLogoImage src={`${team.WikipediaLogoUrl}`} />
       <TeamTitleInfo>
-        <TeamTitleCity>{team.City}</TeamTitleCity>
-        <TeamTitleName>{team.Name}</TeamTitleName>
+        <TeamTitleCity color={team.PrimaryColor}>{team.City}</TeamTitleCity>
+        <TeamTitleName color={team.PrimaryColor}>{team.Name}</TeamTitleName>
       </TeamTitleInfo>
       <LinkToOfficialPage
         href={`https://www.mlb.com/${
