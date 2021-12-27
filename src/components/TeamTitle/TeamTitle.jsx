@@ -49,7 +49,6 @@ const changeNameForUrl = (teamName) => {
 };
 
 const TeamTitle = ({ team }) => {
-  console.log(team);
   return (
     <TeamTitleContainer>
       <TeamLogoImage src={`${team.WikipediaLogoUrl}`} />

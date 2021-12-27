@@ -25,7 +25,7 @@ const TeamPlayers = ({ info }) => {
       />
       <PositionPlayer
         info={info}
-        positions={["1B", "2B", "3B", "SS", "DH"]}
+        positions={["1B", "2B", "3B", "SS", "DH", "C"]}
         title="내야수 (Infielder)"
       />
       <PositionPlayer
