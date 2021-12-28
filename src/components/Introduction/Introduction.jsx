@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { getTeamData } from "../../apis";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+
 import { useRecoilState } from "recoil";
 import { teamLogo } from "../../atoms";
+
+import { getTeamData } from "../../apis";
 
 const IntroductionContainer = styled.div`
   display: flex;
@@ -40,17 +42,17 @@ const TeamImage = styled.img`
 `;
 
 const Introduction = () => {
-  const [info, setInfo] = useRecoilState(teamLogo);
+  const [logos, setLogos] = useRecoilState(teamLogo);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
       const data = await getTeamData();
-      setInfo(data);
+      setLogos(data);
       setLoading((loading) => !loading);
     }
     fetchData();
-  }, [setInfo]);
+  }, [setLogos]);
 
   return (
     <IntroductionContainer>
@@ -58,16 +60,14 @@ const Introduction = () => {
         <div>Loading</div>
       ) : (
         <TeamContainer>
-          {info.map((item) =>
+          {logos.map((item) =>
             item.WikipediaLogoUrl ? (
               <Link key={item.TeamID} to={item.Key}>
                 <TeamMenu iconBgColor={`${item.PrimaryColor}`}>
                   <TeamImage src={`${item.WikipediaLogoUrl}`} alt={item.City} />
                 </TeamMenu>
               </Link>
-            ) : (
-              ""
-            )
+            ) : null
           )}
         </TeamContainer>
       )}
