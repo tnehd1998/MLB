@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import PositionPlayer from "../PositionPlayer/PositionPlayer";
 
-const TeamPlayersContainer = styled.div`
+const TeamPlayersWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -12,7 +12,7 @@ const TeamPlayersContainer = styled.div`
 
 const TeamPlayers = ({ info }) => {
   return (
-    <TeamPlayersContainer>
+    <TeamPlayersWrapper>
       <PositionPlayer
         info={info}
         positions={["SP"]}
@@ -33,7 +33,7 @@ const TeamPlayers = ({ info }) => {
         positions={["LF", "CF", "RF"]}
         title="외야수 (Outfielder)"
       />
-    </TeamPlayersContainer>
+    </TeamPlayersWrapper>
   );
 };
 
