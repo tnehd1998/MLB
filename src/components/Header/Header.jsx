@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const HeaderContainer = styled.div`
+const HeaderWrapper = styled.div`
   width: 100vw;
   height: 10vh;
   display: flex;
@@ -13,9 +13,9 @@ const HeaderContainer = styled.div`
   z-index: 20;
 `;
 
-const LogoLink = styled(Link)``;
+const HomeLogoLink = styled(Link)``;
 
-const Logo = styled.img`
+const HomeLogo = styled.img`
   width: 160px;
   height: 100px;
   cursor: pointer;
@@ -24,7 +24,7 @@ const Logo = styled.img`
   }
 `;
 
-const HeaderMenus = styled.div`
+const Menus = styled.div`
   width: 70vw;
   display: flex;
   justify-content: space-evenly;
@@ -33,12 +33,12 @@ const HeaderMenus = styled.div`
   margin-right: 1vw;
 `;
 
-const HeaderMenuLink = styled(Link)`
+const MenuLink = styled(Link)`
   color: black;
   text-decoration: none;
 `;
 
-const HeaderMenu = styled.p`
+const Menu = styled.p`
   width: 200px;
   height: 40px;
   text-align: center;
@@ -54,22 +54,22 @@ const HeaderMenu = styled.p`
 
 const Header = () => {
   return (
-    <HeaderContainer>
-      <LogoLink to="/">
-        <Logo src="https://www.mlbstatic.com/team-logos/league-on-dark/1.svg" />
-      </LogoLink>
-      <HeaderMenus>
-        <HeaderMenuLink to="allstar">
-          <HeaderMenu>ALL STAR PLAYER</HeaderMenu>
-        </HeaderMenuLink>
-        <HeaderMenuLink to="postseason">
-          <HeaderMenu>POSTSEASON</HeaderMenu>
-        </HeaderMenuLink>
-        <HeaderMenuLink to="dreamteam">
-          <HeaderMenu>MY DREAM TEAM</HeaderMenu>
-        </HeaderMenuLink>
-      </HeaderMenus>
-    </HeaderContainer>
+    <HeaderWrapper>
+      <HomeLogoLink to="/">
+        <HomeLogo src="https://www.mlbstatic.com/team-logos/league-on-dark/1.svg" />
+      </HomeLogoLink>
+      <Menus>
+        <MenuLink to="allstar">
+          <Menu>ALL STAR PLAYER</Menu>
+        </MenuLink>
+        <MenuLink to="postseason">
+          <Menu>POSTSEASON</Menu>
+        </MenuLink>
+        <MenuLink to="dreamteam">
+          <Menu>MY DREAM TEAM</Menu>
+        </MenuLink>
+      </Menus>
+    </HeaderWrapper>
   );
 };
 
