@@ -2,14 +2,14 @@ import React from "react";
 import Player from "../Player/Player";
 import styled from "styled-components";
 
-const PositionPlayerContainer = styled.div`
+const PositionPlayerWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 `;
 
-const Title = styled.p`
+const PositionName = styled.p`
   font-size: 24px;
 `;
 
@@ -29,8 +29,8 @@ const filterPosition = (playerInfo, positions) => {
 
 const PositionPlayer = ({ info, positions, title }) => {
   return (
-    <PositionPlayerContainer>
-      <Title>{title}</Title>
+    <PositionPlayerWrapper>
+      <PositionName>{title}</PositionName>
       <PlayerList>
         {[...info].map((playerInfo) =>
           playerInfo.Status === "Active" &&
@@ -41,7 +41,7 @@ const PositionPlayer = ({ info, positions, title }) => {
           )
         )}
       </PlayerList>
-    </PositionPlayerContainer>
+    </PositionPlayerWrapper>
   );
 };
 
