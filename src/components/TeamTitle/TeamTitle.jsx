@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const TeamTitleContainer = styled.div`
+const TeamTitleWrapper = styled.div`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -13,24 +13,24 @@ const TeamLogoImage = styled.img`
   height: 15vw;
 `;
 
-const TeamTitleInfo = styled.div`
+const TeamName = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 `;
 
-const TeamTitleCity = styled.p`
+const TeamCity = styled.p`
   font-size: 2em;
   color: ${(props) => "#" + props.color};
 `;
 
-const TeamTitleName = styled.p`
+const TeamNickname = styled.p`
   font-size: 2.5em;
   color: ${(props) => "#" + props.color};
 `;
 
-const LinkToOfficialPage = styled.a`
+const OfficialPageLink = styled.a`
   padding: 0.5em;
   font-size: 1em;
   border: 2px solid ${(props) => "#" + props.color};
@@ -50,13 +50,13 @@ const changeNameForUrl = (teamName) => {
 
 const TeamTitle = ({ team }) => {
   return (
-    <TeamTitleContainer>
+    <TeamTitleWrapper>
       <TeamLogoImage src={`${team.WikipediaLogoUrl}`} />
-      <TeamTitleInfo>
-        <TeamTitleCity color={team.PrimaryColor}>{team.City}</TeamTitleCity>
-        <TeamTitleName color={team.PrimaryColor}>{team.Name}</TeamTitleName>
-      </TeamTitleInfo>
-      <LinkToOfficialPage
+      <TeamName>
+        <TeamCity color={team.PrimaryColor}>{team.City}</TeamCity>
+        <TeamNickname color={team.PrimaryColor}>{team.Name}</TeamNickname>
+      </TeamName>
+      <OfficialPageLink
         href={`https://www.mlb.com/${
           team.Name ? changeNameForUrl(team.Name) : ""
         }`}
@@ -64,8 +64,8 @@ const TeamTitle = ({ team }) => {
         color={team.PrimaryColor}
       >
         &#8594; 공식 홈페이지
-      </LinkToOfficialPage>
-    </TeamTitleContainer>
+      </OfficialPageLink>
+    </TeamTitleWrapper>
   );
 };
 
