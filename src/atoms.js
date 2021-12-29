@@ -5,8 +5,8 @@ export const teamLogo = atom({
   default: [],
 });
 
-export const selectPlayer = atom({
-  key: "selectPlayer",
+export const playerSelection = atom({
+  key: "playerSelection",
   default: false,
 });
 

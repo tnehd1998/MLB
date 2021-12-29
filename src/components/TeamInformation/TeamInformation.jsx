@@ -6,17 +6,19 @@ import {
   currentPlayer,
   currentX,
   currentY,
-  selectPlayer,
+  playerSelection,
   teamLogo,
 } from "../../atoms";
 import TeamTitle from "../TeamTitle/TeamTitle";
 
-const TeamInfoContainer = styled.div`
+const TeamInformationWrapper = styled.div``;
+
+const TeamDescription = styled.div`
   padding-top: 12vh;
-  filter: blur(${(props) => (props.playerSelected ? "4px" : "0")});
+  filter: blur(${(props) => (props.selectPlayer ? "4px" : "0")});
 `;
 
-const PopUpInfo = styled.div`
+const ChosenPlayer = styled.div`
   width: 70vw;
   height: 70vh;
   top: ${(props) => props.top + "px"};
@@ -31,16 +33,16 @@ const PopUpInfo = styled.div`
   border: 2px solid black;
 `;
 
-const TeamInfo = ({ teamName, getData }) => {
+const TeamInformation = ({ teamName, getData }) => {
   const [team, setTeam] = useState({});
 
   const [info, setInfo] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const logo = useRecoilValue(teamLogo);
   const scrollX = useRecoilValue(currentX);
   const scrollY = useRecoilValue(currentY);
-  const [playerSelected, setPlayerSelected] = useRecoilState(selectPlayer);
+  const [selectPlayer, setSelectPlayer] = useRecoilState(playerSelection);
   const showingPlayer = useRecoilValue(currentPlayer);
 
   const getTeamInfo = (logo, teamName) => {
@@ -56,31 +58,31 @@ const TeamInfo = ({ teamName, getData }) => {
     async function fetchData() {
       const data = await getData(teamName);
       setInfo(data);
-      setLoading((loading) => !loading);
+      setIsLoading((isLoading) => !isLoading);
     }
     fetchData();
   }, [getData, teamName]);
 
   return (
-    <div>
-      <TeamInfoContainer playerSelected={playerSelected}>
+    <TeamInformationWrapper>
+      <TeamDescription selectPlayer={selectPlayer}>
         <TeamTitle team={team} />
-        {!loading ? <h1>Loading...</h1> : <TeamPlayers info={info} />}
-      </TeamInfoContainer>
-      {playerSelected ? (
-        <PopUpInfo top={scrollY} left={scrollX}>
+        {isLoading ? <h1>Loading...</h1> : <TeamPlayers info={info} />}
+      </TeamDescription>
+      {selectPlayer ? (
+        <ChosenPlayer top={scrollY} left={scrollX}>
           <h1>
             {showingPlayer.FirstName} {showingPlayer.LastName}
           </h1>
-          <button onClick={() => setPlayerSelected((value) => !value)}>
+          <button
+            onClick={() => setSelectPlayer((selectPlayer) => !selectPlayer)}
+          >
             취소
           </button>
-        </PopUpInfo>
-      ) : (
-        ""
-      )}
-    </div>
+        </ChosenPlayer>
+      ) : null}
+    </TeamInformationWrapper>
   );
 };
 
-export default TeamInfo;
+export default TeamInformation;

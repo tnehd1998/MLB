@@ -1,7 +1,12 @@
 import React from "react";
 import { useSetRecoilState } from "recoil";
 import styled from "styled-components";
-import { currentPlayer, currentX, currentY, selectPlayer } from "../../atoms";
+import {
+  currentPlayer,
+  currentX,
+  currentY,
+  playerSelection,
+} from "../../atoms";
 
 const PlayerContainer = styled.div``;
 
@@ -41,7 +46,7 @@ const PlayerDescription = styled.p`
 `;
 
 const Player = ({ playerInfo }) => {
-  const setPlayerSelected = useSetRecoilState(selectPlayer);
+  const setPlayerSelected = useSetRecoilState(playerSelection);
   const setCurrentPlayer = useSetRecoilState(currentPlayer);
   const setCurrentX = useSetRecoilState(currentX);
   const setCurrentY = useSetRecoilState(currentY);
