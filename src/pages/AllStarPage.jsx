@@ -1,9 +1,9 @@
 import React from "react";
 import { getAllStarPlayerData } from "../apis";
-import AllStarInfo from "../components/AllStarInfo/AllStarInfo";
+import AllStar from "../components/AllStar/AllStar";
 
 const AllStarPage = () => {
-  return <AllStarInfo getData={getAllStarPlayerData} />;
+  return <AllStar getData={getAllStarPlayerData} />;
 };
 
 export default AllStarPage;
