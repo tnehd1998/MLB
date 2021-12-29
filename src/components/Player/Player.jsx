@@ -8,9 +8,7 @@ import {
   playerSelection,
 } from "../../atoms";
 
-const PlayerContainer = styled.div``;
-
-const PlayerInfoContainer = styled.div`
+const PlayerWrapper = styled.div`
   display: flex;
   text-align: center;
   border: 2px solid black;
@@ -67,32 +65,26 @@ const Player = ({ playerInfo }) => {
   };
 
   return (
-    <PlayerContainer>
-      <PlayerInfoContainer onClick={() => showPlayerInfo(playerInfo)}>
-        <PlayerImage
-          src={playerInfo.PhotoUrl}
-          alt={`${playerInfo.FirstName} ${playerInfo.LastName}`}
-        />
-        <PlayerProfile>
-          <PlayerName>
-            {playerInfo.FirstName} {playerInfo.LastName}
-          </PlayerName>
-          <PlayerDescription>포지션 : {playerInfo.Position}</PlayerDescription>
-          <PlayerDescription>
-            타격 위치 : {playerInfo.BatHand}
-          </PlayerDescription>
-          <PlayerDescription>
-            투구 방향 : {playerInfo.ThrowHand}
-          </PlayerDescription>
-          <PlayerDescription>
-            출생 : {String(playerInfo.BirthDate).substring(0, 10)}
-          </PlayerDescription>
-          <PlayerDescription>
-            국적 : {playerInfo.BirthCountry}
-          </PlayerDescription>
-        </PlayerProfile>
-      </PlayerInfoContainer>
-    </PlayerContainer>
+    <PlayerWrapper onClick={() => showPlayerInfo(playerInfo)}>
+      <PlayerImage
+        src={playerInfo.PhotoUrl}
+        alt={`${playerInfo.FirstName} ${playerInfo.LastName}`}
+      />
+      <PlayerProfile>
+        <PlayerName>
+          {playerInfo.FirstName} {playerInfo.LastName}
+        </PlayerName>
+        <PlayerDescription>포지션 : {playerInfo.Position}</PlayerDescription>
+        <PlayerDescription>타격 위치 : {playerInfo.BatHand}</PlayerDescription>
+        <PlayerDescription>
+          투구 방향 : {playerInfo.ThrowHand}
+        </PlayerDescription>
+        <PlayerDescription>
+          출생 : {String(playerInfo.BirthDate).substring(0, 10)}
+        </PlayerDescription>
+        <PlayerDescription>국적 : {playerInfo.BirthCountry}</PlayerDescription>
+      </PlayerProfile>
+    </PlayerWrapper>
   );
 };
 
