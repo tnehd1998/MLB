@@ -1,8 +1,8 @@
 import React from "react";
-import Introduction from "../components/Introduction/Introduction";
+import TeamSelection from "../components/TeamSelection/TeamSelection";
 
 const MainPage = () => {
-  return <Introduction />;
+  return <TeamSelection />;
 };
 
 export default MainPage;

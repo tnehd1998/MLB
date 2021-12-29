@@ -7,20 +7,22 @@ import { teamLogo } from "../../atoms";
 
 import { getTeamData } from "../../apis";
 
-const IntroductionContainer = styled.div`
+const TeamSelectionWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   padding-top: 12vh;
 `;
 
-const TeamContainer = styled.div`
+const TeamWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 1vw;
 `;
 
-const TeamMenu = styled.div`
+const TeamLink = styled(Link)``;
+
+const Team = styled.div`
   width: 15vw;
   height: 15vw;
   border-radius: 15%;
@@ -41,7 +43,7 @@ const TeamImage = styled.img`
   height: 10vw;
 `;
 
-const Introduction = () => {
+const TeamSelection = () => {
   const [logos, setLogos] = useRecoilState(teamLogo);
   const [loading, setLoading] = useState(false);
 
@@ -55,24 +57,24 @@ const Introduction = () => {
   }, [setLogos]);
 
   return (
-    <IntroductionContainer>
+    <TeamSelectionWrapper>
       {!loading ? (
         <div>Loading</div>
       ) : (
-        <TeamContainer>
+        <TeamWrapper>
           {logos.map((item) =>
             item.WikipediaLogoUrl ? (
-              <Link key={item.TeamID} to={item.Key}>
-                <TeamMenu iconBgColor={`${item.PrimaryColor}`}>
+              <TeamLink key={item.TeamID} to={item.Key}>
+                <Team iconBgColor={`${item.PrimaryColor}`}>
                   <TeamImage src={`${item.WikipediaLogoUrl}`} alt={item.City} />
-                </TeamMenu>
-              </Link>
+                </Team>
+              </TeamLink>
             ) : null
           )}
-        </TeamContainer>
+        </TeamWrapper>
       )}
-    </IntroductionContainer>
+    </TeamSelectionWrapper>
   );
 };
 
-export default Introduction;
+export default TeamSelection;
