@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import TeamPlayers from "../TeamPlayers/TeamPlayers";
 import styled from "styled-components";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { currentPlayer, playerSelection, teamLogo } from "../../atoms";
+import { currentPlayer, playerSelection } from "../../atoms";
 import TeamTitle from "../TeamTitle/TeamTitle";
 import PlayerDetail from "../PlayerDetail/PlayerDetail";
 
@@ -19,18 +19,18 @@ const TeamInformation = ({ teamName, getData }) => {
   const [info, setInfo] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const logo = useRecoilValue(teamLogo);
   const [selectPlayer, setSelectPlayer] = useRecoilState(playerSelection);
   const showingPlayer = useRecoilValue(currentPlayer);
 
-  const getTeamInfo = (logo, teamName) => {
-    return logo.find((value) => value.Key === teamName);
+  const getTeamInfo = (teamName) => {
+    const logos = JSON.parse(window.localStorage.getItem("logos"));
+    return logos.find((logo) => logo.Key === teamName);
   };
 
   useEffect(() => {
-    const teamInfo = getTeamInfo(logo, teamName);
+    const teamInfo = getTeamInfo(teamName);
     setTeam(teamInfo);
-  }, [logo, teamName]);
+  }, [teamName]);
 
   useEffect(() => {
     async function fetchData() {
@@ -40,8 +40,6 @@ const TeamInformation = ({ teamName, getData }) => {
     }
     fetchData();
   }, [getData, teamName]);
-
-  console.log(showingPlayer);
 
   return (
     <TeamInformationWrapper>
