@@ -47,13 +47,23 @@ const TeamSelection = () => {
   const [logos, setLogos] = useRecoilState(teamLogo);
   const [loading, setLoading] = useState(false);
 
+  const loadLogo = () => {
+    if (window.localStorage.getItem("logos").length) {
+      return false;
+    }
+    return true;
+  };
+
   useEffect(() => {
     async function fetchData() {
       const data = await getTeamData();
       setLogos(data);
       setLoading((loading) => !loading);
+      window.localStorage.setItem("logos", JSON.stringify(data));
     }
-    fetchData();
+    if (loadLogo) {
+      fetchData();
+    }
   }, [setLogos]);
 
   return (
