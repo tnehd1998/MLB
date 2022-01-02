@@ -129,6 +129,13 @@ const PlayerDetail = ({ showingPlayer, setSelectPlayer }) => {
           >
             선수 기록
           </a>
+          <a
+            href={`https://www.youtube.com/results?search_query=${showingPlayer.FirstName.toLowerCase()}+${showingPlayer.LastName.toLowerCase()}`}
+            rel="noreferrer"
+            target="_blank"
+          >
+            더 많은 동영상
+          </a>
         </div>
       </PlayerWrapper>
       <VideoTitle>선수 관련 영상</VideoTitle>
