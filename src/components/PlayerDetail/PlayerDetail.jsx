@@ -43,7 +43,7 @@ const PlayerWrapper = styled.div`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  width: 100%;
+  width: 80vw;
 `;
 
 const PlayerImage = styled.img`
@@ -53,8 +53,33 @@ const PlayerImage = styled.img`
   border: 2px solid black;
 `;
 
+const PlayerInfoWrapper = styled.div``;
+
 const PlayerInfo = styled.p`
   font-size: 36px;
+`;
+
+const PlayerPageLinkWrapper = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 2vh;
+`;
+
+const PlayerPageLink = styled.a`
+  padding: 0.5em;
+  font-size: 1em;
+  border: 2px solid ${(props) => "#" + props.color};
+  border-radius: 15px;
+  color: black;
+  text-decoration: none;
+  background-color: ${(props) =>
+    props.type === "youtube" ? "tomato" : "skyblue"};
+  &:hover {
+    background-color: ${(props) => "#" + props.color};
+    transition: all 0.3s linear;
+    color: white;
+  }
 `;
 
 const VideoDefault = styled.div`
@@ -115,28 +140,32 @@ const PlayerDetail = ({ showingPlayer, setSelectPlayer }) => {
       </CloseIcon>
       <PlayerWrapper>
         <PlayerImage src={showingPlayer.PhotoUrl} alt="" />
-        <div>
+        <PlayerInfoWrapper>
           <PlayerInfo>
             {showingPlayer.FirstName} {showingPlayer.LastName} (
             {showingPlayer.Position})
           </PlayerInfo>
-          <a
-            href={`https://www.mlb.com/player/${showingPlayer.FirstName.toLowerCase()}-${showingPlayer.LastName.toLowerCase()}-${
-              showingPlayer.MLBAMID
-            }`}
-            rel="noreferrer"
-            target="_blank"
-          >
-            선수 기록
-          </a>
-          <a
-            href={`https://www.youtube.com/results?search_query=${showingPlayer.FirstName.toLowerCase()}+${showingPlayer.LastName.toLowerCase()}`}
-            rel="noreferrer"
-            target="_blank"
-          >
-            더 많은 동영상
-          </a>
-        </div>
+          <PlayerPageLinkWrapper>
+            <PlayerPageLink
+              href={`https://www.mlb.com/player/${showingPlayer.FirstName.toLowerCase()}-${showingPlayer.LastName.toLowerCase()}-${
+                showingPlayer.MLBAMID
+              }`}
+              rel="noreferrer"
+              target="_blank"
+              type="record"
+            >
+              🔎 선수 기록
+            </PlayerPageLink>
+            <PlayerPageLink
+              href={`https://www.youtube.com/results?search_query=${showingPlayer.FirstName.toLowerCase()}+${showingPlayer.LastName.toLowerCase()}`}
+              rel="noreferrer"
+              target="_blank"
+              type="youtube"
+            >
+              🖥 더 많은 동영상
+            </PlayerPageLink>
+          </PlayerPageLinkWrapper>
+        </PlayerInfoWrapper>
       </PlayerWrapper>
       <VideoTitle>선수 관련 영상</VideoTitle>
       {isLoading ? (
