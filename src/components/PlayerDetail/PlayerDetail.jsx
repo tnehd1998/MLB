@@ -21,7 +21,7 @@ const ChosenPlayer = styled.div`
   border: 2px solid black;
 `;
 
-const CloseIcon = styled.img`
+const CloseIcon = styled.p`
   width: 40px;
   height: 40px;
   position: absolute;
@@ -30,6 +30,10 @@ const CloseIcon = styled.img`
   border-radius: 50%;
   border: 2px solid black;
   cursor: pointer;
+  color: black;
+  font-size: 30px;
+  text-align: center;
+  line-height: 40px;
   &:hover {
     transform: scale(1.1);
   }
@@ -53,6 +57,16 @@ const PlayerInfo = styled.p`
   font-size: 36px;
 `;
 
+const VideoDefault = styled.div`
+  width: 280px;
+  height: 160px;
+  border-radius: 20px;
+  border: 2px solid black;
+  transition: all 0.5s ease-in;
+  text-align: center;
+  line-height: 160px;
+`;
+
 const VideosWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -68,6 +82,7 @@ const Video = styled.iframe`
   width: 280px;
   height: 160px;
   border-radius: 20px;
+  border: 2px solid black;
 `;
 
 const PlayerDetail = ({ showingPlayer, setSelectPlayer }) => {
@@ -89,12 +104,15 @@ const PlayerDetail = ({ showingPlayer, setSelectPlayer }) => {
     getVideos();
   }, [showingPlayer.FirstName, showingPlayer.LastName]);
 
+  console.log(showingPlayer.MLBAMID);
+
   return (
     <ChosenPlayer top={scrollY} left={scrollX}>
       <CloseIcon
-        src="https://cdn.icon-icons.com/icons2/1674/PNG/512/close_111152.png"
         onClick={() => setSelectPlayer((selectPlayer) => !selectPlayer)}
-      />
+      >
+        ✕
+      </CloseIcon>
       <PlayerWrapper>
         <PlayerImage src={showingPlayer.PhotoUrl} alt="" />
         <PlayerInfo>
@@ -104,7 +122,12 @@ const PlayerDetail = ({ showingPlayer, setSelectPlayer }) => {
       </PlayerWrapper>
       <VideoTitle>선수 관련 영상</VideoTitle>
       {isLoading ? (
-        <h1>Loading...</h1>
+        <VideosWrapper>
+          <VideoDefault>Loading...</VideoDefault>
+          <VideoDefault>Loading...</VideoDefault>
+          <VideoDefault>Loading...</VideoDefault>
+          <VideoDefault>Loading...</VideoDefault>
+        </VideosWrapper>
       ) : (
         <VideosWrapper>
           {videos.items.map((video, index) => (
