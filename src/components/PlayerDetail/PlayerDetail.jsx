@@ -115,10 +115,21 @@ const PlayerDetail = ({ showingPlayer, setSelectPlayer }) => {
       </CloseIcon>
       <PlayerWrapper>
         <PlayerImage src={showingPlayer.PhotoUrl} alt="" />
-        <PlayerInfo>
-          {showingPlayer.FirstName} {showingPlayer.LastName} (
-          {showingPlayer.Position})
-        </PlayerInfo>
+        <div>
+          <PlayerInfo>
+            {showingPlayer.FirstName} {showingPlayer.LastName} (
+            {showingPlayer.Position})
+          </PlayerInfo>
+          <a
+            href={`https://www.mlb.com/player/${showingPlayer.FirstName.toLowerCase()}-${showingPlayer.LastName.toLowerCase()}-${
+              showingPlayer.MLBAMID
+            }`}
+            rel="noreferrer"
+            target="_blank"
+          >
+            선수 기록
+          </a>
+        </div>
       </PlayerWrapper>
       <VideoTitle>선수 관련 영상</VideoTitle>
       {isLoading ? (
