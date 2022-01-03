@@ -110,6 +110,20 @@ const Video = styled.iframe`
   border: 2px solid black;
 `;
 
+const alphabetAccents = {
+  à: "a",
+  è: "e",
+  ì: "i",
+  ò: "o",
+  ù: "u",
+  á: "a",
+  é: "e",
+  í: "i",
+  ó: "o",
+  ú: "u",
+  ý: "y",
+};
+
 const PlayerDetail = ({ showingPlayer, setSelectPlayer }) => {
   const [videos, setVideos] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -129,7 +143,24 @@ const PlayerDetail = ({ showingPlayer, setSelectPlayer }) => {
     getVideos();
   }, [showingPlayer.FirstName, showingPlayer.LastName]);
 
-  console.log(showingPlayer.MLBAMID);
+  const convertNameForUrl = (inputName) => {
+    let currentName = [...inputName];
+    currentName.map((letter, index) => {
+      for (let alphabetAccent in alphabetAccents) {
+        if (letter === alphabetAccent) {
+          return (currentName[index] = alphabetAccents[alphabetAccent]);
+        }
+        if (letter === " ") {
+          return (currentName[index] = "-");
+        }
+        if (letter === ".") {
+          return (currentName[index] = "");
+        }
+      }
+      return letter;
+    });
+    return currentName.join("");
+  };
 
   return (
     <ChosenPlayer top={scrollY} left={scrollX}>
@@ -147,7 +178,9 @@ const PlayerDetail = ({ showingPlayer, setSelectPlayer }) => {
           </PlayerInfo>
           <PlayerPageLinkWrapper>
             <PlayerPageLink
-              href={`https://www.mlb.com/player/${showingPlayer.FirstName.toLowerCase()}-${showingPlayer.LastName.toLowerCase()}-${
+              href={`https://www.mlb.com/player/${convertNameForUrl(
+                showingPlayer.FirstName.toLowerCase()
+              )}-${convertNameForUrl(showingPlayer.LastName.toLowerCase())}-${
                 showingPlayer.MLBAMID
               }`}
               rel="noreferrer"
