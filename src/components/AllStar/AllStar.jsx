@@ -1,21 +1,27 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
-const AllStarWrapper = styled.div``;
+const AllStarWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 const TableWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-top: 12vh;
+  padding-top: 10vh;
+  width: 80vw;
 `;
 
 const Table = styled.table`
-  border: 1px solid black;
+  border: 4px solid black;
   border-collapse: collapse;
+  text-align: center;
   th,
   td {
-    border: 1px solid black;
+    border: 2px solid black;
   }
 `;
 
@@ -24,11 +30,15 @@ const Subjects = styled.tr`
   margin-bottom: 30px;
 `;
 
-const Subject = styled.td``;
+const Subject = styled.td`
+  padding: 10px;
+`;
 
 const Player = styled.tr``;
 
-const PlayerInfo = styled.td``;
+const PlayerInfo = styled.td`
+  padding: 5px;
+`;
 
 const AllStar = ({ getData }) => {
   const [players, setPlayers] = useState([]);
