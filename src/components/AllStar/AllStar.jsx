@@ -24,11 +24,11 @@ const Subjects = styled.tr`
   margin-bottom: 30px;
 `;
 
-const Subject = styled.th``;
+const Subject = styled.td``;
 
 const Player = styled.tr``;
 
-const PlayerInfo = styled.th``;
+const PlayerInfo = styled.td``;
 
 const AllStar = ({ getData }) => {
   const [players, setPlayers] = useState([]);
@@ -51,20 +51,24 @@ const AllStar = ({ getData }) => {
         <TableWrapper>
           <Table>
             <colgroup span="4" className="columns"></colgroup>
-            <Subjects>
-              <Subject>RANKING</Subject>
-              <Subject>PLAYER NAME</Subject>
-              <Subject>POSITION</Subject>
-              <Subject>TEAM</Subject>
-            </Subjects>
-            {players.map((player, index) => (
-              <Player key={player.StatID}>
-                <PlayerInfo>Rank {index + 1}</PlayerInfo>
-                <PlayerInfo>{player.Name}</PlayerInfo>
-                <PlayerInfo>{player.Position}</PlayerInfo>
-                <PlayerInfo>{player.Team}</PlayerInfo>
-              </Player>
-            ))}
+            <thead>
+              <Subjects>
+                <Subject>RANKING</Subject>
+                <Subject>PLAYER NAME</Subject>
+                <Subject>POSITION</Subject>
+                <Subject>TEAM</Subject>
+              </Subjects>
+            </thead>
+            <tbody>
+              {players.map((player, index) => (
+                <Player key={player.StatID}>
+                  <PlayerInfo>Rank {index + 1}</PlayerInfo>
+                  <PlayerInfo>{player.Name}</PlayerInfo>
+                  <PlayerInfo>{player.Position}</PlayerInfo>
+                  <PlayerInfo>{player.Team}</PlayerInfo>
+                </Player>
+              ))}
+            </tbody>
           </Table>
         </TableWrapper>
       )}
