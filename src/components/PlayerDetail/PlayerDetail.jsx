@@ -122,6 +122,20 @@ const alphabetAccents = {
   ó: "o",
   ú: "u",
   ý: "y",
+  â: "a",
+  ê: "e",
+  î: "i",
+  ô: "o",
+  û: "u",
+  ñ: "n",
+  õ: "o",
+  ã: "a",
+  ä: "a",
+  ë: "e",
+  ï: "i",
+  ö: "o",
+  ü: "u",
+  ÿ: "y",
 };
 
 const PlayerDetail = ({ showingPlayer, setSelectPlayer }) => {
