@@ -207,7 +207,7 @@ const PlayerDetail = ({ showingPlayer, setSelectPlayer }) => {
               🔎 선수 기록
             </PlayerPageLink>
             <PlayerPageLink
-              href={`https://www.youtube.com/results?search_query=${showingPlayer.FirstName.toLowerCase()}+${showingPlayer.LastName.toLowerCase()}`}
+              href={`https://www.youtube.com/results?search_query=${showingPlayer.FirstName.toLowerCase()}+${showingPlayer.LastName.toLowerCase()}+baseball`}
               rel="noreferrer"
               target="_blank"
               type="youtube"

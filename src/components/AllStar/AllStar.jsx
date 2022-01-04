@@ -11,11 +11,21 @@ const TableWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-top: 10vh;
+  align-items: center;
+  padding-top: 12vh;
   width: 80vw;
 `;
 
+const TableTitle = styled.p`
+  font-size: 24px;
+  margin-bottom: 2vh;
+  border: 2px solid black;
+  border-radius: 20px;
+  padding: 10px;
+`;
+
 const Table = styled.table`
+  width: 100%;
   border: 4px solid black;
   border-collapse: collapse;
   text-align: center;
@@ -34,7 +44,17 @@ const Subject = styled.td`
   padding: 10px;
 `;
 
-const Player = styled.tr``;
+const Player = styled.tr`
+  text-align: center;
+  cursor: pointer;
+  font-size: 16px;
+  &:hover {
+    font-size: 18px;
+    transition: all 0.5s ease-in;
+    background-color: black;
+    color: white;
+  }
+`;
 
 const PlayerInfo = styled.td`
   padding: 5px;
@@ -59,14 +79,15 @@ const AllStar = ({ getData }) => {
         <h1>Loading...</h1>
       ) : (
         <TableWrapper>
+          <TableTitle>😍 알고 싶은 선수를 선택하세요 😍</TableTitle>
           <Table>
             <colgroup span="4" className="columns"></colgroup>
             <thead>
               <Subjects>
-                <Subject>RANKING</Subject>
-                <Subject>PLAYER NAME</Subject>
-                <Subject>POSITION</Subject>
-                <Subject>TEAM</Subject>
+                <Subject>선수 랭킹 (RANKING)</Subject>
+                <Subject>선수 이름 (PLAYER NAME)</Subject>
+                <Subject>포지션 (POSITION)</Subject>
+                <Subject>소속 팀 (TEAM)</Subject>
               </Subjects>
             </thead>
             <tbody>
