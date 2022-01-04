@@ -168,7 +168,10 @@ const PlayerDetail = ({ showingPlayer, setSelectPlayer }) => {
           return (currentName[index] = "-");
         }
         if (letter === ".") {
-          return (currentName[index] = "");
+          if (index === currentName.length - 1) {
+            return (currentName[index] = "");
+          }
+          return (currentName[index] = "-");
         }
       }
       return letter;
