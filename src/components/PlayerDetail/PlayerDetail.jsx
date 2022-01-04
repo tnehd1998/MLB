@@ -148,7 +148,7 @@ const PlayerDetail = ({ showingPlayer, setSelectPlayer }) => {
   useEffect(() => {
     async function getVideos() {
       const data = await getPlayerVideo(
-        `${showingPlayer.FirstName} ${showingPlayer.LastName}`,
+        `${showingPlayer.FirstName} ${showingPlayer.LastName} baseball`,
         4
       );
       setVideos(data);
