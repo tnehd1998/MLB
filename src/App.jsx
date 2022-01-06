@@ -15,6 +15,7 @@ import TeamPage from "./pages/TeamPage";
 import AllStarPage from "./pages/AllStarPage";
 import PostSeasonPage from "./pages/PostSeasonPage";
 import DreamTeamPage from "./pages/DreamTeamPage";
+import PlayerPage from "./pages/PlayerPage";
 
 const GlobalStyles = createGlobalStyle`
   ${reset};
@@ -32,6 +33,7 @@ const App = () => {
           <Route path="/allstar" element={<AllStarPage />} />
           <Route path="/postseason" element={<PostSeasonPage />} />
           <Route path="/dreamteam" element={<DreamTeamPage />} />
+          <Route path="/player/:playerID" element={<PlayerPage />} />
           <Route path="/*" element={<Navigate to="/" />} />
         </Routes>
       </RecoilRoot>

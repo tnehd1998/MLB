@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const AllStarWrapper = styled.div`
@@ -92,7 +93,12 @@ const AllStar = ({ getData }) => {
             </thead>
             <tbody>
               {players.map((player, index) => (
-                <Player key={player.StatID}>
+                <Player
+                  key={player.StatID}
+                  onClick={() =>
+                    (window.location.href = `player/${player.PlayerID}`)
+                  }
+                >
                   <PlayerInfo>Rank {index + 1}</PlayerInfo>
                   <PlayerInfo>{player.Name}</PlayerInfo>
                   <PlayerInfo>{player.Position}</PlayerInfo>
