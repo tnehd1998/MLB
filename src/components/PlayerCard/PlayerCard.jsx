@@ -138,7 +138,7 @@ const alphabetAccents = {
   ÿ: "y",
 };
 
-const PlayerDetail = ({ showingPlayer, setSelectPlayer }) => {
+const PlayerCard = ({ showingPlayer, setSelectPlayer }) => {
   const [videos, setVideos] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -243,4 +243,4 @@ const PlayerDetail = ({ showingPlayer, setSelectPlayer }) => {
   );
 };
 
-export default PlayerDetail;
+export default PlayerCard;

@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { currentPlayer, playerSelection } from "../../atoms";
 import TeamTitle from "../TeamTitle/TeamTitle";
-import PlayerDetail from "../PlayerDetail/PlayerDetail";
+import PlayerCard from "../PlayerCard/PlayerCard";
 
 const TeamInformationWrapper = styled.div``;
 
@@ -48,7 +48,7 @@ const TeamInformation = ({ teamName, getData }) => {
         {isLoading ? <h1>Loading...</h1> : <TeamPlayers info={info} />}
       </TeamDescription>
       {selectPlayer ? (
-        <PlayerDetail
+        <PlayerCard
           showingPlayer={showingPlayer}
           setSelectPlayer={setSelectPlayer}
         />
