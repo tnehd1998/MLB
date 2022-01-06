@@ -179,8 +179,6 @@ const PlayerDetail = ({ showingPlayer, setSelectPlayer }) => {
     return currentName.join("");
   };
 
-  console.log(showingPlayer);
-
   return (
     <ChosenPlayer top={scrollY} left={scrollX}>
       <CloseIcon

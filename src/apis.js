@@ -38,3 +38,12 @@ export const getPlayerVideo = async (playerName, videoCount) => {
     .then((response) => response.data);
   return info;
 };
+
+export const getCertainPlayerData = async (playerID) => {
+  const info = await axios
+    .get(
+      ` https://api.sportsdata.io/v3/mlb/scores/json/Player/${playerID}?key=${SPORT_DATA_API_KEY}`
+    )
+    .then((response) => response.data);
+  return info;
+};
