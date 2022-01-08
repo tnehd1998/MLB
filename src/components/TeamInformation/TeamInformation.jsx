@@ -41,6 +41,12 @@ const TeamInformation = ({ teamName, getData }) => {
     fetchData();
   }, [getData, teamName]);
 
+  useEffect(() => {
+    return () => {
+      setSelectPlayer((selectPlayer) => !selectPlayer);
+    };
+  }, [setSelectPlayer]);
+
   return (
     <TeamInformationWrapper>
       <TeamDescription selectPlayer={selectPlayer}>
