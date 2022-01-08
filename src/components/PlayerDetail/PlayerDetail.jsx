@@ -115,6 +115,8 @@ const PlayerDetail = ({ playerID }) => {
   const [videos, setVideos] = useState([]);
   const [isLoadingVideos, setIsLoadingVideos] = useState(true);
 
+  const [team, setTeam] = useState({});
+
   const convertNameForUrl = (inputName) => {
     let currentName = [...inputName];
     currentName.map((letter, index) => {
@@ -136,6 +138,16 @@ const PlayerDetail = ({ playerID }) => {
     });
     return currentName.join("");
   };
+
+  const getTeamInfo = (teamName) => {
+    const logos = JSON.parse(window.localStorage.getItem("logos"));
+    return logos.find((logo) => logo.Key === teamName);
+  };
+
+  useEffect(() => {
+    const teamInfo = getTeamInfo(playerInfo.Team);
+    setTeam(teamInfo);
+  }, [playerInfo.Team]);
 
   useEffect(() => {
     async function fetchData() {
@@ -174,6 +186,7 @@ const PlayerDetail = ({ playerID }) => {
               <PlayerInfo>국적 : {playerInfo.BirthCountry}</PlayerInfo>
               <PlayerInfo>
                 소속팀 : {playerInfo.Team}
+                <img src={team} alt="Team Logo" />
                 <PlayerPageLink href={`/${playerInfo.Team}`}>
                   {playerInfo.Team}
                 </PlayerPageLink>

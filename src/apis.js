@@ -34,6 +34,10 @@ export const getPlayerVideo = async (playerName, videoCount) => {
   const info = await axios
     .get(
       `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=${videoCount}&q=${playerName}&type=video&key=${YOUTUBE_API_KEY}`
+      // { 프론트 계획대로 구축한 후 백엔드 구축으로 CORS문제 해결예정
+      //   crossDomain: true,
+      //   withCredentials: true,
+      // }
     )
     .then((response) => response.data);
   return info;
