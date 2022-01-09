@@ -4,7 +4,22 @@ import styled from "styled-components";
 import { getCertainPlayerData, getPlayerVideo } from "../../apis";
 
 const PlayerDetailWrapper = styled.div`
-  padding-top: 20vh;
+  padding-top: 12vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const PlayerInformation = styled.div`
+  width: 70vw;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 4px solid black;
+  border-radius: 1em;
+  margin: auto;
+  text-align: center;
 `;
 
 const PlayerDescriptionWrapper = styled.div`
@@ -16,39 +31,75 @@ const PlayerProfileWrapper = styled.div`
   display: flex;
 `;
 
+const PlayerTitle = styled.p`
+  font-size: 28px;
+  margin: 0.5em 0;
+`;
+
 const PlayerImage = styled.img`
-  width: 16em;
-  height: 20em;
+  width: 12em;
+  height: 14em;
   border-radius: 10px;
   border: 2px solid black;
 `;
 
 const PlayerInfoList = styled.ul`
   display: flex;
+  height: 7em;
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
-  height: 12em;
   padding: 1em 0;
-  margin-left: 1em;
+  margin: auto;
   font-size: 24px;
 `;
 
 const PlayerInfo = styled.li``;
 
+const PlayerLinkWrapper = styled.div`
+  margin: 1em 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 const PlayerPageLink = styled.a`
-  padding: 0.5em;
+  padding: 1em 0.5em;
+  margin-left: 1em;
   font-size: 1em;
   border: 2px solid ${(props) => "#" + props.color};
   border-radius: 15px;
   color: black;
   text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: ${(props) =>
     props.type === "youtube" ? "tomato" : "skyblue"};
   &:hover {
     background-color: ${(props) => "#" + props.color};
     transition: all 0.3s linear;
     color: white;
+  }
+`;
+
+const PlayerTeamLink = styled.a`
+  width: 2em;
+  height: 2em;
+  padding: 0.5em;
+  font-size: 1em;
+  border: 2px solid black;
+  border-radius: 15px;
+  color: black;
+  text-decoration: none;
+`;
+
+const PlayerTeamLogo = styled.img`
+  width: 2em;
+  height: 2em;
+  &:hover {
+    transform: scale(1.2);
+    transition: all 0.3s linear;
   }
 `;
 
@@ -66,11 +117,6 @@ const VideosWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1em;
-`;
-
-const VideoTitle = styled.p`
-  font-size: 24px;
-  margin: 1em 0;
 `;
 
 const Video = styled.iframe`
@@ -172,74 +218,82 @@ const PlayerDetail = ({ playerID }) => {
 
   return (
     <PlayerDetailWrapper>
-      {isLoading ? (
-        "Loading..."
-      ) : (
-        <PlayerDescriptionWrapper>
-          <PlayerProfileWrapper>
-            <PlayerImage src={playerInfo.PhotoUrl} />
-            <PlayerInfoList>
-              <PlayerInfo>이름 : {playerInfo.DraftKingsName}</PlayerInfo>
-              <PlayerInfo>
-                출생년도 : {playerInfo.BirthDate.slice(0, 10)}
-              </PlayerInfo>
-              <PlayerInfo>국적 : {playerInfo.BirthCountry}</PlayerInfo>
-              <PlayerInfo>
-                소속팀 : {playerInfo.Team}
-                <img src={team} alt="Team Logo" />
-                <PlayerPageLink href={`/${playerInfo.Team}`}>
-                  {playerInfo.Team}
-                </PlayerPageLink>
-              </PlayerInfo>
-              <PlayerInfo>
-                데뷔일 : {playerInfo.ProDebut.slice(0, 10)}
-              </PlayerInfo>
-              <PlayerInfo>포지션 : {playerInfo.Position}</PlayerInfo>
-            </PlayerInfoList>
-          </PlayerProfileWrapper>
-          <PlayerPageLink
-            href={`https://www.mlb.com/player/${convertNameForUrl(
-              playerInfo.FirstName.toLowerCase()
-            )}-${convertNameForUrl(playerInfo.LastName.toLowerCase())}-${
-              playerInfo.MLBAMID
-            }`}
-            rel="noreferrer"
-            target="_blank"
-          >
-            🔎 선수 세부 기록
-          </PlayerPageLink>
-          <PlayerPageLink
-            href={`https://www.youtube.com/results?search_query=${playerInfo.FirstName.toLowerCase()}+${playerInfo.LastName.toLowerCase()}+baseball`}
-            rel="noreferrer"
-            target="_blank"
-            type="youtube"
-          >
-            🖥 더 많은 동영상
-          </PlayerPageLink>
-          <VideoTitle>선수 관련 영상</VideoTitle>
-          {isLoadingVideos ? (
-            <VideosWrapper>
-              <VideoDefault>Loading...</VideoDefault>
-              <VideoDefault>Loading...</VideoDefault>
-              <VideoDefault>Loading...</VideoDefault>
-              <VideoDefault>Loading...</VideoDefault>
-            </VideosWrapper>
-          ) : (
-            <VideosWrapper>
-              {videos.items.map((video, index) => (
-                <Video
-                  key={index}
-                  type="text/html"
-                  title={"Video"}
-                  src={`https://www.youtube.com/embed/${video.id.videoId}?autoplay=1`}
-                  frameBorder="0"
-                  allowFullScreen
-                ></Video>
-              ))}
-            </VideosWrapper>
-          )}
-        </PlayerDescriptionWrapper>
-      )}
+      <PlayerInformation>
+        {isLoading ? (
+          "Loading..."
+        ) : (
+          <PlayerDescriptionWrapper>
+            <PlayerTitle>선수 정보</PlayerTitle>
+            <PlayerProfileWrapper>
+              <PlayerImage src={playerInfo.PhotoUrl} />
+              <PlayerInfoList>
+                <PlayerInfo>이름 : {playerInfo.DraftKingsName}</PlayerInfo>
+                <PlayerInfo>
+                  출생년도 : {playerInfo.BirthDate.slice(0, 10)}
+                </PlayerInfo>
+                <PlayerInfo>국적 : {playerInfo.BirthCountry}</PlayerInfo>
+                <PlayerInfo>
+                  데뷔일 : {playerInfo.ProDebut.slice(0, 10)}
+                </PlayerInfo>
+                <PlayerInfo>포지션 : {playerInfo.Position}</PlayerInfo>
+              </PlayerInfoList>
+            </PlayerProfileWrapper>
+            <PlayerLinkWrapper>
+              <PlayerTeamLink href={`/${playerInfo.Team}`}>
+                <PlayerTeamLogo src={team.WikipediaLogoUrl} alt="Team Logo" />
+              </PlayerTeamLink>
+              <PlayerPageLink
+                href={`https://www.mlb.com/player/${convertNameForUrl(
+                  playerInfo.FirstName.toLowerCase()
+                )}-${convertNameForUrl(playerInfo.LastName.toLowerCase())}-${
+                  playerInfo.MLBAMID
+                }`}
+                rel="noreferrer"
+                target="_blank"
+              >
+                🔎 선수 세부 기록
+              </PlayerPageLink>
+              <PlayerPageLink
+                href={`https://www.youtube.com/results?search_query=${playerInfo.FirstName.toLowerCase()}+${playerInfo.LastName.toLowerCase()}+baseball`}
+                rel="noreferrer"
+                target="_blank"
+                type="youtube"
+              >
+                🖥 더 많은 동영상
+              </PlayerPageLink>
+              <PlayerPageLink
+                href={`https://www.youtube.com/results?search_query=${playerInfo.FirstName.toLowerCase()}+${playerInfo.LastName.toLowerCase()}+baseball`}
+                rel="noreferrer"
+                target="_blank"
+              >
+                📌 좋아하는 선수 목록에 추가
+              </PlayerPageLink>
+            </PlayerLinkWrapper>
+
+            {isLoadingVideos ? (
+              <VideosWrapper>
+                <VideoDefault>Loading...</VideoDefault>
+                <VideoDefault>Loading...</VideoDefault>
+                <VideoDefault>Loading...</VideoDefault>
+                <VideoDefault>Loading...</VideoDefault>
+              </VideosWrapper>
+            ) : (
+              <VideosWrapper>
+                {videos.items.map((video, index) => (
+                  <Video
+                    key={index}
+                    type="text/html"
+                    title={"Video"}
+                    src={`https://www.youtube.com/embed/${video.id.videoId}?autoplay=1`}
+                    frameBorder="0"
+                    allowFullScreen
+                  ></Video>
+                ))}
+              </VideosWrapper>
+            )}
+          </PlayerDescriptionWrapper>
+        )}
+      </PlayerInformation>
     </PlayerDetailWrapper>
   );
 };
