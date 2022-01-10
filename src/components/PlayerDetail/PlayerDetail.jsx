@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react/cjs/react.development";
 import styled from "styled-components";
-import { getCertainPlayerData, getPlayerVideo } from "../../apis";
+import { getCertainPlayerData } from "../../apis";
 
 const PlayerDetailWrapper = styled.div`
   padding-top: 12vh;
@@ -103,29 +103,6 @@ const PlayerTeamLogo = styled.img`
   }
 `;
 
-const VideoDefault = styled.div`
-  width: 280px;
-  height: 160px;
-  border-radius: 20px;
-  border: 2px solid black;
-  transition: all 0.5s ease-in;
-  text-align: center;
-  line-height: 160px;
-`;
-
-const VideosWrapper = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1em;
-`;
-
-const Video = styled.iframe`
-  width: 280px;
-  height: 160px;
-  border-radius: 20px;
-  border: 2px solid black;
-`;
-
 const alphabetAccents = {
   à: "a",
   è: "e",
@@ -157,9 +134,6 @@ const alphabetAccents = {
 const PlayerDetail = ({ playerID }) => {
   const [playerInfo, setPlayerInfo] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-
-  const [videos, setVideos] = useState([]);
-  const [isLoadingVideos, setIsLoadingVideos] = useState(true);
 
   const [team, setTeam] = useState({});
 
@@ -204,17 +178,7 @@ const PlayerDetail = ({ playerID }) => {
     fetchData();
   }, [playerID]);
 
-  useEffect(() => {
-    async function getVideos() {
-      const data = await getPlayerVideo(
-        `${playerInfo.FirstName} ${playerInfo.LastName} baseball`,
-        4
-      );
-      setVideos(data);
-      setIsLoadingVideos(false);
-    }
-    getVideos();
-  }, [playerInfo.FirstName, playerInfo.LastName]);
+  console.log(playerInfo);
 
   return (
     <PlayerDetailWrapper>
@@ -259,7 +223,7 @@ const PlayerDetail = ({ playerID }) => {
                 target="_blank"
                 type="youtube"
               >
-                🖥 더 많은 동영상
+                ⚾️ 관련 동영상
               </PlayerPageLink>
               <PlayerPageLink
                 href={`https://www.youtube.com/results?search_query=${playerInfo.FirstName.toLowerCase()}+${playerInfo.LastName.toLowerCase()}+baseball`}
@@ -269,28 +233,6 @@ const PlayerDetail = ({ playerID }) => {
                 📌 좋아하는 선수 목록에 추가
               </PlayerPageLink>
             </PlayerLinkWrapper>
-
-            {isLoadingVideos ? (
-              <VideosWrapper>
-                <VideoDefault>Loading...</VideoDefault>
-                <VideoDefault>Loading...</VideoDefault>
-                <VideoDefault>Loading...</VideoDefault>
-                <VideoDefault>Loading...</VideoDefault>
-              </VideosWrapper>
-            ) : (
-              <VideosWrapper>
-                {videos.items.map((video, index) => (
-                  <Video
-                    key={index}
-                    type="text/html"
-                    title={"Video"}
-                    src={`https://www.youtube.com/embed/${video.id.videoId}?autoplay=1`}
-                    frameBorder="0"
-                    allowFullScreen
-                  ></Video>
-                ))}
-              </VideosWrapper>
-            )}
           </PlayerDescriptionWrapper>
         )}
       </PlayerInformation>
