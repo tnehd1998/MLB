@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useSetRecoilState } from "recoil";
 import styled from "styled-components";
 
 const PlayerWrapper = styled.div`
@@ -37,28 +38,6 @@ const PlayerDescription = styled.p`
   font-size: 14px;
 `;
 
-const PlayerOptions = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const PlayerPageLink = styled(Link)`
-  padding: 0.5em;
-  font-size: 1em;
-  border: 2px solid ${(props) => "#" + props.color};
-  border-radius: 15px;
-  color: black;
-  text-decoration: none;
-  background-color: ${(props) =>
-    props.type === "youtube" ? "tomato" : "skyblue"};
-  &:hover {
-    background-color: ${(props) => "#" + props.color};
-    transition: all 0.3s linear;
-    color: white;
-  }
-`;
-
 const Player = ({ playerInfo }) => {
   return (
     <PlayerWrapper>
@@ -79,11 +58,6 @@ const Player = ({ playerInfo }) => {
           출생 : {String(playerInfo.BirthDate).substring(0, 10)}
         </PlayerDescription>
         <PlayerDescription>국적 : {playerInfo.BirthCountry}</PlayerDescription>
-        <PlayerOptions>
-          <PlayerPageLink to={`/player/${playerInfo.PlayerID}`}>
-            🔎 선수 정보
-          </PlayerPageLink>
-        </PlayerOptions>
       </PlayerProfile>
     </PlayerWrapper>
   );
