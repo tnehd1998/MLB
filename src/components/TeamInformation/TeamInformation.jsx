@@ -1,16 +1,10 @@
 import React, { useState, useEffect } from "react";
 import TeamPlayers from "../TeamPlayers/TeamPlayers";
 import styled from "styled-components";
-import { useRecoilState, useRecoilValue } from "recoil";
-import { currentPlayer, playerSelection } from "../../atoms";
 import TeamTitle from "../TeamTitle/TeamTitle";
-import PlayerCard from "../PlayerCard/PlayerCard";
 
-const TeamInformationWrapper = styled.div``;
-
-const TeamDescription = styled.div`
+const TeamInformationWrapper = styled.div`
   padding-top: 12vh;
-  filter: blur(${(props) => (props.selectPlayer ? "4px" : "0")});
 `;
 
 const TeamInformation = ({ teamName, getData }) => {
@@ -18,9 +12,6 @@ const TeamInformation = ({ teamName, getData }) => {
 
   const [info, setInfo] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-
-  const [selectPlayer, setSelectPlayer] = useRecoilState(playerSelection);
-  const showingPlayer = useRecoilValue(currentPlayer);
 
   const getTeamInfo = (teamName) => {
     const logos = JSON.parse(window.localStorage.getItem("logos"));
@@ -41,24 +32,10 @@ const TeamInformation = ({ teamName, getData }) => {
     fetchData();
   }, [getData, teamName]);
 
-  useEffect(() => {
-    return () => {
-      setSelectPlayer((selectPlayer) => !selectPlayer);
-    };
-  }, [setSelectPlayer]);
-
   return (
     <TeamInformationWrapper>
-      <TeamDescription selectPlayer={selectPlayer}>
-        <TeamTitle team={team} />
-        {isLoading ? <h1>Loading...</h1> : <TeamPlayers info={info} />}
-      </TeamDescription>
-      {selectPlayer ? (
-        <PlayerCard
-          showingPlayer={showingPlayer}
-          setSelectPlayer={setSelectPlayer}
-        />
-      ) : null}
+      <TeamTitle team={team} />
+      {isLoading ? <h1>Loading...</h1> : <TeamPlayers info={info} />}
     </TeamInformationWrapper>
   );
 };

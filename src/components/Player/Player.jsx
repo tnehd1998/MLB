@@ -1,13 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useSetRecoilState } from "recoil";
 import styled from "styled-components";
-import {
-  currentPlayer,
-  currentX,
-  currentY,
-  playerSelection,
-} from "../../atoms";
 
 const PlayerWrapper = styled.div`
   display: flex;
@@ -67,28 +60,8 @@ const PlayerPageLink = styled(Link)`
 `;
 
 const Player = ({ playerInfo }) => {
-  const setPlayerSelected = useSetRecoilState(playerSelection);
-  const setCurrentPlayer = useSetRecoilState(currentPlayer);
-  const setCurrentX = useSetRecoilState(currentX);
-  const setCurrentY = useSetRecoilState(currentY);
-
-  const showPlayerInfo = (playerInfo) => {
-    setPlayerSelected((value) => !value);
-    setCurrentPlayer(playerInfo);
-    calculatePopUpWidth();
-    calculatePopUpHeight();
-  };
-
-  const calculatePopUpWidth = () => {
-    setCurrentX(window.scrollX + window.innerWidth * 0.15);
-  };
-
-  const calculatePopUpHeight = () => {
-    setCurrentY(window.scrollY + window.innerHeight * 0.15);
-  };
-
   return (
-    <PlayerWrapper onClick={() => showPlayerInfo(playerInfo)}>
+    <PlayerWrapper>
       <PlayerImage
         src={playerInfo.PhotoUrl}
         alt={`${playerInfo.FirstName} ${playerInfo.LastName}`}
