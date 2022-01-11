@@ -3,7 +3,7 @@ import { useRecoilValue } from "recoil";
 import styled from "styled-components";
 import { currentX, currentY } from "../../atoms";
 
-const ChosenPlayer = styled.div`
+const PlayerCardWrapper = styled.div`
   width: 70vw;
   height: 70vh;
   top: ${(props) => props.top + "px"};
@@ -37,39 +37,41 @@ const CloseIcon = styled.p`
   }
 `;
 
-const PlayerWrapper = styled.div`
+const PlayerCardTitle = styled.p`
+  font-size: 2.5em;
+  margin-bottom: 1em;
+`;
+
+const PlayerInfoWrapper = styled.div`
   display: flex;
-  justify-content: space-evenly;
-  align-items: center;
+  flex-direction: column;
   width: 80vw;
 `;
 
 const PlayerImage = styled.img`
-  width: 160px;
-  height: 180px;
+  width: 15em;
+  height: 100%;
   border-radius: 10%;
   border: 2px solid black;
 `;
 
-const PlayerInfoWrapper = styled.div``;
-
 const PlayerInfo = styled.p`
-  font-size: 36px;
+  font-size: 24px;
 `;
 
 const PlayerProfileWrapper = styled.div`
   display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 3em;
 `;
 
 const PlayerInfoList = styled.ul`
+  height: 100%;
   display: flex;
-  height: 7em;
+  margin-left: 3em;
   flex-direction: column;
   justify-content: space-between;
-  align-items: flex-start;
-  padding: 1em 0;
-  margin: auto;
-  font-size: 24px;
 `;
 
 const PlayerLinkWrapper = styled.div`
@@ -186,62 +188,63 @@ const PlayerCard = ({ showingPlayer, setSelectPlayer }) => {
   }, [showingPlayer.Team]);
 
   return (
-    <ChosenPlayer top={scrollY} left={scrollX}>
+    <PlayerCardWrapper top={scrollY} left={scrollX}>
       <CloseIcon
         onClick={() => setSelectPlayer((selectPlayer) => !selectPlayer)}
       >
         ✕
       </CloseIcon>
-      <PlayerWrapper>
-        <PlayerInfoWrapper>
-          <PlayerProfileWrapper>
-            <PlayerImage src={showingPlayer.PhotoUrl} />
-            <PlayerInfoList>
-              <PlayerInfo>이름 : {showingPlayer.DraftKingsName}</PlayerInfo>
-              <PlayerInfo>
-                출생년도 : {showingPlayer.BirthDate.slice(0, 10)}
-              </PlayerInfo>
-              <PlayerInfo>국적 : {showingPlayer.BirthCountry}</PlayerInfo>
-              <PlayerInfo>
-                데뷔일 : {showingPlayer.ProDebut.slice(0, 10)}
-              </PlayerInfo>
-              <PlayerInfo>포지션 : {showingPlayer.Position}</PlayerInfo>
-            </PlayerInfoList>
-          </PlayerProfileWrapper>
-          <PlayerLinkWrapper>
-            <PlayerTeamLink href={`/${showingPlayer.Team}`}>
-              <PlayerTeamLogo src={team.WikipediaLogoUrl} alt="Team Logo" />
-            </PlayerTeamLink>
-            <PlayerPageLink
-              href={`https://www.mlb.com/player/${convertNameForUrl(
-                showingPlayer.FirstName.toLowerCase()
-              )}-${convertNameForUrl(showingPlayer.LastName.toLowerCase())}-${
-                showingPlayer.MLBAMID
-              }`}
-              rel="noreferrer"
-              target="_blank"
-            >
-              🔎 선수 세부 기록
-            </PlayerPageLink>
-            <PlayerPageLink
-              href={`https://www.youtube.com/results?search_query=${showingPlayer.FirstName.toLowerCase()}+${showingPlayer.LastName.toLowerCase()}+baseball`}
-              rel="noreferrer"
-              target="_blank"
-              type="youtube"
-            >
-              ⚾️ 관련 동영상
-            </PlayerPageLink>
-            <PlayerPageLink
-              href={`https://www.youtube.com/results?search_query=${showingPlayer.FirstName.toLowerCase()}+${showingPlayer.LastName.toLowerCase()}+baseball`}
-              rel="noreferrer"
-              target="_blank"
-            >
-              📌 좋아하는 선수 목록에 추가
-            </PlayerPageLink>
-          </PlayerLinkWrapper>
-        </PlayerInfoWrapper>
-      </PlayerWrapper>
-    </ChosenPlayer>
+      <PlayerCardTitle>☆ 선수 정보 ☆</PlayerCardTitle>
+      <PlayerInfoWrapper>
+        <PlayerProfileWrapper>
+          <PlayerImage src={showingPlayer.PhotoUrl} />
+          <PlayerInfoList>
+            <PlayerInfo>이름 : {showingPlayer.DraftKingsName}</PlayerInfo>
+            <PlayerInfo>국적 : {showingPlayer.BirthCountry}</PlayerInfo>
+            <PlayerInfo>
+              출생년도 : {showingPlayer.BirthDate.slice(0, 10)}
+            </PlayerInfo>
+            <PlayerInfo>포지션 : {showingPlayer.Position}</PlayerInfo>
+            <PlayerInfo>타격 위치 : {showingPlayer.BatHand}</PlayerInfo>
+            <PlayerInfo>투구 방향 : {showingPlayer.ThrowHand}</PlayerInfo>
+            <PlayerInfo>
+              데뷔일 : {showingPlayer.ProDebut.slice(0, 10)}
+            </PlayerInfo>
+          </PlayerInfoList>
+        </PlayerProfileWrapper>
+        <PlayerLinkWrapper>
+          <PlayerTeamLink href={`/${showingPlayer.Team}`}>
+            <PlayerTeamLogo src={team.WikipediaLogoUrl} alt="Team Logo" />
+          </PlayerTeamLink>
+          <PlayerPageLink
+            href={`https://www.mlb.com/player/${convertNameForUrl(
+              showingPlayer.FirstName.toLowerCase()
+            )}-${convertNameForUrl(showingPlayer.LastName.toLowerCase())}-${
+              showingPlayer.MLBAMID
+            }`}
+            rel="noreferrer"
+            target="_blank"
+          >
+            🔎 선수 세부 기록
+          </PlayerPageLink>
+          <PlayerPageLink
+            href={`https://www.youtube.com/results?search_query=${showingPlayer.FirstName.toLowerCase()}+${showingPlayer.LastName.toLowerCase()}+baseball`}
+            rel="noreferrer"
+            target="_blank"
+            type="youtube"
+          >
+            ⚾️ 관련 동영상
+          </PlayerPageLink>
+          <PlayerPageLink
+            href={`https://www.youtube.com/results?search_query=${showingPlayer.FirstName.toLowerCase()}+${showingPlayer.LastName.toLowerCase()}+baseball`}
+            rel="noreferrer"
+            target="_blank"
+          >
+            📌 좋아하는 선수 목록에 추가
+          </PlayerPageLink>
+        </PlayerLinkWrapper>
+      </PlayerInfoWrapper>
+    </PlayerCardWrapper>
   );
 };
 
