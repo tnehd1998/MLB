@@ -42,14 +42,9 @@ const PlayerDescription = styled.p`
   font-size: 14px;
 `;
 
-const PlayerOptions = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
 const MoreInfo = styled.div`
   padding: 0.5em;
+  margin-top: 0.2em;
   font-size: 1em;
   border: 2px solid ${(props) => "#" + props.color};
   border-radius: 15px;
@@ -104,11 +99,9 @@ const Player = ({ playerInfo }) => {
           출생 : {String(playerInfo.BirthDate).substring(0, 10)}
         </PlayerDescription>
         <PlayerDescription>국적 : {playerInfo.BirthCountry}</PlayerDescription>
-        <PlayerOptions>
-          <MoreInfo onClick={() => showPlayerInfo(playerInfo)}>
-            🔎 선수 정보
-          </MoreInfo>
-        </PlayerOptions>
+        <MoreInfo onClick={() => showPlayerInfo(playerInfo)}>
+          🔎 선수 정보
+        </MoreInfo>
       </PlayerProfile>
     </PlayerWrapper>
   );
