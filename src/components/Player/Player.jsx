@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 import styled from "styled-components";
 import {
@@ -16,7 +15,6 @@ const PlayerWrapper = styled.div`
   border-radius: 10px;
   width: 28vw;
   height: 15vh;
-  cursor: pointer;
   &:hover {
     transform: scale(1.05);
     transition: all 0.5s ease-in;
@@ -50,13 +48,14 @@ const PlayerOptions = styled.div`
   align-items: center;
 `;
 
-const PlayerPageLink = styled(Link)`
+const MoreInfo = styled.div`
   padding: 0.5em;
   font-size: 1em;
   border: 2px solid ${(props) => "#" + props.color};
   border-radius: 15px;
   color: black;
   text-decoration: none;
+  cursor: pointer;
   background-color: ${(props) =>
     props.type === "youtube" ? "tomato" : "skyblue"};
   &:hover {
@@ -87,7 +86,7 @@ const Player = ({ playerInfo }) => {
   };
 
   return (
-    <PlayerWrapper onClick={() => showPlayerInfo(playerInfo)}>
+    <PlayerWrapper>
       <PlayerImage
         src={playerInfo.PhotoUrl}
         alt={`${playerInfo.FirstName} ${playerInfo.LastName}`}
@@ -106,9 +105,9 @@ const Player = ({ playerInfo }) => {
         </PlayerDescription>
         <PlayerDescription>국적 : {playerInfo.BirthCountry}</PlayerDescription>
         <PlayerOptions>
-          <PlayerPageLink to={`/player/${playerInfo.PlayerID}`}>
+          <MoreInfo onClick={() => showPlayerInfo(playerInfo)}>
             🔎 선수 정보
-          </PlayerPageLink>
+          </MoreInfo>
         </PlayerOptions>
       </PlayerProfile>
     </PlayerWrapper>
