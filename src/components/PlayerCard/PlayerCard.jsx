@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useRecoilValue } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import styled from "styled-components";
-import { currentX, currentY } from "../../atoms";
+import {
+  currentPlayer,
+  currentX,
+  currentY,
+  playerSelection,
+} from "../../atoms";
 
 const PlayerCardWrapper = styled.div`
   width: 70vw;
@@ -149,10 +154,12 @@ const alphabetAccents = {
   ÿ: "y",
 };
 
-const PlayerCard = ({ showingPlayer, setSelectPlayer }) => {
+const PlayerCard = () => {
   const scrollX = useRecoilValue(currentX);
   const scrollY = useRecoilValue(currentY);
 
+  const showingPlayer = useRecoilValue(currentPlayer);
+  const setSelectPlayer = useSetRecoilState(playerSelection);
   const [team, setTeam] = useState({});
 
   const convertNameForUrl = (inputName) => {
