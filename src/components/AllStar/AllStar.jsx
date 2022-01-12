@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useRecoilState } from "recoil";
 import styled from "styled-components";
-import { playerSelection } from "../../atoms";
-import PlayerCard from "../PlayerCard/PlayerCard";
 
 const AllStarWrapper = styled.div`
   display: flex;
@@ -67,8 +64,6 @@ const AllStar = ({ getData }) => {
   const [players, setPlayers] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const [selectPlayer, setSelectPlayer] = useRecoilState(playerSelection);
-
   useEffect(() => {
     async function fetchData() {
       const data = await getData();
@@ -78,19 +73,15 @@ const AllStar = ({ getData }) => {
     fetchData();
   }, [getData]);
 
-  useEffect(() => {
-    return () => {
-      setSelectPlayer(false);
-    };
-  }, [setSelectPlayer]);
-
   return (
     <AllStarWrapper>
       {!loading ? (
         <h1>Loading...</h1>
       ) : (
         <TableWrapper>
-          <TableTitle>😍 알고 싶은 선수를 선택하세요 😍</TableTitle>
+          <TableTitle>
+            😍 특정 선수를 선택하면 소속 팀 페이지로 이동합니다. 😍
+          </TableTitle>
           <Table>
             <colgroup span="4" className="columns"></colgroup>
             <thead>
@@ -105,9 +96,7 @@ const AllStar = ({ getData }) => {
               {players.map((player, index) => (
                 <Player
                   key={player.StatID}
-                  onClick={() =>
-                    (window.location.href = `player/${player.PlayerID}`)
-                  }
+                  onClick={() => (window.location.href = `${player.Team}`)}
                 >
                   <PlayerInfo>Rank {index + 1}</PlayerInfo>
                   <PlayerInfo>{player.Name}</PlayerInfo>
@@ -119,7 +108,6 @@ const AllStar = ({ getData }) => {
           </Table>
         </TableWrapper>
       )}
-      {selectPlayer ? <PlayerCard /> : null}
     </AllStarWrapper>
   );
 };

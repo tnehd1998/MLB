@@ -218,7 +218,7 @@ const PlayerCard = () => {
               데뷔일 :
               {showingPlayer.ProDebut
                 ? showingPlayer.ProDebut.slice(0, 10)
-                : " 아직 데뷔 전"}
+                : "아직 데뷔 전"}
             </PlayerInfo>
           </PlayerInfoList>
         </PlayerProfileWrapper>
