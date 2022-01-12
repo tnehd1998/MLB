@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { useRecoilState } from "recoil";
 import styled from "styled-components";
+import { playerSelection } from "../../atoms";
+import PlayerCard from "../PlayerCard/PlayerCard";
 
 const AllStarWrapper = styled.div`
   display: flex;
@@ -64,6 +67,8 @@ const AllStar = ({ getData }) => {
   const [players, setPlayers] = useState([]);
   const [loading, setLoading] = useState(false);
 
+  const [selectPlayer, setSelectPlayer] = useRecoilState(playerSelection);
+
   useEffect(() => {
     async function fetchData() {
       const data = await getData();
@@ -72,6 +77,12 @@ const AllStar = ({ getData }) => {
     }
     fetchData();
   }, [getData]);
+
+  useEffect(() => {
+    return () => {
+      setSelectPlayer(false);
+    };
+  }, [setSelectPlayer]);
 
   return (
     <AllStarWrapper>
@@ -108,6 +119,7 @@ const AllStar = ({ getData }) => {
           </Table>
         </TableWrapper>
       )}
+      {selectPlayer ? <PlayerCard /> : null}
     </AllStarWrapper>
   );
 };

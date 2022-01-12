@@ -215,7 +215,10 @@ const PlayerCard = () => {
             <PlayerInfo>타격 위치 : {showingPlayer.BatHand}</PlayerInfo>
             <PlayerInfo>투구 방향 : {showingPlayer.ThrowHand}</PlayerInfo>
             <PlayerInfo>
-              데뷔일 : {showingPlayer.ProDebut.slice(0, 10)}
+              데뷔일 :
+              {showingPlayer.ProDebut
+                ? showingPlayer.ProDebut.slice(0, 10)
+                : " 아직 데뷔 전"}
             </PlayerInfo>
           </PlayerInfoList>
         </PlayerProfileWrapper>
