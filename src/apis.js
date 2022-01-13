@@ -37,3 +37,12 @@ export const getCertainPlayerData = async (playerID) => {
     .then((response) => response.data);
   return info;
 };
+
+export const getTeamStandingData = async () => {
+  const info = await axios
+    .get(
+      `https://api.sportsdata.io/v3/mlb/scores/json/Standings/2021?key=${SPORT_DATA_API_KEY}`
+    )
+    .then((response) => response.data);
+  return info;
+};
