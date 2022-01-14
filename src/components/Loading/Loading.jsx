@@ -6,7 +6,7 @@ const LoadingWrapper = styled.div`
   justify-content: center;
   align-items: center;
   font-size: 2em;
-  animation: blinking 1s ease-in-out;
+  animation: blinking 1s ease-in-out infinite;
 
   @keyframes blinking {
     0% {
