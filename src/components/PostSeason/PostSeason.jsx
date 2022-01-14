@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react/cjs/react.development";
 import styled from "styled-components";
 import { getTeamStandingData } from "../../apis";
+import Loading from "../Loading/Loading";
 
 const PostSeasonWrapper = styled.div`
   display: flex;
@@ -102,15 +103,13 @@ const PostSeason = () => {
     fetchData();
   }, []);
 
-  console.log(standing);
-
   return (
     <PostSeasonWrapper>
       <Title>2021 MLB POSTSEASON</Title>
       <ScheduleImage src="https://img.mlbstatic.com/mlb-images/image/private/t_16x9/t_w1024/mlb/vz66hur9vu9qn3h9dddt.jpg" />
       <Title>2021 TEAM STANDING</Title>
       {isLoading ? (
-        <div>Loading...</div>
+        <Loading />
       ) : (
         <StandingWrapper>
           <RegionCategories>

@@ -5,6 +5,7 @@ import { useRecoilState } from "recoil";
 import { playerSelection } from "../../atoms";
 import TeamTitle from "../TeamTitle/TeamTitle";
 import PlayerCard from "../PlayerCard/PlayerCard";
+import Loading from "../Loading/Loading";
 
 const TeamInformationWrapper = styled.div`
   padding-top: 12vh;
@@ -51,7 +52,7 @@ const TeamInformation = ({ teamName, getData }) => {
     <TeamInformationWrapper>
       <TeamDescription selectPlayer={selectPlayer}>
         <TeamTitle team={team} />
-        {isLoading ? <h1>Loading...</h1> : <TeamPlayers info={info} />}
+        {isLoading ? <Loading /> : <TeamPlayers info={info} />}
       </TeamDescription>
       {selectPlayer ? <PlayerCard /> : null}
     </TeamInformationWrapper>

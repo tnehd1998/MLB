@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import Loading from "../Loading/Loading";
 
 const AllStarWrapper = styled.div`
   display: flex;
@@ -76,7 +77,7 @@ const AllStar = ({ getData }) => {
   return (
     <AllStarWrapper>
       {!loading ? (
-        <h1>Loading...</h1>
+        <Loading />
       ) : (
         <TableWrapper>
           <TableTitle>

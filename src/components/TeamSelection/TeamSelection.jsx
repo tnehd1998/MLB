@@ -6,6 +6,7 @@ import { useRecoilState } from "recoil";
 import { teamLogo } from "../../atoms";
 
 import { getTeamData } from "../../apis";
+import Loading from "../Loading/Loading";
 
 const TeamSelectionWrapper = styled.div`
   display: flex;
@@ -69,7 +70,7 @@ const TeamSelection = () => {
   return (
     <TeamSelectionWrapper>
       {!loading ? (
-        <div>Loading</div>
+        <Loading />
       ) : (
         <TeamWrapper>
           {logos.map((item) =>
