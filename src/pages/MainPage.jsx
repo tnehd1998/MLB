@@ -13,23 +13,14 @@ const MainPage = () => {
   const [logos, setLogos] = useRecoilState(teamLogo);
   const [isLoading, setIsLoading] = useState(true);
 
-  const loadLogo = () => {
-    if (window.localStorage.getItem("logos").length) {
-      return false;
-    }
-    return true;
-  };
-
   useEffect(() => {
     async function fetchData() {
       const data = await getTeamData();
+      console.log("Loading");
       setLogos(data);
       setIsLoading((isLoading) => !isLoading);
-      window.localStorage.setItem("logos", JSON.stringify(data));
     }
-    if (loadLogo) {
-      fetchData();
-    }
+    fetchData();
   }, [setLogos]);
 
   return (

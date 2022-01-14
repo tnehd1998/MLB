@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import TeamPlayers from "../TeamPlayers/TeamPlayers";
 import styled from "styled-components";
-import { useRecoilState } from "recoil";
-import { playerSelection } from "../../atoms";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { playerSelection, teamLogo } from "../../atoms";
 import TeamTitle from "../TeamTitle/TeamTitle";
 import PlayerCard from "../PlayerCard/PlayerCard";
 import Loading from "../Loading/Loading";
@@ -16,22 +16,21 @@ const TeamDescription = styled.div`
 `;
 
 const TeamInformation = ({ teamName, getData }) => {
-  const [team, setTeam] = useState({});
+  const teams = useRecoilValue(teamLogo);
 
+  const [currentTeam, setCurrentTeam] = useState([]);
   const [info, setInfo] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   const [selectPlayer, setSelectPlayer] = useRecoilState(playerSelection);
 
-  const getTeamInfo = (teamName) => {
-    const logos = JSON.parse(window.localStorage.getItem("logos"));
-    return logos.find((logo) => logo.Key === teamName);
-  };
-
   useEffect(() => {
-    const teamInfo = getTeamInfo(teamName);
-    setTeam(teamInfo);
-  }, [teamName]);
+    function getCurrentTeam() {
+      const team = teams.find((team) => team.Key === teamName);
+      setCurrentTeam(team);
+    }
+    getCurrentTeam();
+  }, [teamName, teams]);
 
   useEffect(() => {
     async function fetchData() {
@@ -51,7 +50,7 @@ const TeamInformation = ({ teamName, getData }) => {
   return (
     <TeamInformationWrapper>
       <TeamDescription selectPlayer={selectPlayer}>
-        <TeamTitle team={team} />
+        <TeamTitle team={currentTeam} />
         {isLoading ? <Loading /> : <TeamPlayers info={info} />}
       </TeamDescription>
       {selectPlayer ? <PlayerCard /> : null}
