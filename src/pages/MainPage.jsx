@@ -3,14 +3,14 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 import { useRecoilState } from "recoil";
-import { teamLogo } from "../atoms";
+import { teamInfo } from "../atoms";
 
 import { getTeamData } from "../apis";
 
 import Loading from "../components/Loading/Loading";
 
 const MainPage = () => {
-  const [teams, setTeams] = useRecoilState(teamLogo);
+  const [teams, setTeams] = useRecoilState(teamInfo);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {

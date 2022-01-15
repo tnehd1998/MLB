@@ -185,8 +185,8 @@ const PlayerCard = () => {
   };
 
   const getTeamInfo = (teamName) => {
-    const logos = JSON.parse(window.localStorage.getItem("logos"));
-    return logos.find((logo) => logo.Key === teamName);
+    const { teamInfo } = JSON.parse(window.localStorage.getItem("teams"));
+    return teamInfo.find((team) => team.Key === teamName);
   };
 
   useEffect(() => {

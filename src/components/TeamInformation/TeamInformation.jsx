@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import TeamPlayers from "../TeamPlayers/TeamPlayers";
 import styled from "styled-components";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { playerSelection, teamLogo } from "../../atoms";
+import { playerSelection, teamInfo } from "../../atoms";
 import TeamTitle from "../TeamTitle/TeamTitle";
 import PlayerCard from "../PlayerCard/PlayerCard";
 import Loading from "../Loading/Loading";
@@ -16,7 +16,7 @@ const TeamDescription = styled.div`
 `;
 
 const TeamInformation = ({ teamName, getData }) => {
-  const teams = useRecoilValue(teamLogo);
+  const teams = useRecoilValue(teamInfo);
 
   const [currentTeam, setCurrentTeam] = useState([]);
   const [info, setInfo] = useState([]);
