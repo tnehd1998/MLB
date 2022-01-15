@@ -19,6 +19,11 @@ import PlayerPage from "./pages/PlayerPage";
 
 const GlobalStyles = createGlobalStyle`
   ${reset};
+
+  body{
+    font-family: "Rubik", sans-serif;
+    font-family: "Ubuntu", sans-serif;
+  }
 `;
 
 const App = () => {

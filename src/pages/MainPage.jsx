@@ -16,7 +16,6 @@ const MainPage = () => {
   useEffect(() => {
     async function fetchData() {
       const data = await getTeamData();
-      console.log("Loading");
       setLogos(data);
       setIsLoading((isLoading) => !isLoading);
     }
