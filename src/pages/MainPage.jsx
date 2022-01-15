@@ -10,17 +10,17 @@ import { getTeamData } from "../apis";
 import Loading from "../components/Loading/Loading";
 
 const MainPage = () => {
-  const [logos, setLogos] = useRecoilState(teamLogo);
+  const [teams, setTeams] = useRecoilState(teamLogo);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     async function fetchData() {
       const data = await getTeamData();
-      setLogos(data);
+      setTeams(data);
       setIsLoading((isLoading) => !isLoading);
     }
     fetchData();
-  }, [setLogos]);
+  }, [setTeams]);
 
   return (
     <MainPageWrapper>
@@ -28,11 +28,11 @@ const MainPage = () => {
         <Loading />
       ) : (
         <TeamWrapper>
-          {logos.map((item) =>
-            item.WikipediaLogoUrl ? (
-              <TeamLink key={item.TeamID} to={item.Key}>
-                <Team iconBgColor={`${item.PrimaryColor}`}>
-                  <TeamLogo src={`${item.WikipediaLogoUrl}`} alt={item.City} />
+          {teams.map((team) =>
+            team.WikipediaLogoUrl ? (
+              <TeamLink key={team.TeamID} to={team.Key}>
+                <Team iconBgColor={`${team.PrimaryColor}`}>
+                  <TeamLogo src={`${team.WikipediaLogoUrl}`} alt={team.City} />
                 </Team>
               </TeamLink>
             ) : null
