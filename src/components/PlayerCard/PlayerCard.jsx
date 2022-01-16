@@ -250,7 +250,7 @@ const PlayerCard = () => {
             rel="noreferrer"
             target="_blank"
           >
-            📌 좋아하는 선수 목록에 추가
+            📌 드림팀 선수로 지정
           </PlayerPageLink>
         </PlayerLinkWrapper>
       </PlayerInfoWrapper>

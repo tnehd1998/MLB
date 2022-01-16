@@ -6,6 +6,7 @@ const AllStarWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-top: 12vh;
 `;
 
 const TableWrapper = styled.div`
@@ -13,7 +14,6 @@ const TableWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 12vh;
   width: 80vw;
 `;
 
