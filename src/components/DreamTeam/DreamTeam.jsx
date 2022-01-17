@@ -1,5 +1,7 @@
 import React from "react";
+import { useRecoilValue } from "recoil";
 import styled from "styled-components";
+import { dreamTeamInfo } from "../../atoms";
 
 const DreamTeamContainer = styled.div`
   padding-top: 12vh;
@@ -60,281 +62,234 @@ const PlayerName = styled.p`
 `;
 
 const DreamTeam = () => {
+  const dreamTeamPlayers = useRecoilValue(dreamTeamInfo);
+
+  const findCertainPositionBatter = (position) => {
+    for (let dreamTeamPlayer in dreamTeamPlayers) {
+      let currentPlayer = dreamTeamPlayers[dreamTeamPlayer];
+      if (currentPlayer.Position === position) {
+        return [currentPlayer];
+      }
+    }
+    return [];
+  };
+
+  const filterPitcherByPosition = (position) => {
+    let result = [];
+    for (let dreamTeamPlayer in dreamTeamPlayers) {
+      let currentPlayer = dreamTeamPlayers[dreamTeamPlayer];
+      if (currentPlayer.Position === position) {
+        result.push(currentPlayer);
+      }
+    }
+    return result;
+  };
+
   return (
     <DreamTeamContainer>
       <PlayerTitle>타자</PlayerTitle>
       <PlayerList>
-        <Player>
-          <PlayerInfo>
-            <PlayerPosition>C</PlayerPosition>
-            <PlayerName>Fernando Tatis Jr.</PlayerName>
-          </PlayerInfo>
-          <PlayerImage
-            src="https://s3-us-west-2.amazonaws.com/static.fantasydata.com/headshots/mlb/low-res/10007217.png"
-            alt=""
-          />
-        </Player>
-        <Player>
-          <PlayerInfo>
-            <PlayerPosition>1B</PlayerPosition>
-            <PlayerName>Fernando Tatis Jr.</PlayerName>
-          </PlayerInfo>
-          <PlayerImage
-            src="https://s3-us-west-2.amazonaws.com/static.fantasydata.com/headshots/mlb/low-res/10007217.png"
-            alt=""
-          />
-        </Player>
-        <Player>
-          <PlayerInfo>
-            <PlayerPosition>2B</PlayerPosition>
-            <PlayerName>Fernando Tatis Jr.</PlayerName>
-          </PlayerInfo>
-          <PlayerImage
-            src="https://s3-us-west-2.amazonaws.com/static.fantasydata.com/headshots/mlb/low-res/10007217.png"
-            alt=""
-          />
-        </Player>
-        <Player>
-          <PlayerInfo>
-            <PlayerPosition>3B</PlayerPosition>
-            <PlayerName>Fernando Tatis Jr.</PlayerName>
-          </PlayerInfo>
-          <PlayerImage
-            src="https://s3-us-west-2.amazonaws.com/static.fantasydata.com/headshots/mlb/low-res/10007217.png"
-            alt=""
-          />
-        </Player>
-        <Player>
-          <PlayerInfo>
-            <PlayerPosition>SS</PlayerPosition>
-            <PlayerName>Fernando Tatis Jr.</PlayerName>
-          </PlayerInfo>
-          <PlayerImage
-            src="https://s3-us-west-2.amazonaws.com/static.fantasydata.com/headshots/mlb/low-res/10007217.png"
-            alt=""
-          />
-        </Player>
+        {findCertainPositionBatter("C").length ? (
+          findCertainPositionBatter("C").map((player) => (
+            <Player key={player.PlayerID}>
+              <PlayerInfo>
+                <PlayerPosition>{player.Position}</PlayerPosition>
+                <PlayerName>
+                  {player.FirstName} {player.LastName}
+                </PlayerName>
+              </PlayerInfo>
+              <PlayerImage src={player.PhotoUrl} />
+            </Player>
+          ))
+        ) : (
+          <Player>
+            <h1>선택한 선수 없음</h1>
+          </Player>
+        )}
+        {findCertainPositionBatter("1B").length ? (
+          findCertainPositionBatter("1B").map((player) => (
+            <Player key={player.PlayerID}>
+              <PlayerInfo>
+                <PlayerPosition>{player.Position}</PlayerPosition>
+                <PlayerName>
+                  {player.FirstName} {player.LastName}
+                </PlayerName>
+              </PlayerInfo>
+              <PlayerImage src={player.PhotoUrl} />
+            </Player>
+          ))
+        ) : (
+          <Player>
+            <h1>선택한 선수 없음</h1>
+          </Player>
+        )}
+        {findCertainPositionBatter("2B").length ? (
+          findCertainPositionBatter("2B").map((player) => (
+            <Player key={player.PlayerID}>
+              <PlayerInfo>
+                <PlayerPosition>{player.Position}</PlayerPosition>
+                <PlayerName>
+                  {player.FirstName} {player.LastName}
+                </PlayerName>
+              </PlayerInfo>
+              <PlayerImage src={player.PhotoUrl} />
+            </Player>
+          ))
+        ) : (
+          <Player>
+            <h1>선택한 선수 없음</h1>
+          </Player>
+        )}
+        {findCertainPositionBatter("3B").length ? (
+          findCertainPositionBatter("3B").map((player) => (
+            <Player key={player.PlayerID}>
+              <PlayerInfo>
+                <PlayerPosition>{player.Position}</PlayerPosition>
+                <PlayerName>
+                  {player.FirstName} {player.LastName}
+                </PlayerName>
+              </PlayerInfo>
+              <PlayerImage src={player.PhotoUrl} />
+            </Player>
+          ))
+        ) : (
+          <Player>
+            <h1>선택한 선수 없음</h1>
+          </Player>
+        )}
+        {findCertainPositionBatter("SS").length ? (
+          findCertainPositionBatter("SS").map((player) => (
+            <Player key={player.PlayerID}>
+              <PlayerInfo>
+                <PlayerPosition>{player.Position}</PlayerPosition>
+                <PlayerName>
+                  {player.FirstName} {player.LastName}
+                </PlayerName>
+              </PlayerInfo>
+              <PlayerImage src={player.PhotoUrl} />
+            </Player>
+          ))
+        ) : (
+          <Player>
+            <h1>선택한 선수 없음</h1>
+          </Player>
+        )}
       </PlayerList>
       <PlayerList>
-        <Player>
-          <PlayerInfo>
-            <PlayerPosition>LF</PlayerPosition>
-            <PlayerName>Fernando Tatis Jr.</PlayerName>
-          </PlayerInfo>
-          <PlayerImage
-            src="https://s3-us-west-2.amazonaws.com/static.fantasydata.com/headshots/mlb/low-res/10007217.png"
-            alt=""
-          />
-        </Player>
-        <Player>
-          <PlayerInfo>
-            <PlayerPosition>CF</PlayerPosition>
-            <PlayerName>Fernando Tatis Jr.</PlayerName>
-          </PlayerInfo>
-          <PlayerImage
-            src="https://s3-us-west-2.amazonaws.com/static.fantasydata.com/headshots/mlb/low-res/10007217.png"
-            alt=""
-          />
-        </Player>
-        <Player>
-          <PlayerInfo>
-            <PlayerPosition>RF</PlayerPosition>
-            <PlayerName>Fernando Tatis Jr.</PlayerName>
-          </PlayerInfo>
-          <PlayerImage
-            src="https://s3-us-west-2.amazonaws.com/static.fantasydata.com/headshots/mlb/low-res/10007217.png"
-            alt=""
-          />
-        </Player>
-        <Player>
-          <PlayerInfo>
-            <PlayerPosition>DH</PlayerPosition>
-            <PlayerName>Fernando Tatis Jr.</PlayerName>
-          </PlayerInfo>
-          <PlayerImage
-            src="https://s3-us-west-2.amazonaws.com/static.fantasydata.com/headshots/mlb/low-res/10007217.png"
-            alt=""
-          />
-        </Player>
-      </PlayerList>
-      <PlayerTitle>후보</PlayerTitle>
-      <PlayerList>
-        <Player>
-          <PlayerInfo>
-            <PlayerPosition>SUB</PlayerPosition>
-            <PlayerName>Fernando Tatis Jr.</PlayerName>
-          </PlayerInfo>
-          <PlayerImage
-            src="https://s3-us-west-2.amazonaws.com/static.fantasydata.com/headshots/mlb/low-res/10007217.png"
-            alt=""
-          />
-        </Player>
-        <Player>
-          <PlayerInfo>
-            <PlayerPosition>SUB</PlayerPosition>
-            <PlayerName>Fernando Tatis Jr.</PlayerName>
-          </PlayerInfo>
-          <PlayerImage
-            src="https://s3-us-west-2.amazonaws.com/static.fantasydata.com/headshots/mlb/low-res/10007217.png"
-            alt=""
-          />
-        </Player>
-        <Player>
-          <PlayerInfo>
-            <PlayerPosition>SUB</PlayerPosition>
-            <PlayerName>Fernando Tatis Jr.</PlayerName>
-          </PlayerInfo>
-          <PlayerImage
-            src="https://s3-us-west-2.amazonaws.com/static.fantasydata.com/headshots/mlb/low-res/10007217.png"
-            alt=""
-          />
-        </Player>
-        <Player>
-          <PlayerInfo>
-            <PlayerPosition>SUB</PlayerPosition>
-            <PlayerName>Fernando Tatis Jr.</PlayerName>
-          </PlayerInfo>
-          <PlayerImage
-            src="https://s3-us-west-2.amazonaws.com/static.fantasydata.com/headshots/mlb/low-res/10007217.png"
-            alt=""
-          />
-        </Player>
-        <Player>
-          <PlayerInfo>
-            <PlayerPosition>SUB</PlayerPosition>
-            <PlayerName>Fernando Tatis Jr.</PlayerName>
-          </PlayerInfo>
-          <PlayerImage
-            src="https://s3-us-west-2.amazonaws.com/static.fantasydata.com/headshots/mlb/low-res/10007217.png"
-            alt=""
-          />
-        </Player>
-        <Player>
-          <PlayerInfo>
-            <PlayerPosition>SUB</PlayerPosition>
-            <PlayerName>Fernando Tatis Jr.</PlayerName>
-          </PlayerInfo>
-          <PlayerImage
-            src="https://s3-us-west-2.amazonaws.com/static.fantasydata.com/headshots/mlb/low-res/10007217.png"
-            alt=""
-          />
-        </Player>
+        {findCertainPositionBatter("LF").length ? (
+          findCertainPositionBatter("LF").map((player) => (
+            <Player key={player.PlayerID}>
+              <PlayerInfo>
+                <PlayerPosition>{player.Position}</PlayerPosition>
+                <PlayerName>
+                  {player.FirstName} {player.LastName}
+                </PlayerName>
+              </PlayerInfo>
+              <PlayerImage src={player.PhotoUrl} />
+            </Player>
+          ))
+        ) : (
+          <Player>
+            <h1>선택한 선수 없음</h1>
+          </Player>
+        )}
+        {findCertainPositionBatter("CF").length ? (
+          findCertainPositionBatter("CF").map((player) => (
+            <Player key={player.PlayerID}>
+              <PlayerInfo>
+                <PlayerPosition>{player.Position}</PlayerPosition>
+                <PlayerName>
+                  {player.FirstName} {player.LastName}
+                </PlayerName>
+              </PlayerInfo>
+              <PlayerImage src={player.PhotoUrl} />
+            </Player>
+          ))
+        ) : (
+          <Player>
+            <h1>선택한 선수 없음</h1>
+          </Player>
+        )}
+        {findCertainPositionBatter("RF").length ? (
+          findCertainPositionBatter("RF").map((player) => (
+            <Player key={player.PlayerID}>
+              <PlayerInfo>
+                <PlayerPosition>{player.Position}</PlayerPosition>
+                <PlayerName>
+                  {player.FirstName} {player.LastName}
+                </PlayerName>
+              </PlayerInfo>
+              <PlayerImage src={player.PhotoUrl} />
+            </Player>
+          ))
+        ) : (
+          <Player>
+            <h1>선택한 선수 없음</h1>
+          </Player>
+        )}
+        {findCertainPositionBatter("DH").length ? (
+          findCertainPositionBatter("DH").map((player) => (
+            <Player key={player.PlayerID}>
+              <PlayerInfo>
+                <PlayerPosition>{player.Position}</PlayerPosition>
+                <PlayerName>
+                  {player.FirstName} {player.LastName}
+                </PlayerName>
+              </PlayerInfo>
+              <PlayerImage src={player.PhotoUrl} />
+            </Player>
+          ))
+        ) : (
+          <Player>
+            <h1>선택한 선수 없음</h1>
+          </Player>
+        )}
       </PlayerList>
       <PlayerTitle>선발 투수</PlayerTitle>
       <PlayerList>
-        <Player>
-          <PlayerInfo>
-            <PlayerPosition>SP</PlayerPosition>
-            <PlayerName>Fernando Tatis Jr.</PlayerName>
-          </PlayerInfo>
-          <PlayerImage
-            src="https://s3-us-west-2.amazonaws.com/static.fantasydata.com/headshots/mlb/low-res/10007217.png"
-            alt=""
-          />
-        </Player>
-        <Player>
-          <PlayerInfo>
-            <PlayerPosition>SP</PlayerPosition>
-            <PlayerName>Fernando Tatis Jr.</PlayerName>
-          </PlayerInfo>
-          <PlayerImage
-            src="https://s3-us-west-2.amazonaws.com/static.fantasydata.com/headshots/mlb/low-res/10007217.png"
-            alt=""
-          />
-        </Player>
-        <Player>
-          <PlayerInfo>
-            <PlayerPosition>SP</PlayerPosition>
-            <PlayerName>Fernando Tatis Jr.</PlayerName>
-          </PlayerInfo>
-          <PlayerImage
-            src="https://s3-us-west-2.amazonaws.com/static.fantasydata.com/headshots/mlb/low-res/10007217.png"
-            alt=""
-          />
-        </Player>
-        <Player>
-          <PlayerInfo>
-            <PlayerPosition>SP</PlayerPosition>
-            <PlayerName>Fernando Tatis Jr.</PlayerName>
-          </PlayerInfo>
-          <PlayerImage
-            src="https://s3-us-west-2.amazonaws.com/static.fantasydata.com/headshots/mlb/low-res/10007217.png"
-            alt=""
-          />
-        </Player>
-        <Player>
-          <PlayerInfo>
-            <PlayerPosition>SP</PlayerPosition>
-            <PlayerName>Fernando Tatis Jr.</PlayerName>
-          </PlayerInfo>
-          <PlayerImage
-            src="https://s3-us-west-2.amazonaws.com/static.fantasydata.com/headshots/mlb/low-res/10007217.png"
-            alt=""
-          />
-        </Player>
+        {filterPitcherByPosition("SP").map((player) => (
+          <Player key={player.PlayerID}>
+            <PlayerInfo>
+              <PlayerPosition>{player.Position}</PlayerPosition>
+              <PlayerName>
+                {player.FirstName} {player.LastName}
+              </PlayerName>
+            </PlayerInfo>
+            <PlayerImage src={player.PhotoUrl} />
+          </Player>
+        ))}
+        {filterPitcherByPosition("SP").length < 5
+          ? [...Array(5 - filterPitcherByPosition("SP").length)].map(
+              (_, index) => (
+                <Player key={index}>
+                  <h1>선택한 선수 없음</h1>
+                </Player>
+              )
+            )
+          : null}
       </PlayerList>
       <PlayerTitle>불펜 투수</PlayerTitle>
       <PlayerList>
-        <Player>
-          <PlayerInfo>
-            <PlayerPosition>RP</PlayerPosition>
-            <PlayerName>Fernando Tatis Jr.</PlayerName>
-          </PlayerInfo>
-          <PlayerImage
-            src="https://s3-us-west-2.amazonaws.com/static.fantasydata.com/headshots/mlb/low-res/10007217.png"
-            alt=""
-          />
-        </Player>
-        <Player>
-          <PlayerInfo>
-            <PlayerPosition>RP</PlayerPosition>
-            <PlayerName>Fernando Tatis Jr.</PlayerName>
-          </PlayerInfo>
-          <PlayerImage
-            src="https://s3-us-west-2.amazonaws.com/static.fantasydata.com/headshots/mlb/low-res/10007217.png"
-            alt=""
-          />
-        </Player>
-        <Player>
-          <PlayerInfo>
-            <PlayerPosition>RP</PlayerPosition>
-            <PlayerName>Fernando Tatis Jr.</PlayerName>
-          </PlayerInfo>
-          <PlayerImage
-            src="https://s3-us-west-2.amazonaws.com/static.fantasydata.com/headshots/mlb/low-res/10007217.png"
-            alt=""
-          />
-        </Player>
-        <Player>
-          <PlayerInfo>
-            <PlayerPosition>RP</PlayerPosition>
-            <PlayerName>Fernando Tatis Jr.</PlayerName>
-          </PlayerInfo>
-          <PlayerImage
-            src="https://s3-us-west-2.amazonaws.com/static.fantasydata.com/headshots/mlb/low-res/10007217.png"
-            alt=""
-          />
-        </Player>
-        <Player>
-          <PlayerInfo>
-            <PlayerPosition>RP</PlayerPosition>
-            <PlayerName>Fernando Tatis Jr.</PlayerName>
-          </PlayerInfo>
-          <PlayerImage
-            src="https://s3-us-west-2.amazonaws.com/static.fantasydata.com/headshots/mlb/low-res/10007217.png"
-            alt=""
-          />
-        </Player>
-        <Player>
-          <PlayerInfo>
-            <PlayerPosition>RP</PlayerPosition>
-            <PlayerName>Fernando Tatis Jr.</PlayerName>
-          </PlayerInfo>
-          <PlayerImage
-            src="https://s3-us-west-2.amazonaws.com/static.fantasydata.com/headshots/mlb/low-res/10007217.png"
-            alt=""
-          />
-        </Player>
+        {filterPitcherByPosition("RP").map((player) => (
+          <Player key={player.PlayerID}>
+            <PlayerInfo>
+              <PlayerPosition>{player.Position}</PlayerPosition>
+              <PlayerName>
+                {player.FirstName} {player.LastName}
+              </PlayerName>
+            </PlayerInfo>
+            <PlayerImage src={player.PhotoUrl} />
+          </Player>
+        ))}
+        {filterPitcherByPosition("RP").length < 6
+          ? [...Array(6 - filterPitcherByPosition("RP").length)].map(
+              (_, index) => (
+                <Player key={index}>
+                  <h1>선택한 선수 없음</h1>
+                </Player>
+              )
+            )
+          : null}
       </PlayerList>
     </DreamTeamContainer>
   );

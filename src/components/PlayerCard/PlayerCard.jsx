@@ -118,6 +118,7 @@ const AddToDreamTeamButton = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
   background-color: ${(props) =>
     props.type === "youtube" ? "tomato" : "skyblue"};
   &:hover {
