@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import styled from "styled-components";
 import {
   currentPlayer,
   currentX,
   currentY,
+  dreamTeamInfo,
   playerSelection,
 } from "../../atoms";
 
@@ -106,6 +107,26 @@ const PlayerPageLink = styled.a`
   }
 `;
 
+const AddToDreamTeamButton = styled.div`
+  padding: 1em 0.5em;
+  margin-left: 1em;
+  font-size: 1em;
+  border: 2px solid ${(props) => "#" + props.color};
+  border-radius: 15px;
+  color: black;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: ${(props) =>
+    props.type === "youtube" ? "tomato" : "skyblue"};
+  &:hover {
+    background-color: ${(props) => "#" + props.color};
+    transition: all 0.3s linear;
+    color: white;
+  }
+`;
+
 const PlayerTeamLink = styled.a`
   width: 2em;
   height: 2em;
@@ -161,6 +182,7 @@ const PlayerCard = () => {
   const showingPlayer = useRecoilValue(currentPlayer);
   const setSelectPlayer = useSetRecoilState(playerSelection);
   const [team, setTeam] = useState({});
+  const [dreamTeam, setDreamTeam] = useRecoilState(dreamTeamInfo);
 
   const convertNameForUrl = (inputName) => {
     let currentName = [...inputName];
@@ -185,10 +207,13 @@ const PlayerCard = () => {
   };
 
   const getTeamInfo = (teamName) => {
-    const { teamInfo } = JSON.parse(window.localStorage.getItem("teams"));
+    const { teamInfo } = JSON.parse(window.localStorage.getItem("mlb"));
     return teamInfo.find((team) => team.Key === teamName);
   };
 
+  const addToDreamTeam = () => {
+    setDreamTeam([...dreamTeam, showingPlayer]);
+  };
   useEffect(() => {
     const teamInfo = getTeamInfo(showingPlayer.Team);
     setTeam(teamInfo);
@@ -245,13 +270,9 @@ const PlayerCard = () => {
           >
             ⚾️ 관련 동영상
           </PlayerPageLink>
-          <PlayerPageLink
-            href={`https://www.youtube.com/results?search_query=${showingPlayer.FirstName.toLowerCase()}+${showingPlayer.LastName.toLowerCase()}+baseball`}
-            rel="noreferrer"
-            target="_blank"
-          >
+          <AddToDreamTeamButton onClick={addToDreamTeam}>
             📌 드림팀 선수로 지정
-          </PlayerPageLink>
+          </AddToDreamTeamButton>
         </PlayerLinkWrapper>
       </PlayerInfoWrapper>
     </PlayerCardWrapper>

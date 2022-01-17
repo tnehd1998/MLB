@@ -2,12 +2,18 @@ import { atom } from "recoil";
 import { recoilPersist } from "recoil-persist";
 
 const { persistAtom } = recoilPersist({
-  key: "teams",
+  key: "mlb",
   storage: localStorage,
 });
 
 export const teamInfo = atom({
   key: "teamInfo",
+  default: [],
+  effects_UNSTABLE: [persistAtom],
+});
+
+export const dreamTeamInfo = atom({
+  key: "dreamTeamInfo",
   default: [],
   effects_UNSTABLE: [persistAtom],
 });
