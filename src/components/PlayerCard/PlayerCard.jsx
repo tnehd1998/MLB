@@ -213,7 +213,44 @@ const PlayerCard = () => {
   };
 
   const addPitcherToDreamTeam = () => {
-    console.log("Pitcher");
+    let samePositionPlayers = dreamTeam.filter(
+      (player) => player.Position === showingPlayer.Position
+    );
+    const existingPlayers = dreamTeam.filter(
+      (player) => player.Position !== showingPlayer.Position
+    );
+    switch (showingPlayer.Position) {
+      case "SP":
+        if (samePositionPlayers.length === 5) {
+          let deletedPlayer = samePositionPlayers.shift();
+          alert(
+            `${showingPlayer.Position}포지션 선수 ${deletedPlayer.DraftKingsName}가 제거되고 ${showingPlayer.DraftKingsName}가 추가되었습니다.`
+          );
+        } else {
+          alert(
+            `${showingPlayer.DraftKingsName}가 ${showingPlayer.Position}에 추가되었습니다.`
+          );
+        }
+        samePositionPlayers.push(showingPlayer);
+        break;
+      case "RP":
+        if (samePositionPlayers.length === 6) {
+          let deletedPlayer = samePositionPlayers.shift();
+          alert(
+            `${showingPlayer.Position}포지션 선수 ${deletedPlayer.DraftKingsName}가 제거되고 ${showingPlayer.DraftKingsName}가 추가되었습니다.`
+          );
+        } else {
+          alert(
+            `${showingPlayer.DraftKingsName}가 ${showingPlayer.Position}에 추가되었습니다.`
+          );
+        }
+        samePositionPlayers.push(showingPlayer);
+        break;
+      default:
+        break;
+    }
+
+    setDreamTeam([...existingPlayers, ...samePositionPlayers]);
   };
 
   const addBatterToDreamTeam = () => {
@@ -225,7 +262,7 @@ const PlayerCard = () => {
     );
     if (samePositionPlayer) {
       alert(
-        `${showingPlayer.Position}선수가 ${samePositionPlayer.DraftKingsName}에서 ${showingPlayer.DraftKingsName}로 변경되었습니다.`
+        `${showingPlayer.Position}포지션 선수가 ${samePositionPlayer.DraftKingsName}에서 ${showingPlayer.DraftKingsName}로 변경되었습니다.`
       );
     } else {
       alert(
