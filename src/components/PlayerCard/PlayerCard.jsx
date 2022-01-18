@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import styled from "styled-components";
 import {
@@ -184,6 +184,13 @@ const PlayerCard = () => {
   const setSelectPlayer = useSetRecoilState(playerSelection);
   const [team, setTeam] = useState({});
   const [dreamTeam, setDreamTeam] = useRecoilState(dreamTeamInfo);
+  const [isDreamTeamPlayer, setIsDreamTeamPlayer] = useState(false);
+
+  const checkIsDreamTeamPlayer = useCallback(() => {
+    return dreamTeam.find(
+      (player) => player.PlayerID === showingPlayer.PlayerID
+    );
+  }, [showingPlayer.PlayerID, dreamTeam]);
 
   const convertNameForUrl = (inputName) => {
     let currentName = [...inputName];
@@ -284,6 +291,11 @@ const PlayerCard = () => {
     setTeam(teamInfo);
   }, [showingPlayer.Team]);
 
+  useEffect(() => {
+    const checkPlayer = checkIsDreamTeamPlayer();
+    setIsDreamTeamPlayer(checkPlayer);
+  }, [checkIsDreamTeamPlayer]);
+
   return (
     <PlayerCardWrapper top={scrollY} left={scrollX}>
       <CloseIcon
@@ -335,9 +347,11 @@ const PlayerCard = () => {
           >
             ⚾️ 관련 동영상
           </PlayerPageLink>
-          <AddToDreamTeamButton onClick={addPlayerToDreamTeam}>
-            📌 드림팀 선수로 지정
-          </AddToDreamTeamButton>
+          {!isDreamTeamPlayer ? (
+            <AddToDreamTeamButton onClick={addPlayerToDreamTeam}>
+              📌 드림팀 선수로 지정
+            </AddToDreamTeamButton>
+          ) : null}
         </PlayerLinkWrapper>
       </PlayerInfoWrapper>
     </PlayerCardWrapper>
