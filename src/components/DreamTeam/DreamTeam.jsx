@@ -1,5 +1,5 @@
 import React from "react";
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import styled from "styled-components";
 import { dreamTeamInfo } from "../../atoms";
 
@@ -62,7 +62,7 @@ const PlayerName = styled.p`
 `;
 
 const DreamTeam = () => {
-  const dreamTeamPlayers = useRecoilValue(dreamTeamInfo);
+  const [dreamTeamPlayers, setDreamTeamPlayers] = useRecoilState(dreamTeamInfo);
 
   const findCertainPositionBatter = (position) => {
     for (let dreamTeamPlayer in dreamTeamPlayers) {
@@ -291,6 +291,7 @@ const DreamTeam = () => {
             )
           : null}
       </PlayerList>
+      <button onClick={() => setDreamTeamPlayers([])}>전체 삭제</button>
     </DreamTeamContainer>
   );
 };

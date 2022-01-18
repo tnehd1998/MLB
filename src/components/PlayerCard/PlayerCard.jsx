@@ -212,9 +212,32 @@ const PlayerCard = () => {
     return teamInfo.find((team) => team.Key === teamName);
   };
 
-  const addToDreamTeam = () => {
-    setDreamTeam([...dreamTeam, showingPlayer]);
+  const addPitcherToDreamTeam = () => {
+    console.log("Pitcher");
   };
+
+  const addBatterToDreamTeam = () => {
+    const samePositionPlayer = dreamTeam.find(
+      (player) => player.Position === showingPlayer.Position
+    );
+    const existingPlayers = dreamTeam.filter(
+      (player) => player.Position !== showingPlayer.Position
+    );
+    if (samePositionPlayer) {
+      console.log(samePositionPlayer.DraftKingsName);
+    }
+    console.log(showingPlayer.DraftKingsName);
+    console.log(existingPlayers);
+
+    setDreamTeam([...existingPlayers, showingPlayer]);
+  };
+
+  const addPlayerToDreamTeam = () => {
+    return showingPlayer.Position === "SP" || showingPlayer.Position === "RP"
+      ? addPitcherToDreamTeam()
+      : addBatterToDreamTeam();
+  };
+
   useEffect(() => {
     const teamInfo = getTeamInfo(showingPlayer.Team);
     setTeam(teamInfo);
@@ -271,7 +294,7 @@ const PlayerCard = () => {
           >
             ⚾️ 관련 동영상
           </PlayerPageLink>
-          <AddToDreamTeamButton onClick={addToDreamTeam}>
+          <AddToDreamTeamButton onClick={addPlayerToDreamTeam}>
             📌 드림팀 선수로 지정
           </AddToDreamTeamButton>
         </PlayerLinkWrapper>
