@@ -224,10 +224,14 @@ const PlayerCard = () => {
       (player) => player.Position !== showingPlayer.Position
     );
     if (samePositionPlayer) {
-      console.log(samePositionPlayer.DraftKingsName);
+      alert(
+        `${showingPlayer.Position}선수가 ${samePositionPlayer.DraftKingsName}에서 ${showingPlayer.DraftKingsName}로 변경되었습니다.`
+      );
+    } else {
+      alert(
+        `${showingPlayer.DraftKingsName}가 ${showingPlayer.Position}에 추가되었습니다.`
+      );
     }
-    console.log(showingPlayer.DraftKingsName);
-    console.log(existingPlayers);
 
     setDreamTeam([...existingPlayers, showingPlayer]);
   };
