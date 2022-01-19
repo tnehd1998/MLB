@@ -1,5 +1,5 @@
 import React from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState } from "recoil";
 import styled from "styled-components";
 import { dreamTeamInfo } from "../../atoms";
 
@@ -12,12 +12,14 @@ const DreamTeamContainer = styled.div`
 `;
 
 const PlayerTitle = styled.p`
-  font-size: 16px;
+  font-size: 24px;
   font-weight: 900;
+  margin-bottom: 0.5em;
 `;
 
 const PlayerList = styled.ul`
   display: flex;
+  margin: 0.5em 0;
 `;
 
 const Player = styled.li`
@@ -47,7 +49,6 @@ const PlayerInfo = styled.div`
   justify-content: space-evenly;
   align-items: center;
   font-size: 8px;
-
   margin-top: 1em;
 `;
 
@@ -59,6 +60,24 @@ const PlayerPosition = styled.p`
 const PlayerName = styled.p`
   font-size: 10px;
   font-weight: 400;
+`;
+
+const DeleteAllButton = styled.button`
+  padding: 0.5em;
+  font-size: 1em;
+  border: 2px solid black;
+  background-color: white;
+  border-radius: 15px;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  &:hover {
+    background-color: black;
+    transition: all 0.3s linear;
+    color: white;
+  }
 `;
 
 const DreamTeam = () => {
@@ -291,7 +310,9 @@ const DreamTeam = () => {
             )
           : null}
       </PlayerList>
-      <button onClick={() => setDreamTeamPlayers([])}>전체 삭제</button>
+      <DeleteAllButton onClick={() => setDreamTeamPlayers([])}>
+        전체 삭제
+      </DeleteAllButton>
     </DreamTeamContainer>
   );
 };

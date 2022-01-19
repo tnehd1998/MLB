@@ -49,6 +49,9 @@ const Menu = styled.p`
   cursor: pointer;
   &:hover {
     transform: scale(1.1);
+    background-color: black;
+    transition: all 0.3s linear;
+    color: white;
   }
 `;
 
