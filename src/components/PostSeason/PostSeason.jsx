@@ -23,21 +23,24 @@ const PostSeasonLink = styled.a``;
 const ScheduleImage = styled.img`
   width: 60vw;
   border-radius: 20px;
-  border: 2px solid black;
+  border: 2px solid ${({ theme }) => theme.textColor};
+  &:hover {
+    border: 2px solid ${({ theme }) => theme.bgColor};
+  }
 `;
 
 const StandingWrapper = styled.div`
   width: 60vw;
   border-radius: 20px;
   height: 20em;
-  border: 2px solid black;
+  border: 2px solid ${({ theme }) => theme.textColor};
 `;
 
 const RegionCategories = styled.ul`
   display: flex;
   justify-content: center;
   align-items: center;
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid ${({ theme }) => theme.textColor};
 `;
 
 const RegionCategory = styled.li`
@@ -46,8 +49,8 @@ const RegionCategory = styled.li`
   border-radius: 16px;
   &:hover {
     transition: all 0.5s ease-in;
-    background-color: black;
-    color: white;
+    background-color: ${({ theme }) => theme.textColor};
+    color: ${({ theme }) => theme.bgColor};
   }
 `;
 
@@ -68,7 +71,7 @@ const StandingTeams = styled.div`
 `;
 
 const StandingTeam = styled(Link)`
-  color: black;
+  color: ${({ theme }) => theme.textColor};
   text-decoration: none;
   display: flex;
   padding: 1em 0;
@@ -77,8 +80,8 @@ const StandingTeam = styled(Link)`
   &:hover {
     font-size: 18px;
     transition: all 0.5s ease-in;
-    background-color: black;
-    color: white;
+    background-color: ${({ theme }) => theme.textColor};
+    color: ${({ theme }) => theme.bgColor};
     border-radius: 20px;
   }
 `;

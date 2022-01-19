@@ -65,7 +65,7 @@ const Team = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 3px solid ${(props) => "#" + props.iconBgColor};
+  border: 3px solid ${({ theme }) => theme.textColor};
   cursor: pointer;
   &:hover {
     transform: scale(1.1);

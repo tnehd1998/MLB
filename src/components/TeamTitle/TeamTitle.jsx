@@ -35,7 +35,7 @@ const OfficialPageLink = styled.a`
   font-size: 1em;
   border: 2px solid ${(props) => "#" + props.color};
   border-radius: 20px;
-  color: black;
+  color: ${({ theme }) => theme.textColor};
   text-decoration: none;
   &:hover {
     background-color: ${(props) => "#" + props.color};

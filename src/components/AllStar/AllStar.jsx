@@ -20,19 +20,19 @@ const TableWrapper = styled.div`
 const TableTitle = styled.p`
   font-size: 24px;
   margin-bottom: 2vh;
-  border: 2px solid black;
+  border: 2px solid ${({ theme }) => theme.textColor};
   border-radius: 20px;
   padding: 10px;
 `;
 
 const Table = styled.table`
   width: 100%;
-  border: 4px solid black;
+  border: 4px solid ${({ theme }) => theme.textColor};
   border-collapse: collapse;
   text-align: center;
   th,
   td {
-    border: 2px solid black;
+    border: 2px solid ${({ theme }) => theme.textColor};
   }
 `;
 
@@ -52,8 +52,8 @@ const Player = styled.tr`
   &:hover {
     font-size: 18px;
     transition: all 0.5s ease-in;
-    background-color: black;
-    color: white;
+    background-color: ${({ theme }) => theme.textColor};
+    color: ${({ theme }) => theme.bgColor};
   }
 `;
 

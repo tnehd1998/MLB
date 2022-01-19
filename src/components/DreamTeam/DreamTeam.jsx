@@ -33,9 +33,8 @@ const Player = styled.li`
   align-items: center;
   background-position: center;
   background-repeat: no-repeat;
-  border: 2px solid black;
+  border: 2px solid ${({ theme }) => theme.textColor};
   border-radius: 2em;
-  background-color: white;
 `;
 
 const PlayerImage = styled.img`
@@ -65,18 +64,20 @@ const PlayerName = styled.p`
 const DeleteAllButton = styled.button`
   padding: 0.5em;
   font-size: 1em;
-  border: 2px solid black;
-  background-color: white;
+  border: 2px solid ${({ theme }) => theme.textColor};
+  background-color: ${({ theme }) => theme.bgColor};
   border-radius: 15px;
   text-decoration: none;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  color: ${({ theme }) => theme.textColor};
+  transition: all 0.3s linear;
   &:hover {
-    background-color: black;
+    background-color: ${({ theme }) => theme.textColor};
     transition: all 0.3s linear;
-    color: white;
+    color: ${({ theme }) => theme.bgColor};
   }
 `;
 

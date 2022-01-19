@@ -19,10 +19,10 @@ const PlayerCardWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: white;
+  background-color: ${({ theme }) => theme.bgColor};
   border-radius: 30px;
   z-index: 20;
-  border: 2px solid black;
+  border: 2px solid ${({ theme }) => theme.textColor};
 `;
 
 const CloseIcon = styled.p`
@@ -32,9 +32,8 @@ const CloseIcon = styled.p`
   top: 10px;
   right: 10px;
   border-radius: 50%;
-  border: 2px solid black;
+  border: 2px solid ${({ theme }) => theme.textColor};
   cursor: pointer;
-  color: black;
   font-size: 30px;
   text-align: center;
   line-height: 40px;
@@ -58,7 +57,7 @@ const PlayerImage = styled.img`
   width: 15em;
   height: 100%;
   border-radius: 10%;
-  border: 2px solid black;
+  border: 2px solid ${({ theme }) => theme.textColor};
 `;
 
 const PlayerInfo = styled.p`
@@ -91,19 +90,21 @@ const PlayerPageLink = styled.a`
   padding: 1em 0.5em;
   margin-left: 1em;
   font-size: 1em;
-  border: 2px solid ${(props) => "#" + props.color};
+  border: 2px solid ${({ theme }) => theme.textColor};
   border-radius: 15px;
-  color: black;
+  color: ${({ theme }) => theme.textColor};
   text-decoration: none;
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: all 0.3s linear;
   background-color: ${(props) =>
     props.type === "youtube" ? "tomato" : "skyblue"};
   &:hover {
     background-color: ${(props) => "#" + props.color};
     transition: all 0.3s linear;
-    color: white;
+    color: ${({ theme }) => theme.bgColor};
+    border: ${({ theme }) => theme.bgColor};
   }
 `;
 
@@ -111,20 +112,20 @@ const AddToDreamTeamButton = styled.div`
   padding: 1em 0.5em;
   margin-left: 1em;
   font-size: 1em;
-  border: 2px solid ${(props) => "#" + props.color};
+  border: 2px solid ${({ theme }) => theme.textColor};
   border-radius: 15px;
-  color: black;
   text-decoration: none;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  transition: border 0.3s linear;
   background-color: ${(props) =>
     props.type === "youtube" ? "tomato" : "skyblue"};
   &:hover {
-    background-color: ${(props) => "#" + props.color};
     transition: all 0.3s linear;
-    color: white;
+    color: ${({ theme }) => theme.bgColor};
+    border: ${({ theme }) => theme.bgColor};
   }
 `;
 
@@ -133,7 +134,7 @@ const PlayerTeamLink = styled.a`
   height: 2em;
   padding: 0.5em;
   font-size: 1em;
-  border: 2px solid black;
+  border: 2px solid ${({ theme }) => theme.textColor};
   border-radius: 15px;
   color: black;
   text-decoration: none;

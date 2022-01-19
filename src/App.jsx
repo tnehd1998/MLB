@@ -16,6 +16,10 @@ import RecordPage from "./pages/RecordPage";
 import DreamTeamPage from "./pages/DreamTeamPage";
 import PlayerPage from "./pages/PlayerPage";
 import ThemeButton from "./components/ThemeButton/ThemeButton";
+import { themeState } from "./atoms";
+import { darkTheme, lightTheme } from "./theme";
+import { ThemeProvider } from "styled-components";
+import { useRecoilValue } from "recoil";
 
 const GlobalStyles = createGlobalStyle`
   ${reset};
@@ -23,24 +27,31 @@ const GlobalStyles = createGlobalStyle`
   body{
     font-family: "Rubik", sans-serif;
     font-family: "Ubuntu", sans-serif;
+    background: ${({ theme }) => theme.bgColor};
+    color: ${({ theme }) => theme.textColor};
+    transition: all 0.3s linear;
   }
 `;
 
 const App = () => {
+  const isLightTheme = useRecoilValue(themeState);
+
   return (
     <Router>
-      <GlobalStyles />
-      <Header />
-      <ThemeButton />
-      <Routes>
-        <Route path="/" element={<MainPage />} />
-        <Route path=":teamName" element={<TeamPage />} />
-        <Route path="/allstar" element={<AllStarPage />} />
-        <Route path="/record" element={<RecordPage />} />
-        <Route path="/dreamteam" element={<DreamTeamPage />} />
-        <Route path="/player/:playerID" element={<PlayerPage />} />
-        <Route path="/*" element={<Navigate to="/" />} />
-      </Routes>
+      <ThemeProvider theme={isLightTheme ? lightTheme : darkTheme}>
+        <GlobalStyles />
+        <Header />
+        <ThemeButton />
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+          <Route path=":teamName" element={<TeamPage />} />
+          <Route path="/allstar" element={<AllStarPage />} />
+          <Route path="/record" element={<RecordPage />} />
+          <Route path="/dreamteam" element={<DreamTeamPage />} />
+          <Route path="/player/:playerID" element={<PlayerPage />} />
+          <Route path="/*" element={<Navigate to="/" />} />
+        </Routes>
+      </ThemeProvider>
     </Router>
   );
 };

@@ -7,10 +7,11 @@ const HeaderWrapper = styled.div`
   height: 10vh;
   display: flex;
   justify-content: space-between;
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid ${({ theme }) => theme.textColor};
   position: fixed;
-  background-color: white;
+  background-color: ${({ theme }) => theme.bgColor};
   z-index: 20;
+  transition: all 0.3s linear;
 `;
 
 const HomeLogoLink = styled(Link)``;
@@ -34,7 +35,7 @@ const Menus = styled.div`
 `;
 
 const MenuLink = styled(Link)`
-  color: black;
+  color: ${({ theme }) => theme.textColor};
   text-decoration: none;
 `;
 
@@ -44,14 +45,14 @@ const Menu = styled.p`
   text-align: center;
   line-height: 40px;
   font-size: 24px;
-  border: 2px solid black;
+  border: 2px solid ${({ theme }) => theme.textColor};
   border-radius: 10px;
   cursor: pointer;
   &:hover {
     transform: scale(1.1);
-    background-color: black;
+    background-color: ${({ theme }) => theme.textColor};
     transition: all 0.3s linear;
-    color: white;
+    color: ${({ theme }) => theme.bgColor};
   }
 `;
 
