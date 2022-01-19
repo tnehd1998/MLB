@@ -18,6 +18,8 @@ const Title = styled.p`
   margin: 20px 0px;
 `;
 
+const PostSeasonLink = styled.a``;
+
 const ScheduleImage = styled.img`
   width: 60vw;
   border-radius: 20px;
@@ -41,6 +43,7 @@ const RegionCategories = styled.ul`
 const RegionCategory = styled.li`
   padding: 1em;
   cursor: pointer;
+  border-radius: 16px;
   &:hover {
     transition: all 0.5s ease-in;
     background-color: black;
@@ -106,7 +109,14 @@ const PostSeason = () => {
   return (
     <PostSeasonWrapper>
       <Title>2021 MLB POSTSEASON</Title>
-      <ScheduleImage src="https://img.mlbstatic.com/mlb-images/image/private/t_16x9/t_w1024/mlb/vz66hur9vu9qn3h9dddt.jpg" />
+      <PostSeasonLink
+        href={`https://youtu.be/Q-vkUHF9RI0`}
+        rel="noreferrer"
+        target="_blank"
+      >
+        <ScheduleImage src="https://img.mlbstatic.com/mlb-images/image/private/t_16x9/t_w1024/mlb/vz66hur9vu9qn3h9dddt.jpg" />
+      </PostSeasonLink>
+
       <Title>2021 TEAM STANDING</Title>
       {isLoading ? (
         <Loading />
