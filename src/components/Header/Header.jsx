@@ -60,10 +60,10 @@ const Header = () => {
       </HomeLogoLink>
       <Menus>
         <MenuLink to="allstar">
-          <Menu>ALL STAR PLAYER</Menu>
+          <Menu>ALL STAR</Menu>
         </MenuLink>
-        <MenuLink to="postseason">
-          <Menu>POSTSEASON</Menu>
+        <MenuLink to="record">
+          <Menu>RECORD</Menu>
         </MenuLink>
         <MenuLink to="dreamteam">
           <Menu>MY DREAM TEAM</Menu>

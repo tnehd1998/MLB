@@ -12,7 +12,7 @@ import Header from "./components/Header/Header";
 import MainPage from "./pages/MainPage";
 import TeamPage from "./pages/TeamPage";
 import AllStarPage from "./pages/AllStarPage";
-import PostSeasonPage from "./pages/PostSeasonPage";
+import RecordPage from "./pages/RecordPage";
 import DreamTeamPage from "./pages/DreamTeamPage";
 import PlayerPage from "./pages/PlayerPage";
 
@@ -34,7 +34,7 @@ const App = () => {
         <Route path="/" element={<MainPage />} />
         <Route path=":teamName" element={<TeamPage />} />
         <Route path="/allstar" element={<AllStarPage />} />
-        <Route path="/postseason" element={<PostSeasonPage />} />
+        <Route path="/record" element={<RecordPage />} />
         <Route path="/dreamteam" element={<DreamTeamPage />} />
         <Route path="/player/:playerID" element={<PlayerPage />} />
         <Route path="/*" element={<Navigate to="/" />} />
