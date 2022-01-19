@@ -1,6 +1,11 @@
 import { atom } from "recoil";
 import { recoilPersist } from "recoil-persist";
 
+export const themeState = atom({
+  key: "themeState",
+  default: true,
+});
+
 const { persistAtom } = recoilPersist({
   key: "mlb",
   storage: localStorage,

@@ -15,6 +15,7 @@ import AllStarPage from "./pages/AllStarPage";
 import RecordPage from "./pages/RecordPage";
 import DreamTeamPage from "./pages/DreamTeamPage";
 import PlayerPage from "./pages/PlayerPage";
+import ThemeButton from "./components/ThemeButton/ThemeButton";
 
 const GlobalStyles = createGlobalStyle`
   ${reset};
@@ -30,6 +31,7 @@ const App = () => {
     <Router>
       <GlobalStyles />
       <Header />
+      <ThemeButton />
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path=":teamName" element={<TeamPage />} />
