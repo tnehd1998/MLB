@@ -1,5 +1,6 @@
-import { atom } from "recoil";
+import { atom, selector } from "recoil";
 import { recoilPersist } from "recoil-persist";
+import { getTeamData } from "./apis";
 
 export const themeState = atom({
   key: "themeState",
@@ -11,9 +12,20 @@ const { persistAtom } = recoilPersist({
   storage: localStorage,
 });
 
-export const teamInfo = atom({
+export const teamInfo = selector({
   key: "teamInfo",
-  default: [],
+  get: async () => {
+    const info = await getTeamData();
+    return info;
+  },
+});
+
+export const teamInfoLocal = selector({
+  key: "teamInfoLocal",
+  get: ({ get }) => {
+    const info = get(teamInfo);
+    return info;
+  },
   effects_UNSTABLE: [persistAtom],
 });
 
