@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
+import { useNavigate } from "react-router";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import styled from "styled-components";
 import {
@@ -129,7 +130,7 @@ const AddToDreamTeamButton = styled.div`
   }
 `;
 
-const PlayerTeamLink = styled.a`
+const PlayerTeamLink = styled.div`
   width: 2em;
   height: 2em;
   padding: 0.5em;
@@ -138,6 +139,7 @@ const PlayerTeamLink = styled.a`
   border-radius: 15px;
   color: black;
   text-decoration: none;
+  cursor: pointer;
 `;
 
 const PlayerTeamLogo = styled.img`
@@ -186,6 +188,8 @@ const PlayerCard = () => {
   const [team, setTeam] = useState({});
   const [dreamTeam, setDreamTeam] = useRecoilState(dreamTeamInfo);
   const [isDreamTeamPlayer, setIsDreamTeamPlayer] = useState(false);
+
+  const navigate = useNavigate();
 
   const checkIsDreamTeamPlayer = useCallback(() => {
     return dreamTeam.find(
@@ -326,7 +330,7 @@ const PlayerCard = () => {
           </PlayerInfoList>
         </PlayerProfileWrapper>
         <PlayerLinkWrapper>
-          <PlayerTeamLink href={`/${showingPlayer.Team}`}>
+          <PlayerTeamLink onClick={() => navigate(`/${showingPlayer.Team}`)}>
             <PlayerTeamLogo src={team.WikipediaLogoUrl} alt="Team Logo" />
           </PlayerTeamLink>
           <PlayerPageLink

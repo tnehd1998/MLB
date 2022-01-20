@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Loading from "../Loading/Loading";
 
@@ -65,6 +66,8 @@ const AllStar = ({ getData }) => {
   const [players, setPlayers] = useState([]);
   const [loading, setLoading] = useState(false);
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     async function fetchData() {
       const data = await getData();
@@ -97,7 +100,7 @@ const AllStar = ({ getData }) => {
               {players.map((player, index) => (
                 <Player
                   key={player.StatID}
-                  onClick={() => (window.location.href = `${player.Team}`)}
+                  onClick={() => navigate(`/${player.Team}`)}
                 >
                   <PlayerInfo>Rank {index + 1}</PlayerInfo>
                   <PlayerInfo>{player.Name}</PlayerInfo>
