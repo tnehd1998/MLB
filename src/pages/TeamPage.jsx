@@ -1,11 +1,44 @@
-import React from "react";
+import React, { Suspense, useEffect } from "react";
+import styled from "styled-components";
 import { useParams } from "react-router";
-import { getCertainTeamData } from "../apis";
-import TeamInformation from "../components/TeamInformation/TeamInformation";
+import Loading from "../components/Loading/Loading";
+import { useRecoilState } from "recoil";
+import { playerSelection } from "../atoms";
+import TeamTitle from "../components/TeamTitle/TeamTitle";
+import TeamPlayers from "../components/TeamPlayers/TeamPlayers";
+import PlayerCard from "../components/PlayerCard/PlayerCard";
 
 const TeamPage = () => {
   const { teamName } = useParams();
-  return <TeamInformation teamName={teamName} getData={getCertainTeamData} />;
+  const [selectPlayer, setSelectPlayer] = useRecoilState(playerSelection);
+
+  useEffect(() => {
+    return () => {
+      setSelectPlayer(false);
+    };
+  }, [setSelectPlayer]);
+
+  return (
+    <TeamInformationWrapper>
+      <TeamDescription selectPlayer={selectPlayer}>
+        <Suspense fallback={<Loading />}>
+          <TeamTitle teamName={teamName} />
+        </Suspense>
+        <Suspense fallback={<Loading />}>
+          <TeamPlayers teamName={teamName} />
+        </Suspense>
+      </TeamDescription>
+      {selectPlayer ? <PlayerCard /> : null}
+    </TeamInformationWrapper>
+  );
 };
+
+const TeamInformationWrapper = styled.div`
+  padding-top: 12vh;
+`;
+
+const TeamDescription = styled.div`
+  filter: blur(${(props) => (props.selectPlayer ? "4px" : "0")});
+`;
 
 export default TeamPage;

@@ -1,5 +1,45 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import { useRecoilValue } from "recoil";
+import { teamInfo } from "../../atoms";
+
+const TeamTitle = ({ teamName }) => {
+  const teams = useRecoilValue(teamInfo);
+  const [currentTeam, setCurrentTeam] = useState([]);
+
+  const changeNameForUrl = (teamName) => {
+    return teamName.toLowerCase().replace(/(\s*)/g, "");
+  };
+
+  useEffect(() => {
+    function getCurrentTeam() {
+      const team = teams.find((team) => team.Key === teamName);
+      setCurrentTeam(team);
+    }
+    getCurrentTeam();
+  }, [teamName, teams]);
+
+  return (
+    <TeamTitleWrapper>
+      <TeamLogoImage src={`${currentTeam.WikipediaLogoUrl}`} />
+      <TeamName>
+        <TeamCity color={currentTeam.PrimaryColor}>{currentTeam.City}</TeamCity>
+        <TeamNickname color={currentTeam.PrimaryColor}>
+          {currentTeam.Name}
+        </TeamNickname>
+      </TeamName>
+      <OfficialPageLink
+        href={`https://www.mlb.com/${
+          currentTeam.Name ? changeNameForUrl(currentTeam.Name) : ""
+        }`}
+        target="_blank"
+        color={currentTeam.PrimaryColor}
+      >
+        &#8594; 공식 홈페이지
+      </OfficialPageLink>
+    </TeamTitleWrapper>
+  );
+};
 
 const TeamTitleWrapper = styled.div`
   display: flex;
@@ -43,30 +83,5 @@ const OfficialPageLink = styled.a`
     color: white;
   }
 `;
-
-const changeNameForUrl = (teamName) => {
-  return teamName.toLowerCase().replace(/(\s*)/g, "");
-};
-
-const TeamTitle = ({ team }) => {
-  return (
-    <TeamTitleWrapper>
-      <TeamLogoImage src={`${team.WikipediaLogoUrl}`} />
-      <TeamName>
-        <TeamCity color={team.PrimaryColor}>{team.City}</TeamCity>
-        <TeamNickname color={team.PrimaryColor}>{team.Name}</TeamNickname>
-      </TeamName>
-      <OfficialPageLink
-        href={`https://www.mlb.com/${
-          team.Name ? changeNameForUrl(team.Name) : ""
-        }`}
-        target="_blank"
-        color={team.PrimaryColor}
-      >
-        &#8594; 공식 홈페이지
-      </OfficialPageLink>
-    </TeamTitleWrapper>
-  );
-};
 
 export default TeamTitle;

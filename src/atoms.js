@@ -20,15 +20,6 @@ export const teamInfo = selector({
   },
 });
 
-export const teamInfoLocal = selector({
-  key: "teamInfoLocal",
-  get: ({ get }) => {
-    const info = get(teamInfo);
-    return info;
-  },
-  effects_UNSTABLE: [persistAtom],
-});
-
 export const dreamTeamInfo = atom({
   key: "dreamTeamInfo",
   default: [],

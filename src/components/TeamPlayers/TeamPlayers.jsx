@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import { getCertainTeamData } from "../../apis";
 import PositionPlayer from "../PositionPlayer/PositionPlayer";
 
 const TeamPlayersWrapper = styled.div`
@@ -10,7 +11,17 @@ const TeamPlayersWrapper = styled.div`
   width: 100vw;
 `;
 
-const TeamPlayers = ({ info }) => {
+const TeamPlayers = ({ teamName }) => {
+  const [info, setInfo] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const data = await getCertainTeamData(teamName);
+      setInfo(data);
+    }
+    fetchData();
+  }, [teamName]);
+
   return (
     <TeamPlayersWrapper>
       <PositionPlayer

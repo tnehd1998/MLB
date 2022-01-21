@@ -4,6 +4,24 @@ import { useRecoilValue } from "recoil";
 import styled from "styled-components";
 import { teamInfo } from "../../atoms";
 
+const TeamSelection = () => {
+  const teams = useRecoilValue(teamInfo);
+
+  return (
+    <TeamSelectionWrapper>
+      {teams.map((team) =>
+        team.WikipediaLogoUrl ? (
+          <TeamLink key={team.TeamID} to={team.Key}>
+            <Team iconBgColor={`${team.PrimaryColor}`}>
+              <TeamLogo src={`${team.WikipediaLogoUrl}`} alt={team.City} />
+            </Team>
+          </TeamLink>
+        ) : null
+      )}
+    </TeamSelectionWrapper>
+  );
+};
+
 const TeamSelectionWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -32,23 +50,5 @@ const TeamLogo = styled.img`
   width: 10vw;
   height: 10vw;
 `;
-
-const TeamSelection = () => {
-  const teams = useRecoilValue(teamInfo);
-
-  return (
-    <TeamSelectionWrapper>
-      {teams.map((team) =>
-        team.WikipediaLogoUrl ? (
-          <TeamLink key={team.TeamID} to={team.Key}>
-            <Team iconBgColor={`${team.PrimaryColor}`}>
-              <TeamLogo src={`${team.WikipediaLogoUrl}`} alt={team.City} />
-            </Team>
-          </TeamLink>
-        ) : null
-      )}
-    </TeamSelectionWrapper>
-  );
-};
 
 export default TeamSelection;
