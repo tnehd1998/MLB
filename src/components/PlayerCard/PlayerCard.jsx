@@ -8,6 +8,7 @@ import {
   currentY,
   dreamTeamInfo,
   playerSelection,
+  teamInfo,
 } from "../../atoms";
 
 const PlayerCardWrapper = styled.div`
@@ -188,6 +189,7 @@ const PlayerCard = () => {
   const [team, setTeam] = useState({});
   const [dreamTeam, setDreamTeam] = useRecoilState(dreamTeamInfo);
   const [isDreamTeamPlayer, setIsDreamTeamPlayer] = useState(false);
+  const teamLogos = useRecoilValue(teamInfo);
 
   const navigate = useNavigate();
 
@@ -219,10 +221,12 @@ const PlayerCard = () => {
     return currentName.join("");
   };
 
-  const getTeamInfo = (teamName) => {
-    const { teamInfo } = JSON.parse(window.localStorage.getItem("mlb"));
-    return teamInfo.find((team) => team.Key === teamName);
-  };
+  const getTeamInfo = useCallback(
+    (teamName) => {
+      return teamLogos.find((team) => team.Key === teamName);
+    },
+    [teamLogos]
+  );
 
   const addPitcherToDreamTeam = () => {
     let samePositionPlayers = dreamTeam.filter(
@@ -294,7 +298,7 @@ const PlayerCard = () => {
   useEffect(() => {
     const teamInfo = getTeamInfo(showingPlayer.Team);
     setTeam(teamInfo);
-  }, [showingPlayer.Team]);
+  }, [getTeamInfo, showingPlayer.Team]);
 
   useEffect(() => {
     const checkPlayer = checkIsDreamTeamPlayer();
