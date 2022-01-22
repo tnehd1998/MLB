@@ -11,175 +11,6 @@ import {
   teamInfo,
 } from "../../atoms";
 
-const PlayerCardWrapper = styled.div`
-  width: 70vw;
-  height: 70vh;
-  top: ${(props) => props.top + "px"};
-  left: ${(props) => props.left + "px"};
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: ${({ theme }) => theme.bgColor};
-  border-radius: 30px;
-  z-index: 20;
-  border: 2px solid ${({ theme }) => theme.textColor};
-`;
-
-const CloseIcon = styled.p`
-  width: 40px;
-  height: 40px;
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  border-radius: 50%;
-  border: 2px solid ${({ theme }) => theme.textColor};
-  cursor: pointer;
-  font-size: 30px;
-  text-align: center;
-  line-height: 40px;
-  &:hover {
-    transform: scale(1.1);
-  }
-`;
-
-const PlayerCardTitle = styled.p`
-  font-size: 2.5em;
-  margin-bottom: 1em;
-`;
-
-const PlayerInfoWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 80vw;
-`;
-
-const PlayerImage = styled.img`
-  width: 15em;
-  height: 100%;
-  border-radius: 10%;
-  border: 2px solid ${({ theme }) => theme.textColor};
-`;
-
-const PlayerInfo = styled.p`
-  font-size: 24px;
-`;
-
-const PlayerProfileWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 3em;
-`;
-
-const PlayerInfoList = styled.ul`
-  height: 100%;
-  display: flex;
-  margin-left: 3em;
-  flex-direction: column;
-  justify-content: space-between;
-`;
-
-const PlayerLinkWrapper = styled.div`
-  margin: 1em 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const PlayerPageLink = styled.a`
-  padding: 1em 0.5em;
-  margin-left: 1em;
-  font-size: 1em;
-  border: 2px solid ${({ theme }) => theme.textColor};
-  border-radius: 15px;
-  color: ${({ theme }) => theme.textColor};
-  text-decoration: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: all 0.3s linear;
-  background-color: ${(props) =>
-    props.type === "youtube" ? "tomato" : "skyblue"};
-  &:hover {
-    background-color: ${(props) => "#" + props.color};
-    transition: all 0.3s linear;
-    color: ${({ theme }) => theme.bgColor};
-    border: ${({ theme }) => theme.bgColor};
-  }
-`;
-
-const AddToDreamTeamButton = styled.div`
-  padding: 1em 0.5em;
-  margin-left: 1em;
-  font-size: 1em;
-  border: 2px solid ${({ theme }) => theme.textColor};
-  border-radius: 15px;
-  text-decoration: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  transition: border 0.3s linear;
-  background-color: ${(props) =>
-    props.type === "youtube" ? "tomato" : "skyblue"};
-  &:hover {
-    transition: all 0.3s linear;
-    color: ${({ theme }) => theme.bgColor};
-    border: ${({ theme }) => theme.bgColor};
-  }
-`;
-
-const PlayerTeamLink = styled.div`
-  width: 2em;
-  height: 2em;
-  padding: 0.5em;
-  font-size: 1em;
-  border: 2px solid ${({ theme }) => theme.textColor};
-  border-radius: 15px;
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-`;
-
-const PlayerTeamLogo = styled.img`
-  width: 2em;
-  height: 2em;
-  &:hover {
-    transform: scale(1.2);
-    transition: all 0.3s linear;
-  }
-`;
-
-const alphabetAccents = {
-  à: "a",
-  è: "e",
-  ì: "i",
-  ò: "o",
-  ù: "u",
-  á: "a",
-  é: "e",
-  í: "i",
-  ó: "o",
-  ú: "u",
-  ý: "y",
-  â: "a",
-  ê: "e",
-  î: "i",
-  ô: "o",
-  û: "u",
-  ñ: "n",
-  õ: "o",
-  ã: "a",
-  ä: "a",
-  ë: "e",
-  ï: "i",
-  ö: "o",
-  ü: "u",
-  ÿ: "y",
-};
-
 const PlayerCard = () => {
   const scrollX = useRecoilValue(currentX);
   const scrollY = useRecoilValue(currentY);
@@ -365,6 +196,175 @@ const PlayerCard = () => {
       </PlayerInfoWrapper>
     </PlayerCardWrapper>
   );
+};
+
+const PlayerCardWrapper = styled.div`
+  width: 70vw;
+  height: 70vh;
+  top: ${(props) => props.top + "px"};
+  left: ${(props) => props.left + "px"};
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: ${({ theme }) => theme.bgColor};
+  border-radius: 30px;
+  z-index: 20;
+  border: 2px solid ${({ theme }) => theme.textColor};
+`;
+
+const CloseIcon = styled.p`
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border-radius: 50%;
+  border: 2px solid ${({ theme }) => theme.textColor};
+  cursor: pointer;
+  font-size: 30px;
+  text-align: center;
+  line-height: 40px;
+  &:hover {
+    transform: scale(1.1);
+  }
+`;
+
+const PlayerCardTitle = styled.p`
+  font-size: 2.5em;
+  margin-bottom: 1em;
+`;
+
+const PlayerInfoWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 80vw;
+`;
+
+const PlayerImage = styled.img`
+  width: 15em;
+  height: 100%;
+  border-radius: 10%;
+  border: 2px solid ${({ theme }) => theme.textColor};
+`;
+
+const PlayerInfo = styled.p`
+  font-size: 24px;
+`;
+
+const PlayerProfileWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 3em;
+`;
+
+const PlayerInfoList = styled.ul`
+  height: 100%;
+  display: flex;
+  margin-left: 3em;
+  flex-direction: column;
+  justify-content: space-between;
+`;
+
+const PlayerLinkWrapper = styled.div`
+  margin: 1em 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const PlayerPageLink = styled.a`
+  padding: 1em 0.5em;
+  margin-left: 1em;
+  font-size: 1em;
+  border: 2px solid ${({ theme }) => theme.textColor};
+  border-radius: 15px;
+  color: ${({ theme }) => theme.textColor};
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s linear;
+  background-color: ${(props) =>
+    props.type === "youtube" ? "tomato" : "skyblue"};
+  &:hover {
+    background-color: ${(props) => "#" + props.color};
+    transition: all 0.3s linear;
+    color: ${({ theme }) => theme.bgColor};
+    border: ${({ theme }) => theme.bgColor};
+  }
+`;
+
+const AddToDreamTeamButton = styled.div`
+  padding: 1em 0.5em;
+  margin-left: 1em;
+  font-size: 1em;
+  border: 2px solid ${({ theme }) => theme.textColor};
+  border-radius: 15px;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: border 0.3s linear;
+  background-color: ${(props) =>
+    props.type === "youtube" ? "tomato" : "skyblue"};
+  &:hover {
+    transition: all 0.3s linear;
+    color: ${({ theme }) => theme.bgColor};
+    border: ${({ theme }) => theme.bgColor};
+  }
+`;
+
+const PlayerTeamLink = styled.div`
+  width: 2em;
+  height: 2em;
+  padding: 0.5em;
+  font-size: 1em;
+  border: 2px solid ${({ theme }) => theme.textColor};
+  border-radius: 15px;
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+`;
+
+const PlayerTeamLogo = styled.img`
+  width: 2em;
+  height: 2em;
+  &:hover {
+    transform: scale(1.2);
+    transition: all 0.3s linear;
+  }
+`;
+
+const alphabetAccents = {
+  à: "a",
+  è: "e",
+  ì: "i",
+  ò: "o",
+  ù: "u",
+  á: "a",
+  é: "e",
+  í: "i",
+  ó: "o",
+  ú: "u",
+  ý: "y",
+  â: "a",
+  ê: "e",
+  î: "i",
+  ô: "o",
+  û: "u",
+  ñ: "n",
+  õ: "o",
+  ã: "a",
+  ä: "a",
+  ë: "e",
+  ï: "i",
+  ö: "o",
+  ü: "u",
+  ÿ: "y",
 };
 
 export default PlayerCard;

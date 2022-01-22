@@ -3,14 +3,6 @@ import styled from "styled-components";
 import { getCertainTeamData } from "../../apis";
 import PositionPlayer from "../PositionPlayer/PositionPlayer";
 
-const TeamPlayersWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-`;
-
 const TeamPlayers = ({ teamName }) => {
   const [info, setInfo] = useState([]);
 
@@ -47,5 +39,13 @@ const TeamPlayers = ({ teamName }) => {
     </TeamPlayersWrapper>
   );
 };
+
+const TeamPlayersWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+`;
 
 export default TeamPlayers;

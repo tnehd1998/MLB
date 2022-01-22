@@ -1,29 +1,49 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React from "react";
 import styled from "styled-components";
-import Loading from "../Loading/Loading";
+import { useNavigate } from "react-router";
+import { useRecoilValue } from "recoil";
+import { allStarInfo } from "../../atoms";
+
+const AllStar = () => {
+  const players = useRecoilValue(allStarInfo);
+  const navigate = useNavigate();
+
+  return (
+    <AllStarWrapper>
+      <Table>
+        <colgroup span="4" className="columns"></colgroup>
+        <thead>
+          <Subjects>
+            <Subject>선수 랭킹 (RANKING)</Subject>
+            <Subject>선수 이름 (PLAYER NAME)</Subject>
+            <Subject>포지션 (POSITION)</Subject>
+            <Subject>소속 팀 (TEAM)</Subject>
+          </Subjects>
+        </thead>
+        <tbody>
+          {players.map((player, index) => (
+            <Player
+              key={player.StatID}
+              onClick={() => navigate(`/${player.Team}`)}
+            >
+              <PlayerInfo>Rank {index + 1}</PlayerInfo>
+              <PlayerInfo>{player.Name}</PlayerInfo>
+              <PlayerInfo>{player.Position}</PlayerInfo>
+              <PlayerInfo>{player.Team}</PlayerInfo>
+            </Player>
+          ))}
+        </tbody>
+      </Table>
+    </AllStarWrapper>
+  );
+};
 
 const AllStarWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-top: 12vh;
-`;
-
-const TableWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 80vw;
-`;
-
-const TableTitle = styled.p`
-  font-size: 24px;
-  margin-bottom: 2vh;
-  border: 2px solid ${({ theme }) => theme.textColor};
-  border-radius: 20px;
-  padding: 10px;
 `;
 
 const Table = styled.table`
@@ -61,59 +81,5 @@ const Player = styled.tr`
 const PlayerInfo = styled.td`
   padding: 5px;
 `;
-
-const AllStar = ({ getData }) => {
-  const [players, setPlayers] = useState([]);
-  const [loading, setLoading] = useState(false);
-
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    async function fetchData() {
-      const data = await getData();
-      setPlayers(data);
-      setLoading((loading) => !loading);
-    }
-    fetchData();
-  }, [getData]);
-
-  return (
-    <AllStarWrapper>
-      {!loading ? (
-        <Loading />
-      ) : (
-        <TableWrapper>
-          <TableTitle>
-            😍 특정 선수를 선택하면 소속 팀 페이지로 이동합니다. 😍
-          </TableTitle>
-          <Table>
-            <colgroup span="4" className="columns"></colgroup>
-            <thead>
-              <Subjects>
-                <Subject>선수 랭킹 (RANKING)</Subject>
-                <Subject>선수 이름 (PLAYER NAME)</Subject>
-                <Subject>포지션 (POSITION)</Subject>
-                <Subject>소속 팀 (TEAM)</Subject>
-              </Subjects>
-            </thead>
-            <tbody>
-              {players.map((player, index) => (
-                <Player
-                  key={player.StatID}
-                  onClick={() => navigate(`/${player.Team}`)}
-                >
-                  <PlayerInfo>Rank {index + 1}</PlayerInfo>
-                  <PlayerInfo>{player.Name}</PlayerInfo>
-                  <PlayerInfo>{player.Position}</PlayerInfo>
-                  <PlayerInfo>{player.Team}</PlayerInfo>
-                </Player>
-              ))}
-            </tbody>
-          </Table>
-        </TableWrapper>
-      )}
-    </AllStarWrapper>
-  );
-};
 
 export default AllStar;

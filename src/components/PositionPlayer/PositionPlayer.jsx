@@ -2,6 +2,31 @@ import React from "react";
 import Player from "../Player/Player";
 import styled from "styled-components";
 
+const PositionPlayer = ({ info, positions, title }) => {
+  const filterPosition = (playerInfo, positions) => {
+    if (positions.includes(playerInfo.Position)) {
+      return true;
+    }
+    return false;
+  };
+
+  return (
+    <PositionPlayerWrapper>
+      <PositionName>{title}</PositionName>
+      <PlayerList>
+        {[...info].map((playerInfo) =>
+          playerInfo.Status === "Active" &&
+          filterPosition(playerInfo, positions) ? (
+            <Player key={playerInfo.PlayerID} playerInfo={playerInfo} />
+          ) : (
+            ""
+          )
+        )}
+      </PlayerList>
+    </PositionPlayerWrapper>
+  );
+};
+
 const PositionPlayerWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -19,30 +44,5 @@ const PlayerList = styled.div`
   gap: 10px;
   margin: 5vh 0;
 `;
-
-const filterPosition = (playerInfo, positions) => {
-  if (positions.includes(playerInfo.Position)) {
-    return true;
-  }
-  return false;
-};
-
-const PositionPlayer = ({ info, positions, title }) => {
-  return (
-    <PositionPlayerWrapper>
-      <PositionName>{title}</PositionName>
-      <PlayerList>
-        {[...info].map((playerInfo) =>
-          playerInfo.Status === "Active" &&
-          filterPosition(playerInfo, positions) ? (
-            <Player key={playerInfo.PlayerID} playerInfo={playerInfo} />
-          ) : (
-            ""
-          )
-        )}
-      </PlayerList>
-    </PositionPlayerWrapper>
-  );
-};
 
 export default PositionPlayer;
