@@ -3,22 +3,6 @@ import { useRecoilState } from "recoil";
 import styled from "styled-components";
 import { themeState } from "../../atoms";
 
-const ThemeButtonContainer = styled.div`
-  cursor: pointer;
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  font-size: 30px;
-  background-color: ${(props) => (!props.currentTheme ? "grey" : "white")};
-  border: 2px solid ${(props) => (!props.currentTheme ? "grey" : "black")};
-  text-align: center;
-  line-height: 60px;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  z-index: 20;
-`;
-
 const ThemeButton = () => {
   const [isLightTheme, setIsLightTheme] = useRecoilState(themeState);
 
@@ -36,5 +20,21 @@ const ThemeButton = () => {
     </ThemeButtonContainer>
   );
 };
+
+const ThemeButtonContainer = styled.div`
+  cursor: pointer;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  font-size: 30px;
+  background-color: ${(props) => (!props.currentTheme ? "grey" : "white")};
+  border: 2px solid ${(props) => (!props.currentTheme ? "grey" : "black")};
+  text-align: center;
+  line-height: 60px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  z-index: 20;
+`;
 
 export default ThemeButton;
