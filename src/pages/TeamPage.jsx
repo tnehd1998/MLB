@@ -1,8 +1,8 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect } from "react";
 import styled from "styled-components";
 import { useParams } from "react-router";
 import Loading from "../components/Loading/Loading";
-import { useRecoilValue } from "recoil";
+import { useRecoilState } from "recoil";
 import { playerSelection } from "../store/atoms";
 import TeamTitle from "../components/TeamTitle/TeamTitle";
 import TeamPlayers from "../components/TeamPlayers/TeamPlayers";
@@ -10,7 +10,13 @@ import PlayerCard from "../components/PlayerCard/PlayerCard";
 
 const TeamPage = () => {
   const { teamName } = useParams();
-  const selectPlayer = useRecoilValue(playerSelection);
+  const [selectPlayer, setSelectPlayer] = useRecoilState(playerSelection);
+
+  useEffect(() => {
+    return () => {
+      setSelectPlayer(false);
+    };
+  }, [setSelectPlayer]);
 
   return (
     <TeamInformationWrapper>
