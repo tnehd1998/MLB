@@ -4,7 +4,7 @@ import {
   getAllStarPlayerData,
   getTeamData,
   getTeamStandingData,
-} from "../apis";
+} from "../apis/apis";
 
 export const themeState = atom({
   key: "themeState",

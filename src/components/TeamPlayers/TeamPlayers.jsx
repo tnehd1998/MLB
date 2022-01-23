@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { getCertainTeamData } from "../../apis";
+import { getCertainTeamData } from "../../apis/apis";
 import PositionPlayer from "../PositionPlayer/PositionPlayer";
 
 const TeamPlayers = ({ teamName }) => {
