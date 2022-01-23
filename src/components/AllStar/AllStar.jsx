@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router";
 import { useRecoilValue } from "recoil";
-import { allStarInfo } from "../../atoms";
+import { allStarInfo } from "../../store/atoms";
 
 const AllStar = () => {
   const players = useRecoilValue(allStarInfo);

@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useRecoilValue } from "recoil";
-import { teamInfo } from "../../atoms";
+import { teamInfo } from "../../store/atoms";
 
 const TeamSelection = () => {
   const teams = useRecoilValue(teamInfo);

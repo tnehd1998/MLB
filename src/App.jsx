@@ -16,7 +16,7 @@ import RecordPage from "./pages/RecordPage";
 import DreamTeamPage from "./pages/DreamTeamPage";
 
 import ThemeButton from "./components/ThemeButton/ThemeButton";
-import { themeState } from "./atoms";
+import { themeState } from "./store/atoms";
 import { darkTheme, lightTheme } from "./styles/theme";
 import { ThemeProvider } from "styled-components";
 import { useRecoilValue } from "recoil";

@@ -1,7 +1,7 @@
 import React from "react";
 import { useRecoilState } from "recoil";
 import styled from "styled-components";
-import { dreamTeamInfo } from "../../atoms";
+import { dreamTeamInfo } from "../../store/atoms";
 
 const DreamTeamContainer = styled.div`
   padding-top: 12vh;

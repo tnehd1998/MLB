@@ -9,7 +9,7 @@ import {
   dreamTeamInfo,
   playerSelection,
   teamInfo,
-} from "../../atoms";
+} from "../../store/atoms";
 
 const PlayerCard = () => {
   const scrollX = useRecoilValue(currentX);

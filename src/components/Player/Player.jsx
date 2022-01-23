@@ -6,7 +6,7 @@ import {
   currentX,
   currentY,
   playerSelection,
-} from "../../atoms";
+} from "../../store/atoms";
 
 const Player = ({ playerInfo }) => {
   const setPlayerSelected = useSetRecoilState(playerSelection);

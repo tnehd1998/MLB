@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useRecoilValue } from "recoil";
-import { teamInfo } from "../../atoms";
+import { teamInfo } from "../../store/atoms";
 
 const TeamTitle = ({ teamName }) => {
   const teams = useRecoilValue(teamInfo);

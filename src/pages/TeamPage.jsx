@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useParams } from "react-router";
 import Loading from "../components/Loading/Loading";
 import { useRecoilValue } from "recoil";
-import { playerSelection } from "../atoms";
+import { playerSelection } from "../store/atoms";
 import TeamTitle from "../components/TeamTitle/TeamTitle";
 import TeamPlayers from "../components/TeamPlayers/TeamPlayers";
 import PlayerCard from "../components/PlayerCard/PlayerCard";

@@ -1,7 +1,7 @@
 import React from "react";
 import { useRecoilState } from "recoil";
 import styled from "styled-components";
-import { themeState } from "../../atoms";
+import { themeState } from "../../store/atoms";
 
 const ThemeButton = () => {
   const [isLightTheme, setIsLightTheme] = useRecoilState(themeState);

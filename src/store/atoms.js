@@ -1,6 +1,10 @@
 import { atom, selector } from "recoil";
 import { recoilPersist } from "recoil-persist";
-import { getAllStarPlayerData, getTeamData, getTeamStandingData } from "./apis";
+import {
+  getAllStarPlayerData,
+  getTeamData,
+  getTeamStandingData,
+} from "../apis";
 
 export const themeState = atom({
   key: "themeState",
