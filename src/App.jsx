@@ -14,7 +14,7 @@ import TeamPage from "./pages/TeamPage";
 import AllStarPage from "./pages/AllStarPage";
 import RecordPage from "./pages/RecordPage";
 import DreamTeamPage from "./pages/DreamTeamPage";
-import PlayerPage from "./pages/PlayerPage";
+
 import ThemeButton from "./components/ThemeButton/ThemeButton";
 import { themeState } from "./atoms";
 import { darkTheme, lightTheme } from "./theme";
@@ -48,7 +48,6 @@ const App = () => {
           <Route path="/allstar" element={<AllStarPage />} />
           <Route path="/record" element={<RecordPage />} />
           <Route path="/dreamteam" element={<DreamTeamPage />} />
-          <Route path="/player/:playerID" element={<PlayerPage />} />
           <Route path="/*" element={<Navigate to="/" />} />
         </Routes>
       </ThemeProvider>
