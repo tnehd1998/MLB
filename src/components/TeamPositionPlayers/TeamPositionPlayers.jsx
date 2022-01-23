@@ -1,5 +1,5 @@
 import React from "react";
-import Player from "../Player/Player";
+import TeamPlayer from "../TeamPlayer/TeamPlayer";
 import styled from "styled-components";
 
 const PositionPlayer = ({ info, positions, title }) => {
@@ -17,7 +17,7 @@ const PositionPlayer = ({ info, positions, title }) => {
         {[...info].map((playerInfo) =>
           playerInfo.Status === "Active" &&
           filterPosition(playerInfo, positions) ? (
-            <Player key={playerInfo.PlayerID} playerInfo={playerInfo} />
+            <TeamPlayer key={playerInfo.PlayerID} playerInfo={playerInfo} />
           ) : (
             ""
           )

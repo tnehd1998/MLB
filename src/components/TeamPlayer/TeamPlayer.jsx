@@ -8,7 +8,7 @@ import {
   playerSelection,
 } from "../../store/atoms";
 
-const Player = ({ playerInfo }) => {
+const TeamPlayer = ({ playerInfo }) => {
   const setPlayerSelected = useSetRecoilState(playerSelection);
   const setCurrentPlayer = useSetRecoilState(currentPlayer);
   const setCurrentX = useSetRecoilState(currentX);
@@ -29,7 +29,7 @@ const Player = ({ playerInfo }) => {
   };
 
   return (
-    <PlayerWrapper>
+    <TeamPlayerWrapper>
       <PlayerImage
         src={playerInfo.PhotoUrl}
         alt={`${playerInfo.FirstName} ${playerInfo.LastName}`}
@@ -51,11 +51,11 @@ const Player = ({ playerInfo }) => {
           🔎 선수 정보
         </MoreInfo>
       </PlayerProfile>
-    </PlayerWrapper>
+    </TeamPlayerWrapper>
   );
 };
 
-const PlayerWrapper = styled.div`
+const TeamPlayerWrapper = styled.div`
   display: flex;
   text-align: center;
   border: 2px solid ${({ theme }) => theme.textColor};
@@ -107,4 +107,4 @@ const MoreInfo = styled.div`
   }
 `;
 
-export default Player;
+export default TeamPlayer;

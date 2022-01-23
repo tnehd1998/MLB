@@ -4,12 +4,12 @@ import { useNavigate } from "react-router";
 import { useRecoilValue } from "recoil";
 import { allStarInfo } from "../../store/atoms";
 
-const AllStar = () => {
+const AllStarTable = () => {
   const players = useRecoilValue(allStarInfo);
   const navigate = useNavigate();
 
   return (
-    <AllStarWrapper>
+    <AllStarTableWrapper>
       <Table>
         <colgroup span="4" className="columns"></colgroup>
         <thead>
@@ -34,11 +34,11 @@ const AllStar = () => {
           ))}
         </tbody>
       </Table>
-    </AllStarWrapper>
+    </AllStarTableWrapper>
   );
 };
 
-const AllStarWrapper = styled.div`
+const AllStarTableWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -82,4 +82,4 @@ const PlayerInfo = styled.td`
   padding: 5px;
 `;
 
-export default AllStar;
+export default AllStarTable;
