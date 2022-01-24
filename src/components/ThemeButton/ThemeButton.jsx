@@ -23,9 +23,6 @@ const ThemeButton = () => {
 
 const ThemeButtonContainer = styled.div`
   cursor: pointer;
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
   font-size: 30px;
   background-color: ${(props) => (!props.currentTheme ? "grey" : "white")};
   border: 2px solid ${(props) => (!props.currentTheme ? "grey" : "black")};

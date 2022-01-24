@@ -15,7 +15,6 @@ import AllStarPage from "./pages/AllStarPage";
 import RecordPage from "./pages/RecordPage";
 import DreamTeamPage from "./pages/DreamTeamPage";
 
-import ThemeButton from "./components/ThemeButton/ThemeButton";
 import { themeState } from "./store/atoms";
 import { darkTheme, lightTheme } from "./styles/theme";
 import { ThemeProvider } from "styled-components";
@@ -41,7 +40,6 @@ const App = () => {
       <ThemeProvider theme={isLightTheme ? lightTheme : darkTheme}>
         <GlobalStyles />
         <Header />
-        <ThemeButton />
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path=":teamName" element={<TeamPage />} />
