@@ -36,6 +36,15 @@ const PositionPlayerWrapper = styled.div`
 
 const PositionName = styled.p`
   font-size: 24px;
+  font-weight: 600;
+
+  @media (max-width: 768px) {
+    font-size: 18px;
+  }
+
+  @media (min-width: 1150px) {
+    font-size: 36px;
+  }
 `;
 
 const PlayerList = styled.div`
@@ -43,6 +52,14 @@ const PlayerList = styled.div`
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
   margin: 5vh 0;
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 1150px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
 `;
 
 export default PositionPlayer;
