@@ -141,12 +141,12 @@ const MoreInfo = styled.div`
 
   @media (max-width: 768px) {
     margin-top: 1em;
-    font-size: 0.9em;
+    font-size: 0.8em;
   }
 
   @media (min-width: 1150px) {
     margin-top: 1em;
-    font-size: 1.1em;
+    font-size: 1.2em;
   }
 `;
 

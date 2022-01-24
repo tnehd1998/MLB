@@ -51,6 +51,16 @@ const TeamTitleWrapper = styled.div`
 const TeamLogoImage = styled.img`
   width: 15vw;
   height: 15vw;
+
+  @media (max-width: 768px) {
+    width: 25vw;
+    height: 25vw;
+  }
+
+  @media (min-width: 1150px) {
+    width: 12vw;
+    height: 12vw;
+  }
 `;
 
 const TeamName = styled.div`
@@ -61,18 +71,34 @@ const TeamName = styled.div`
 `;
 
 const TeamCity = styled.p`
-  font-size: 2em;
+  font-size: 3em;
   color: ${(props) => "#" + props.color};
+
+  @media (max-width: 768px) {
+    font-size: 2em;
+  }
+
+  @media (min-width: 1150px) {
+    font-size: 4em;
+  }
 `;
 
 const TeamNickname = styled.p`
-  font-size: 2.5em;
+  font-size: 4em;
   color: ${(props) => "#" + props.color};
+
+  @media (max-width: 768px) {
+    font-size: 3em;
+  }
+
+  @media (min-width: 1150px) {
+    font-size: 5em;
+  }
 `;
 
 const OfficialPageLink = styled.a`
   padding: 0.5em;
-  font-size: 1em;
+  font-size: 1.2em;
   border: 2px solid ${(props) => "#" + props.color};
   border-radius: 20px;
   color: ${({ theme }) => theme.textColor};
@@ -81,6 +107,14 @@ const OfficialPageLink = styled.a`
     background-color: ${(props) => "#" + props.color};
     transition: all 0.3s linear;
     color: white;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 0.9em;
+  }
+
+  @media (min-width: 1150px) {
+    font-size: 1.5em;
   }
 `;
 
