@@ -51,8 +51,8 @@ const Team = styled.div`
   }
 
   @media (max-width: 768px) {
-    width: 30vw;
-    height: 30vw;
+    width: 28vw;
+    height: 28vw;
   }
 `;
 
