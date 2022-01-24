@@ -26,6 +26,10 @@ const TeamSelectionWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 1vw;
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
 `;
 
 const TeamLink = styled(Link)``;
@@ -39,16 +43,27 @@ const Team = styled.div`
   align-items: center;
   border: 3px solid ${({ theme }) => theme.textColor};
   cursor: pointer;
+
   &:hover {
     transform: scale(1.1);
     transition: all 0.5s ease-in;
     background-color: ${(props) => "#" + props.iconBgColor};
+  }
+
+  @media (max-width: 768px) {
+    width: 30vw;
+    height: 30vw;
   }
 `;
 
 const TeamLogo = styled.img`
   width: 10vw;
   height: 10vw;
+
+  @media (max-width: 768px) {
+    width: 20vw;
+    height: 20vw;
+  }
 `;
 
 export default TeamSelection;
