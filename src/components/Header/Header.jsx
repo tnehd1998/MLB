@@ -2,6 +2,27 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
+const Header = () => {
+  return (
+    <HeaderWrapper>
+      <HomeLogoLink to="/">
+        <HomeLogo src="https://www.mlbstatic.com/team-logos/league-on-dark/1.svg" />
+      </HomeLogoLink>
+      <Menus>
+        <MenuLink to="allstar">
+          <Menu>ALL STAR</Menu>
+        </MenuLink>
+        <MenuLink to="record">
+          <Menu>RECORD</Menu>
+        </MenuLink>
+        <MenuLink to="dreamteam">
+          <Menu>MY DREAM TEAM</Menu>
+        </MenuLink>
+      </Menus>
+    </HeaderWrapper>
+  );
+};
+
 const HeaderWrapper = styled.div`
   width: 100vw;
   height: 10vh;
@@ -55,26 +76,5 @@ const Menu = styled.p`
     color: ${({ theme }) => theme.bgColor};
   }
 `;
-
-const Header = () => {
-  return (
-    <HeaderWrapper>
-      <HomeLogoLink to="/">
-        <HomeLogo src="https://www.mlbstatic.com/team-logos/league-on-dark/1.svg" />
-      </HomeLogoLink>
-      <Menus>
-        <MenuLink to="allstar">
-          <Menu>ALL STAR</Menu>
-        </MenuLink>
-        <MenuLink to="record">
-          <Menu>RECORD</Menu>
-        </MenuLink>
-        <MenuLink to="dreamteam">
-          <Menu>MY DREAM TEAM</Menu>
-        </MenuLink>
-      </Menus>
-    </HeaderWrapper>
-  );
-};
 
 export default Header;

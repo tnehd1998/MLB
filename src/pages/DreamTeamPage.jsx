@@ -5,6 +5,42 @@ import DreamBatter from "../components/DreamBatter/DreamBatter";
 import DreamPitcher from "../components/DreamPitcher/DreamPitcher";
 import { dreamTeamInfo } from "../store/atoms";
 
+const DreamTeamPage = () => {
+  const setDreamTeamPlayers = useSetRecoilState(dreamTeamInfo);
+
+  const onClickDeleteAll = () => {
+    setDreamTeamPlayers([]);
+  };
+
+  return (
+    <DreamTeamPageWrapper>
+      <PlayerTitle>타자</PlayerTitle>
+      <PlayerList>
+        <DreamBatter position="C" />
+        <DreamBatter position="1B" />
+        <DreamBatter position="2B" />
+        <DreamBatter position="3B" />
+        <DreamBatter position="SS" />
+      </PlayerList>
+      <PlayerList>
+        <DreamBatter position="LF" />
+        <DreamBatter position="CF" />
+        <DreamBatter position="RF" />
+        <DreamBatter position="DH" />
+      </PlayerList>
+      <PlayerTitle>선발 투수</PlayerTitle>
+      <PlayerList>
+        <DreamPitcher position="SP" />
+      </PlayerList>
+      <PlayerTitle>불펜 투수</PlayerTitle>
+      <PlayerList>
+        <DreamPitcher position="RP" />
+      </PlayerList>
+      <DeleteAllButton onClick={onClickDeleteAll}>전체 삭제</DeleteAllButton>
+    </DreamTeamPageWrapper>
+  );
+};
+
 const DreamTeamPageWrapper = styled.div`
   padding-top: 12vh;
   display: flex;
@@ -43,41 +79,5 @@ const DeleteAllButton = styled.button`
     color: ${({ theme }) => theme.bgColor};
   }
 `;
-
-const DreamTeamPage = () => {
-  const setDreamTeamPlayers = useSetRecoilState(dreamTeamInfo);
-
-  const onClickDeleteAll = () => {
-    setDreamTeamPlayers([]);
-  };
-
-  return (
-    <DreamTeamPageWrapper>
-      <PlayerTitle>타자</PlayerTitle>
-      <PlayerList>
-        <DreamBatter position="C" />
-        <DreamBatter position="1B" />
-        <DreamBatter position="2B" />
-        <DreamBatter position="3B" />
-        <DreamBatter position="SS" />
-      </PlayerList>
-      <PlayerList>
-        <DreamBatter position="LF" />
-        <DreamBatter position="CF" />
-        <DreamBatter position="RF" />
-        <DreamBatter position="DH" />
-      </PlayerList>
-      <PlayerTitle>선발 투수</PlayerTitle>
-      <PlayerList>
-        <DreamPitcher position="SP" />
-      </PlayerList>
-      <PlayerTitle>불펜 투수</PlayerTitle>
-      <PlayerList>
-        <DreamPitcher position="RP" />
-      </PlayerList>
-      <DeleteAllButton onClick={onClickDeleteAll}>전체 삭제</DeleteAllButton>
-    </DreamTeamPageWrapper>
-  );
-};
 
 export default DreamTeamPage;

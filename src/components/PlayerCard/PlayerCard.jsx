@@ -159,7 +159,7 @@ const PlayerCard = () => {
             <PlayerInfo>
               데뷔일 :
               {showingPlayer.ProDebut
-                ? showingPlayer.ProDebut.slice(0, 10)
+                ? " " + showingPlayer.ProDebut.slice(0, 10)
                 : "아직 데뷔 전"}
             </PlayerInfo>
           </PlayerInfoList>
