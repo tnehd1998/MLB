@@ -32,7 +32,7 @@ const DreamBatter = ({ position }) => {
         ))
       ) : (
         <Player>
-          <h1>선택한 선수 없음</h1>
+          <h1>X</h1>
         </Player>
       )}
     </DreamBatterWrapper>
@@ -53,12 +53,32 @@ const Player = styled.li`
   background-position: center;
   background-repeat: no-repeat;
   border: 2px solid ${({ theme }) => theme.textColor};
-  border-radius: 2em;
+  border-radius: 20px;
+
+  @media (max-width: 768px) {
+    width: 12vw;
+    height: 12vw;
+  }
+
+  @media (min-width: 1150px) {
+    width: 14vw;
+    height: 14vw;
+  }
 `;
 
 const PlayerImage = styled.img`
   width: 8vw;
   height: 10vw;
+
+  @media (max-width: 768px) {
+    width: 5vw;
+    height: 8vw;
+  }
+
+  @media (min-width: 1150px) {
+    width: 10vw;
+    height: 12vw;
+  }
 `;
 
 const PlayerInfo = styled.div`
@@ -73,11 +93,27 @@ const PlayerInfo = styled.div`
 const PlayerPosition = styled.p`
   font-size: 12px;
   font-weight: 800;
+
+  @media (max-width: 768px) {
+    font-size: 8px;
+  }
+
+  @media (min-width: 1150px) {
+    font-size: 16px;
+  }
 `;
 
 const PlayerName = styled.p`
-  font-size: 10px;
+  font-size: 8px;
   font-weight: 400;
+
+  @media (max-width: 768px) {
+    font-size: 8px;
+  }
+
+  @media (min-width: 1150px) {
+    font-size: 12px;
+  }
 `;
 
 export default DreamBatter;

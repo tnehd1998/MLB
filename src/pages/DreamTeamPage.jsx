@@ -14,7 +14,7 @@ const DreamTeamPage = () => {
 
   return (
     <DreamTeamPageWrapper>
-      <PlayerTitle>타자</PlayerTitle>
+      <PlayerTitle>내야수</PlayerTitle>
       <PlayerList>
         <DreamBatter position="C" />
         <DreamBatter position="1B" />
@@ -22,6 +22,7 @@ const DreamTeamPage = () => {
         <DreamBatter position="3B" />
         <DreamBatter position="SS" />
       </PlayerList>
+      <PlayerTitle>외야수 / 지명타자</PlayerTitle>
       <PlayerList>
         <DreamBatter position="LF" />
         <DreamBatter position="CF" />
@@ -57,7 +58,7 @@ const PlayerTitle = styled.p`
 
 const PlayerList = styled.ul`
   display: flex;
-  margin: 0.5em 0;
+  margin: 1em 0;
 `;
 
 const DeleteAllButton = styled.button`
@@ -73,6 +74,7 @@ const DeleteAllButton = styled.button`
   cursor: pointer;
   color: ${({ theme }) => theme.textColor};
   transition: all 0.3s linear;
+  margin-bottom: 5vh;
   &:hover {
     background-color: ${({ theme }) => theme.textColor};
     transition: all 0.3s linear;
