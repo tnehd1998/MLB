@@ -1,23 +1,17 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { useNavigate } from "react-router";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import styled from "styled-components";
 import {
   currentPlayer,
   dreamTeamInfo,
   playerSelection,
-  teamInfo,
 } from "../../store/atoms";
 
 const PlayerCard = () => {
   const showingPlayer = useRecoilValue(currentPlayer);
   const setSelectPlayer = useSetRecoilState(playerSelection);
-  const [team, setTeam] = useState({});
   const [dreamTeam, setDreamTeam] = useRecoilState(dreamTeamInfo);
   const [isDreamTeamPlayer, setIsDreamTeamPlayer] = useState(false);
-  const teamLogos = useRecoilValue(teamInfo);
-
-  const navigate = useNavigate();
 
   const checkIsDreamTeamPlayer = useCallback(() => {
     return dreamTeam.find(
@@ -46,13 +40,6 @@ const PlayerCard = () => {
     });
     return currentName.join("");
   };
-
-  const getTeamInfo = useCallback(
-    (teamName) => {
-      return teamLogos.find((team) => team.Key === teamName);
-    },
-    [teamLogos]
-  );
 
   const addPitcherToDreamTeam = () => {
     let samePositionPlayers = dreamTeam.filter(
@@ -122,11 +109,6 @@ const PlayerCard = () => {
   };
 
   useEffect(() => {
-    const teamInfo = getTeamInfo(showingPlayer.Team);
-    setTeam(teamInfo);
-  }, [getTeamInfo, showingPlayer.Team]);
-
-  useEffect(() => {
     const checkPlayer = checkIsDreamTeamPlayer();
     setIsDreamTeamPlayer(checkPlayer);
   }, [checkIsDreamTeamPlayer]);
@@ -155,14 +137,11 @@ const PlayerCard = () => {
               데뷔일 :
               {showingPlayer.ProDebut
                 ? " " + showingPlayer.ProDebut.slice(0, 10)
-                : "아직 데뷔 전"}
+                : " 아직 데뷔 전"}
             </PlayerInfo>
           </PlayerInfoList>
         </PlayerProfileWrapper>
         <PlayerLinkWrapper>
-          <PlayerTeamLink onClick={() => navigate(`/${showingPlayer.Team}`)}>
-            <PlayerTeamLogo src={team.WikipediaLogoUrl} alt="Team Logo" />
-          </PlayerTeamLink>
           <PlayerPageLink
             href={`https://www.mlb.com/player/${convertNameForUrl(
               showingPlayer.FirstName.toLowerCase()
@@ -178,7 +157,6 @@ const PlayerCard = () => {
             href={`https://www.youtube.com/results?search_query=${showingPlayer.FirstName.toLowerCase()}+${showingPlayer.LastName.toLowerCase()}+baseball`}
             rel="noreferrer"
             target="_blank"
-            type="youtube"
           >
             ⚾️ 관련 동영상
           </PlayerPageLink>
@@ -316,10 +294,9 @@ const PlayerPageLink = styled.a`
   justify-content: center;
   align-items: center;
   transition: all 0.3s linear;
-  background-color: ${(props) =>
-    props.type === "youtube" ? "tomato" : "skyblue"};
+  background-color: ${({ theme }) => theme.bgColor};
   &:hover {
-    background-color: ${(props) => "#" + props.color};
+    background-color: ${({ theme }) => theme.textColor};
     transition: all 0.3s linear;
     color: ${({ theme }) => theme.bgColor};
     border: ${({ theme }) => theme.bgColor};
@@ -346,10 +323,10 @@ const AddToDreamTeamButton = styled.div`
   align-items: center;
   cursor: pointer;
   transition: border 0.3s linear;
-  background-color: ${(props) =>
-    props.type === "youtube" ? "tomato" : "skyblue"};
+  background-color: ${({ theme }) => theme.bgColor};
   &:hover {
     transition: all 0.3s linear;
+    background-color: ${({ theme }) => theme.textColor};
     color: ${({ theme }) => theme.bgColor};
     border: ${({ theme }) => theme.bgColor};
   }
@@ -360,27 +337,6 @@ const AddToDreamTeamButton = styled.div`
 
   @media (min-width: 1150px) {
     font-size: 1.2em;
-  }
-`;
-
-const PlayerTeamLink = styled.div`
-  width: 2em;
-  height: 2em;
-  padding: 0.5em;
-  font-size: 1em;
-  border: 2px solid ${({ theme }) => theme.textColor};
-  border-radius: 15px;
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-`;
-
-const PlayerTeamLogo = styled.img`
-  width: 2em;
-  height: 2em;
-  &:hover {
-    transform: scale(1.2);
-    transition: all 0.3s linear;
   }
 `;
 
