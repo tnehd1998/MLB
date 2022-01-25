@@ -56,10 +56,18 @@ const Standing = () => {
 };
 
 const StandingWrapper = styled.div`
-  width: 60vw;
+  width: 36em;
   border-radius: 20px;
-  height: 20em;
   border: 2px solid ${({ theme }) => theme.textColor};
+  margin-bottom: 10vh;
+
+  @media (max-width: 768px) {
+    width: 28em;
+  }
+
+  @media (min-width: 1150px) {
+    width: 50em;
+  }
 `;
 
 const RegionCategories = styled.ul`
@@ -72,11 +80,19 @@ const RegionCategories = styled.ul`
 const RegionCategory = styled.li`
   padding: 1em;
   cursor: pointer;
-  border-radius: 16px;
+  border-radius: 20px;
   &:hover {
     transition: all 0.5s ease-in;
     background-color: ${({ theme }) => theme.textColor};
     color: ${({ theme }) => theme.bgColor};
+  }
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
+
+  @media (min-width: 1150px) {
+    font-size: 22px;
   }
 `;
 
@@ -94,6 +110,14 @@ const StandingTeams = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: 768px) {
+    font-size: 17px;
+  }
+
+  @media (min-width: 1150px) {
+    font-size: 19px;
+  }
 `;
 
 const StandingTeam = styled(Link)`
@@ -104,11 +128,10 @@ const StandingTeam = styled(Link)`
   width: 100%;
   text-align: center;
   &:hover {
-    font-size: 18px;
     transition: all 0.5s ease-in;
     background-color: ${({ theme }) => theme.textColor};
     color: ${({ theme }) => theme.bgColor};
-    border-radius: 20px;
+    border-radius: 18px;
   }
 `;
 

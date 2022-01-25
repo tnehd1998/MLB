@@ -58,8 +58,9 @@ const Table = styled.table`
 `;
 
 const Subjects = styled.tr`
-  font-size: 20px;
+  font-size: 14px;
   margin-bottom: 30px;
+  font-weight: 600;
 
   @media (max-width: 768px) {
     font-size: 12px;
@@ -77,7 +78,7 @@ const Subject = styled.td`
 const Player = styled.tr`
   text-align: center;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 14px;
   &:hover {
     font-size: 18px;
     transition: all 0.5s ease-in;
@@ -90,7 +91,7 @@ const Player = styled.tr`
   }
 
   @media (min-width: 1150px) {
-    font-size: 20px;
+    font-size: 22px;
   }
 `;
 
