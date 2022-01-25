@@ -7,6 +7,7 @@ import { playerSelection } from "../store/atoms";
 import TeamTitle from "../components/TeamTitle/TeamTitle";
 import TeamPlayers from "../components/TeamPlayers/TeamPlayers";
 import PlayerCard from "../components/PlayerCard/PlayerCard";
+import { Helmet } from "react-helmet";
 
 const TeamPage = () => {
   const { teamName } = useParams();
@@ -20,6 +21,9 @@ const TeamPage = () => {
 
   return (
     <TeamInformationWrapper>
+      <Helmet>
+        <title>{`MLB | ${teamName}`}</title>
+      </Helmet>
       <TeamDescription selectPlayer={selectPlayer}>
         <Suspense fallback={<Loading />}>
           <TeamTitle teamName={teamName} />

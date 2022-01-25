@@ -1,4 +1,5 @@
 import React, { Suspense } from "react";
+import { Helmet } from "react-helmet";
 import styled from "styled-components";
 
 import AllStarTable from "../components/AllStarTable/AllStarTable";
@@ -7,6 +8,9 @@ import Loading from "../components/Loading/Loading";
 const AllStarPage = () => {
   return (
     <AllStarPageWrapper>
+      <Helmet>
+        <title>MLB | ALL STAR</title>
+      </Helmet>
       <Title>😍 특정 선수를 선택하면 소속 팀 페이지로 이동합니다. 😍</Title>
       <Suspense fallback={<Loading />}>
         <AllStarTable />

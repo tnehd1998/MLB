@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 import { useSetRecoilState } from "recoil";
 import styled from "styled-components";
 import DreamBatter from "../components/DreamBatter/DreamBatter";
@@ -14,6 +15,9 @@ const DreamTeamPage = () => {
 
   return (
     <DreamTeamPageWrapper>
+      <Helmet>
+        <title>MLB | DREAM TEAM</title>
+      </Helmet>
       <PlayerTitle>내야수</PlayerTitle>
       <PlayerList>
         <DreamBatter position="C" />
