@@ -201,8 +201,8 @@ const PlayerCard = () => {
 const PlayerCardWrapper = styled.div`
   width: 70vw;
   height: 70vh;
-  top: ${(props) => props.top + "px"};
-  left: ${(props) => props.left + "px"};
+  top: 15vh;
+  left: 15vw;
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -212,6 +212,16 @@ const PlayerCardWrapper = styled.div`
   border-radius: 30px;
   z-index: 20;
   border: 2px solid ${({ theme }) => theme.textColor};
+
+  @media (max-width: 768px) {
+    width: 90vw;
+    left: 5vw;
+  }
+
+  @media (min-width: 1150px) {
+    width: 60vw;
+    left: 20vw;
+  }
 `;
 
 const CloseIcon = styled.p`
@@ -234,6 +244,14 @@ const CloseIcon = styled.p`
 const PlayerCardTitle = styled.p`
   font-size: 2.5em;
   margin-bottom: 1em;
+
+  @media (max-width: 768px) {
+    font-size: 2em;
+  }
+
+  @media (min-width: 1150px) {
+    font-size: 3em;
+  }
 `;
 
 const PlayerInfoWrapper = styled.div`
@@ -247,10 +265,26 @@ const PlayerImage = styled.img`
   height: 100%;
   border-radius: 10%;
   border: 2px solid ${({ theme }) => theme.textColor};
+
+  @media (max-width: 768px) {
+    width: 12em;
+  }
+
+  @media (min-width: 1150px) {
+    width: 15em;
+  }
 `;
 
 const PlayerInfo = styled.p`
   font-size: 24px;
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
+
+  @media (min-width: 1150px) {
+    font-size: 28px;
+  }
 `;
 
 const PlayerProfileWrapper = styled.div`
@@ -295,6 +329,14 @@ const PlayerPageLink = styled.a`
     color: ${({ theme }) => theme.bgColor};
     border: ${({ theme }) => theme.bgColor};
   }
+
+  @media (max-width: 768px) {
+    font-size: 0.7em;
+  }
+
+  @media (min-width: 1150px) {
+    font-size: 1.2em;
+  }
 `;
 
 const AddToDreamTeamButton = styled.div`
@@ -315,6 +357,14 @@ const AddToDreamTeamButton = styled.div`
     transition: all 0.3s linear;
     color: ${({ theme }) => theme.bgColor};
     border: ${({ theme }) => theme.bgColor};
+  }
+
+  @media (max-width: 768px) {
+    font-size: 0.7em;
+  }
+
+  @media (min-width: 1150px) {
+    font-size: 1.2em;
   }
 `;
 
