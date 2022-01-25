@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const SPORT_DATA_API_KEY = process.env.REACT_APP_SPORT_DATA_API_KEY;
+const SPORT_DATA_API_KEY = "e6fb055109a84802b5915a6f344ea72e";
 
 export const getTeamData = async () => {
   const info = await axios

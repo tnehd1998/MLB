@@ -2,7 +2,7 @@ import React from "react";
 import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Route,
   Routes,
   Navigate,
