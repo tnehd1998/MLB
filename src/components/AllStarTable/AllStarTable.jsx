@@ -60,6 +60,14 @@ const Table = styled.table`
 const Subjects = styled.tr`
   font-size: 20px;
   margin-bottom: 30px;
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
+
+  @media (min-width: 1150px) {
+    font-size: 22px;
+  }
 `;
 
 const Subject = styled.td`
@@ -75,6 +83,14 @@ const Player = styled.tr`
     transition: all 0.5s ease-in;
     background-color: ${({ theme }) => theme.textColor};
     color: ${({ theme }) => theme.bgColor};
+  }
+
+  @media (max-width: 768px) {
+    font-size: 8px;
+  }
+
+  @media (min-width: 1150px) {
+    font-size: 20px;
   }
 `;
 

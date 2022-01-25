@@ -29,6 +29,14 @@ const Title = styled.p`
   border: 2px solid ${({ theme }) => theme.textColor};
   border-radius: 20px;
   padding: 10px;
+
+  @media (max-width: 768px) {
+    font-size: 16px;
+  }
+
+  @media (min-width: 1150px) {
+    font-size: 32px;
+  }
 `;
 
 export default AllStarPage;
