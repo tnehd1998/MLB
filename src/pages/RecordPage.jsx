@@ -1,5 +1,5 @@
 import React, { Suspense } from "react";
-import { Helmet } from "react-helmet";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 import styled from "styled-components";
 import Loading from "../components/Loading/Loading";
 import PostSeason from "../components/PostSeason/PostSeason";
@@ -8,9 +8,11 @@ import Standing from "../components/Standing/Standing";
 const RecordPage = () => {
   return (
     <RecordPageWrapper>
-      <Helmet>
-        <title>MLB | RECORD</title>
-      </Helmet>
+      <HelmetProvider>
+        <Helmet>
+          <title>MLB | RECORD</title>
+        </Helmet>
+      </HelmetProvider>
       <Title>2021 MLB POSTSEASON</Title>
       <PostSeason />
       <Title>2021 TEAM STANDING</Title>

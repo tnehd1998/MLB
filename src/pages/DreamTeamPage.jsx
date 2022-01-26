@@ -1,5 +1,5 @@
 import React from "react";
-import { Helmet } from "react-helmet";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 import { useSetRecoilState } from "recoil";
 import styled from "styled-components";
 import DreamBatter from "../components/DreamBatter/DreamBatter";
@@ -15,9 +15,11 @@ const DreamTeamPage = () => {
 
   return (
     <DreamTeamPageWrapper>
-      <Helmet>
-        <title>MLB | DREAM TEAM</title>
-      </Helmet>
+      <HelmetProvider>
+        <Helmet>
+          <title>MLB | DREAM TEAM</title>
+        </Helmet>
+      </HelmetProvider>
       <PlayerTitle>내야수</PlayerTitle>
       <PlayerList>
         <DreamBatter position="C" />
