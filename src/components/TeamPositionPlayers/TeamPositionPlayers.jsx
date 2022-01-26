@@ -15,7 +15,6 @@ const PositionPlayer = ({ info, positions, title }) => {
       <PositionName>{title}</PositionName>
       <PlayerList>
         {[...info].map((playerInfo) =>
-          playerInfo.Status === "Active" &&
           filterPosition(playerInfo, positions) ? (
             <TeamPlayer key={playerInfo.PlayerID} playerInfo={playerInfo} />
           ) : (

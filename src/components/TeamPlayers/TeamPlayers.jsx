@@ -14,6 +14,8 @@ const TeamPlayers = ({ teamName }) => {
     fetchData();
   }, [teamName]);
 
+  console.log(info);
+
   return (
     <TeamPlayersWrapper>
       <TeamPositionPlayers

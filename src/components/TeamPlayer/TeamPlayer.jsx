@@ -19,9 +19,7 @@ const TeamPlayer = ({ playerInfo }) => {
         alt={`${playerInfo.FirstName} ${playerInfo.LastName}`}
       />
       <PlayerProfile>
-        <PlayerName>
-          {playerInfo.FirstName} {playerInfo.LastName}
-        </PlayerName>
+        <PlayerName>{playerInfo.DraftKingsName}</PlayerName>
         <PlayerDescription>포지션 : {playerInfo.Position}</PlayerDescription>
         <PlayerDescription>타격 위치 : {playerInfo.BatHand}</PlayerDescription>
         <PlayerDescription>
