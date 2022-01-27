@@ -53,11 +53,11 @@ const PlayerCard = () => {
         if (samePositionPlayers.length === 5) {
           let deletedPlayer = samePositionPlayers.shift();
           alert(
-            `${showingPlayer.Position}포지션 선수 ${deletedPlayer.DraftKingsName}가 제거되고 ${showingPlayer.DraftKingsName}가 추가되었습니다.`
+            `${showingPlayer.Position}포지션 선수 ${deletedPlayer.FirstName} ${deletedPlayer.LastName}가 제거되고 ${showingPlayer.FirstName} ${showingPlayer.LastName}가 추가되었습니다.`
           );
         } else {
           alert(
-            `${showingPlayer.DraftKingsName}가 ${showingPlayer.Position}에 추가되었습니다.`
+            `${showingPlayer.FirstName} ${showingPlayer.LastName}가 ${showingPlayer.Position}에 추가되었습니다.`
           );
         }
         samePositionPlayers.push(showingPlayer);
@@ -66,11 +66,11 @@ const PlayerCard = () => {
         if (samePositionPlayers.length === 6) {
           let deletedPlayer = samePositionPlayers.shift();
           alert(
-            `${showingPlayer.Position}포지션 선수 ${deletedPlayer.DraftKingsName}가 제거되고 ${showingPlayer.DraftKingsName}가 추가되었습니다.`
+            `${showingPlayer.Position}포지션 선수 ${deletedPlayer.FirstName} ${deletedPlayer.LastName}가 제거되고 ${showingPlayer.FirstName} ${showingPlayer.LastName}가 추가되었습니다.`
           );
         } else {
           alert(
-            `${showingPlayer.DraftKingsName}가 ${showingPlayer.Position}에 추가되었습니다.`
+            `${showingPlayer.FirstName} ${showingPlayer.LastName}가 ${showingPlayer.Position}에 추가되었습니다.`
           );
         }
         samePositionPlayers.push(showingPlayer);
@@ -91,11 +91,11 @@ const PlayerCard = () => {
     );
     if (samePositionPlayer) {
       alert(
-        `${showingPlayer.Position}포지션 선수가 ${samePositionPlayer.DraftKingsName}에서 ${showingPlayer.DraftKingsName}로 변경되었습니다.`
+        `${showingPlayer.Position}포지션 선수가 ${samePositionPlayer.FirstName} ${samePositionPlayer.LastName}에서 ${showingPlayer.FirstName} ${showingPlayer.LastName}로 변경되었습니다.`
       );
     } else {
       alert(
-        `${showingPlayer.DraftKingsName}가 ${showingPlayer.Position}에 추가되었습니다.`
+        `${showingPlayer.FirstName} ${showingPlayer.LastName}가 ${showingPlayer.Position}에 추가되었습니다.`
       );
     }
 
@@ -125,7 +125,9 @@ const PlayerCard = () => {
         <PlayerProfileWrapper>
           <PlayerImage src={showingPlayer.PhotoUrl} />
           <PlayerInfoList>
-            <PlayerInfo>이름 : {showingPlayer.DraftKingsName}</PlayerInfo>
+            <PlayerInfo>
+              이름 : {showingPlayer.FirstName} {showingPlayer.LastName}
+            </PlayerInfo>
             <PlayerInfo>국적 : {showingPlayer.BirthCountry}</PlayerInfo>
             <PlayerInfo>
               출생년도 : {showingPlayer.BirthDate.slice(0, 10)}
