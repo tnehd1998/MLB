@@ -9,14 +9,15 @@ const TeamSelection = () => {
 
   return (
     <TeamSelectionWrapper>
-      {teams.map((team) =>
-        team.WikipediaLogoUrl ? (
-          <TeamLink key={team.TeamID} to={team.Key}>
-            <Team iconBgColor={`${team.PrimaryColor}`}>
-              <TeamLogo src={`${team.WikipediaLogoUrl}`} alt={team.City} />
-            </Team>
-          </TeamLink>
-        ) : null
+      {teams.map(
+        (team) =>
+          team.WikipediaLogoUrl && (
+            <TeamLink key={team.TeamID} to={team.Key}>
+              <Team iconBgColor={`${team.PrimaryColor}`}>
+                <TeamLogo src={`${team.WikipediaLogoUrl}`} alt={team.City} />
+              </Team>
+            </TeamLink>
+          )
       )}
     </TeamSelectionWrapper>
   );
