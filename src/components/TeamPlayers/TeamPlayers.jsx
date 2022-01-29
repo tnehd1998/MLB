@@ -1,17 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import { useQuery } from "react-query";
-import { getCertainTeamData } from "../../api/apis";
 import TeamPositionPlayers from "../TeamPositionPlayers/TeamPositionPlayers";
+import { useGetCertainTeam } from "../../api/team";
 
 const TeamPlayers = ({ teamName }) => {
-  const { data: info } = useQuery(
-    `${teamName}`,
-    () => getCertainTeamData(teamName),
-    {
-      suspense: true,
-    }
-  );
+  const { data: info } = useGetCertainTeam(teamName);
 
   return (
     <TeamPlayersWrapper>
