@@ -1,11 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router";
-import { useRecoilValue } from "recoil";
-import { allStarInfo } from "../../store/atoms";
+import { useQuery } from "react-query";
+import { getAllStarPlayerData } from "../../apis/apis";
 
 const AllStarTable = () => {
-  const players = useRecoilValue(allStarInfo);
+  const { data: players } = useQuery("allStarInfo", getAllStarPlayerData, {
+    suspense: true,
+  });
   const navigate = useNavigate();
 
   return (
