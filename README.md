@@ -13,11 +13,11 @@
 - React-router
 - styled-components
 - axios
+- React-query
 
 사용한 언어 : JavaScript
 
 ### 📌 수정 및 추가 예정 기술 및 언어 목록
 
-- React-query
 - JavaScript -> TypeScript로 전환
 - 유닛 테스트, E2E 테스트
