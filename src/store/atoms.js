@@ -16,14 +16,6 @@ const { persistAtom } = recoilPersist({
   storage: localStorage,
 });
 
-export const teamInfo = selector({
-  key: "teamInfo",
-  get: async () => {
-    const info = await getTeamData();
-    return info;
-  },
-});
-
 export const allStarInfo = selector({
   key: "allStarInfo",
   get: async () => {

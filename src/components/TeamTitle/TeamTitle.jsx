@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { useRecoilValue } from "recoil";
-import { teamInfo } from "../../store/atoms";
+import { useQuery } from "react-query";
+import { getTeamData } from "../../apis/apis";
 
 const TeamTitle = ({ teamName }) => {
-  const teams = useRecoilValue(teamInfo);
+  const { data: teams } = useQuery("teamInfo", getTeamData, {
+    suspense: true,
+  });
   const [currentTeam, setCurrentTeam] = useState([]);
 
   const changeNameForUrl = (teamName) => {

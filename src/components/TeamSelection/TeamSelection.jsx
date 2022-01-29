@@ -1,11 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { useRecoilValue } from "recoil";
-import { teamInfo } from "../../store/atoms";
+import { useQuery } from "react-query";
+import { getTeamData } from "../../apis/apis";
 
 const TeamSelection = () => {
-  const teams = useRecoilValue(teamInfo);
+  const { data: teams } = useQuery("teamInfo", getTeamData, {
+    suspense: true,
+  });
 
   return (
     <TeamSelectionWrapper>
