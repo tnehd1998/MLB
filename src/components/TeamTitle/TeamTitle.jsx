@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { useQuery } from "react-query";
-import { getTeamData } from "../../api/apis";
+import { useGetTeams } from "../../api/teams";
 
 const TeamTitle = ({ teamName }) => {
-  const { data: teams } = useQuery("teamInfo", getTeamData, {
-    suspense: true,
-  });
+  const { data: teams } = useGetTeams();
   const [currentTeam, setCurrentTeam] = useState([]);
 
   const changeNameForUrl = (teamName) => {

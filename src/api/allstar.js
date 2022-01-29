@@ -3,7 +3,7 @@ import { useQuery } from "react-query";
 
 const baseURL = process.env.REACT_APP_BASE_URL;
 
-const getAllStarPlayer = async () => {
+const getAllStar = async () => {
   const info = await axios
     .get(`${baseURL}/allstar`)
     .then((response) => response.data.slice(0, 200));
@@ -11,7 +11,7 @@ const getAllStarPlayer = async () => {
 };
 
 export const useAllStar = () => {
-  return useQuery("allStarInfo", getAllStarPlayer, {
+  return useQuery("allStar", getAllStar, {
     suspense: true,
   });
 };

@@ -1,13 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { useQuery } from "react-query";
-import { getTeamData } from "../../api/apis";
+import { useGetTeams } from "../../api/teams";
 
 const TeamSelection = () => {
-  const { data: teams } = useQuery("teamInfo", getTeamData, {
-    suspense: true,
-  });
+  const { data: teams } = useGetTeams();
 
   return (
     <TeamSelectionWrapper>
