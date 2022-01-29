@@ -1,18 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styled from "styled-components";
+import { useQuery } from "react-query";
 import { getCertainTeamData } from "../../apis/apis";
 import TeamPositionPlayers from "../TeamPositionPlayers/TeamPositionPlayers";
 
 const TeamPlayers = ({ teamName }) => {
-  const [info, setInfo] = useState([]);
-
-  useEffect(() => {
-    async function fetchData() {
-      const data = await getCertainTeamData(teamName);
-      setInfo(data);
+  const { data: info } = useQuery(
+    `${teamName}`,
+    () => getCertainTeamData(teamName),
+    {
+      suspense: true,
     }
-    fetchData();
-  }, [teamName]);
+  );
 
   return (
     <TeamPlayersWrapper>
