@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "/MLB/static/js/main.9fc3858b.js",
+    "main.js": "/MLB/static/js/main.9b5b1b9f.js",
     "static/js/787.ec7ad8aa.chunk.js": "/MLB/static/js/787.ec7ad8aa.chunk.js",
     "static/media/postseason.jpeg": "/MLB/static/media/postseason.6a885bd76959f24b5cfc.jpeg",
     "index.html": "/MLB/index.html",
-    "main.9fc3858b.js.map": "/MLB/static/js/main.9fc3858b.js.map",
+    "main.9b5b1b9f.js.map": "/MLB/static/js/main.9b5b1b9f.js.map",
     "787.ec7ad8aa.chunk.js.map": "/MLB/static/js/787.ec7ad8aa.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.9fc3858b.js"
+    "static/js/main.9b5b1b9f.js"
   ]
 }
