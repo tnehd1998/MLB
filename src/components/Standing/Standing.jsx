@@ -1,14 +1,11 @@
 import React, { useState } from "react";
-import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { getTeamStandingData } from "../../api/apis";
+import { useGetStanding } from "../../api/standing";
 
 const Standing = () => {
   const [currentRegion, setCurrentRegion] = useState("AL East");
-  const { data: standing } = useQuery("teamStandingInfo", getTeamStandingData, {
-    suspense: true,
-  });
+  const { data: standing } = useGetStanding();
 
   return (
     <StandingWrapper>
