@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useQuery } from "react-query";
-import { getCertainTeamData } from "../../apis/apis";
+import { getCertainTeamData } from "../../api/apis";
 import TeamPositionPlayers from "../TeamPositionPlayers/TeamPositionPlayers";
 
 const TeamPlayers = ({ teamName }) => {

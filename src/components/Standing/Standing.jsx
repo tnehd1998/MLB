@@ -1,12 +1,14 @@
 import React, { useState } from "react";
+import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
-import { useRecoilValue } from "recoil";
 import styled from "styled-components";
-import { teamStandingInfo } from "../../store/atoms";
+import { getTeamStandingData } from "../../api/apis";
 
 const Standing = () => {
   const [currentRegion, setCurrentRegion] = useState("AL East");
-  const standing = useRecoilValue(teamStandingInfo);
+  const { data: standing } = useQuery("teamStandingInfo", getTeamStandingData, {
+    suspense: true,
+  });
 
   return (
     <StandingWrapper>

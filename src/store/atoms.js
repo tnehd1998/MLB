@@ -1,6 +1,5 @@
-import { atom, selector } from "recoil";
+import { atom } from "recoil";
 import { recoilPersist } from "recoil-persist";
-import { getTeamStandingData } from "../apis/apis";
 
 export const themeState = atom({
   key: "themeState",
@@ -10,14 +9,6 @@ export const themeState = atom({
 const { persistAtom } = recoilPersist({
   key: "mlb",
   storage: localStorage,
-});
-
-export const teamStandingInfo = selector({
-  key: "teamStandingInfo",
-  get: async () => {
-    const info = await getTeamStandingData();
-    return info;
-  },
 });
 
 export const dreamTeamInfo = atom({
