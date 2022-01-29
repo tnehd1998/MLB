@@ -1,15 +1,25 @@
 import React from "react";
 import { useSetRecoilState } from "recoil";
 import styled from "styled-components";
-import { currentPlayer, playerSelection } from "../../store/atoms";
+import {
+  currentPlayer,
+  currentYState,
+  playerSelection,
+} from "../../store/atoms";
 
 const TeamPlayer = ({ playerInfo }) => {
   const setPlayerSelected = useSetRecoilState(playerSelection);
   const setCurrentPlayer = useSetRecoilState(currentPlayer);
+  const setCurrentY = useSetRecoilState(currentYState);
+
+  const calculatePopUpHeight = () => {
+    setCurrentY(window.scrollY + window.innerHeight * 0.15);
+  };
 
   const showPlayerInfo = (playerInfo) => {
     setPlayerSelected((value) => !value);
     setCurrentPlayer(playerInfo);
+    calculatePopUpHeight();
   };
 
   return (

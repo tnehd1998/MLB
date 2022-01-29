@@ -55,3 +55,8 @@ export const currentPlayer = atom({
   key: "currentPlayer",
   default: [],
 });
+
+export const currentYState = atom({
+  key: "currentYState",
+  default: 0,
+});
