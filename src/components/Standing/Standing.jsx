@@ -7,6 +7,8 @@ const Standing = () => {
   const [currentRegion, setCurrentRegion] = useState("AL East");
   const { data: standing } = useGetStanding();
 
+  console.log(standing);
+
   return (
     <StandingWrapper>
       <RegionCategories>

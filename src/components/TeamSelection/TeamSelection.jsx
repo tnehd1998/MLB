@@ -6,6 +6,8 @@ import { useGetTeams } from "../../api/teams";
 const TeamSelection = () => {
   const { data: teams } = useGetTeams();
 
+  console.log(teams);
+
   return (
     <TeamSelectionWrapper>
       {teams.map(

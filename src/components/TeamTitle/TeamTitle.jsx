@@ -10,6 +10,8 @@ const TeamTitle = ({ teamName }) => {
     return teamName.toLowerCase().replace(/(\s*)/g, "");
   };
 
+  console.log(teams);
+
   useEffect(() => {
     function getCurrentTeam() {
       const team = teams.find((team) => team.Key === teamName);
