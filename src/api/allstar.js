@@ -6,7 +6,7 @@ const baseURL = process.env.REACT_APP_BASE_URL;
 const getAllStar = async () => {
   const info = await axios
     .get(`${baseURL}/allstar`)
-    .then((response) => response.data.slice(0, 200));
+    .then((response) => response.data);
   return info;
 };
 
