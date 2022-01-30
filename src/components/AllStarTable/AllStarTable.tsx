@@ -10,7 +10,7 @@ const AllStarTable = () => {
   return (
     <AllStarTableWrapper>
       <Table>
-        <colgroup span="4" className="columns"></colgroup>
+        <colgroup span={4} className="columns"></colgroup>
         <thead>
           <Subjects>
             <Subject>선수 랭킹 (RANKING)</Subject>
@@ -20,7 +20,7 @@ const AllStarTable = () => {
           </Subjects>
         </thead>
         <tbody>
-          {players.map((player, index) => (
+          {players?.map((player, index) => (
             <Player
               key={player.StatID}
               onClick={() => navigate(`/${player.Team}`)}
