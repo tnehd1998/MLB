@@ -21,7 +21,7 @@ const ThemeButton = () => {
   );
 };
 
-const ThemeButtonContainer = styled.div`
+const ThemeButtonContainer = styled.div<{ currentTheme: boolean }>`
   cursor: pointer;
   font-size: 30px;
   background-color: ${(props) => (!props.currentTheme ? "grey" : "white")};
