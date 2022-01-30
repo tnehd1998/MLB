@@ -2,11 +2,12 @@ import React from "react";
 import { useRecoilValue } from "recoil";
 import styled from "styled-components";
 import { dreamTeamInfo } from "../../store/atoms";
+import { IDreamPlayerProps } from "../../types/player.type";
 
-const DreamBatter = ({ position }) => {
+const DreamBatter = ({ position }: IDreamPlayerProps) => {
   const dreamTeamPlayers = useRecoilValue(dreamTeamInfo);
 
-  const findCertainPositionBatter = (position) => {
+  const findCertainPositionBatter = (position: string) => {
     for (let dreamTeamPlayer in dreamTeamPlayers) {
       let currentPlayer = dreamTeamPlayers[dreamTeamPlayer];
       if (currentPlayer.Position === position) {

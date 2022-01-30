@@ -19,3 +19,7 @@ export interface IAllStarPlayer {
   StatID: number;
   Team: string;
 }
+
+export interface IDreamPlayerProps {
+  position: string;
+}
