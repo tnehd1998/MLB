@@ -6,11 +6,9 @@ import { useGetTeams } from "../../api/teams";
 const TeamSelection = () => {
   const { data: teams } = useGetTeams();
 
-  console.log(teams);
-
   return (
     <TeamSelectionWrapper>
-      {teams.map(
+      {teams?.map(
         (team) =>
           team.WikipediaLogoUrl && (
             <TeamLink key={team.TeamID} to={team.Key}>
@@ -36,7 +34,7 @@ const TeamSelectionWrapper = styled.div`
 
 const TeamLink = styled(Link)``;
 
-const Team = styled.div`
+const Team = styled.div<{ iconBgColor: string }>`
   width: 15vw;
   height: 15vw;
   border-radius: 15%;

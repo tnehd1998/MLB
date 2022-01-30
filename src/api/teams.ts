@@ -4,7 +4,7 @@ import { ITeams } from "../types/teams.type";
 
 const baseURL = process.env.REACT_APP_BASE_URL;
 
-const getTeams = async (): Promise<ITeams | null> => {
+const getTeams = async (): Promise<ITeams[] | null> => {
   try {
     const info = await axios
       .get(`${baseURL}`)
