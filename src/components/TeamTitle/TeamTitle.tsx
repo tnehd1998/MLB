@@ -1,21 +1,32 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useGetTeams } from "../../api/teams";
+import { ITeamNameProps } from "../../types/team.type";
+import { ITeams } from "../../types/teams.type";
 
-const TeamTitle = ({ teamName }) => {
+const TeamTitle = ({ teamName }: ITeamNameProps) => {
   const { data: teams } = useGetTeams();
-  const [currentTeam, setCurrentTeam] = useState([]);
+  const [currentTeam, setCurrentTeam] = useState<ITeams>({
+    City: "",
+    Key: "",
+    PrimaryColor: "",
+    TeamID: 0,
+    WikipediaLogoUrl: "",
+    Name: "",
+  });
 
-  const changeNameForUrl = (teamName) => {
+  const changeNameForUrl = (teamName: string) => {
     return teamName.toLowerCase().replace(/(\s*)/g, "");
   };
 
-  console.log(teams);
-
   useEffect(() => {
     function getCurrentTeam() {
-      const team = teams.find((team) => team.Key === teamName);
-      setCurrentTeam(team);
+      if (teams) {
+        const team = teams.find((team) => team.Key === teamName);
+        if (team) {
+          setCurrentTeam(team);
+        }
+      }
     }
     getCurrentTeam();
   }, [teamName, teams]);

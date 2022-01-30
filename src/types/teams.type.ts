@@ -4,8 +4,5 @@ export interface ITeams {
   PrimaryColor: string;
   TeamID: number;
   WikipediaLogoUrl: string;
-}
-
-export interface ITeamTitle extends ITeams {
   Name: string;
 }

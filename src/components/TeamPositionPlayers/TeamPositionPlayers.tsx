@@ -1,9 +1,19 @@
 import React from "react";
 import TeamPlayer from "../TeamPlayer/TeamPlayer";
 import styled from "styled-components";
+import { IPlayer } from "../../types/player.type";
+import { ITeam } from "../../types/team.type";
 
-const PositionPlayer = ({ info, positions, title }) => {
-  const filterPosition = (playerInfo, positions) => {
+const PositionPlayer = ({
+  info,
+  positions,
+  title,
+}: {
+  info: ITeam[];
+  positions: string[];
+  title: string;
+}) => {
+  const filterPosition = (playerInfo: IPlayer, positions: string[]) => {
     if (positions.includes(playerInfo.Position)) {
       return true;
     }

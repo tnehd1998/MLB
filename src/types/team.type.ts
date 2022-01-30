@@ -1,4 +1,8 @@
 import { IPlayer } from "./player.type";
-import { ITeamTitle } from "./teams.type";
+import { ITeams } from "./teams.type";
 
-export interface ITeam extends ITeamTitle, IPlayer {}
+export interface ITeam extends ITeams, IPlayer {}
+
+export type ITeamNameProps = {
+  teamName: string;
+};

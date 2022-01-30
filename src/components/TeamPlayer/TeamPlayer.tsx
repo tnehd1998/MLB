@@ -6,8 +6,9 @@ import {
   currentYState,
   playerSelection,
 } from "../../store/atoms";
+import { IPlayer } from "../../types/player.type";
 
-const TeamPlayer = ({ playerInfo }) => {
+const TeamPlayer = ({ playerInfo }: { playerInfo: IPlayer }) => {
   const setPlayerSelected = useSetRecoilState(playerSelection);
   const setCurrentPlayer = useSetRecoilState(currentPlayer);
   const setCurrentY = useSetRecoilState(currentYState);
@@ -16,7 +17,7 @@ const TeamPlayer = ({ playerInfo }) => {
     setCurrentY(window.scrollY + window.innerHeight * 0.15);
   };
 
-  const showPlayerInfo = (playerInfo) => {
+  const showPlayerInfo = (playerInfo: IPlayer) => {
     setPlayerSelected((value) => !value);
     setCurrentPlayer(playerInfo);
     calculatePopUpHeight();

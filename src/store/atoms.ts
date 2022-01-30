@@ -23,9 +23,21 @@ export const playerSelection = atom<boolean>({
   default: false,
 });
 
-export const currentPlayer = atom<IPlayer[]>({
+export const currentPlayer = atom<IPlayer>({
   key: "currentPlayer",
-  default: [],
+  default: {
+    BatHand: "",
+    BirthCountry: "",
+    BirthDate: "",
+    FirstName: "",
+    LastName: "",
+    MLBAMID: 0,
+    PhotoUrl: "",
+    PlayerID: 0,
+    Position: "",
+    ProDebut: "",
+    ThrowHand: "",
+  },
 });
 
 export const currentYState = atom<number>({

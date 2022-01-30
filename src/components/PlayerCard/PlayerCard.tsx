@@ -16,17 +16,20 @@ const PlayerCard = () => {
   const currentY = useRecoilValue(currentYState);
 
   const checkIsDreamTeamPlayer = useCallback(() => {
-    return dreamTeam.find(
+    const existingPlayer = dreamTeam.find(
       (player) => player.PlayerID === showingPlayer.PlayerID
     );
+    if (existingPlayer) return true;
+    return false;
   }, [showingPlayer.PlayerID, dreamTeam]);
 
-  const convertNameForUrl = (inputName) => {
+  const convertNameForUrl = (inputName: string) => {
     let currentName = [...inputName];
     currentName.map((letter, index) => {
       for (let alphabetAccent in alphabetAccents) {
         if (letter === alphabetAccent) {
-          return (currentName[index] = alphabetAccents[alphabetAccent]);
+          return (currentName[index] =
+            alphabetAccents[alphabetAccent as keyof IAlphabetAccents]);
         }
         if (letter === " ") {
           return (currentName[index] = "-");
@@ -54,9 +57,10 @@ const PlayerCard = () => {
       case "SP":
         if (samePositionPlayers.length === 5) {
           let deletedPlayer = samePositionPlayers.shift();
-          alert(
-            `${showingPlayer.Position}포지션 선수 ${deletedPlayer.FirstName} ${deletedPlayer.LastName}가 제거되고 ${showingPlayer.FirstName} ${showingPlayer.LastName}가 추가되었습니다.`
-          );
+          deletedPlayer &&
+            alert(
+              `${showingPlayer.Position}포지션 선수 ${deletedPlayer.FirstName} ${deletedPlayer.LastName}가 제거되고 ${showingPlayer.FirstName} ${showingPlayer.LastName}가 추가되었습니다.`
+            );
         } else {
           alert(
             `${showingPlayer.FirstName} ${showingPlayer.LastName}가 ${showingPlayer.Position}에 추가되었습니다.`
@@ -67,9 +71,10 @@ const PlayerCard = () => {
       case "RP":
         if (samePositionPlayers.length === 6) {
           let deletedPlayer = samePositionPlayers.shift();
-          alert(
-            `${showingPlayer.Position}포지션 선수 ${deletedPlayer.FirstName} ${deletedPlayer.LastName}가 제거되고 ${showingPlayer.FirstName} ${showingPlayer.LastName}가 추가되었습니다.`
-          );
+          deletedPlayer &&
+            alert(
+              `${showingPlayer.Position}포지션 선수 ${deletedPlayer.FirstName} ${deletedPlayer.LastName}가 제거되고 ${showingPlayer.FirstName} ${showingPlayer.LastName}가 추가되었습니다.`
+            );
         } else {
           alert(
             `${showingPlayer.FirstName} ${showingPlayer.LastName}가 ${showingPlayer.Position}에 추가되었습니다.`
@@ -175,7 +180,7 @@ const PlayerCard = () => {
   );
 };
 
-const PlayerCardWrapper = styled.div`
+const PlayerCardWrapper = styled.div<{ top: number }>`
   width: 70vw;
   height: 70vh;
   top: ${(props) => props.top + "px"};
@@ -344,7 +349,35 @@ const AddToDreamTeamButton = styled.div`
   }
 `;
 
-const alphabetAccents = {
+interface IAlphabetAccents {
+  à: string;
+  è: string;
+  ì: string;
+  ò: string;
+  ù: string;
+  á: string;
+  é: string;
+  í: string;
+  ó: string;
+  ú: string;
+  ý: string;
+  â: string;
+  ê: string;
+  î: string;
+  ô: string;
+  û: string;
+  ñ: string;
+  õ: string;
+  ã: string;
+  ä: string;
+  ë: string;
+  ï: string;
+  ö: string;
+  ü: string;
+  ÿ: string;
+}
+
+const alphabetAccents: IAlphabetAccents = {
   à: "a",
   è: "e",
   ì: "i",
