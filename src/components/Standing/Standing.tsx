@@ -38,18 +38,19 @@ const Standing = () => {
         <StandingTeamRecord>Losses</StandingTeamRecord>
       </StandingTeamInfo>
       <StandingTeams>
-        {standing.map((team) =>
-          team.League === currentRegion.split(" ")[0] &&
-          team.Division === currentRegion.split(" ")[1] ? (
-            <StandingTeam key={team.TeamID} to={`/${team.Key}`}>
-              <StandingTeamName>
-                {team.City} {team.Name}
-              </StandingTeamName>
-              <StandingTeamRecord>162</StandingTeamRecord>
-              <StandingTeamRecord>{team.Wins}</StandingTeamRecord>
-              <StandingTeamRecord>{team.Losses}</StandingTeamRecord>
-            </StandingTeam>
-          ) : null
+        {standing?.map(
+          (team) =>
+            team.League === currentRegion.split(" ")[0] &&
+            team.Division === currentRegion.split(" ")[1] && (
+              <StandingTeam key={team.TeamID} to={`/${team.Key}`}>
+                <StandingTeamName>
+                  {team.City} {team.Name}
+                </StandingTeamName>
+                <StandingTeamRecord>162</StandingTeamRecord>
+                <StandingTeamRecord>{team.Wins}</StandingTeamRecord>
+                <StandingTeamRecord>{team.Losses}</StandingTeamRecord>
+              </StandingTeam>
+            )
         )}
       </StandingTeams>
     </StandingWrapper>

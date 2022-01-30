@@ -4,7 +4,7 @@ import { IStanding } from "../types/standing.type";
 
 const baseURL = process.env.REACT_APP_BASE_URL;
 
-const getStanding = async (): Promise<IStanding | null> => {
+const getStanding = async (): Promise<IStanding[] | null> => {
   try {
     const info = await axios
       .get(`${baseURL}/standing`)
