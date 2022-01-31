@@ -23,3 +23,16 @@ export interface IAllStarPlayer {
 export interface IDreamPlayerProps {
   position: string;
 }
+
+export interface IRankingPlayerProps {
+  ranking: number;
+  name: string;
+  team: string;
+  years: number;
+  SignedAge: number;
+  averageValue: string;
+  totalValue: string;
+  period: string;
+  position: string;
+  playerImg: string;
+}
