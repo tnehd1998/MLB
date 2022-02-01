@@ -1,14 +1,19 @@
 import React, { Suspense } from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
+import { useRecoilState } from "recoil";
 import styled from "styled-components";
+import AllStarTable from "../components/AllStarTable/AllStarTable";
 
 import Loading from "../components/Loading/Loading";
+import Ranking from "../components/Ranking/Ranking";
+import { showFARankingState } from "../store/atoms";
 
 const AllStarPage = () => {
-  const AllStarTable = React.lazy(
-    () => import("../components/AllStarTable/AllStarTable")
-  );
-  const Ranking = React.lazy(() => import("../components/Ranking/Ranking"));
+  const [showFARanking, setShowFARanking] = useRecoilState(showFARankingState);
+
+  const onClickSwitchCategory = () => {
+    setShowFARanking((showFARanking) => !showFARanking);
+  };
 
   return (
     <AllStarPageWrapper>
@@ -17,13 +22,20 @@ const AllStarPage = () => {
           <title>MLB | ALL STAR</title>
         </Helmet>
       </HelmetProvider>
-      <Title>😍 특정 선수를 선택하면 소속 팀 페이지로 이동합니다. 😍</Title>
-      <Suspense fallback={<Loading />}>
-        <Ranking />
-      </Suspense>
-      <Suspense fallback={<Loading />}>
-        <AllStarTable />
-      </Suspense>
+      <Title onClick={onClickSwitchCategory}>
+        {showFARanking
+          ? "MLB 지정 Top 200 선수 명단 확인하기"
+          : "가장 많은 돈을 받는 선수 Top50 확인하기"}
+      </Title>
+      {showFARanking ? (
+        <Suspense fallback={<Loading />}>
+          <Ranking />
+        </Suspense>
+      ) : (
+        <Suspense fallback={<Loading />}>
+          <AllStarTable />
+        </Suspense>
+      )}
     </AllStarPageWrapper>
   );
 };
@@ -42,6 +54,12 @@ const Title = styled.p`
   border: 2px solid ${({ theme }) => theme.textColor};
   border-radius: 20px;
   padding: 10px;
+  cursor: pointer;
+  &:hover {
+    color: ${({ theme }) => theme.bgColor};
+    background-color: ${({ theme }) => theme.textColor};
+    transition: all 0.3s linear;
+  }
 
   @media (max-width: 768px) {
     font-size: 16px;
