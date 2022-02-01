@@ -16,7 +16,7 @@ const getRanking = async (): Promise<IRankingPlayerProps[] | null> => {
 };
 
 export const useRanking = () => {
-  return useQuery("allStar", getRanking, {
+  return useQuery("ranking", getRanking, {
     suspense: true,
   });
 };
