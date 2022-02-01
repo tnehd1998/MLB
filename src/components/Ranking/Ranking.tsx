@@ -11,13 +11,35 @@ const RankingWrapper = styled.div`
 
 const PlayerWrapper = styled.div`
   display: flex;
-  border: 2px solid black;
+  border: 2px solid ${({ theme }) => theme.textColor};
   border-radius: 20px;
   margin: 1em;
+  width: 26em;
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.1);
+    transition: all 0.3s ease-in;
+    background-color: ${({ theme }) => theme.textColor};
+    color: ${({ theme }) => theme.bgColor};
+  }
 `;
 
 const PlayerImage = styled.img`
   border-radius: 20px 0 0 20px;
+`;
+
+const PlayerDescriptions = styled.div`
+  padding: 1em;
+  font-size: 18px;
+`;
+
+const PlayerTitle = styled.p`
+  font-weight: 600;
+  margin-bottom: 1em;
+`;
+
+const PlayerDescription = styled.p`
+  font-size: 18px;
 `;
 
 const Ranking = () => {
@@ -28,18 +50,23 @@ const Ranking = () => {
       {players?.map((player) => (
         <PlayerWrapper key={player.ranking}>
           <PlayerImage src={player.playerImg} alt="Player" />
-          <div>
-            <p>Ranking #{player.ranking}</p>
-            <p>이름 : {player.name}</p>
-            <p>포지션 : {player.position}</p>
-            <p>소속팀 : {player.team}</p>
-            <p>
+          <PlayerDescriptions>
+            <PlayerTitle>
+              Ranking #{player.ranking} {player.name}
+            </PlayerTitle>
+            <PlayerDescription>포지션 : {player.position}</PlayerDescription>
+            <PlayerDescription>소속팀 : {player.team}</PlayerDescription>
+            <PlayerDescription>
               {player.totalValue} {player.years}년 계약
-            </p>
-            <p>계약 당시 나이 : {player.SignedAge}</p>
-            <p>평균 연봉 : {player.averageValue}</p>
-            <p>계약 기간 : {player.period}</p>
-          </div>
+            </PlayerDescription>
+            <PlayerDescription>
+              계약 당시 나이 : {player.SignedAge}
+            </PlayerDescription>
+            <PlayerDescription>
+              평균 연봉 : {player.averageValue}
+            </PlayerDescription>
+            <PlayerDescription>계약 기간 : {player.period}</PlayerDescription>
+          </PlayerDescriptions>
         </PlayerWrapper>
       ))}
     </RankingWrapper>
