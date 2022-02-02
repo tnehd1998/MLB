@@ -62,7 +62,7 @@ const Subjects = styled.tr`
   font-weight: 600;
 
   @media (max-width: 768px) {
-    font-size: 12px;
+    font-size: 8px;
   }
 
   @media (min-width: 1150px) {
@@ -71,7 +71,7 @@ const Subjects = styled.tr`
 `;
 
 const Subject = styled.td`
-  padding: 10px;
+  padding: 8px;
 `;
 
 const Player = styled.tr`

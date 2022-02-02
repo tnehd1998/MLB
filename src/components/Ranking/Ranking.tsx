@@ -38,12 +38,14 @@ const PlayerDescriptions = styled.div`
 `;
 
 const PlayerTitle = styled.p`
+  font-size: 13px;
   font-weight: 600;
   margin-bottom: 1em;
 `;
 
 const PlayerDescription = styled.p`
-  font-size: 18px;
+  font-size: 16px;
+  margin: 0.5em;
 `;
 
 const Ranking = () => {
