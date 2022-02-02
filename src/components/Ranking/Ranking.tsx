@@ -44,7 +44,7 @@ const PlayerTitle = styled.p`
 `;
 
 const PlayerDescription = styled.p`
-  font-size: 16px;
+  font-size: 14px;
   margin: 0.5em;
 `;
 
