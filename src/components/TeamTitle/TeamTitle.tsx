@@ -65,8 +65,8 @@ const TeamLogoImage = styled.img`
   height: 15vw;
 
   @media (max-width: 768px) {
-    width: 25vw;
-    height: 25vw;
+    width: 20vw;
+    height: 20vw;
   }
 
   @media (min-width: 1150px) {
@@ -87,7 +87,7 @@ const TeamCity = styled.p`
   color: ${(props) => "#" + props.color};
 
   @media (max-width: 768px) {
-    font-size: 2em;
+    font-size: 1em;
   }
 
   @media (min-width: 1150px) {
@@ -100,7 +100,7 @@ const TeamNickname = styled.p`
   color: ${(props) => "#" + props.color};
 
   @media (max-width: 768px) {
-    font-size: 3em;
+    font-size: 2em;
   }
 
   @media (min-width: 1150px) {
@@ -122,7 +122,7 @@ const OfficialPageLink = styled.a`
   }
 
   @media (max-width: 768px) {
-    font-size: 0.9em;
+    font-size: 0.5em;
   }
 
   @media (min-width: 1150px) {
