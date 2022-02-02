@@ -90,7 +90,7 @@ const RegionCategory = styled.li`
   }
 
   @media (max-width: 768px) {
-    font-size: 12px;
+    font-size: 8px;
   }
 
   @media (min-width: 1150px) {
@@ -114,7 +114,7 @@ const StandingTeams = styled.div`
   align-items: center;
 
   @media (max-width: 768px) {
-    font-size: 17px;
+    font-size: 12px;
   }
 
   @media (min-width: 1150px) {

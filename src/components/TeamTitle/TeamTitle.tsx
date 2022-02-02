@@ -65,8 +65,8 @@ const TeamLogoImage = styled.img`
   height: 15vw;
 
   @media (max-width: 768px) {
-    width: 20vw;
-    height: 20vw;
+    width: 18vw;
+    height: 18vw;
   }
 
   @media (min-width: 1150px) {
@@ -87,7 +87,7 @@ const TeamCity = styled.p`
   color: ${(props) => "#" + props.color};
 
   @media (max-width: 768px) {
-    font-size: 1.8em;
+    font-size: 1.4em;
   }
 
   @media (min-width: 1150px) {
@@ -100,7 +100,7 @@ const TeamNickname = styled.p`
   color: ${(props) => "#" + props.color};
 
   @media (max-width: 768px) {
-    font-size: 2.8em;
+    font-size: 2em;
   }
 
   @media (min-width: 1150px) {
