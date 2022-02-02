@@ -37,7 +37,7 @@ const ScheduleImage = styled.img`
   }
 
   @media (max-width: 768px) {
-    width: 28em;
+    width: 90vw;
     margin-bottom: 2em;
   }
 

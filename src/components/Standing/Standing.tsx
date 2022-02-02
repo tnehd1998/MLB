@@ -64,7 +64,7 @@ const StandingWrapper = styled.div`
   margin-bottom: 10vh;
 
   @media (max-width: 768px) {
-    width: 28em;
+    width: 90vw;
   }
 
   @media (min-width: 1150px) {
