@@ -226,6 +226,7 @@ const CloseIcon = styled.p`
 const PlayerCardTitle = styled.p`
   font-size: 2.5em;
   margin-bottom: 1em;
+  font-weight: 600;
 
   @media (max-width: 768px) {
     font-size: 2em;
@@ -244,12 +245,11 @@ const PlayerInfoWrapper = styled.div`
 
 const PlayerImage = styled.img`
   width: 15em;
-  height: 100%;
   border-radius: 10%;
   border: 2px solid ${({ theme }) => theme.textColor};
 
   @media (max-width: 768px) {
-    width: 12em;
+    width: 10em;
   }
 
   @media (min-width: 1150px) {
@@ -261,7 +261,7 @@ const PlayerInfo = styled.p`
   font-size: 24px;
 
   @media (max-width: 768px) {
-    font-size: 14px;
+    font-size: 12px;
   }
 
   @media (min-width: 1150px) {
@@ -279,7 +279,7 @@ const PlayerProfileWrapper = styled.div`
 const PlayerInfoList = styled.ul`
   height: 100%;
   display: flex;
-  margin-left: 3em;
+  margin-left: 5vw;
   flex-direction: column;
   justify-content: space-between;
 `;
@@ -312,7 +312,7 @@ const PlayerPageLink = styled.a`
   }
 
   @media (max-width: 768px) {
-    font-size: 0.7em;
+    font-size: 0.5em;
   }
 
   @media (min-width: 1150px) {
@@ -341,7 +341,7 @@ const AddToDreamTeamButton = styled.div`
   }
 
   @media (max-width: 768px) {
-    font-size: 0.7em;
+    font-size: 0.5em;
   }
 
   @media (min-width: 1150px) {
