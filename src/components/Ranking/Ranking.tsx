@@ -15,13 +15,16 @@ const PlayerWrapper = styled.div`
   border: 2px solid ${({ theme }) => theme.textColor};
   border-radius: 20px;
   margin: 1em;
-  width: 26em;
+  width: 24em;
   cursor: pointer;
   &:hover {
     transform: scale(1.1);
     transition: all 0.3s ease-in;
     background-color: ${({ theme }) => theme.textColor};
     color: ${({ theme }) => theme.bgColor};
+  }
+  @media (max-width: 768px) {
+    width: 90vw;
   }
 `;
 
