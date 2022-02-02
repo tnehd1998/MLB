@@ -55,34 +55,19 @@ const TeamPlayerWrapper = styled.div`
   text-align: center;
   border: 2px solid ${({ theme }) => theme.textColor};
   border-radius: 10px;
-  width: 28vw;
-  height: 15vh;
+  width: 22em;
+  height: 15em;
+  margin: 0.5em;
 
   @media (max-width: 768px) {
-    width: 40vw;
-    height: 20vh;
-  }
-
-  @media (min-width: 1150px) {
-    width: 20vw;
-    height: 20vh;
+    width: 90vw;
   }
 `;
 
 const PlayerImage = styled.img`
   border-radius: 10px 0px 0px 10px;
-  width: 10vw;
-  height: 15vh;
-
-  @media (max-width: 768px) {
-    width: 18vw;
-    height: 20vh;
-  }
-
-  @media (min-width: 1150px) {
-    width: 8vw;
-    height: 20vh;
-  }
+  width: 10em;
+  height: 15em;
 `;
 
 const PlayerProfile = styled.div`
@@ -94,34 +79,19 @@ const PlayerProfile = styled.div`
 `;
 
 const PlayerName = styled.p`
-  font-size: 13px;
+  font-size: 20px;
+  font-weight: 600;
   margin-bottom: 10px;
-
-  @media (max-width: 768px) {
-    font-size: 11px;
-  }
-
-  @media (min-width: 1150px) {
-    font-size: 14px;
-  }
 `;
 
 const PlayerDescription = styled.p`
-  font-size: 11px;
-
-  @media (max-width: 768px) {
-    font-size: 10px;
-  }
-
-  @media (min-width: 1150px) {
-    font-size: 10px;
-  }
+  font-size: 18px;
 `;
 
 const MoreInfo = styled.div`
   padding: 0.5em;
-  margin-top: 0.2em;
-  font-size: 1em;
+  margin-top: 1em;
+  font-size: 20px;
   border: 2px solid ${(props) => "#" + props.color};
   border-radius: 15px;
   text-decoration: none;
@@ -132,16 +102,6 @@ const MoreInfo = styled.div`
     background-color: ${({ theme }) => theme.textColor};
     transition: all 0.3s linear;
     color: ${({ theme }) => theme.bgColor};
-  }
-
-  @media (max-width: 768px) {
-    margin-top: 1em;
-    font-size: 0.8em;
-  }
-
-  @media (min-width: 1150px) {
-    margin-top: 1em;
-    font-size: 1.2em;
   }
 `;
 

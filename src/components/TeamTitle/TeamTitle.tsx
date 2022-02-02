@@ -87,7 +87,7 @@ const TeamCity = styled.p`
   color: ${(props) => "#" + props.color};
 
   @media (max-width: 768px) {
-    font-size: 1em;
+    font-size: 1.8em;
   }
 
   @media (min-width: 1150px) {
@@ -100,7 +100,7 @@ const TeamNickname = styled.p`
   color: ${(props) => "#" + props.color};
 
   @media (max-width: 768px) {
-    font-size: 2em;
+    font-size: 2.8em;
   }
 
   @media (min-width: 1150px) {
@@ -122,7 +122,7 @@ const OfficialPageLink = styled.a`
   }
 
   @media (max-width: 768px) {
-    font-size: 0.5em;
+    font-size: 0.8em;
   }
 
   @media (min-width: 1150px) {
