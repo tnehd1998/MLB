@@ -57,8 +57,8 @@ const Player = styled.li`
   border-radius: 20px;
 
   @media (max-width: 768px) {
-    width: 12vw;
-    height: 12vw;
+    width: 13vw;
+    height: 13vw;
   }
 
   @media (min-width: 1150px) {

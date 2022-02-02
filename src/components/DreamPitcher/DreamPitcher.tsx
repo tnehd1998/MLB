@@ -82,8 +82,8 @@ const PlayerImage = styled.img`
   height: 10vw;
 
   @media (max-width: 768px) {
-    width: 5vw;
-    height: 8vw;
+    width: 3vw;
+    height: 4vw;
   }
 
   @media (min-width: 1150px) {
