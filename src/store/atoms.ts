@@ -40,11 +40,6 @@ export const currentPlayer = atom<IPlayer>({
   },
 });
 
-export const currentYState = atom<number>({
-  key: "currentYState",
-  default: 0,
-});
-
 export const showFARankingState = atom<boolean>({
   key: "showFARankingState",
   default: true,

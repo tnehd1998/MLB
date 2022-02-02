@@ -1,26 +1,16 @@
 import React from "react";
 import { useSetRecoilState } from "recoil";
 import styled from "styled-components";
-import {
-  currentPlayer,
-  currentYState,
-  playerSelection,
-} from "../../store/atoms";
+import { currentPlayer, playerSelection } from "../../store/atoms";
 import { IPlayer } from "../../types/player.type";
 
 const TeamPlayer = ({ playerInfo }: { playerInfo: IPlayer }) => {
   const setPlayerSelected = useSetRecoilState(playerSelection);
   const setCurrentPlayer = useSetRecoilState(currentPlayer);
-  const setCurrentY = useSetRecoilState(currentYState);
-
-  const calculatePopUpHeight = () => {
-    setCurrentY(window.scrollY + window.innerHeight * 0.15);
-  };
 
   const showPlayerInfo = (playerInfo: IPlayer) => {
     setPlayerSelected((value) => !value);
     setCurrentPlayer(playerInfo);
-    calculatePopUpHeight();
   };
 
   return (

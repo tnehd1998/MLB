@@ -3,7 +3,6 @@ import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import styled from "styled-components";
 import {
   currentPlayer,
-  currentYState,
   dreamTeamInfo,
   playerSelection,
 } from "../../store/atoms";
@@ -13,7 +12,6 @@ const PlayerCard = () => {
   const setSelectPlayer = useSetRecoilState(playerSelection);
   const [dreamTeam, setDreamTeam] = useRecoilState(dreamTeamInfo);
   const [isDreamTeamPlayer, setIsDreamTeamPlayer] = useState(false);
-  const currentY = useRecoilValue(currentYState);
 
   const checkIsDreamTeamPlayer = useCallback(() => {
     const existingPlayer = dreamTeam.find(
@@ -121,7 +119,7 @@ const PlayerCard = () => {
   }, [checkIsDreamTeamPlayer]);
 
   return (
-    <PlayerCardWrapper top={currentY}>
+    <PlayerCardWrapper>
       <CloseIcon
         onClick={() => setSelectPlayer((selectPlayer) => !selectPlayer)}
       >
@@ -180,12 +178,12 @@ const PlayerCard = () => {
   );
 };
 
-const PlayerCardWrapper = styled.div<{ top: number }>`
+const PlayerCardWrapper = styled.div`
   width: 70vw;
   height: 70vh;
-  top: ${(props) => props.top + "px"};
+  top: 15vh;
   left: 15vw;
-  position: absolute;
+  position: fixed;
   display: flex;
   flex-direction: column;
   justify-content: center;
