@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router";
 import styled from "styled-components";
 import { useRanking } from "../../api/ranking";
 
@@ -44,11 +45,19 @@ const PlayerDescription = styled.p`
 
 const Ranking = () => {
   const { data: players } = useRanking();
+  const navigate = useNavigate();
+
+  const onClickPlayer = (team: string) => {
+    navigate(`/${team}`);
+  };
 
   return (
     <RankingWrapper>
       {players?.map((player) => (
-        <PlayerWrapper key={player.ranking}>
+        <PlayerWrapper
+          key={player.ranking}
+          onClick={() => onClickPlayer(player.team)}
+        >
           <PlayerImage src={player.playerImg} alt="Player" />
           <PlayerDescriptions>
             <PlayerTitle>
