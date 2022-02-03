@@ -1,11 +1,18 @@
 import React from "react";
 import styled from "styled-components";
 import TeamPositionPlayers from "../TeamPositionPlayers/TeamPositionPlayers";
-import { useGetCertainTeam } from "../../api/team";
+import { getCertainTeam } from "../../api/team";
 import { ITeamNameProps } from "../../types/team.type";
+import { useQuery } from "react-query";
 
 const TeamPlayers = ({ teamName }: ITeamNameProps) => {
-  const { data: info } = useGetCertainTeam(teamName);
+  const { data: info } = useQuery(
+    `${teamName}`,
+    () => getCertainTeam(teamName),
+    {
+      suspense: true,
+    }
+  );
 
   return (
     <TeamPlayersWrapper>
