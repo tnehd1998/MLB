@@ -1,5 +1,4 @@
 import axios from "axios";
-import { useQuery } from "react-query";
 import { IAllStarPlayer } from "../types/player.type";
 
 const baseURL = process.env.REACT_APP_BASE_URL;

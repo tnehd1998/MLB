@@ -1,7 +1,6 @@
 import { getCertainTeam } from "./../team";
 import axios, { AxiosResponse } from "axios";
 import { ITeam } from "../../types/team.type";
-import { QueryClient } from "react-query";
 
 jest.mock("axios");
 const mockedAxios = axios as jest.Mocked<typeof axios>;
