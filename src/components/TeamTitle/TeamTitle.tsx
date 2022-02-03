@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
+import { useQuery } from "react-query";
 import styled from "styled-components";
-import { useGetTeams } from "../../api/teams";
+import { getTeams } from "../../api/teams";
 import { ITeamNameProps } from "../../types/team.type";
 import { ITeams } from "../../types/teams.type";
 
 const TeamTitle = ({ teamName }: ITeamNameProps) => {
-  const { data: teams } = useGetTeams();
+  const { data: teams } = useQuery("teams", getTeams, {
+    suspense: true,
+  });
   const [currentTeam, setCurrentTeam] = useState<ITeams>({
     City: "",
     Key: "",

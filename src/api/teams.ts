@@ -4,7 +4,7 @@ import { ITeams } from "../types/teams.type";
 
 const baseURL = process.env.REACT_APP_BASE_URL;
 
-const getTeams = async (): Promise<ITeams[] | null> => {
+export const getTeams = async (): Promise<ITeams[] | null> => {
   try {
     const info = await axios
       .get(`${baseURL}`)
@@ -13,10 +13,4 @@ const getTeams = async (): Promise<ITeams[] | null> => {
   } catch (e) {
     return null;
   }
-};
-
-export const useGetTeams = () => {
-  return useQuery("teams", getTeams, {
-    suspense: true,
-  });
 };
