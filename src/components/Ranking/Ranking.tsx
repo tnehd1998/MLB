@@ -1,7 +1,8 @@
 import React from "react";
+import { useQuery } from "react-query";
 import { useNavigate } from "react-router";
 import styled from "styled-components";
-import { useRanking } from "../../api/ranking";
+import { getRanking } from "../../api/ranking";
 
 const RankingWrapper = styled.div`
   display: flex;
@@ -49,7 +50,9 @@ const PlayerDescription = styled.p`
 `;
 
 const Ranking = () => {
-  const { data: players } = useRanking();
+  const { data: players } = useQuery("ranking", getRanking, {
+    suspense: true,
+  });
   const navigate = useNavigate();
 
   const onClickPlayer = (team: string) => {
