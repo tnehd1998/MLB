@@ -1,28 +1,34 @@
 import axios, { AxiosResponse } from "axios";
-import { IAllStarPlayer } from "../../types/player.type";
-import { getAllStar } from "../allstar";
+import { IStanding } from "../../types/standing.type";
+import { getStanding } from "../standing";
 
 jest.mock("axios");
 const mockedAxios = axios as jest.Mocked<typeof axios>;
 
-describe("Allstar", () => {
-  let players: IAllStarPlayer[];
+describe("Standing", () => {
+  let players: IStanding[];
 
   beforeAll(() => {
     players = [
       {
+        City: "",
+        Division: "",
+        Key: "",
+        League: "",
+        Losses: 0,
         Name: "",
-        PlayerID: 0,
-        Position: "",
-        StatID: 0,
-        Team: "",
+        TeamID: 0,
+        Wins: 0,
       },
       {
+        City: "",
+        Division: "",
+        Key: "",
+        League: "",
+        Losses: 0,
         Name: "",
-        PlayerID: 1,
-        Position: "",
-        StatID: 1,
-        Team: "",
+        TeamID: 0,
+        Wins: 0,
       },
     ];
   });
@@ -31,7 +37,7 @@ describe("Allstar", () => {
     jest.clearAllMocks();
   });
 
-  it("gets allstar data", async () => {
+  it("gets standing data", async () => {
     const mockedResponse: AxiosResponse = {
       data: players,
       status: 200,
@@ -43,12 +49,12 @@ describe("Allstar", () => {
     mockedAxios.get.mockResolvedValueOnce(mockedResponse);
     expect(axios.get).not.toHaveBeenCalled();
 
-    const data = await getAllStar();
+    const data = await getStanding();
     expect(axios.get).toHaveBeenCalled();
     expect(data).toEqual(players);
   });
 
-  it("fails getting allstar data", async () => {
+  it("fails getting standing data", async () => {
     const mockedResponse: AxiosResponse = {
       data: players,
       status: 404,
@@ -60,7 +66,7 @@ describe("Allstar", () => {
     mockedAxios.get.mockRejectedValueOnce(mockedResponse);
     expect(axios.get).not.toHaveBeenCalled();
 
-    const data = await getAllStar();
+    const data = await getStanding();
     expect(axios.get).toHaveBeenCalled();
     expect(data).toEqual(null);
   });
