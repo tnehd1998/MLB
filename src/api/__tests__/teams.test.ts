@@ -5,7 +5,7 @@ import { getTeams } from "../teams";
 jest.mock("axios");
 const mockedAxios = axios as jest.Mocked<typeof axios>;
 
-describe("Team", () => {
+describe("Teams", () => {
   let team: ITeams[];
 
   beforeAll(() => {
