@@ -1,10 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router";
-import { useAllStar } from "../../api/allstar";
+import { getAllStar } from "../../api/allstar";
+import { useQuery } from "react-query";
 
 const AllStarTable = () => {
-  const { data: players } = useAllStar();
+  const { data: players } = useQuery("allStar", getAllStar, {
+    suspense: true,
+  });
   const navigate = useNavigate();
 
   return (
