@@ -1,7 +1,7 @@
 import { Snapshot, snapshot_UNSTABLE } from "recoil";
 import { themeState } from "../theme";
 
-describe("Theme", () => {
+describe("ThemeState", () => {
   let initialSnapshot: Snapshot;
   beforeEach(() => {
     initialSnapshot = snapshot_UNSTABLE();
