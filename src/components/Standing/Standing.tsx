@@ -1,13 +1,14 @@
 import React, { useState } from "react";
+import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { useGetStanding } from "../../api/standing";
+import { getStanding } from "../../api/standing";
 
 const Standing = () => {
   const [currentRegion, setCurrentRegion] = useState("AL East");
-  const { data: standing } = useGetStanding();
-
-  console.log(standing);
+  const { data: standing } = useQuery("standing", getStanding, {
+    suspense: true,
+  });
 
   return (
     <StandingWrapper>

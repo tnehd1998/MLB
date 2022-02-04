@@ -6,7 +6,7 @@ import AllStarTable from "../components/AllStarTable/AllStarTable";
 
 import Loading from "../components/Loading/Loading";
 import Ranking from "../components/Ranking/Ranking";
-import { showFARankingState } from "../store/atoms";
+import { showFARankingState } from "../store/ranking";
 
 const AllStarPage = () => {
   const [showFARanking, setShowFARanking] = useRecoilState(showFARankingState);

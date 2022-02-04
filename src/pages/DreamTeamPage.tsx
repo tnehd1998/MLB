@@ -4,7 +4,7 @@ import { useSetRecoilState } from "recoil";
 import styled from "styled-components";
 import DreamBatter from "../components/DreamBatter/DreamBatter";
 import DreamPitcher from "../components/DreamPitcher/DreamPitcher";
-import { dreamTeamInfo } from "../store/atoms";
+import { dreamTeamInfo } from "../store/dreamteam";
 
 const DreamTeamPage = () => {
   const setDreamTeamPlayers = useSetRecoilState(dreamTeamInfo);

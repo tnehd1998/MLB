@@ -1,7 +1,7 @@
 import React from "react";
 import { useSetRecoilState } from "recoil";
 import styled from "styled-components";
-import { currentPlayer, playerSelection } from "../../store/atoms";
+import { currentPlayer, playerSelection } from "../../store/player";
 import { IPlayer } from "../../types/player.type";
 
 const TeamPlayer = ({ playerInfo }: { playerInfo: IPlayer }) => {

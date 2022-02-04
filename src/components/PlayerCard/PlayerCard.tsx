@@ -1,11 +1,8 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import styled from "styled-components";
-import {
-  currentPlayer,
-  dreamTeamInfo,
-  playerSelection,
-} from "../../store/atoms";
+import { dreamTeamInfo } from "../../store/dreamteam";
+import { currentPlayer, playerSelection } from "../../store/player";
 
 const PlayerCard = () => {
   const showingPlayer = useRecoilValue(currentPlayer);

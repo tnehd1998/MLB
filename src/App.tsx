@@ -15,10 +15,10 @@ import AllStarPage from "./pages/AllStarPage";
 import RecordPage from "./pages/RecordPage";
 import DreamTeamPage from "./pages/DreamTeamPage";
 
-import { themeState } from "./store/atoms";
 import { darkTheme, lightTheme } from "./styles/theme";
 import { ThemeProvider } from "styled-components";
 import { useRecoilValue } from "recoil";
+import { themeState } from "./store/theme";
 
 const GlobalStyles = createGlobalStyle`
   ${reset};

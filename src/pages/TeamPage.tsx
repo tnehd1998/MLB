@@ -3,12 +3,12 @@ import styled from "styled-components";
 import { useParams } from "react-router";
 import Loading from "../components/Loading/Loading";
 import { useRecoilState } from "recoil";
-import { playerSelection } from "../store/atoms";
 import TeamTitle from "../components/TeamTitle/TeamTitle";
 import TeamPlayers from "../components/TeamPlayers/TeamPlayers";
 import PlayerCard from "../components/PlayerCard/PlayerCard";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { ITeamNameProps } from "../types/team.type";
+import { playerSelection } from "../store/player";
 
 const TeamPage = () => {
   const { teamName } = useParams<ITeamNameProps>();

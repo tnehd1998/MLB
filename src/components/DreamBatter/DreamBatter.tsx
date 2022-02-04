@@ -1,7 +1,7 @@
 import React from "react";
 import { useRecoilValue } from "recoil";
 import styled from "styled-components";
-import { dreamTeamInfo } from "../../store/atoms";
+import { dreamTeamInfo } from "../../store/dreamteam";
 import { IDreamPlayerProps } from "../../types/player.type";
 
 const DreamBatter = ({ position }: IDreamPlayerProps) => {
