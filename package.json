@@ -28,8 +28,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --verbose",
-    "test:coverage": "npm test -- --coverage --watchAll=false",
+    "test": "react-scripts test --verbose --coverage",
+    "test:all": "npm test -- --watchAll=false",
     "eject": "react-scripts eject",
     "predeploy": "yarn build",
     "deploy": "gh-pages -d build"
