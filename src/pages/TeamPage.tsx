@@ -8,11 +8,11 @@ import TeamPlayers from "../components/TeamPlayers/TeamPlayers";
 import PlayerCard from "../components/PlayerCard/PlayerCard";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { ITeamNameProps } from "../types/team.type";
-import { playerSelection } from "../store/player";
+import { playerSelectionState } from "../store/player";
 
 const TeamPage = () => {
   const { teamName } = useParams<ITeamNameProps>();
-  const [selectPlayer, setSelectPlayer] = useRecoilState(playerSelection);
+  const [selectPlayer, setSelectPlayer] = useRecoilState(playerSelectionState);
 
   useEffect(() => {
     return () => {

@@ -1,8 +1,8 @@
 import { atom } from "recoil";
 import { IPlayer } from "../types/player.type";
 
-export const currentPlayer = atom<IPlayer>({
-  key: "currentPlayer",
+export const currentPlayerState = atom<IPlayer>({
+  key: "currentPlayerState",
   default: {
     BatHand: "",
     BirthCountry: "",
@@ -18,7 +18,7 @@ export const currentPlayer = atom<IPlayer>({
   },
 });
 
-export const playerSelection = atom<boolean>({
-  key: "playerSelection",
+export const playerSelectionState = atom<boolean>({
+  key: "playerSelectionState",
   default: false,
 });

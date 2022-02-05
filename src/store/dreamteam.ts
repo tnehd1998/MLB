@@ -7,8 +7,8 @@ const { persistAtom } = recoilPersist({
   storage: localStorage,
 });
 
-export const dreamTeamInfo = atom<IPlayer[]>({
-  key: "dreamTeamInfo",
+export const dreamTeamInfoState = atom<IPlayer[]>({
+  key: "dreamTeamInfoState",
   default: [],
   effects_UNSTABLE: [persistAtom],
 });

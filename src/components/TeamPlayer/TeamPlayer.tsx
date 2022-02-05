@@ -1,12 +1,12 @@
 import React from "react";
 import { useSetRecoilState } from "recoil";
 import styled from "styled-components";
-import { currentPlayer, playerSelection } from "../../store/player";
+import { currentPlayerState, playerSelectionState } from "../../store/player";
 import { IPlayer } from "../../types/player.type";
 
 const TeamPlayer = ({ playerInfo }: { playerInfo: IPlayer }) => {
-  const setPlayerSelected = useSetRecoilState(playerSelection);
-  const setCurrentPlayer = useSetRecoilState(currentPlayer);
+  const setPlayerSelected = useSetRecoilState(playerSelectionState);
+  const setCurrentPlayer = useSetRecoilState(currentPlayerState);
 
   const showPlayerInfo = (playerInfo: IPlayer) => {
     setPlayerSelected((value) => !value);

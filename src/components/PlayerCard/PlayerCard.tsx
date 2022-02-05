@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import styled from "styled-components";
-import { dreamTeamInfo } from "../../store/dreamteam";
-import { currentPlayer, playerSelection } from "../../store/player";
+import { dreamTeamInfoState } from "../../store/dreamteam";
+import { currentPlayerState, playerSelectionState } from "../../store/player";
 
 const PlayerCard = () => {
-  const showingPlayer = useRecoilValue(currentPlayer);
-  const setSelectPlayer = useSetRecoilState(playerSelection);
-  const [dreamTeam, setDreamTeam] = useRecoilState(dreamTeamInfo);
+  const showingPlayer = useRecoilValue(currentPlayerState);
+  const setSelectPlayer = useSetRecoilState(playerSelectionState);
+  const [dreamTeam, setDreamTeam] = useRecoilState(dreamTeamInfoState);
   const [isDreamTeamPlayer, setIsDreamTeamPlayer] = useState(false);
 
   const checkIsDreamTeamPlayer = useCallback(() => {

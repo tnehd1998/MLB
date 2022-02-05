@@ -1,11 +1,11 @@
 import React from "react";
 import { useRecoilValue } from "recoil";
 import styled from "styled-components";
-import { dreamTeamInfo } from "../../store/dreamteam";
+import { dreamTeamInfoState } from "../../store/dreamteam";
 import { IDreamPlayerProps } from "../../types/player.type";
 
 const DreamBatter = ({ position }: IDreamPlayerProps) => {
-  const dreamTeamPlayers = useRecoilValue(dreamTeamInfo);
+  const dreamTeamPlayers = useRecoilValue(dreamTeamInfoState);
 
   const findCertainPositionBatter = (position: string) => {
     for (let dreamTeamPlayer in dreamTeamPlayers) {

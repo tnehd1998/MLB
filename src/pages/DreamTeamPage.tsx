@@ -4,10 +4,10 @@ import { useSetRecoilState } from "recoil";
 import styled from "styled-components";
 import DreamBatter from "../components/DreamBatter/DreamBatter";
 import DreamPitcher from "../components/DreamPitcher/DreamPitcher";
-import { dreamTeamInfo } from "../store/dreamteam";
+import { dreamTeamInfoState } from "../store/dreamteam";
 
 const DreamTeamPage = () => {
-  const setDreamTeamPlayers = useSetRecoilState(dreamTeamInfo);
+  const setDreamTeamPlayers = useSetRecoilState(dreamTeamInfoState);
 
   const onClickDeleteAll = () => {
     setDreamTeamPlayers([]);

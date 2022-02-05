@@ -1,6 +1,6 @@
 import { Snapshot, snapshot_UNSTABLE } from "recoil";
 import { IPlayer } from "../../types/player.type";
-import { currentPlayer, playerSelection } from "../player";
+import { currentPlayerState, playerSelectionState } from "../player";
 
 describe("Player", () => {
   let initialSnapshot: Snapshot;
@@ -8,24 +8,24 @@ describe("Player", () => {
     initialSnapshot = snapshot_UNSTABLE();
   });
 
-  describe("playerSelection", () => {
-    it("checks not showing playerSelection initially", () => {
-      expect(initialSnapshot.getLoadable(playerSelection).valueOrThrow()).toBe(
-        false
-      );
+  describe("playerSelectionState", () => {
+    it("checks not showing playerSelectionState initially", () => {
+      expect(
+        initialSnapshot.getLoadable(playerSelectionState).valueOrThrow()
+      ).toBe(false);
     });
 
-    it("checks when showing playerSelection", () => {
+    it("checks when showing playerSelectionState", () => {
       const testSnapshot = snapshot_UNSTABLE(({ set }) =>
-        set(playerSelection, true)
+        set(playerSelectionState, true)
       );
-      expect(testSnapshot.getLoadable(playerSelection).valueOrThrow()).toBe(
-        true
-      );
+      expect(
+        testSnapshot.getLoadable(playerSelectionState).valueOrThrow()
+      ).toBe(true);
     });
   });
 
-  describe("currentPlayer", () => {
+  describe("currentPlayerState", () => {
     let initialPlayer: IPlayer;
     beforeEach(() => {
       initialPlayer = {
@@ -43,13 +43,13 @@ describe("Player", () => {
       };
     });
 
-    it("checks initial currentPlayer", () => {
-      expect(initialSnapshot.getLoadable(currentPlayer).valueOrThrow()).toEqual(
-        initialPlayer
-      );
+    it("checks initial currentPlayerState", () => {
+      expect(
+        initialSnapshot.getLoadable(currentPlayerState).valueOrThrow()
+      ).toEqual(initialPlayer);
     });
 
-    it("checks currentPlayer changed", () => {
+    it("checks currentPlayerState changed", () => {
       const newPlayer = {
         BatHand: "",
         BirthCountry: "",
@@ -64,11 +64,11 @@ describe("Player", () => {
         ThrowHand: "",
       };
       const testSnapshot = snapshot_UNSTABLE(({ set }) =>
-        set(currentPlayer, newPlayer)
+        set(currentPlayerState, newPlayer)
       );
-      expect(testSnapshot.getLoadable(currentPlayer).valueOrThrow()).toEqual(
-        newPlayer
-      );
+      expect(
+        testSnapshot.getLoadable(currentPlayerState).valueOrThrow()
+      ).toEqual(newPlayer);
     });
   });
 });
