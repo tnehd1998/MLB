@@ -3,7 +3,7 @@ import AllStarPage from "../AllStarPage";
 import { RenderResult, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
-describe("<MainPage />", () => {
+describe("<AllStarPage />", () => {
   let renderResult: RenderResult;
 
   beforeEach(() => {
