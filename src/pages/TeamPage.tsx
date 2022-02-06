@@ -35,7 +35,7 @@ const TeamPage = () => {
           <TeamPlayers teamName={teamName!} />
         </Suspense>
       </TeamDescription>
-      {selectPlayer ? <PlayerCard /> : null}
+      {selectPlayer && <PlayerCard />}
     </TeamInformationWrapper>
   );
 };
