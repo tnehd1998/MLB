@@ -1,13 +1,13 @@
 import { render } from "../../utils/test-util";
+import AllStarPage from "../AllStarPage";
 import { RenderResult, waitFor } from "@testing-library/react";
-import DreamTeamPage from "../DreamTeamPage";
 import userEvent from "@testing-library/user-event";
 
-describe("<DreamTeamPage />", () => {
+describe("<MainPage />", () => {
   let renderResult: RenderResult;
 
   beforeEach(() => {
-    renderResult = render(<DreamTeamPage />);
+    renderResult = render(<AllStarPage />);
   });
 
   it("should render component in the page", () => {
@@ -17,12 +17,15 @@ describe("<DreamTeamPage />", () => {
   });
 
   it("clicks deleteAllBtn", async () => {
-    const { getByRole } = renderResult;
-    const deleteAllBtn = getByRole("button");
+    const { getByText } = renderResult;
+    const switchContent = getByText("MLB 지정 Top 200 선수 명단 확인하기");
+
     await waitFor(() => {
-      userEvent.click(deleteAllBtn);
+      userEvent.click(switchContent);
     });
 
-    expect(deleteAllBtn.textContent).toEqual("전체 삭제");
+    expect(switchContent.textContent).toEqual(
+      "가장 많은 돈을 받는 선수 Top50 확인하기"
+    );
   });
 });
