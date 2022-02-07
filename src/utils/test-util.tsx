@@ -1,14 +1,20 @@
 import { FC, ReactElement } from "react";
-import { render, RenderOptions, screen } from "@testing-library/react";
+import { render, RenderOptions } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { RecoilRoot } from "recoil";
+import { ThemeProvider } from "styled-components";
+import { lightTheme } from "../styles/theme";
 
 const queryClient = new QueryClient();
 
 const AllTheProviders: FC = ({ children }) => {
   return (
     <RecoilRoot>
-      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+      <ThemeProvider theme={lightTheme}>
+        <QueryClientProvider client={queryClient}>
+          {children}
+        </QueryClientProvider>
+      </ThemeProvider>
     </RecoilRoot>
   );
 };
