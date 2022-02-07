@@ -11,17 +11,21 @@ const ThemeButton = () => {
   };
 
   return (
-    <ThemeButtonContainer onClick={toggleTheme} currentTheme={isLightTheme}>
-      {isLightTheme ? (
-        <i className="fa fa-sun-o" aria-hidden="true"></i>
-      ) : (
-        <i className="fa fa-moon-o" aria-hidden="true"></i>
-      )}
+    <ThemeButtonContainer>
+      <Button onClick={toggleTheme} currentTheme={isLightTheme}>
+        {isLightTheme ? (
+          <i className="fa fa-sun-o" aria-hidden="true"></i>
+        ) : (
+          <i className="fa fa-moon-o" aria-hidden="true"></i>
+        )}
+      </Button>
     </ThemeButtonContainer>
   );
 };
 
-const ThemeButtonContainer = styled.div<{ currentTheme: boolean }>`
+const ThemeButtonContainer = styled.div``;
+
+const Button = styled.button<{ currentTheme: boolean }>`
   cursor: pointer;
   font-size: 30px;
   background-color: ${(props) => (!props.currentTheme ? "grey" : "white")};
