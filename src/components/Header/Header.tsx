@@ -1,9 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useRecoilState } from "recoil";
 import styled from "styled-components";
+import { themeState } from "../../store/theme";
 import ThemeButton from "../ThemeButton/ThemeButton";
 
 const Header = () => {
+  const [isLightTheme, setIsLightTheme] = useRecoilState(themeState);
+
+  const toggleTheme = () => {
+    setIsLightTheme((theme) => !theme);
+  };
   return (
     <HeaderWrapper>
       <Menus>
@@ -19,7 +26,7 @@ const Header = () => {
         <MenuLink to="dreamteam">
           <Menu>DREAM TEAM</Menu>
         </MenuLink>
-        <ThemeButton />
+        <ThemeButton isLightTheme={isLightTheme} toggleTheme={toggleTheme} />
       </Menus>
     </HeaderWrapper>
   );

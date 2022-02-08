@@ -1,31 +1,24 @@
 import React from "react";
-import { useRecoilState } from "recoil";
 import styled from "styled-components";
-import { themeState } from "../../store/theme";
 
-const ThemeButton = () => {
-  const [isLightTheme, setIsLightTheme] = useRecoilState(themeState);
+export interface IThemeButton {
+  isLightTheme: boolean;
+  toggleTheme: () => void;
+}
 
-  const toggleTheme = () => {
-    setIsLightTheme((theme) => !theme);
-  };
-
+const ThemeButton = ({ toggleTheme, isLightTheme }: IThemeButton) => {
   return (
-    <ThemeButtonContainer>
-      <Button onClick={toggleTheme} currentTheme={isLightTheme}>
-        {isLightTheme ? (
-          <i className="fa fa-sun-o" aria-hidden="true"></i>
-        ) : (
-          <i className="fa fa-moon-o" aria-hidden="true"></i>
-        )}
-      </Button>
+    <ThemeButtonContainer onClick={toggleTheme} currentTheme={isLightTheme}>
+      {isLightTheme ? (
+        <i className="fa fa-sun-o" aria-hidden="true"></i>
+      ) : (
+        <i className="fa fa-moon-o" aria-hidden="true"></i>
+      )}
     </ThemeButtonContainer>
   );
 };
 
-const ThemeButtonContainer = styled.div``;
-
-const Button = styled.button<{ currentTheme: boolean }>`
+const ThemeButtonContainer = styled.div<{ currentTheme: boolean }>`
   cursor: pointer;
   font-size: 30px;
   background-color: ${(props) => (!props.currentTheme ? "grey" : "white")};
