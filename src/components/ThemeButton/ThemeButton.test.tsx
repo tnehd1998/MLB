@@ -9,6 +9,7 @@ describe("<ThemeButton />", () => {
   beforeEach(() => {
     renderResult = render(<ThemeButton />);
   });
+
   it("should render component in the page", () => {
     const { container } = renderResult;
 
