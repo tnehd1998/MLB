@@ -2,8 +2,8 @@ import React, { Suspense } from "react";
 import styled from "styled-components";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 
-import Loading from "../components/Loading/Loading";
-import TeamSelection from "../components/TeamSelection/TeamSelection";
+import Loading from "../components/organisms/Loading/Loading";
+import TeamSelection from "../components/organisms/TeamSelection/TeamSelection";
 
 const MainPage = () => {
   return (

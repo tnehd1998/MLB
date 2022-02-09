@@ -2,10 +2,10 @@ import React, { Suspense } from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { useRecoilState } from "recoil";
 import styled from "styled-components";
-import AllStarTable from "../components/AllStarTable/AllStarTable";
+import AllStarTable from "../components/organisms/AllStarTable/AllStarTable";
 
-import Loading from "../components/Loading/Loading";
-import Ranking from "../components/Ranking/Ranking";
+import Loading from "../components/organisms/Loading/Loading";
+import Ranking from "../components/organisms/Ranking/Ranking";
 import { showFARankingState } from "../store/ranking";
 
 const AllStarPage = () => {

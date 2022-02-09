@@ -1,11 +1,11 @@
 import React, { Suspense, useEffect } from "react";
 import styled from "styled-components";
 import { useParams } from "react-router";
-import Loading from "../components/Loading/Loading";
+import Loading from "../components/organisms/Loading/Loading";
 import { useRecoilState } from "recoil";
-import TeamTitle from "../components/TeamTitle/TeamTitle";
-import TeamPlayers from "../components/TeamPlayers/TeamPlayers";
-import PlayerCard from "../components/PlayerCard/PlayerCard";
+import TeamTitle from "../components/organisms/TeamTitle/TeamTitle";
+import TeamPlayers from "../components/organisms/TeamPlayers/TeamPlayers";
+import PlayerCard from "../components/organisms/PlayerCard/PlayerCard";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { ITeamNameProps } from "../types/team.type";
 import { playerSelectionState } from "../store/player";

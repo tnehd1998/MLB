@@ -2,8 +2,8 @@ import React from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { useSetRecoilState } from "recoil";
 import styled from "styled-components";
-import DreamBatter from "../components/DreamBatter/DreamBatter";
-import DreamPitcher from "../components/DreamPitcher/DreamPitcher";
+import DreamBatter from "../components/organisms/DreamBatter/DreamBatter";
+import DreamPitcher from "../components/organisms/DreamPitcher/DreamPitcher";
 import { dreamTeamInfoState } from "../store/dreamteam";
 
 const DreamTeamPage = () => {

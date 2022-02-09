@@ -7,7 +7,7 @@ import {
   Routes,
   Navigate,
 } from "react-router-dom";
-import Header from "./components/Header/Header";
+import Header from "./components/organisms/Header/Header";
 
 import MainPage from "./pages/MainPage";
 import TeamPage from "./pages/TeamPage";
