@@ -1,11 +1,10 @@
 import React from "react";
 import DarkModeToggleButton, { IThemeButton } from ".";
-import { boolean } from "@storybook/addon-knobs";
 import { action } from "@storybook/addon-actions";
 import { Story } from "@storybook/react";
 
 export default {
-  title: "Component/DarkModeToggleButton",
+  title: "molecules/DarkModeToggleButton",
   component: DarkModeToggleButton,
 };
 
