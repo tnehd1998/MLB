@@ -1,13 +1,13 @@
 import { render } from "../../utils/test-util";
-import AllStarPage from "../AllStarPage";
+import RankingPage from "../RankingPage";
 import { RenderResult, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
-describe("<AllStarPage />", () => {
+describe("<RankingPage />", () => {
   let renderResult: RenderResult;
 
   beforeEach(() => {
-    renderResult = render(<AllStarPage />);
+    renderResult = render(<RankingPage />);
   });
 
   it("should render component in the page", () => {

@@ -68,7 +68,7 @@ const Payroll = () => {
   return (
     <PayrollWrapper>
       {teams?.map((team) => (
-        <TeamWrapper key={team.rank} onClick={() => onClickTeam(team.team)}>
+        <TeamWrapper key={team.rank} onClick={() => onClickTeam(team.key)}>
           <div>
             <Title>팀 정보</Title>
             <Description>팀 이름 : {team.team}</Description>
