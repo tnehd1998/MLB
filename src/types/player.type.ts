@@ -12,14 +12,6 @@ export interface IPlayer {
   ThrowHand: string;
 }
 
-export interface IAllStarPlayer {
-  Name: string;
-  PlayerID: number;
-  Position: string;
-  StatID: number;
-  Team: string;
-}
-
 export interface IDreamPlayerProps {
   position: string;
 }

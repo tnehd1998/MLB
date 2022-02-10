@@ -2,7 +2,6 @@ import React, { Suspense } from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { useRecoilState } from "recoil";
 import styled from "styled-components";
-import AllStarTable from "../components/organisms/AllStarTable/AllStarTable";
 
 import Loading from "../components/organisms/Loading/Loading";
 import Payroll from "../components/organisms/Payroll/Payroll";
@@ -33,9 +32,6 @@ const AllStarPage = () => {
           <Ranking />
         </Suspense>
       ) : (
-        // <Suspense fallback={<Loading />}>
-        //   <AllStarTable />
-        // </Suspense>
         <Suspense fallback={<Loading />}>
           <Payroll />
         </Suspense>
