@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 import Loading from "../components/organisms/Loading/Loading";
 import Payroll from "../components/organisms/Payroll/Payroll";
-import Ranking from "../components/organisms/Ranking/Ranking";
+import TopPlayers from "../components/organisms/TopPlayers/TopPlayers";
 import { showFARankingState } from "../store/ranking";
 
 const AllStarPage = () => {
@@ -29,7 +29,7 @@ const AllStarPage = () => {
       </Title>
       {showFARanking ? (
         <Suspense fallback={<Loading />}>
-          <Ranking />
+          <TopPlayers />
         </Suspense>
       ) : (
         <Suspense fallback={<Loading />}>

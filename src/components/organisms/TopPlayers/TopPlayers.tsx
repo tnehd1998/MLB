@@ -4,7 +4,7 @@ import { useNavigate } from "react-router";
 import styled from "styled-components";
 import { getRanking } from "../../../api/ranking";
 
-const RankingWrapper = styled.div`
+const TopPlayersWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -49,8 +49,8 @@ const PlayerDescription = styled.p`
   margin: 0.5em;
 `;
 
-const Ranking = () => {
-  const { data: players } = useQuery("ranking", getRanking, {
+const TopPlayers = () => {
+  const { data: players } = useQuery("topplayers", getRanking, {
     suspense: true,
   });
   const navigate = useNavigate();
@@ -60,7 +60,7 @@ const Ranking = () => {
   };
 
   return (
-    <RankingWrapper>
+    <TopPlayersWrapper>
       {players?.map((player) => (
         <PlayerWrapper
           key={player.ranking}
@@ -86,8 +86,8 @@ const Ranking = () => {
           </PlayerDescriptions>
         </PlayerWrapper>
       ))}
-    </RankingWrapper>
+    </TopPlayersWrapper>
   );
 };
 
-export default Ranking;
+export default TopPlayers;
