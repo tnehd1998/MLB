@@ -5,6 +5,7 @@ import styled from "styled-components";
 import AllStarTable from "../components/organisms/AllStarTable/AllStarTable";
 
 import Loading from "../components/organisms/Loading/Loading";
+import Payroll from "../components/organisms/Payroll/Payroll";
 import Ranking from "../components/organisms/Ranking/Ranking";
 import { showFARankingState } from "../store/ranking";
 
@@ -32,8 +33,11 @@ const AllStarPage = () => {
           <Ranking />
         </Suspense>
       ) : (
+        // <Suspense fallback={<Loading />}>
+        //   <AllStarTable />
+        // </Suspense>
         <Suspense fallback={<Loading />}>
-          <AllStarTable />
+          <Payroll />
         </Suspense>
       )}
     </AllStarPageWrapper>
