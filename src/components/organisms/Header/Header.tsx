@@ -19,11 +19,11 @@ const Header = () => {
         <MenuLink to="/">
           <CategoryButton title="MLB TEAMS" />
         </MenuLink>
-        <MenuLink to="allstar">
-          <CategoryButton title="ALL STAR" />
+        <MenuLink to="ranking">
+          <CategoryButton title="RANKING" />
         </MenuLink>
         <MenuLink to="record">
-          <CategoryButton title="2021 RECORD" />
+          <CategoryButton title="RECORD" />
         </MenuLink>
         <MenuLink to="dreamteam">
           <CategoryButton title="DREAM TEAM" />

@@ -24,7 +24,7 @@ const AllStarPage = () => {
       </HelmetProvider>
       <Title onClick={onClickSwitchCategory}>
         {showFARanking
-          ? "MLB 지정 Top 200 선수 명단 확인하기"
+          ? "MLB 구단 연봉총액 순위 확인하기"
           : "가장 많은 돈을 받는 선수 Top50 확인하기"}
       </Title>
       {showFARanking ? (

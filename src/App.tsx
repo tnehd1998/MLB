@@ -11,7 +11,7 @@ import Header from "./components/organisms/Header/Header";
 
 import MainPage from "./pages/MainPage";
 import TeamPage from "./pages/TeamPage";
-import AllStarPage from "./pages/AllStarPage";
+import RankingPage from "./pages/RankingPage";
 import RecordPage from "./pages/RecordPage";
 import DreamTeamPage from "./pages/DreamTeamPage";
 
@@ -43,7 +43,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path=":teamName" element={<TeamPage />} />
-          <Route path="/allstar" element={<AllStarPage />} />
+          <Route path="/ranking" element={<RankingPage />} />
           <Route path="/record" element={<RecordPage />} />
           <Route path="/dreamteam" element={<DreamTeamPage />} />
           <Route path="/*" element={<Navigate to="/" />} />
