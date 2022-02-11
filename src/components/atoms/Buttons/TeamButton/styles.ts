@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Button = styled.div<{ iconBgColor: string }>`
+export const Button = styled.button<{ iconBgColor: string }>`
   width: 15vw;
   height: 15vw;
   border-radius: 15%;
@@ -9,6 +9,7 @@ export const Button = styled.div<{ iconBgColor: string }>`
   align-items: center;
   border: 3px solid ${({ theme }) => theme.textColor};
   cursor: pointer;
+  background: transparent;
 
   &:hover {
     transform: scale(1.1);

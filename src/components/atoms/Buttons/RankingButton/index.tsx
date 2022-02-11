@@ -1,7 +1,13 @@
 import React from "react";
+import { Button } from "./styles";
 
-const RankingButton = () => {
-  return <div></div>;
+export interface Props {
+  onClick: () => void;
+  content: string;
+}
+
+const RankingButton = ({ onClick, content }: Props) => {
+  return <Button onClick={onClick}>{content}</Button>;
 };
 
 export default RankingButton;

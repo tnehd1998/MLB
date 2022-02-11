@@ -1,26 +1,24 @@
 import styled from "styled-components";
 
 export const Button = styled.button`
-  width: 20vw;
-  height: 6vh;
-  text-align: center;
-  line-height: 6vh;
-  font-size: 2vw;
-  color: ${({ theme }) => theme.textColor};
+  font-size: 24px;
+  margin-bottom: 2vh;
   border: 2px solid ${({ theme }) => theme.textColor};
-  border-radius: 10px;
+  border-radius: 20px;
+  padding: 10px;
   cursor: pointer;
-  margin: 0 0.2em;
   background: transparent;
-
   &:hover {
-    transform: scale(1.1);
+    color: ${({ theme }) => theme.bgColor};
     background-color: ${({ theme }) => theme.textColor};
     transition: all 0.3s linear;
-    color: ${({ theme }) => theme.bgColor};
   }
 
   @media (max-width: 768px) {
-    width: 18vw;
+    font-size: 16px;
+  }
+
+  @media (min-width: 1150px) {
+    font-size: 32px;
   }
 `;
