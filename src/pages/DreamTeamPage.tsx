@@ -2,6 +2,7 @@ import React from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { useSetRecoilState } from "recoil";
 import styled from "styled-components";
+import BasicButton from "../components/atoms/Buttons/BasicButton";
 import DreamBatter from "../components/organisms/DreamBatter/DreamBatter";
 import DreamPitcher from "../components/organisms/DreamPitcher/DreamPitcher";
 import { dreamTeamInfoState } from "../store/dreamteam";
@@ -43,7 +44,7 @@ const DreamTeamPage = () => {
       <PlayerList>
         <DreamPitcher position="RP" />
       </PlayerList>
-      <DeleteAllButton onClick={onClickDeleteAll}>전체 삭제</DeleteAllButton>
+      <BasicButton onClick={onClickDeleteAll} content="전체 삭제" />
     </DreamTeamPageWrapper>
   );
 };
@@ -54,6 +55,7 @@ const DreamTeamPageWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-bottom: 5vh;
 `;
 
 const PlayerTitle = styled.p`
@@ -65,27 +67,6 @@ const PlayerTitle = styled.p`
 const PlayerList = styled.ul`
   display: flex;
   margin: 1em 0;
-`;
-
-const DeleteAllButton = styled.button`
-  padding: 0.5em;
-  font-size: 1em;
-  border: 2px solid ${({ theme }) => theme.textColor};
-  background-color: ${({ theme }) => theme.bgColor};
-  border-radius: 15px;
-  text-decoration: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  color: ${({ theme }) => theme.textColor};
-  transition: all 0.3s linear;
-  margin-bottom: 5vh;
-  &:hover {
-    background-color: ${({ theme }) => theme.textColor};
-    transition: all 0.3s linear;
-    color: ${({ theme }) => theme.bgColor};
-  }
 `;
 
 export default DreamTeamPage;
