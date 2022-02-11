@@ -9,8 +9,9 @@ export const Button = styled.button`
   cursor: pointer;
   background: transparent;
   &:hover {
-    color: ${({ theme }) => theme.bgColor};
-    background-color: ${({ theme }) => theme.textColor};
+    color: ${({ theme }) => (theme.bgColor ? theme.bgColor : "white")};
+    background-color: ${({ theme }) =>
+      theme.textColor ? theme.textColor : "black"};
     transition: all 0.3s linear;
   }
 

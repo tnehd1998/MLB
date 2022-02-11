@@ -15,9 +15,10 @@ export const Button = styled.button`
 
   &:hover {
     transform: scale(1.1);
-    background-color: ${({ theme }) => theme.textColor};
+    background-color: ${({ theme }) =>
+      theme.textColor ? theme.textColor : "black"};
     transition: all 0.3s linear;
-    color: ${({ theme }) => theme.bgColor};
+    color: ${({ theme }) => (theme.bgColor ? theme.bgColor : "white")};
   }
 
   @media (max-width: 768px) {

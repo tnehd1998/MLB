@@ -24,9 +24,6 @@ const PlayerWrapper = styled.div`
     background-color: ${({ theme }) => theme.textColor};
     color: ${({ theme }) => theme.bgColor};
   }
-  @media (max-width: 768px) {
-    width: 90vw;
-  }
 `;
 
 const PlayerImage = styled.img`

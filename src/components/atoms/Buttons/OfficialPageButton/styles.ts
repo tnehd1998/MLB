@@ -1,0 +1,25 @@
+import styled from "styled-components";
+
+export const Button = styled.button`
+  padding: 0.5em;
+  font-size: 1.2em;
+  border: 2px solid ${(props) => (props.color ? "#" + props.color : "blue")};
+  border-radius: 20px;
+  color: ${({ theme }) => theme.textColor};
+  text-decoration: none;
+  background: transparent;
+  cursor: pointer;
+  &:hover {
+    background-color: ${(props) => (props.color ? "#" + props.color : "blue")};
+    transition: all 0.3s linear;
+    color: white;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 0.8em;
+  }
+
+  @media (min-width: 1150px) {
+    font-size: 1.5em;
+  }
+`;

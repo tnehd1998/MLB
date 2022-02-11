@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { getTeams } from "../../../api/teams";
 import { ITeamNameProps } from "../../../types/team.type";
 import { ITeams } from "../../../types/teams.type";
+import OfficialPageButton from "../../atoms/Buttons/OfficialPageButton";
 
 const TeamTitle = ({ teamName }: ITeamNameProps) => {
   const { data: teams } = useQuery("teams", getTeams, {
@@ -50,7 +51,7 @@ const TeamTitle = ({ teamName }: ITeamNameProps) => {
         target="_blank"
         color={currentTeam.PrimaryColor}
       >
-        &#8594; 공식 홈페이지
+        <OfficialPageButton content="→ 공식 홈페이지" />
       </OfficialPageLink>
     </TeamTitleWrapper>
   );
@@ -111,26 +112,6 @@ const TeamNickname = styled.p`
   }
 `;
 
-const OfficialPageLink = styled.a`
-  padding: 0.5em;
-  font-size: 1.2em;
-  border: 2px solid ${(props) => "#" + props.color};
-  border-radius: 20px;
-  color: ${({ theme }) => theme.textColor};
-  text-decoration: none;
-  &:hover {
-    background-color: ${(props) => "#" + props.color};
-    transition: all 0.3s linear;
-    color: white;
-  }
-
-  @media (max-width: 768px) {
-    font-size: 0.8em;
-  }
-
-  @media (min-width: 1150px) {
-    font-size: 1.5em;
-  }
-`;
+const OfficialPageLink = styled.a``;
 
 export default TeamTitle;

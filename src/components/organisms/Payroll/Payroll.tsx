@@ -27,9 +27,6 @@ const TeamWrapper = styled.div`
     background-color: ${({ theme }) => theme.textColor};
     color: ${({ theme }) => theme.bgColor};
   }
-  @media (max-width: 768px) {
-    width: 90vw;
-  }
 `;
 
 const Team = styled.div`
