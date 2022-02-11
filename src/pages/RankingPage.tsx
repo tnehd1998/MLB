@@ -2,7 +2,7 @@ import React, { Suspense } from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { useRecoilState } from "recoil";
 import styled from "styled-components";
-import RankingButton from "../components/atoms/Buttons/RankingButton";
+import BasicButton from "../components/atoms/Buttons/BasicButton";
 
 import Loading from "../components/organisms/Loading/Loading";
 import Payroll from "../components/organisms/Payroll/Payroll";
@@ -24,12 +24,12 @@ const AllStarPage = () => {
         </Helmet>
       </HelmetProvider>
       {showFARanking ? (
-        <RankingButton
+        <BasicButton
           onClick={onClickSwitchCategory}
           content="MLB 구단 연봉총액 순위 확인하기"
         />
       ) : (
-        <RankingButton
+        <BasicButton
           onClick={onClickSwitchCategory}
           content="가장 많은 돈을 받는 선수 Top50 확인하기"
         />

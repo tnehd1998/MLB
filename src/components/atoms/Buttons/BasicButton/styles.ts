@@ -14,7 +14,7 @@ export const Button = styled.button`
     background-color: ${({ color, theme }) =>
       color ? "#" + color : theme.textColor};
     transition: all 0.3s linear;
-    color: white;
+    color: ${({ theme }) => theme.bgColor};
   }
 
   @media (max-width: 768px) {
