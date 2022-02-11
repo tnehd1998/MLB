@@ -6,6 +6,7 @@ import {
   playerSelectionState,
 } from "../../../store/player";
 import { IPlayer } from "../../../types/player.type";
+import BasicButton from "../../atoms/Buttons/BasicButton";
 
 const TeamPlayer = ({ playerInfo }: { playerInfo: IPlayer }) => {
   const setPlayerSelected = useSetRecoilState(playerSelectionState);
@@ -23,21 +24,28 @@ const TeamPlayer = ({ playerInfo }: { playerInfo: IPlayer }) => {
         alt={`${playerInfo.FirstName} ${playerInfo.LastName}`}
       />
       <PlayerProfile>
-        <PlayerName>
-          {playerInfo.FirstName} {playerInfo.LastName}
-        </PlayerName>
-        <PlayerDescription>포지션 : {playerInfo.Position}</PlayerDescription>
-        <PlayerDescription>타격 위치 : {playerInfo.BatHand}</PlayerDescription>
-        <PlayerDescription>
-          투구 방향 : {playerInfo.ThrowHand}
-        </PlayerDescription>
-        <PlayerDescription>
-          출생 : {String(playerInfo.BirthDate).substring(0, 10)}
-        </PlayerDescription>
-        <PlayerDescription>국적 : {playerInfo.BirthCountry}</PlayerDescription>
-        <MoreInfo onClick={() => showPlayerInfo(playerInfo)}>
-          🔎 선수 정보
-        </MoreInfo>
+        <PlayerDescriptionWrapper>
+          <PlayerName>
+            {playerInfo.FirstName} {playerInfo.LastName}
+          </PlayerName>
+          <PlayerDescription>포지션 : {playerInfo.Position}</PlayerDescription>
+          <PlayerDescription>
+            타격 위치 : {playerInfo.BatHand}
+          </PlayerDescription>
+          <PlayerDescription>
+            투구 방향 : {playerInfo.ThrowHand}
+          </PlayerDescription>
+          <PlayerDescription>
+            출생 : {String(playerInfo.BirthDate).substring(0, 10)}
+          </PlayerDescription>
+          <PlayerDescription>
+            국적 : {playerInfo.BirthCountry}
+          </PlayerDescription>
+        </PlayerDescriptionWrapper>
+        <BasicButton
+          onClick={() => showPlayerInfo(playerInfo)}
+          content="🔎 선수 정보"
+        />
       </PlayerProfile>
     </TeamPlayerWrapper>
   );
@@ -67,8 +75,12 @@ const PlayerProfile = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   padding-left: 10px;
+`;
+
+const PlayerDescriptionWrapper = styled.div`
+  margin-bottom: 0.5em;
 `;
 
 const PlayerName = styled.p`
@@ -79,23 +91,6 @@ const PlayerName = styled.p`
 
 const PlayerDescription = styled.p`
   font-size: 18px;
-`;
-
-const MoreInfo = styled.div`
-  padding: 0.5em;
-  margin-top: 1em;
-  font-size: 20px;
-  border: 2px solid ${(props) => "#" + props.color};
-  border-radius: 15px;
-  text-decoration: none;
-  cursor: pointer;
-  border: 1px solid ${({ theme }) => theme.textColor};
-
-  &:hover {
-    background-color: ${({ theme }) => theme.textColor};
-    transition: all 0.3s linear;
-    color: ${({ theme }) => theme.bgColor};
-  }
 `;
 
 export default TeamPlayer;

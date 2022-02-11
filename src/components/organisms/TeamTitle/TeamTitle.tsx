@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { getTeams } from "../../../api/teams";
 import { ITeamNameProps } from "../../../types/team.type";
 import { ITeams } from "../../../types/teams.type";
-import OfficialPageButton from "../../atoms/Buttons/OfficialPageButton";
+import BasicButton from "../../atoms/Buttons/BasicButton";
 
 const TeamTitle = ({ teamName }: ITeamNameProps) => {
   const { data: teams } = useQuery("teams", getTeams, {
@@ -49,9 +49,11 @@ const TeamTitle = ({ teamName }: ITeamNameProps) => {
           currentTeam.Name ? changeNameForUrl(currentTeam.Name) : ""
         }`}
         target="_blank"
-        color={currentTeam.PrimaryColor}
       >
-        <OfficialPageButton content="→ 공식 홈페이지" />
+        <BasicButton
+          color={currentTeam.PrimaryColor}
+          content="→ 공식 홈페이지"
+        />
       </OfficialPageLink>
     </TeamTitleWrapper>
   );
