@@ -6,6 +6,7 @@ import {
   currentPlayerState,
   playerSelectionState,
 } from "../../../store/player";
+import BasicButton from "../../atoms/Buttons/BasicButton";
 
 const PlayerCard = () => {
   const showingPlayer = useRecoilValue(currentPlayerState);
@@ -158,20 +159,20 @@ const PlayerCard = () => {
             rel="noreferrer"
             target="_blank"
           >
-            🔎 선수 세부 기록
+            <BasicButton content="🔎 선수 세부 기록" />
           </PlayerPageLink>
           <PlayerPageLink
             href={`https://www.youtube.com/results?search_query=${showingPlayer.FirstName.toLowerCase()}+${showingPlayer.LastName.toLowerCase()}+baseball`}
             rel="noreferrer"
             target="_blank"
           >
-            ⚾️ 관련 동영상
+            <BasicButton content="⚾️ 관련 동영상" />
           </PlayerPageLink>
-          {!isDreamTeamPlayer ? (
+          {!isDreamTeamPlayer && (
             <AddToDreamTeamButton onClick={addPlayerToDreamTeam}>
-              📌 드림팀 선수로 지정
+              <BasicButton content="📌 드림팀 선수로 지정" />
             </AddToDreamTeamButton>
-          ) : null}
+          )}
         </PlayerLinkWrapper>
       </PlayerInfoWrapper>
     </PlayerCardWrapper>
@@ -287,65 +288,12 @@ const PlayerLinkWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 10px;
 `;
 
-const PlayerPageLink = styled.a`
-  padding: 1em 0.5em;
-  margin-left: 1em;
-  font-size: 1em;
-  border: 2px solid ${({ theme }) => theme.textColor};
-  border-radius: 15px;
-  color: ${({ theme }) => theme.textColor};
-  text-decoration: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: all 0.3s linear;
-  background-color: ${({ theme }) => theme.bgColor};
-  &:hover {
-    background-color: ${({ theme }) => theme.textColor};
-    transition: all 0.3s linear;
-    color: ${({ theme }) => theme.bgColor};
-    border: ${({ theme }) => theme.bgColor};
-  }
+const PlayerPageLink = styled.a``;
 
-  @media (max-width: 768px) {
-    font-size: 0.5em;
-  }
-
-  @media (min-width: 1150px) {
-    font-size: 1.2em;
-  }
-`;
-
-const AddToDreamTeamButton = styled.div`
-  padding: 1em 0.5em;
-  margin-left: 1em;
-  font-size: 1em;
-  border: 2px solid ${({ theme }) => theme.textColor};
-  border-radius: 15px;
-  text-decoration: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  transition: border 0.3s linear;
-  background-color: ${({ theme }) => theme.bgColor};
-  &:hover {
-    transition: all 0.3s linear;
-    background-color: ${({ theme }) => theme.textColor};
-    color: ${({ theme }) => theme.bgColor};
-    border: ${({ theme }) => theme.bgColor};
-  }
-
-  @media (max-width: 768px) {
-    font-size: 0.5em;
-  }
-
-  @media (min-width: 1150px) {
-    font-size: 1.2em;
-  }
-`;
+const AddToDreamTeamButton = styled.div``;
 
 interface IAlphabetAccents {
   à: string;
