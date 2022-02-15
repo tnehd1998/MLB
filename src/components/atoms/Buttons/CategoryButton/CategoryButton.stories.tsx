@@ -1,12 +1,12 @@
 import { Story } from "@storybook/react";
-import CategoryButton, { Props } from ".";
+import CategoryButton, { IProps } from ".";
 
 export default {
   title: "atoms/CategoryButton",
   component: CategoryButton,
 };
 
-const Template: Story<Props> = (args) => (
+const Template: Story<IProps> = (args) => (
   <CategoryButton {...args}></CategoryButton>
 );
 

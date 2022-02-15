@@ -1,13 +1,13 @@
 import { action } from "@storybook/addon-actions";
 import { Story } from "@storybook/react";
-import BasicButton, { Props } from ".";
+import BasicButton, { IProps } from ".";
 
 export default {
   title: "atoms/BasicButton",
   component: BasicButton,
 };
 
-const Template: Story<Props> = (args) => <BasicButton {...args}></BasicButton>;
+const Template: Story<IProps> = (args) => <BasicButton {...args}></BasicButton>;
 
 export const OfficialPage = Template.bind({});
 OfficialPage.args = {

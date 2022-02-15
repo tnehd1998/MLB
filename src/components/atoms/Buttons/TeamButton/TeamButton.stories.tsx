@@ -1,13 +1,13 @@
 import { action } from "@storybook/addon-actions";
 import { Story } from "@storybook/react";
-import TeamButton, { Props } from ".";
+import TeamButton, { IProps } from ".";
 
 export default {
   title: "atoms/TeamButton",
   component: TeamButton,
 };
 
-const Template: Story<Props> = (args) => <TeamButton {...args}></TeamButton>;
+const Template: Story<IProps> = (args) => <TeamButton {...args}></TeamButton>;
 
 export const Default = Template.bind({});
 Default.args = {

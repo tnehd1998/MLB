@@ -1,6 +1,7 @@
 import React, { Suspense } from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import styled from "styled-components";
+import Title from "../components/atoms/Title";
 import Loading from "../components/organisms/Loading/Loading";
 import PostSeason from "../components/organisms/PostSeason/PostSeason";
 import Standing from "../components/organisms/Standing/Standing";
@@ -13,9 +14,9 @@ const RecordPage = () => {
           <title>MLB | RECORD</title>
         </Helmet>
       </HelmetProvider>
-      <Title>2021 MLB POSTSEASON</Title>
+      <Title content="2021 MLB POSTSEASON" />
       <PostSeason />
-      <Title>2021 TEAM STANDING</Title>
+      <Title content="2021 TEAM STANDING" />
       <Suspense fallback={<Loading />}>
         <Standing />
       </Suspense>
@@ -30,20 +31,6 @@ const RecordPageWrapper = styled.div`
   align-items: center;
   padding-top: 12vh;
   text-align: center;
-`;
-
-const Title = styled.p`
-  font-size: 32px;
-  margin: 20px 0px;
-  font-weight: 600;
-
-  @media (max-width: 768px) {
-    font-size: 24px;
-  }
-
-  @media (min-width: 1150px) {
-    font-size: 40px;
-  }
 `;
 
 export default RecordPage;

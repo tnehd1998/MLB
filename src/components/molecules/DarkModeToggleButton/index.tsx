@@ -1,12 +1,12 @@
 import React from "react";
 import { Wrapper } from "./styles";
 
-export interface IThemeButton {
+export interface IProps {
   isLightTheme: boolean;
   toggleTheme: () => void;
 }
 
-const DarkModeToggleButton = ({ toggleTheme, isLightTheme }: IThemeButton) => {
+const DarkModeToggleButton = ({ toggleTheme, isLightTheme }: IProps) => {
   return (
     <Wrapper onClick={toggleTheme} currentTheme={isLightTheme}>
       {isLightTheme ? (

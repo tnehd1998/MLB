@@ -3,6 +3,7 @@ import TeamPlayer from "../TeamPlayer/TeamPlayer";
 import styled from "styled-components";
 import { IPlayer } from "../../../types/player.type";
 import { ITeam } from "../../../types/team.type";
+import Title from "../../atoms/Title";
 
 const PositionPlayer = ({
   info,
@@ -22,7 +23,7 @@ const PositionPlayer = ({
 
   return (
     <PositionPlayerWrapper>
-      <PositionName>{title}</PositionName>
+      <Title content={title} />
       <PlayerList>
         {[...info].map((playerInfo) =>
           filterPosition(playerInfo, positions) ? (
@@ -41,19 +42,6 @@ const PositionPlayerWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-`;
-
-const PositionName = styled.p`
-  font-size: 24px;
-  font-weight: 600;
-
-  @media (max-width: 768px) {
-    font-size: 18px;
-  }
-
-  @media (min-width: 1150px) {
-    font-size: 36px;
-  }
 `;
 
 const PlayerList = styled.div`

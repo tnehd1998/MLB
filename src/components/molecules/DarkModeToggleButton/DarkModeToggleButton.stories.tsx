@@ -1,5 +1,5 @@
 import React from "react";
-import DarkModeToggleButton, { IThemeButton } from ".";
+import DarkModeToggleButton, { IProps } from ".";
 import { action } from "@storybook/addon-actions";
 import { Story } from "@storybook/react";
 
@@ -8,7 +8,7 @@ export default {
   component: DarkModeToggleButton,
 };
 
-const Template: Story<IThemeButton> = (args) => (
+const Template: Story<IProps> = (args) => (
   <DarkModeToggleButton {...args}></DarkModeToggleButton>
 );
 

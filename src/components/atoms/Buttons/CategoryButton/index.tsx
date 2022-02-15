@@ -1,11 +1,11 @@
 import React from "react";
 import { Button } from "./styles";
 
-export interface Props {
+export interface IProps {
   title: string;
 }
 
-const CategoryButton = ({ title }: Props) => {
+const CategoryButton = ({ title }: IProps) => {
   return <Button>{title}</Button>;
 };
 
