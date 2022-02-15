@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useQuery } from "react-query";
 import { useNavigate } from "react-router";
 import { getPayroll } from "../../../api/payroll";
+import Logo from "../../atoms/Logo";
 
 const PayrollWrapper = styled.div`
   display: flex;
@@ -50,12 +51,6 @@ const Description = styled.p`
   margin: 0.5em;
 `;
 
-const TeamLogo = styled.img`
-  width: 13em;
-  height: 13em;
-  padding: 1em;
-`;
-
 const PlayerImage = styled.img`
   width: 9em;
   height: 14em;
@@ -80,7 +75,7 @@ const Payroll = () => {
             <Title>랭킹 {team.rank}위</Title>
             <Description>팀 이름 : {team.team}</Description>
             <Description>연봉 총액 : {team.payroll}</Description>
-            <TeamLogo src={team.teamLogoUrl} alt="Team Logo" />
+            <Logo imageUrl={team.teamLogoUrl} />
           </Team>
           <Player>
             <Title>대표 선수</Title>

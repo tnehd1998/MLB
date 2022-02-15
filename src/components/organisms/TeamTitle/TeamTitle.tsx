@@ -5,6 +5,7 @@ import { getTeams } from "../../../api/teams";
 import { ITeamNameProps } from "../../../types/team.type";
 import { ITeams } from "../../../types/teams.type";
 import BasicButton from "../../atoms/Buttons/BasicButton";
+import Logo from "../../atoms/Logo";
 
 const TeamTitle = ({ teamName }: ITeamNameProps) => {
   const { data: teams } = useQuery("teams", getTeams, {
@@ -37,7 +38,7 @@ const TeamTitle = ({ teamName }: ITeamNameProps) => {
 
   return (
     <TeamTitleWrapper>
-      <TeamLogoImage src={`${currentTeam.WikipediaLogoUrl}`} />
+      <Logo imageUrl={`${currentTeam.WikipediaLogoUrl}`} />
       <TeamName>
         <TeamCity color={currentTeam.PrimaryColor}>{currentTeam.City}</TeamCity>
         <TeamNickname color={currentTeam.PrimaryColor}>
@@ -64,21 +65,6 @@ const TeamTitleWrapper = styled.div`
   justify-content: space-evenly;
   align-items: center;
   margin-bottom: 2vh;
-`;
-
-const TeamLogoImage = styled.img`
-  width: 15vw;
-  height: 15vw;
-
-  @media (max-width: 768px) {
-    width: 18vw;
-    height: 18vw;
-  }
-
-  @media (min-width: 1150px) {
-    width: 12vw;
-    height: 12vw;
-  }
 `;
 
 const TeamName = styled.div`
