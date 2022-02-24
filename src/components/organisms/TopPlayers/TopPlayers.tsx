@@ -4,6 +4,7 @@ import { useNavigate } from "react-router";
 import styled from "styled-components";
 import { getRanking } from "../../../api/ranking";
 import Description from "../../atoms/Description";
+import PlayerTitle from "../../atoms/PlayerTitle";
 
 const TopPlayersWrapper = styled.div`
   display: flex;
@@ -36,12 +37,6 @@ const PlayerDescriptions = styled.div`
   font-size: 18px;
 `;
 
-const PlayerTitle = styled.p`
-  font-size: 12px;
-  font-weight: 600;
-  margin-bottom: 1em;
-`;
-
 const TopPlayers = () => {
   const { data: players } = useQuery("topplayers", getRanking, {
     suspense: true,
@@ -61,24 +56,13 @@ const TopPlayers = () => {
         >
           <PlayerImage src={player.playerImg} alt="Player" />
           <PlayerDescriptions>
-            <PlayerTitle>
-              Ranking #{player.ranking} {player.name}
-            </PlayerTitle>
-            <Description text={`포지션 : ${player.position}`} textSize={14} />
-            <Description text={`소속팀 : ${player.team}`} textSize={14} />
-            <Description
-              text={`${player.totalValue} ${player.years}년 계약`}
-              textSize={14}
-            />
-            <Description
-              text={`계약 당시 나이 : ${player.SignedAge}`}
-              textSize={14}
-            />
-            <Description
-              text={`평균 연봉 : ${player.averageValue}`}
-              textSize={14}
-            />
-            <Description text={`계약 기간 : ${player.period}`} textSize={14} />
+            <PlayerTitle text={`Ranking #${player.ranking} ${player.name}`} />
+            <Description text={`포지션 : ${player.position}`} />
+            <Description text={`소속팀 : ${player.team}`} />
+            <Description text={`${player.totalValue} ${player.years}년 계약`} />
+            <Description text={`계약 당시 나이 : ${player.SignedAge}`} />
+            <Description text={`평균 연봉 : ${player.averageValue}`} />
+            <Description text={`계약 기간 : ${player.period}`} />
           </PlayerDescriptions>
         </PlayerWrapper>
       ))}

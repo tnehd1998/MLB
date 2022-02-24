@@ -4,8 +4,8 @@ export interface IProps {
   text: string;
 }
 
-const Description = ({ text }: IProps) => {
+const PlayerTitle = ({ text }: IProps) => {
   return <Wrapper>{text}</Wrapper>;
 };
 
-export default Description;
+export default PlayerTitle;

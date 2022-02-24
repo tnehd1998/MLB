@@ -1,4 +1,3 @@
-import React from "react";
 import { useSetRecoilState } from "recoil";
 import styled from "styled-components";
 import {
@@ -8,6 +7,7 @@ import {
 import { IPlayer } from "../../../types/player.type";
 import BasicButton from "../../atoms/Buttons/BasicButton";
 import Description from "../../atoms/Description";
+import PlayerTitle from "../../atoms/PlayerTitle";
 
 const TeamPlayer = ({ playerInfo }: { playerInfo: IPlayer }) => {
   const setPlayerSelected = useSetRecoilState(playerSelectionState);
@@ -30,26 +30,14 @@ const TeamPlayer = ({ playerInfo }: { playerInfo: IPlayer }) => {
       />
       <PlayerProfile>
         <PlayerDescriptionWrapper>
-          <PlayerName>
-            {playerInfo.FirstName} {playerInfo.LastName}
-          </PlayerName>
-          <Description text={`포지션 : ${playerInfo.Position}`} textSize={18} />
-          <Description
-            text={`타격 위치 : ${playerInfo.BatHand}`}
-            textSize={18}
+          <PlayerTitle
+            text={`${playerInfo.FirstName} ${playerInfo.LastName}`}
           />
-          <Description
-            text={`투구 방향 : ${playerInfo.ThrowHand}`}
-            textSize={18}
-          />
-          <Description
-            text={`출생 : ${getBirthDate(playerInfo.BirthDate)}`}
-            textSize={18}
-          />
-          <Description
-            text={`국적 : ${playerInfo.BirthCountry}`}
-            textSize={18}
-          />
+          <Description text={`포지션 : ${playerInfo.Position}`} />
+          <Description text={`타격 위치 : ${playerInfo.BatHand}`} />
+          <Description text={`투구 방향 : ${playerInfo.ThrowHand}`} />
+          <Description text={`출생 : ${getBirthDate(playerInfo.BirthDate)}`} />
+          <Description text={`국적 : ${playerInfo.BirthCountry}`} />
         </PlayerDescriptionWrapper>
         <BasicButton
           onClick={() => showPlayerInfo(playerInfo)}
@@ -93,9 +81,9 @@ const PlayerDescriptionWrapper = styled.div`
 `;
 
 const PlayerName = styled.p`
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 600;
-  margin-bottom: 10px;
+  margin-bottom: 1em;
 `;
 
 export default TeamPlayer;

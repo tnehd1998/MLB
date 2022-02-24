@@ -11,5 +11,4 @@ const Template: Story<IProps> = (args) => <Description {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   text: "포지션 : SP",
-  textSize: 18,
 };

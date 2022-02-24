@@ -5,6 +5,7 @@ import { useNavigate } from "react-router";
 import { getPayroll } from "../../../api/payroll";
 import Logo from "../../atoms/Logo";
 import Description from "../../atoms/Description";
+import PlayerTitle from "../../atoms/PlayerTitle";
 
 const PayrollWrapper = styled.div`
   display: flex;
@@ -42,7 +43,7 @@ const Player = styled.div`
 `;
 
 const Title = styled.p`
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
   margin-bottom: 1em;
 `;
@@ -68,15 +69,15 @@ const Payroll = () => {
       {teams?.map((team) => (
         <TeamWrapper key={team.rank} onClick={() => onClickTeam(team.key)}>
           <Team>
-            <Title>랭킹 {team.rank}위</Title>
-            <Description text={`팀 이름 : ${team.team}`} textSize={14} />
-            <Description text={`연봉 총액 : ${team.payroll}`} textSize={14} />
+            <PlayerTitle text={`랭킹 ${team.rank}위`} />
+            <Description text={`팀 이름 : ${team.team}`} />
+            <Description text={`연봉 총액 : ${team.payroll}`} />
             <Logo imageUrl={team.teamLogoUrl} />
           </Team>
           <Player>
-            <Title>대표 선수</Title>
-            <Description text={`${team.bestPlayer}`} textSize={14} />
-            <Description text={`포지션 : ${team.position}`} textSize={14} />
+            <PlayerTitle text={"대표 선수"} />
+            <Description text={`${team.bestPlayer}`} />
+            <Description text={`포지션 : ${team.position}`} />
             <PlayerImage src={team.playerImageUrl} alt="Player" />
           </Player>
         </TeamWrapper>
