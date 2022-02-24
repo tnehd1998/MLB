@@ -4,6 +4,7 @@ import { useQuery } from "react-query";
 import { useNavigate } from "react-router";
 import { getPayroll } from "../../../api/payroll";
 import Logo from "../../atoms/Logo";
+import Description from "../../atoms/Description";
 
 const PayrollWrapper = styled.div`
   display: flex;
@@ -46,11 +47,6 @@ const Title = styled.p`
   margin-bottom: 1em;
 `;
 
-const Description = styled.p`
-  font-size: 14px;
-  margin: 0.5em;
-`;
-
 const PlayerImage = styled.img`
   width: 9em;
   height: 14em;
@@ -73,14 +69,14 @@ const Payroll = () => {
         <TeamWrapper key={team.rank} onClick={() => onClickTeam(team.key)}>
           <Team>
             <Title>랭킹 {team.rank}위</Title>
-            <Description>팀 이름 : {team.team}</Description>
-            <Description>연봉 총액 : {team.payroll}</Description>
+            <Description text={`팀 이름 : ${team.team}`} textSize={14} />
+            <Description text={`연봉 총액 : ${team.payroll}`} textSize={14} />
             <Logo imageUrl={team.teamLogoUrl} />
           </Team>
           <Player>
             <Title>대표 선수</Title>
-            <Description>{team.bestPlayer}</Description>
-            <Description>포지션 : {team.position}</Description>
+            <Description text={`${team.bestPlayer}`} textSize={14} />
+            <Description text={`포지션 : ${team.position}`} textSize={14} />
             <PlayerImage src={team.playerImageUrl} alt="Player" />
           </Player>
         </TeamWrapper>

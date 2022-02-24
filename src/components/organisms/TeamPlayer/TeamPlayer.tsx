@@ -7,6 +7,7 @@ import {
 } from "../../../store/player";
 import { IPlayer } from "../../../types/player.type";
 import BasicButton from "../../atoms/Buttons/BasicButton";
+import Description from "../../atoms/Description";
 
 const TeamPlayer = ({ playerInfo }: { playerInfo: IPlayer }) => {
   const setPlayerSelected = useSetRecoilState(playerSelectionState);
@@ -15,6 +16,10 @@ const TeamPlayer = ({ playerInfo }: { playerInfo: IPlayer }) => {
   const showPlayerInfo = (playerInfo: IPlayer) => {
     setPlayerSelected((value) => !value);
     setCurrentPlayer(playerInfo);
+  };
+
+  const getBirthDate = (birthDate: string) => {
+    return String(birthDate).substring(0, 10);
   };
 
   return (
@@ -28,19 +33,23 @@ const TeamPlayer = ({ playerInfo }: { playerInfo: IPlayer }) => {
           <PlayerName>
             {playerInfo.FirstName} {playerInfo.LastName}
           </PlayerName>
-          <PlayerDescription>포지션 : {playerInfo.Position}</PlayerDescription>
-          <PlayerDescription>
-            타격 위치 : {playerInfo.BatHand}
-          </PlayerDescription>
-          <PlayerDescription>
-            투구 방향 : {playerInfo.ThrowHand}
-          </PlayerDescription>
-          <PlayerDescription>
-            출생 : {String(playerInfo.BirthDate).substring(0, 10)}
-          </PlayerDescription>
-          <PlayerDescription>
-            국적 : {playerInfo.BirthCountry}
-          </PlayerDescription>
+          <Description text={`포지션 : ${playerInfo.Position}`} textSize={18} />
+          <Description
+            text={`타격 위치 : ${playerInfo.BatHand}`}
+            textSize={18}
+          />
+          <Description
+            text={`투구 방향 : ${playerInfo.ThrowHand}`}
+            textSize={18}
+          />
+          <Description
+            text={`출생 : ${getBirthDate(playerInfo.BirthDate)}`}
+            textSize={18}
+          />
+          <Description
+            text={`국적 : ${playerInfo.BirthCountry}`}
+            textSize={18}
+          />
         </PlayerDescriptionWrapper>
         <BasicButton
           onClick={() => showPlayerInfo(playerInfo)}
@@ -87,10 +96,6 @@ const PlayerName = styled.p`
   font-size: 20px;
   font-weight: 600;
   margin-bottom: 10px;
-`;
-
-const PlayerDescription = styled.p`
-  font-size: 18px;
 `;
 
 export default TeamPlayer;

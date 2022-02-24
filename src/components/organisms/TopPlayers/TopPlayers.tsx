@@ -3,6 +3,7 @@ import { useQuery } from "react-query";
 import { useNavigate } from "react-router";
 import styled from "styled-components";
 import { getRanking } from "../../../api/ranking";
+import Description from "../../atoms/Description";
 
 const TopPlayersWrapper = styled.div`
   display: flex;
@@ -41,11 +42,6 @@ const PlayerTitle = styled.p`
   margin-bottom: 1em;
 `;
 
-const PlayerDescription = styled.p`
-  font-size: 14px;
-  margin: 0.5em;
-`;
-
 const TopPlayers = () => {
   const { data: players } = useQuery("topplayers", getRanking, {
     suspense: true,
@@ -68,18 +64,21 @@ const TopPlayers = () => {
             <PlayerTitle>
               Ranking #{player.ranking} {player.name}
             </PlayerTitle>
-            <PlayerDescription>포지션 : {player.position}</PlayerDescription>
-            <PlayerDescription>소속팀 : {player.team}</PlayerDescription>
-            <PlayerDescription>
-              {player.totalValue} {player.years}년 계약
-            </PlayerDescription>
-            <PlayerDescription>
-              계약 당시 나이 : {player.SignedAge}
-            </PlayerDescription>
-            <PlayerDescription>
-              평균 연봉 : {player.averageValue}
-            </PlayerDescription>
-            <PlayerDescription>계약 기간 : {player.period}</PlayerDescription>
+            <Description text={`포지션 : ${player.position}`} textSize={14} />
+            <Description text={`소속팀 : ${player.team}`} textSize={14} />
+            <Description
+              text={`${player.totalValue} ${player.years}년 계약`}
+              textSize={14}
+            />
+            <Description
+              text={`계약 당시 나이 : ${player.SignedAge}`}
+              textSize={14}
+            />
+            <Description
+              text={`평균 연봉 : ${player.averageValue}`}
+              textSize={14}
+            />
+            <Description text={`계약 기간 : ${player.period}`} textSize={14} />
           </PlayerDescriptions>
         </PlayerWrapper>
       ))}
