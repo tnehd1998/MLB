@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import styled from "styled-components";
 import { dreamTeamInfoState } from "../../../store/dreamteam";
@@ -7,6 +7,7 @@ import {
   playerSelectionState,
 } from "../../../store/player";
 import BasicButton from "../../atoms/Buttons/BasicButton";
+import PlayerImage from "../../atoms/PlayerImage";
 
 const PlayerCard = () => {
   const showingPlayer = useRecoilValue(currentPlayerState);
@@ -129,7 +130,7 @@ const PlayerCard = () => {
       <PlayerCardTitle>☆ 선수 정보 ☆</PlayerCardTitle>
       <PlayerInfoWrapper>
         <PlayerProfileWrapper>
-          <PlayerImage src={showingPlayer.PhotoUrl} />
+          <PlayerImage imageUrl={showingPlayer.PhotoUrl} imageType="card" />
           <PlayerInfoList>
             <PlayerInfo>
               이름 : {showingPlayer.FirstName} {showingPlayer.LastName}
@@ -240,20 +241,6 @@ const PlayerInfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 80vw;
-`;
-
-const PlayerImage = styled.img`
-  width: 15em;
-  border-radius: 10%;
-  border: 2px solid ${({ theme }) => theme.textColor};
-
-  @media (max-width: 768px) {
-    width: 10em;
-  }
-
-  @media (min-width: 1150px) {
-    width: 15em;
-  }
 `;
 
 const PlayerInfo = styled.p`

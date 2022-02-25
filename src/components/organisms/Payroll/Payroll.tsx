@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import { useQuery } from "react-query";
 import { useNavigate } from "react-router";
@@ -6,6 +5,7 @@ import { getPayroll } from "../../../api/payroll";
 import Logo from "../../atoms/Logo";
 import Description from "../../atoms/Description";
 import PlayerTitle from "../../atoms/PlayerTitle";
+import PlayerImage from "../../atoms/PlayerImage";
 
 const PayrollWrapper = styled.div`
   display: flex;
@@ -33,25 +33,13 @@ const TeamWrapper = styled.div`
 `;
 
 const Team = styled.div`
-  width: 60%;
+  width: 55%;
   padding: 1em;
 `;
 
 const Player = styled.div`
-  width: 40%;
+  width: 45%;
   padding: 1em;
-`;
-
-const Title = styled.p`
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 1em;
-`;
-
-const PlayerImage = styled.img`
-  width: 9em;
-  height: 14em;
-  border-radius: 20px;
 `;
 
 const Payroll = () => {
@@ -78,7 +66,7 @@ const Payroll = () => {
             <PlayerTitle text={"대표 선수"} />
             <Description text={`${team.bestPlayer}`} />
             <Description text={`포지션 : ${team.position}`} />
-            <PlayerImage src={team.playerImageUrl} alt="Player" />
+            <PlayerImage imageUrl={team.playerImageUrl} imageType="card" />
           </Player>
         </TeamWrapper>
       ))}

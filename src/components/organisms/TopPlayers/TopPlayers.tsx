@@ -51,7 +51,7 @@ const TopPlayers = () => {
           key={player.ranking}
           onClick={() => onClickPlayer(player.team)}
         >
-          <PlayerImage imageUrl={player.playerImg} />
+          <PlayerImage imageUrl={player.playerImg} imageType="main" />
           <PlayerDescriptions>
             <PlayerTitle text={`Ranking #${player.ranking} ${player.name}`} />
             <Description text={`포지션 : ${player.position}`} />

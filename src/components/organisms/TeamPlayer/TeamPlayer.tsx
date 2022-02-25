@@ -25,7 +25,7 @@ const TeamPlayer = ({ playerInfo }: { playerInfo: IPlayer }) => {
 
   return (
     <TeamPlayerWrapper>
-      <PlayerImage imageUrl={playerInfo.PhotoUrl} />
+      <PlayerImage imageUrl={playerInfo.PhotoUrl} imageType="main" />
       <PlayerProfile>
         <PlayerDescriptionWrapper>
           <PlayerTitle
@@ -70,12 +70,6 @@ const PlayerProfile = styled.div`
 
 const PlayerDescriptionWrapper = styled.div`
   margin-bottom: 0.5em;
-`;
-
-const PlayerName = styled.p`
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 1em;
 `;
 
 export default TeamPlayer;

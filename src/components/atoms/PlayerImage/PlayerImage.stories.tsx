@@ -8,7 +8,14 @@ export default {
 
 const Template: Story<IProps> = (args) => <PlayerImage {...args} />;
 
-export const Default = Template.bind({});
-Default.args = {
+export const Main = Template.bind({});
+Main.args = {
   imageUrl: "https://d1dglpr230r57l.cloudfront.net/headshots/mlb/15744.jpg",
+  imageType: "main",
+};
+
+export const Card = Template.bind({});
+Card.args = {
+  imageUrl: "https://d1dglpr230r57l.cloudfront.net/headshots/mlb/15744.jpg",
+  imageType: "card",
 };
