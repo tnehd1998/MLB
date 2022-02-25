@@ -7,7 +7,39 @@ import Description from "../../atoms/Description";
 import PlayerTitle from "../../atoms/Titles/PlayerTitle";
 import PlayerImage from "../../atoms/PlayerImage";
 
-const PayrollWrapper = styled.div`
+const Payroll = () => {
+  const { data: teams } = useQuery("payroll", getPayroll, {
+    suspense: true,
+  });
+  const navigate = useNavigate();
+
+  const onClickTeam = (team: string) => {
+    navigate(`/${team}`);
+  };
+
+  return (
+    <Wrapper>
+      {teams?.map((team) => (
+        <TeamWrapper key={team.rank} onClick={() => onClickTeam(team.key)}>
+          <Team>
+            <PlayerTitle text={`랭킹 ${team.rank}위`} />
+            <Description text={`팀 이름 : ${team.team}`} />
+            <Description text={`연봉 총액 : ${team.payroll}`} />
+            <Logo imageUrl={team.teamLogoUrl} />
+          </Team>
+          <Player>
+            <PlayerTitle text={"대표 선수"} />
+            <Description text={`${team.bestPlayer}`} />
+            <Description text={`포지션 : ${team.position}`} />
+            <PlayerImage imageUrl={team.playerImageUrl} imageType="card" />
+          </Player>
+        </TeamWrapper>
+      ))}
+    </Wrapper>
+  );
+};
+
+const Wrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -41,37 +73,5 @@ const Player = styled.div`
   width: 45%;
   padding: 1em;
 `;
-
-const Payroll = () => {
-  const { data: teams } = useQuery("payroll", getPayroll, {
-    suspense: true,
-  });
-  const navigate = useNavigate();
-
-  const onClickTeam = (team: string) => {
-    navigate(`/${team}`);
-  };
-
-  return (
-    <PayrollWrapper>
-      {teams?.map((team) => (
-        <TeamWrapper key={team.rank} onClick={() => onClickTeam(team.key)}>
-          <Team>
-            <PlayerTitle text={`랭킹 ${team.rank}위`} />
-            <Description text={`팀 이름 : ${team.team}`} />
-            <Description text={`연봉 총액 : ${team.payroll}`} />
-            <Logo imageUrl={team.teamLogoUrl} />
-          </Team>
-          <Player>
-            <PlayerTitle text={"대표 선수"} />
-            <Description text={`${team.bestPlayer}`} />
-            <Description text={`포지션 : ${team.position}`} />
-            <PlayerImage imageUrl={team.playerImageUrl} imageType="card" />
-          </Player>
-        </TeamWrapper>
-      ))}
-    </PayrollWrapper>
-  );
-};
 
 export default Payroll;

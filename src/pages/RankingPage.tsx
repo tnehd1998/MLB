@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useState } from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { useRecoilState } from "recoil";
 import styled from "styled-components";
@@ -12,8 +12,8 @@ import { showFARankingState } from "../store/ranking";
 const AllStarPage = () => {
   const [showFARanking, setShowFARanking] = useRecoilState(showFARankingState);
 
-  const onClickSwitchCategory = () => {
-    setShowFARanking((showFARanking) => !showFARanking);
+  const changeToFARanking = (type: boolean) => {
+    setShowFARanking(type);
   };
 
   return (
@@ -23,17 +23,16 @@ const AllStarPage = () => {
           <title>MLB | ALL STAR</title>
         </Helmet>
       </HelmetProvider>
-      {showFARanking ? (
+      <ButtonWrapper>
         <BasicButton
-          onClick={onClickSwitchCategory}
-          content="MLB 구단 연봉총액 순위 확인하기"
+          onClick={() => changeToFARanking(true)}
+          content="FA 랭킹 Top50 확인하기"
         />
-      ) : (
         <BasicButton
-          onClick={onClickSwitchCategory}
-          content="가장 많은 돈을 받는 선수 Top50 확인하기"
+          onClick={() => changeToFARanking(false)}
+          content="구단 연봉총액 순위 확인하기"
         />
-      )}
+      </ButtonWrapper>
       {showFARanking ? (
         <Suspense fallback={<Loading />}>
           <TopPlayers />
@@ -53,6 +52,13 @@ const AllStarPageWrapper = styled.div`
   justify-content: center;
   align-items: center;
   padding-top: 12vh;
+`;
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 8em;
 `;
 
 export default AllStarPage;

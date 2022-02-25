@@ -1,6 +1,6 @@
-import React from "react";
 import styled from "styled-components";
 import PostSeasonImage from "../../../images/postseason.jpeg";
+import EventImage from "../../atoms/PostSeasonImage";
 
 const PostSeason = () => {
   return (
@@ -10,7 +10,7 @@ const PostSeason = () => {
         rel="noreferrer"
         target="_blank"
       >
-        <ScheduleImage src={PostSeasonImage} />
+        <EventImage imageUrl={PostSeasonImage} />
       </PostSeasonLink>
     </PostSeasonWrapper>
   );
@@ -25,25 +25,5 @@ const PostSeasonWrapper = styled.div`
 `;
 
 const PostSeasonLink = styled.a``;
-
-const ScheduleImage = styled.img`
-  width: 36em;
-  border-radius: 20px;
-  border: 2px solid ${({ theme }) => theme.textColor};
-  &:hover {
-    border: 3px solid ${({ theme }) => theme.textColor};
-    transform: scale(1.1);
-    transition: all 0.3s ease-in;
-  }
-
-  @media (max-width: 768px) {
-    width: 90vw;
-    margin-bottom: 2em;
-  }
-
-  @media (min-width: 1150px) {
-    width: 50em;
-  }
-`;
 
 export default PostSeason;

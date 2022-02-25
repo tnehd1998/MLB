@@ -6,7 +6,40 @@ import Description from "../../atoms/Description";
 import PlayerTitle from "../../atoms/Titles/PlayerTitle";
 import PlayerImage from "../../atoms/PlayerImage";
 
-const TopPlayersWrapper = styled.div`
+const TopPlayers = () => {
+  const { data: players } = useQuery("topplayers", getRanking, {
+    suspense: true,
+  });
+  const navigate = useNavigate();
+
+  const onClickPlayer = (team: string) => {
+    navigate(`/${team}`);
+  };
+
+  return (
+    <Wrapper>
+      {players?.map((player) => (
+        <PlayerWrapper
+          key={player.ranking}
+          onClick={() => onClickPlayer(player.team)}
+        >
+          <PlayerImage imageUrl={player.playerImg} imageType="main" />
+          <DescriptionWrapper>
+            <PlayerTitle text={`Rank #${player.ranking} ${player.name}`} />
+            <Description text={`포지션 : ${player.position}`} />
+            <Description text={`소속팀 : ${player.team}`} />
+            <Description text={`${player.totalValue} ${player.years}년 계약`} />
+            <Description text={`계약 당시 나이 : ${player.SignedAge}`} />
+            <Description text={`평균 연봉 : ${player.averageValue}`} />
+            <Description text={`계약 기간 : ${player.period}`} />
+          </DescriptionWrapper>
+        </PlayerWrapper>
+      ))}
+    </Wrapper>
+  );
+};
+
+const Wrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -28,45 +61,12 @@ const PlayerWrapper = styled.div`
   }
 `;
 
-const PlayerDescriptions = styled.div`
+const DescriptionWrapper = styled.div`
   padding: 1em;
   font-size: 8px;
   display: flex;
   flex-direction: column;
   justify-content: center;
 `;
-
-const TopPlayers = () => {
-  const { data: players } = useQuery("topplayers", getRanking, {
-    suspense: true,
-  });
-  const navigate = useNavigate();
-
-  const onClickPlayer = (team: string) => {
-    navigate(`/${team}`);
-  };
-
-  return (
-    <TopPlayersWrapper>
-      {players?.map((player) => (
-        <PlayerWrapper
-          key={player.ranking}
-          onClick={() => onClickPlayer(player.team)}
-        >
-          <PlayerImage imageUrl={player.playerImg} imageType="main" />
-          <PlayerDescriptions>
-            <PlayerTitle text={`Rank #${player.ranking} ${player.name}`} />
-            <Description text={`포지션 : ${player.position}`} />
-            <Description text={`소속팀 : ${player.team}`} />
-            <Description text={`${player.totalValue} ${player.years}년 계약`} />
-            <Description text={`계약 당시 나이 : ${player.SignedAge}`} />
-            <Description text={`평균 연봉 : ${player.averageValue}`} />
-            <Description text={`계약 기간 : ${player.period}`} />
-          </PlayerDescriptions>
-        </PlayerWrapper>
-      ))}
-    </TopPlayersWrapper>
-  );
-};
 
 export default TopPlayers;
