@@ -3,7 +3,7 @@ import TeamPlayer from "../TeamPlayer/TeamPlayer";
 import styled from "styled-components";
 import { IPlayer } from "../../../types/player.type";
 import { ITeam } from "../../../types/team.type";
-import Title from "../../atoms/Title";
+import BasicTitle from "../../atoms/Titles/BasicTitle";
 
 const PositionPlayer = ({
   info,
@@ -23,7 +23,7 @@ const PositionPlayer = ({
 
   return (
     <PositionPlayerWrapper>
-      <Title content={title} />
+      <BasicTitle content={title} />
       <PlayerList>
         {[...info].map((playerInfo) =>
           filterPosition(playerInfo, positions) ? (

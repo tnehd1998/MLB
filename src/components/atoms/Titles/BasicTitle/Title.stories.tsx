@@ -1,12 +1,12 @@
 import { Story } from "@storybook/react";
-import Title, { IProps } from ".";
+import BasicTitle, { IProps } from ".";
 
 export default {
-  title: "atoms/Title",
-  component: Title,
+  title: "atoms/BasicTitle",
+  component: BasicTitle,
 };
 
-const Template: Story<IProps> = (args) => <Title {...args} />;
+const Template: Story<IProps> = (args) => <BasicTitle {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

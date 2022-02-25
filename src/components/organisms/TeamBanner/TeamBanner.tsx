@@ -6,7 +6,7 @@ import { ITeamNameProps } from "../../../types/team.type";
 import { ITeams } from "../../../types/teams.type";
 import BasicButton from "../../atoms/Buttons/BasicButton";
 import Logo from "../../atoms/Logo";
-import TeamTitle from "../../atoms/TeamTitle";
+import TeamTitle from "../../atoms/Titles/TeamTitle";
 
 const TeamBanner = ({ teamName }: ITeamNameProps) => {
   const { data: teams } = useQuery("teams", getTeams, {

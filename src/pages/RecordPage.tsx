@@ -1,7 +1,7 @@
 import React, { Suspense } from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import styled from "styled-components";
-import Title from "../components/atoms/Title";
+import BasicTitle from "../components/atoms/Titles/BasicTitle";
 import Loading from "../components/organisms/Loading/Loading";
 import PostSeason from "../components/organisms/PostSeason/PostSeason";
 import Standing from "../components/organisms/Standing/Standing";
@@ -14,9 +14,9 @@ const RecordPage = () => {
           <title>MLB | RECORD</title>
         </Helmet>
       </HelmetProvider>
-      <Title content="2021 MLB POSTSEASON" />
+      <BasicTitle content="2021 MLB POSTSEASON" />
       <PostSeason />
-      <Title content="2021 TEAM STANDING" />
+      <BasicTitle content="2021 TEAM STANDING" />
       <Suspense fallback={<Loading />}>
         <Standing />
       </Suspense>

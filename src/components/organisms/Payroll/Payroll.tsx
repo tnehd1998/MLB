@@ -4,7 +4,7 @@ import { useNavigate } from "react-router";
 import { getPayroll } from "../../../api/payroll";
 import Logo from "../../atoms/Logo";
 import Description from "../../atoms/Description";
-import PlayerTitle from "../../atoms/PlayerTitle";
+import PlayerTitle from "../../atoms/Titles/PlayerTitle";
 import PlayerImage from "../../atoms/PlayerImage";
 
 const PayrollWrapper = styled.div`
