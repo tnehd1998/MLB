@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useParams } from "react-router";
 import Loading from "../components/organisms/Loading/Loading";
 import { useRecoilState } from "recoil";
-import TeamTitle from "../components/organisms/TeamTitle/TeamTitle";
+import TeamBanner from "../components/organisms/TeamBanner/TeamBanner";
 import TeamPlayers from "../components/organisms/TeamPlayers/TeamPlayers";
 import PlayerCard from "../components/organisms/PlayerCard/PlayerCard";
 import { Helmet, HelmetProvider } from "react-helmet-async";
@@ -29,7 +29,7 @@ const TeamPage = () => {
       </HelmetProvider>
       <TeamDescription selectPlayer={selectPlayer}>
         <Suspense fallback={<Loading />}>
-          <TeamTitle teamName={teamName!} />
+          <TeamBanner teamName={teamName!} />
         </Suspense>
         <Suspense fallback={<Loading />}>
           <TeamPlayers teamName={teamName!} />
