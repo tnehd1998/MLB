@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { getRanking } from "../../../api/ranking";
 import Description from "../../atoms/Description";
 import PlayerTitle from "../../atoms/PlayerTitle";
+import PlayerImage from "../../atoms/PlayerImage";
 
 const TopPlayersWrapper = styled.div`
   display: flex;
@@ -26,10 +27,6 @@ const PlayerWrapper = styled.div`
     background-color: ${({ theme }) => theme.textColor};
     color: ${({ theme }) => theme.bgColor};
   }
-`;
-
-const PlayerImage = styled.img`
-  border-radius: 20px 0 0 20px;
 `;
 
 const PlayerDescriptions = styled.div`
@@ -54,7 +51,7 @@ const TopPlayers = () => {
           key={player.ranking}
           onClick={() => onClickPlayer(player.team)}
         >
-          <PlayerImage src={player.playerImg} alt="Player" />
+          <PlayerImage imageUrl={player.playerImg} />
           <PlayerDescriptions>
             <PlayerTitle text={`Ranking #${player.ranking} ${player.name}`} />
             <Description text={`포지션 : ${player.position}`} />

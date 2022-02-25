@@ -8,6 +8,7 @@ import { IPlayer } from "../../../types/player.type";
 import BasicButton from "../../atoms/Buttons/BasicButton";
 import Description from "../../atoms/Description";
 import PlayerTitle from "../../atoms/PlayerTitle";
+import PlayerImage from "../../atoms/PlayerImage";
 
 const TeamPlayer = ({ playerInfo }: { playerInfo: IPlayer }) => {
   const setPlayerSelected = useSetRecoilState(playerSelectionState);
@@ -24,10 +25,7 @@ const TeamPlayer = ({ playerInfo }: { playerInfo: IPlayer }) => {
 
   return (
     <TeamPlayerWrapper>
-      <PlayerImage
-        src={playerInfo.PhotoUrl}
-        alt={`${playerInfo.FirstName} ${playerInfo.LastName}`}
-      />
+      <PlayerImage imageUrl={playerInfo.PhotoUrl} />
       <PlayerProfile>
         <PlayerDescriptionWrapper>
           <PlayerTitle
@@ -60,12 +58,6 @@ const TeamPlayerWrapper = styled.div`
   @media (max-width: 768px) {
     width: 90vw;
   }
-`;
-
-const PlayerImage = styled.img`
-  border-radius: 10px 0px 0px 10px;
-  width: 10em;
-  height: 15em;
 `;
 
 const PlayerProfile = styled.div`
