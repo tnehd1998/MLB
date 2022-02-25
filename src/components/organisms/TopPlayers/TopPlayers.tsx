@@ -1,4 +1,3 @@
-import React from "react";
 import { useQuery } from "react-query";
 import { useNavigate } from "react-router";
 import styled from "styled-components";
@@ -19,7 +18,7 @@ const PlayerWrapper = styled.div`
   border: 2px solid ${({ theme }) => theme.textColor};
   border-radius: 20px;
   margin: 1em;
-  width: 24em;
+  width: 23em;
   cursor: pointer;
   &:hover {
     transform: scale(1.1);
@@ -31,7 +30,10 @@ const PlayerWrapper = styled.div`
 
 const PlayerDescriptions = styled.div`
   padding: 1em;
-  font-size: 18px;
+  font-size: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 `;
 
 const TopPlayers = () => {
@@ -53,7 +55,7 @@ const TopPlayers = () => {
         >
           <PlayerImage imageUrl={player.playerImg} imageType="main" />
           <PlayerDescriptions>
-            <PlayerTitle text={`Ranking #${player.ranking} ${player.name}`} />
+            <PlayerTitle text={`Rank #${player.ranking} ${player.name}`} />
             <Description text={`포지션 : ${player.position}`} />
             <Description text={`소속팀 : ${player.team}`} />
             <Description text={`${player.totalValue} ${player.years}년 계약`} />

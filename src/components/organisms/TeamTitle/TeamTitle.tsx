@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import styled from "styled-components";
 import { getTeams } from "../../../api/teams";
@@ -65,6 +65,10 @@ const TeamTitleWrapper = styled.div`
   justify-content: space-evenly;
   align-items: center;
   margin-bottom: 2vh;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 const TeamName = styled.div`
@@ -77,10 +81,6 @@ const TeamName = styled.div`
 const TeamCity = styled.p`
   font-size: 3em;
   color: ${(props) => "#" + props.color};
-
-  @media (max-width: 768px) {
-    font-size: 1.4em;
-  }
 
   @media (min-width: 1150px) {
     font-size: 4em;
@@ -100,6 +100,8 @@ const TeamNickname = styled.p`
   }
 `;
 
-const OfficialPageLink = styled.a``;
+const OfficialPageLink = styled.a`
+  margin-top: 1em;
+`;
 
 export default TeamTitle;

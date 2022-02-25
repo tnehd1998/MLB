@@ -26,22 +26,18 @@ const TeamPlayer = ({ playerInfo }: { playerInfo: IPlayer }) => {
   return (
     <TeamPlayerWrapper>
       <PlayerImage imageUrl={playerInfo.PhotoUrl} imageType="main" />
-      <PlayerProfile>
-        <PlayerDescriptionWrapper>
-          <PlayerTitle
-            text={`${playerInfo.FirstName} ${playerInfo.LastName}`}
-          />
-          <Description text={`포지션 : ${playerInfo.Position}`} />
-          <Description text={`타격 위치 : ${playerInfo.BatHand}`} />
-          <Description text={`투구 방향 : ${playerInfo.ThrowHand}`} />
-          <Description text={`출생 : ${getBirthDate(playerInfo.BirthDate)}`} />
-          <Description text={`국적 : ${playerInfo.BirthCountry}`} />
-        </PlayerDescriptionWrapper>
+      <PlayerWrapper>
+        <PlayerTitle text={`${playerInfo.FirstName} ${playerInfo.LastName}`} />
+        <Description text={`포지션 : ${playerInfo.Position}`} />
+        <Description text={`타격 위치 : ${playerInfo.BatHand}`} />
+        <Description text={`투구 방향 : ${playerInfo.ThrowHand}`} />
+        <Description text={`출생 : ${getBirthDate(playerInfo.BirthDate)}`} />
+        <Description text={`국적 : ${playerInfo.BirthCountry}`} />
         <BasicButton
           onClick={() => showPlayerInfo(playerInfo)}
           content="🔎 선수 정보"
         />
-      </PlayerProfile>
+      </PlayerWrapper>
     </TeamPlayerWrapper>
   );
 };
@@ -51,25 +47,16 @@ const TeamPlayerWrapper = styled.div`
   text-align: center;
   border: 2px solid ${({ theme }) => theme.textColor};
   border-radius: 10px;
-  width: 22em;
-  height: 15em;
-  margin: 0.5em;
-
-  @media (max-width: 768px) {
-    width: 90vw;
-  }
+  width: 24em;
+  margin: 1em;
 `;
 
-const PlayerProfile = styled.div`
+const PlayerWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-left: 10px;
-`;
-
-const PlayerDescriptionWrapper = styled.div`
-  margin-bottom: 0.5em;
+  margin: auto;
 `;
 
 export default TeamPlayer;
