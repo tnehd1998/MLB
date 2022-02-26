@@ -7,7 +7,7 @@ import TeamSelection from "../components/organisms/TeamSelection/TeamSelection";
 
 const MainPage = () => {
   return (
-    <MainPageWrapper>
+    <Wrapper>
       <HelmetProvider>
         <Helmet>
           <title>MLB | TEAMS</title>
@@ -16,11 +16,11 @@ const MainPage = () => {
       <Suspense fallback={<Loading />}>
         <TeamSelection />
       </Suspense>
-    </MainPageWrapper>
+    </Wrapper>
   );
 };
 
-const MainPageWrapper = styled.div`
+const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;

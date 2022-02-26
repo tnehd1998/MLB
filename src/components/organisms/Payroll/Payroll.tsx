@@ -20,20 +20,20 @@ const Payroll = () => {
   return (
     <Wrapper>
       {teams?.map((team) => (
-        <TeamWrapper key={team.rank} onClick={() => onClickTeam(team.key)}>
-          <Team>
+        <RankingWrapper key={team.rank} onClick={() => onClickTeam(team.key)}>
+          <TeamWrapper>
             <PlayerTitle text={`랭킹 ${team.rank}위`} />
             <Description text={`팀 이름 : ${team.team}`} />
             <Description text={`연봉 총액 : ${team.payroll}`} />
             <Logo imageUrl={team.teamLogoUrl} />
-          </Team>
-          <Player>
+          </TeamWrapper>
+          <PlayerWrapper>
             <PlayerTitle text={"대표 선수"} />
             <Description text={`${team.bestPlayer}`} />
             <Description text={`포지션 : ${team.position}`} />
             <PlayerImage imageUrl={team.playerImageUrl} imageType="card" />
-          </Player>
-        </TeamWrapper>
+          </PlayerWrapper>
+        </RankingWrapper>
       ))}
     </Wrapper>
   );
@@ -46,7 +46,7 @@ const Wrapper = styled.div`
   align-items: center;
 `;
 
-const TeamWrapper = styled.div`
+const RankingWrapper = styled.div`
   display: flex;
   justify-content: space-evenly;
   text-align: center;
@@ -64,12 +64,12 @@ const TeamWrapper = styled.div`
   }
 `;
 
-const Team = styled.div`
+const TeamWrapper = styled.div`
   width: 55%;
   padding: 1em;
 `;
 
-const Player = styled.div`
+const PlayerWrapper = styled.div`
   width: 45%;
   padding: 1em;
 `;

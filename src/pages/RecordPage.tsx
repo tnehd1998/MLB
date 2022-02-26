@@ -8,7 +8,7 @@ import Standing from "../components/organisms/Standing/Standing";
 
 const RecordPage = () => {
   return (
-    <RecordPageWrapper>
+    <Wrapper>
       <HelmetProvider>
         <Helmet>
           <title>MLB | RECORD</title>
@@ -20,11 +20,11 @@ const RecordPage = () => {
       <Suspense fallback={<Loading />}>
         <Standing />
       </Suspense>
-    </RecordPageWrapper>
+    </Wrapper>
   );
 };
 
-const RecordPageWrapper = styled.div`
+const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;

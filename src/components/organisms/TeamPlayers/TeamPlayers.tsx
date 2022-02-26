@@ -15,7 +15,7 @@ const TeamPlayers = ({ teamName }: ITeamNameProps) => {
   );
 
   return (
-    <TeamPlayersWrapper>
+    <Wrapper>
       <TeamPositionPlayers
         info={info!}
         positions={["SP"]}
@@ -36,11 +36,11 @@ const TeamPlayers = ({ teamName }: ITeamNameProps) => {
         positions={["LF", "CF", "RF"]}
         title="외야수 (Outfielder)"
       />
-    </TeamPlayersWrapper>
+    </Wrapper>
   );
 };
 
-const TeamPlayersWrapper = styled.div`
+const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;

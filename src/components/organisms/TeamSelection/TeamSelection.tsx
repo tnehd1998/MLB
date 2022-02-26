@@ -16,7 +16,7 @@ const TeamSelection = () => {
   };
 
   return (
-    <TeamSelectionWrapper>
+    <Wrapper>
       {teams?.map(
         (team) =>
           team.WikipediaLogoUrl && (
@@ -27,11 +27,11 @@ const TeamSelection = () => {
             />
           )
       )}
-    </TeamSelectionWrapper>
+    </Wrapper>
   );
 };
 
-const TeamSelectionWrapper = styled.div`
+const Wrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 1vw;

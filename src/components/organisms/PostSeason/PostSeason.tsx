@@ -4,19 +4,19 @@ import EventImage from "../../atoms/PostSeasonImage";
 
 const PostSeason = () => {
   return (
-    <PostSeasonWrapper>
-      <PostSeasonLink
+    <Wrapper>
+      <LinkWrapper
         href={`https://youtu.be/Q-vkUHF9RI0`}
         rel="noreferrer"
         target="_blank"
       >
         <EventImage imageUrl={PostSeasonImage} />
-      </PostSeasonLink>
-    </PostSeasonWrapper>
+      </LinkWrapper>
+    </Wrapper>
   );
 };
 
-const PostSeasonWrapper = styled.div`
+const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -24,6 +24,6 @@ const PostSeasonWrapper = styled.div`
   margin-bottom: 5vh;
 `;
 
-const PostSeasonLink = styled.a``;
+const LinkWrapper = styled.a``;
 
 export default PostSeason;

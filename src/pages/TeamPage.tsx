@@ -27,14 +27,14 @@ const TeamPage = () => {
           <title>{`MLB | ${teamName}`}</title>
         </Helmet>
       </HelmetProvider>
-      <TeamDescription selectPlayer={selectPlayer}>
+      <TeamWrapper selectPlayer={selectPlayer}>
         <Suspense fallback={<Loading />}>
           <TeamBanner teamName={teamName!} />
         </Suspense>
         <Suspense fallback={<Loading />}>
           <TeamPlayers teamName={teamName!} />
         </Suspense>
-      </TeamDescription>
+      </TeamWrapper>
       {selectPlayer && <PlayerCard />}
     </Wrapper>
   );
@@ -47,7 +47,7 @@ const Wrapper = styled.div`
   align-items: center;
 `;
 
-const TeamDescription = styled.div<{ selectPlayer: boolean }>`
+const TeamWrapper = styled.div<{ selectPlayer: boolean }>`
   filter: blur(${(props) => (props.selectPlayer ? "4px" : "0")});
 `;
 

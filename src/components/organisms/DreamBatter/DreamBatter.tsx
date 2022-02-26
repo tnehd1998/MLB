@@ -24,10 +24,10 @@ const DreamBatter = ({ position }: IDreamPlayerProps) => {
       {findCertainPositionBatter(position).length ? (
         findCertainPositionBatter(position).map((player) => (
           <PlayerWrapper key={player.PlayerID}>
-            <InfoWrapper>
+            <DescriptionWrapper>
               <Description text={`${player.Position}`} />
               <Description text={`${player.FirstName} ${player.LastName}`} />
-            </InfoWrapper>
+            </DescriptionWrapper>
             <PlayerImage imageUrl={player.PhotoUrl} imageType="card" />
           </PlayerWrapper>
         ))
@@ -56,7 +56,7 @@ const PlayerWrapper = styled.li`
   border-radius: 20px;
 `;
 
-const InfoWrapper = styled.div`
+const DescriptionWrapper = styled.div`
   display: flex;
   width: 100%;
   justify-content: space-evenly;

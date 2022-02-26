@@ -38,9 +38,9 @@ const TeamBanner = ({ teamName }: ITeamNameProps) => {
   }, [teamName, teams]);
 
   return (
-    <TeamBannerWrapper>
+    <Wrapper>
       <Logo imageUrl={`${currentTeam.WikipediaLogoUrl}`} />
-      <TeamNameWrapper>
+      <NameWrapper>
         <TeamTitle
           content={currentTeam.City}
           color={currentTeam.PrimaryColor}
@@ -51,8 +51,8 @@ const TeamBanner = ({ teamName }: ITeamNameProps) => {
           color={currentTeam.PrimaryColor}
           size={56}
         />
-      </TeamNameWrapper>
-      <OfficialPageLink
+      </NameWrapper>
+      <LinkWrapper
         href={`https://www.mlb.com/${
           currentTeam.Name ? changeNameForUrl(currentTeam.Name) : ""
         }`}
@@ -62,12 +62,12 @@ const TeamBanner = ({ teamName }: ITeamNameProps) => {
           color={currentTeam.PrimaryColor}
           content="→ 공식 홈페이지"
         />
-      </OfficialPageLink>
-    </TeamBannerWrapper>
+      </LinkWrapper>
+    </Wrapper>
   );
 };
 
-const TeamBannerWrapper = styled.div`
+const Wrapper = styled.div`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -78,14 +78,14 @@ const TeamBannerWrapper = styled.div`
   }
 `;
 
-const TeamNameWrapper = styled.div`
+const NameWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 `;
 
-const OfficialPageLink = styled.a`
+const LinkWrapper = styled.a`
   margin-top: 1em;
 `;
 

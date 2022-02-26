@@ -22,9 +22,9 @@ const PositionPlayer = ({
   };
 
   return (
-    <PositionPlayerWrapper>
+    <Wrapper>
       <BasicTitle content={title} />
-      <PlayerList>
+      <PlayerWrapper>
         {[...info].map((playerInfo) =>
           filterPosition(playerInfo, positions) ? (
             <TeamPlayer key={playerInfo.PlayerID} playerInfo={playerInfo} />
@@ -32,19 +32,19 @@ const PositionPlayer = ({
             ""
           )
         )}
-      </PlayerList>
-    </PositionPlayerWrapper>
+      </PlayerWrapper>
+    </Wrapper>
   );
 };
 
-const PositionPlayerWrapper = styled.div`
+const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 `;
 
-const PlayerList = styled.div`
+const PlayerWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
