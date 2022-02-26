@@ -7,6 +7,7 @@ import {
   playerSelectionState,
 } from "../../../store/player";
 import BasicButton from "../../atoms/Buttons/BasicButton";
+import CloseButton from "../../atoms/Buttons/CloseButton";
 import PlayerImage from "../../atoms/PlayerImage";
 
 const PlayerCard = () => {
@@ -22,6 +23,10 @@ const PlayerCard = () => {
     if (existingPlayer) return true;
     return false;
   }, [showingPlayer.PlayerID, dreamTeam]);
+
+  const onClickCloseButton = () => {
+    setSelectPlayer((selectPlayer) => !selectPlayer);
+  };
 
   const convertNameForUrl = (inputName: string) => {
     let currentName = [...inputName];
@@ -122,11 +127,7 @@ const PlayerCard = () => {
 
   return (
     <PlayerCardWrapper>
-      <CloseIcon
-        onClick={() => setSelectPlayer((selectPlayer) => !selectPlayer)}
-      >
-        ✕
-      </CloseIcon>
+      <CloseButton onClick={() => onClickCloseButton()} />
       <PlayerCardTitle>☆ 선수 정보 ☆</PlayerCardTitle>
       <PlayerInfoWrapper>
         <PlayerProfileWrapper>
@@ -201,8 +202,8 @@ const PlayerCardWrapper = styled.div`
   }
 
   @media (min-width: 1150px) {
-    width: 60vw;
-    left: 20vw;
+    width: 56vw;
+    left: 22vw;
   }
 `;
 

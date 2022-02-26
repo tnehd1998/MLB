@@ -20,7 +20,11 @@ const TeamSelection = () => {
       {teams?.map(
         (team) =>
           team.WikipediaLogoUrl && (
-            <TeamButton team={team} onClick={() => onClickTeam(team.Key)} />
+            <TeamButton
+              key={team.Key}
+              team={team}
+              onClick={() => onClickTeam(team.Key)}
+            />
           )
       )}
     </TeamSelectionWrapper>
