@@ -16,41 +16,41 @@ const DreamTeamPage = () => {
   };
 
   return (
-    <DreamTeamPageWrapper>
+    <Wrapper>
       <HelmetProvider>
         <Helmet>
           <title>MLB | DREAM TEAM</title>
         </Helmet>
       </HelmetProvider>
       <BasicTitle content="내야수" />
-      <PlayerList>
+      <PlayerWrapper>
         <DreamBatter position="C" />
         <DreamBatter position="1B" />
         <DreamBatter position="2B" />
         <DreamBatter position="3B" />
         <DreamBatter position="SS" />
-      </PlayerList>
+      </PlayerWrapper>
       <BasicTitle content="외야수 / 지명타자" />
-      <PlayerList>
+      <PlayerWrapper>
         <DreamBatter position="LF" />
         <DreamBatter position="CF" />
         <DreamBatter position="RF" />
         <DreamBatter position="DH" />
-      </PlayerList>
+      </PlayerWrapper>
       <BasicTitle content="선발 투수" />
-      <PlayerList>
+      <PlayerWrapper>
         <DreamPitcher position="SP" />
-      </PlayerList>
+      </PlayerWrapper>
       <BasicTitle content="불펜 투수" />
-      <PlayerList>
+      <PlayerWrapper>
         <DreamPitcher position="RP" />
-      </PlayerList>
+      </PlayerWrapper>
       <BasicButton onClick={onClickDeleteAll} content="전체 삭제" />
-    </DreamTeamPageWrapper>
+    </Wrapper>
   );
 };
 
-const DreamTeamPageWrapper = styled.div`
+const Wrapper = styled.div`
   padding-top: 12vh;
   display: flex;
   flex-direction: column;
@@ -59,8 +59,11 @@ const DreamTeamPageWrapper = styled.div`
   padding-bottom: 5vh;
 `;
 
-const PlayerList = styled.ul`
+const PlayerWrapper = styled.ul`
   display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
   margin: 1em 0;
 `;
 
