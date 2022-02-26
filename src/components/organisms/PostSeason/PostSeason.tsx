@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import PostSeasonImage from "../../../images/postseason.jpeg";
-import EventImage from "../../atoms/PostSeasonImage";
+import EventImage from "../../atoms/EventImage";
 
 const PostSeason = () => {
   return (

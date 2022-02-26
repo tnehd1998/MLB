@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import TeamPositionPlayers from "../TeamPositionPlayers/TeamPositionPlayers";
 import { getCertainTeam } from "../../../api/team";

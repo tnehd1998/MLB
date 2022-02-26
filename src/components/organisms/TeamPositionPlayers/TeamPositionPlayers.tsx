@@ -1,4 +1,3 @@
-import React from "react";
 import TeamPlayer from "../TeamPlayer/TeamPlayer";
 import styled from "styled-components";
 import { IPlayer } from "../../../types/player.type";

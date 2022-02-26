@@ -1,4 +1,4 @@
-import React, { Suspense, useState } from "react";
+import { Suspense } from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { useRecoilState } from "recoil";
 import styled from "styled-components";
@@ -17,7 +17,7 @@ const AllStarPage = () => {
   };
 
   return (
-    <AllStarPageWrapper>
+    <Wrapper>
       <HelmetProvider>
         <Helmet>
           <title>MLB | ALL STAR</title>
@@ -42,11 +42,11 @@ const AllStarPage = () => {
           <Payroll />
         </Suspense>
       )}
-    </AllStarPageWrapper>
+    </Wrapper>
   );
 };
 
-const AllStarPageWrapper = styled.div`
+const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;

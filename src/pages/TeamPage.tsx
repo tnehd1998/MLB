@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect } from "react";
+import { Suspense, useEffect } from "react";
 import styled from "styled-components";
 import { useParams } from "react-router";
 import Loading from "../components/organisms/Loading/Loading";

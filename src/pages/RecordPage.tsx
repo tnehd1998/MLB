@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import { Suspense } from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import styled from "styled-components";
 import BasicTitle from "../components/atoms/Titles/BasicTitle";
