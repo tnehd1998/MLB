@@ -21,7 +21,7 @@ const TeamPage = () => {
   }, [setSelectPlayer]);
 
   return (
-    <TeamInformationWrapper>
+    <Wrapper>
       <HelmetProvider>
         <Helmet>
           <title>{`MLB | ${teamName}`}</title>
@@ -36,12 +36,15 @@ const TeamPage = () => {
         </Suspense>
       </TeamDescription>
       {selectPlayer && <PlayerCard />}
-    </TeamInformationWrapper>
+    </Wrapper>
   );
 };
 
-const TeamInformationWrapper = styled.div`
+const Wrapper = styled.div`
   padding-top: 12vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const TeamDescription = styled.div<{ selectPlayer: boolean }>`

@@ -16,12 +16,4 @@ export const Button = styled.button`
     transition: all 0.3s linear;
     color: ${({ theme }) => theme.bgColor};
   }
-
-  @media (max-width: 768px) {
-    font-size: 0.8em;
-  }
-
-  @media (min-width: 1150px) {
-    font-size: 1.5em;
-  }
 `;

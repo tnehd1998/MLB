@@ -8,7 +8,9 @@ import {
 } from "../../../store/player";
 import BasicButton from "../../atoms/Buttons/BasicButton";
 import CloseButton from "../../atoms/Buttons/CloseButton";
+import Description from "../../atoms/Description";
 import PlayerImage from "../../atoms/PlayerImage";
+import BasicTitle from "../../atoms/Titles/BasicTitle";
 
 const PlayerCard = () => {
   const showingPlayer = useRecoilValue(currentPlayerState);
@@ -26,6 +28,14 @@ const PlayerCard = () => {
 
   const onClickCloseButton = () => {
     setSelectPlayer((selectPlayer) => !selectPlayer);
+  };
+
+  const getBirthDate = (birthDate: string) => {
+    return birthDate.slice(0, 10);
+  };
+
+  const getDebutDate = (debutDate: string) => {
+    return debutDate ? " " + debutDate.slice(0, 10) : " 아직 데뷔 전";
   };
 
   const convertNameForUrl = (inputName: string) => {
@@ -126,33 +136,30 @@ const PlayerCard = () => {
   }, [checkIsDreamTeamPlayer]);
 
   return (
-    <PlayerCardWrapper>
+    <Wrapper>
       <CloseButton onClick={() => onClickCloseButton()} />
-      <PlayerCardTitle>☆ 선수 정보 ☆</PlayerCardTitle>
-      <PlayerInfoWrapper>
-        <PlayerProfileWrapper>
+      <BasicTitle content="☆ 선수 정보 ☆" />
+      <InfoWrapper>
+        <PlayerWrapper>
           <PlayerImage imageUrl={showingPlayer.PhotoUrl} imageType="card" />
-          <PlayerInfoList>
-            <PlayerInfo>
-              이름 : {showingPlayer.FirstName} {showingPlayer.LastName}
-            </PlayerInfo>
-            <PlayerInfo>국적 : {showingPlayer.BirthCountry}</PlayerInfo>
-            <PlayerInfo>
-              출생년도 : {showingPlayer.BirthDate.slice(0, 10)}
-            </PlayerInfo>
-            <PlayerInfo>포지션 : {showingPlayer.Position}</PlayerInfo>
-            <PlayerInfo>타격 위치 : {showingPlayer.BatHand}</PlayerInfo>
-            <PlayerInfo>투구 방향 : {showingPlayer.ThrowHand}</PlayerInfo>
-            <PlayerInfo>
-              데뷔일 :
-              {showingPlayer.ProDebut
-                ? " " + showingPlayer.ProDebut.slice(0, 10)
-                : " 아직 데뷔 전"}
-            </PlayerInfo>
-          </PlayerInfoList>
-        </PlayerProfileWrapper>
-        <PlayerLinkWrapper>
-          <PlayerPageLink
+          <DescriptionWrapper>
+            <Description
+              text={`이름 : ${showingPlayer.FirstName} ${showingPlayer.LastName}`}
+            />
+            <Description text={`국적 : ${showingPlayer.BirthCountry}`} />
+            <Description
+              text={`출생년도 : ${getBirthDate(showingPlayer.BirthDate)}`}
+            />
+            <Description text={`포지션 : ${showingPlayer.Position}`} />
+            <Description text={`타격 위치 : ${showingPlayer.BatHand}`} />
+            <Description text={`투구 방향 : ${showingPlayer.ThrowHand}`} />
+            <Description
+              text={` 데뷔일 : ${getDebutDate(showingPlayer.ProDebut)}`}
+            />
+          </DescriptionWrapper>
+        </PlayerWrapper>
+        <LinkWrapper>
+          <PageLinkWrapper
             href={`https://www.mlb.com/player/${convertNameForUrl(
               showingPlayer.FirstName.toLowerCase()
             )}-${convertNameForUrl(showingPlayer.LastName.toLowerCase())}-${
@@ -162,30 +169,30 @@ const PlayerCard = () => {
             target="_blank"
           >
             <BasicButton content="🔎 선수 세부 기록" />
-          </PlayerPageLink>
-          <PlayerPageLink
+          </PageLinkWrapper>
+          <PageLinkWrapper
             href={`https://www.youtube.com/results?search_query=${showingPlayer.FirstName.toLowerCase()}+${showingPlayer.LastName.toLowerCase()}+baseball`}
             rel="noreferrer"
             target="_blank"
           >
             <BasicButton content="⚾️ 관련 동영상" />
-          </PlayerPageLink>
+          </PageLinkWrapper>
           {!isDreamTeamPlayer && (
-            <AddToDreamTeamButton onClick={addPlayerToDreamTeam}>
+            <AddButtonWrapper onClick={addPlayerToDreamTeam}>
               <BasicButton content="📌 드림팀 선수로 지정" />
-            </AddToDreamTeamButton>
+            </AddButtonWrapper>
           )}
-        </PlayerLinkWrapper>
-      </PlayerInfoWrapper>
-    </PlayerCardWrapper>
+        </LinkWrapper>
+      </InfoWrapper>
+    </Wrapper>
   );
 };
 
-const PlayerCardWrapper = styled.div`
-  width: 70vw;
-  height: 70vh;
-  top: 15vh;
-  left: 15vw;
+const Wrapper = styled.div`
+  width: 22em;
+  height: 30em;
+  left: 30vw;
+  top: 20vh;
   position: fixed;
   display: flex;
   flex-direction: column;
@@ -197,91 +204,46 @@ const PlayerCardWrapper = styled.div`
   border: 2px solid ${({ theme }) => theme.textColor};
 
   @media (max-width: 768px) {
-    width: 90vw;
-    left: 5vw;
+    left: 2vw;
   }
 
-  @media (min-width: 1150px) {
-    width: 56vw;
-    left: 22vw;
+  @media (min-width: 1186px) {
+    left: 40vw;
   }
 `;
 
-const CloseIcon = styled.p`
-  width: 40px;
-  height: 40px;
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  border-radius: 50%;
-  border: 2px solid ${({ theme }) => theme.textColor};
-  cursor: pointer;
-  font-size: 30px;
-  text-align: center;
-  line-height: 40px;
-  &:hover {
-    transform: scale(1.1);
-  }
-`;
-
-const PlayerCardTitle = styled.p`
-  font-size: 2.5em;
-  margin-bottom: 1em;
-  font-weight: 600;
-
-  @media (max-width: 768px) {
-    font-size: 2em;
-  }
-
-  @media (min-width: 1150px) {
-    font-size: 3em;
-  }
-`;
-
-const PlayerInfoWrapper = styled.div`
+const InfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  width: 80vw;
 `;
 
-const PlayerInfo = styled.p`
-  font-size: 24px;
-
-  @media (max-width: 768px) {
-    font-size: 12px;
-  }
-
-  @media (min-width: 1150px) {
-    font-size: 28px;
-  }
-`;
-
-const PlayerProfileWrapper = styled.div`
+const PlayerWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 3em;
+  margin: 1em;
 `;
 
-const PlayerInfoList = styled.ul`
+const DescriptionWrapper = styled.ul`
   height: 100%;
   display: flex;
-  margin-left: 5vw;
+  margin-left: 1em;
   flex-direction: column;
   justify-content: space-between;
 `;
 
-const PlayerLinkWrapper = styled.div`
-  margin: 1em 0;
+const LinkWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
+  margin: 1em 0;
   gap: 10px;
 `;
 
-const PlayerPageLink = styled.a``;
+const PageLinkWrapper = styled.a``;
 
-const AddToDreamTeamButton = styled.div``;
+const AddButtonWrapper = styled.div``;
 
 interface IAlphabetAccents {
   à: string;
