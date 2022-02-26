@@ -3,6 +3,7 @@ import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { getStanding } from "../../../api/standing";
+import Description from "../../atoms/Description";
 
 const Standing = () => {
   const [currentRegion, setCurrentRegion] = useState("AL East");
@@ -11,54 +12,68 @@ const Standing = () => {
   });
 
   return (
-    <StandingWrapper>
-      <RegionCategories>
-        <RegionCategory onClick={() => setCurrentRegion("AL East")}>
-          AL East
-        </RegionCategory>
-        <RegionCategory onClick={() => setCurrentRegion("AL Central")}>
-          AL Central
-        </RegionCategory>
-        <RegionCategory onClick={() => setCurrentRegion("AL West")}>
-          AL West
-        </RegionCategory>
-        <RegionCategory onClick={() => setCurrentRegion("NL East")}>
-          NL East
-        </RegionCategory>
-        <RegionCategory onClick={() => setCurrentRegion("NL Central")}>
-          NL Central
-        </RegionCategory>
-        <RegionCategory onClick={() => setCurrentRegion("NL West")}>
-          NL West
-        </RegionCategory>
-      </RegionCategories>
-      <StandingTeamInfo>
-        <StandingTeamName>Team</StandingTeamName>
-        <StandingTeamRecord>Total</StandingTeamRecord>
-        <StandingTeamRecord>Wins</StandingTeamRecord>
-        <StandingTeamRecord>Losses</StandingTeamRecord>
-      </StandingTeamInfo>
-      <StandingTeams>
+    <Wrapper>
+      <RegionsWrapper>
+        <RegionWrapper onClick={() => setCurrentRegion("AL East")}>
+          <Description text="AL East" />
+        </RegionWrapper>
+        <RegionWrapper onClick={() => setCurrentRegion("AL Central")}>
+          <Description text="AL Central" />
+        </RegionWrapper>
+        <RegionWrapper onClick={() => setCurrentRegion("AL West")}>
+          <Description text="AL West" />
+        </RegionWrapper>
+        <RegionWrapper onClick={() => setCurrentRegion("NL East")}>
+          <Description text="NL East" />
+        </RegionWrapper>
+        <RegionWrapper onClick={() => setCurrentRegion("NL Central")}>
+          <Description text="NL Central" />
+        </RegionWrapper>
+        <RegionWrapper onClick={() => setCurrentRegion("NL West")}>
+          <Description text="NL West" />
+        </RegionWrapper>
+      </RegionsWrapper>
+      <CategoryWrapper>
+        <NameWrapper>
+          <Description text="Team" />
+        </NameWrapper>
+        <RecordWrapper>
+          <Description text="Total" />
+        </RecordWrapper>
+        <RecordWrapper>
+          <Description text="Wins" />
+        </RecordWrapper>
+        <RecordWrapper>
+          <Description text="Losses" />
+        </RecordWrapper>
+      </CategoryWrapper>
+      <StandingWrapper>
         {standing?.map(
           (team) =>
             team.League === currentRegion.split(" ")[0] &&
             team.Division === currentRegion.split(" ")[1] && (
-              <StandingTeam key={team.TeamID} to={`/${team.Key}`}>
-                <StandingTeamName>
-                  {team.City} {team.Name}
-                </StandingTeamName>
-                <StandingTeamRecord>162</StandingTeamRecord>
-                <StandingTeamRecord>{team.Wins}</StandingTeamRecord>
-                <StandingTeamRecord>{team.Losses}</StandingTeamRecord>
-              </StandingTeam>
+              <TeamWrapper key={team.TeamID} to={`/${team.Key}`}>
+                <NameWrapper>
+                  <Description text={`${team.City} ${team.Name}`} />
+                </NameWrapper>
+                <RecordWrapper>
+                  <Description text="162" />
+                </RecordWrapper>
+                <RecordWrapper>
+                  <Description text={`${team.Wins}`} />
+                </RecordWrapper>
+                <RecordWrapper>
+                  <Description text={`${team.Losses}`} />
+                </RecordWrapper>
+              </TeamWrapper>
             )
         )}
-      </StandingTeams>
-    </StandingWrapper>
+      </StandingWrapper>
+    </Wrapper>
   );
 };
 
-const StandingWrapper = styled.div`
+const Wrapper = styled.div`
   width: 36em;
   border-radius: 20px;
   border: 2px solid ${({ theme }) => theme.textColor};
@@ -73,14 +88,14 @@ const StandingWrapper = styled.div`
   }
 `;
 
-const RegionCategories = styled.ul`
+const RegionsWrapper = styled.ul`
   display: flex;
   justify-content: center;
   align-items: center;
   border-bottom: 2px solid ${({ theme }) => theme.textColor};
 `;
 
-const RegionCategory = styled.li`
+const RegionWrapper = styled.li`
   padding: 1em;
   cursor: pointer;
   border-radius: 20px;
@@ -99,7 +114,7 @@ const RegionCategory = styled.li`
   }
 `;
 
-const StandingTeamInfo = styled.div`
+const CategoryWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -108,7 +123,7 @@ const StandingTeamInfo = styled.div`
   padding-top: 0.5em;
 `;
 
-const StandingTeams = styled.div`
+const StandingWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -123,7 +138,7 @@ const StandingTeams = styled.div`
   }
 `;
 
-const StandingTeam = styled(Link)`
+const TeamWrapper = styled(Link)`
   color: ${({ theme }) => theme.textColor};
   text-decoration: none;
   display: flex;
@@ -138,11 +153,11 @@ const StandingTeam = styled(Link)`
   }
 `;
 
-const StandingTeamName = styled.p`
+const NameWrapper = styled.p`
   width: 40%;
 `;
 
-const StandingTeamRecord = styled.p`
+const RecordWrapper = styled.p`
   width: 20%;
 `;
 
