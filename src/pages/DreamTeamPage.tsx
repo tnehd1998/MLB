@@ -12,7 +12,10 @@ const DreamTeamPage = () => {
   const setDreamTeamPlayers = useSetRecoilState(dreamTeamInfoState);
 
   const onClickDeleteAll = () => {
-    setDreamTeamPlayers([]);
+    if (window.confirm("선택한 선수를 전부 삭제하시겠습니까?")) {
+      setDreamTeamPlayers([]);
+      alert("삭제되었습니다");
+    }
   };
 
   return (

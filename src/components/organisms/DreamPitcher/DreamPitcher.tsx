@@ -3,6 +3,8 @@ import { useRecoilValue } from "recoil";
 import styled from "styled-components";
 import { dreamTeamInfoState } from "../../../store/dreamteam";
 import { IDreamPlayerProps } from "../../../types/player.type";
+import Description from "../../atoms/Description";
+import PlayerImage from "../../atoms/PlayerImage";
 
 const DreamPitcher = ({ position }: IDreamPlayerProps) => {
   const dreamTeamPlayers = useRecoilValue(dreamTeamInfoState);
@@ -23,41 +25,40 @@ const DreamPitcher = ({ position }: IDreamPlayerProps) => {
   };
 
   return (
-    <DreamPitcherWrapper>
+    <Wrapper>
       {filterPitcherByPosition().map((player) => (
-        <Player key={player.PlayerID}>
-          <PlayerInfo>
-            <PlayerPosition>{player.Position}</PlayerPosition>
-            <PlayerName>
-              {player.FirstName} {player.LastName}
-            </PlayerName>
-          </PlayerInfo>
-          <PlayerImage src={player.PhotoUrl} />
-        </Player>
+        <PlayerWrapper key={player.PlayerID}>
+          <InfoWrapper>
+            <Description text={`${player.Position}`} />
+            <Description text={`${player.FirstName} ${player.LastName}`} />
+          </InfoWrapper>
+          <PlayerImage imageUrl={player.PhotoUrl} imageType="card" />
+        </PlayerWrapper>
       ))}
-      {filterPitcherByPosition().length < filterPitcher()
-        ? [...Array(filterPitcher() - filterPitcherByPosition().length)].map(
-            (_, index) => (
-              <Player key={index}>
-                <h1>X</h1>
-              </Player>
-            )
+      {filterPitcherByPosition().length < filterPitcher() &&
+        [...Array(filterPitcher() - filterPitcherByPosition().length)].map(
+          (_, index) => (
+            <PlayerWrapper key={index}>
+              <Description text={`${position} 선택하지 않음`} />
+            </PlayerWrapper>
           )
-        : null}
-    </DreamPitcherWrapper>
+        )}
+    </Wrapper>
   );
 };
 
-const DreamPitcherWrapper = styled.div`
+const Wrapper = styled.div`
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 `;
 
-const Player = styled.li`
-  width: 13vw;
-  height: 13vw;
-  padding: 0.2em;
-  margin: 0.5em;
+const PlayerWrapper = styled.li`
   display: flex;
+  width: 10.5em;
+  height: 16em;
+  margin: 1em;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -65,66 +66,15 @@ const Player = styled.li`
   background-repeat: no-repeat;
   border: 2px solid ${({ theme }) => theme.textColor};
   border-radius: 20px;
-
-  @media (max-width: 768px) {
-    width: 10vw;
-    height: 10vw;
-  }
-
-  @media (min-width: 1150px) {
-    width: 14vw;
-    height: 14vw;
-  }
 `;
 
-const PlayerImage = styled.img`
-  width: 8vw;
-  height: 10vw;
-
-  @media (max-width: 768px) {
-    width: 3vw;
-    height: 4vw;
-  }
-
-  @media (min-width: 1150px) {
-    width: 10vw;
-    height: 12vw;
-  }
-`;
-
-const PlayerInfo = styled.div`
+const InfoWrapper = styled.div`
   display: flex;
   width: 100%;
   justify-content: space-evenly;
   align-items: center;
   font-size: 8px;
   margin-top: 1em;
-`;
-
-const PlayerPosition = styled.p`
-  font-size: 12px;
-  font-weight: 800;
-
-  @media (max-width: 768px) {
-    font-size: 8px;
-  }
-
-  @media (min-width: 1150px) {
-    font-size: 16px;
-  }
-`;
-
-const PlayerName = styled.p`
-  font-size: 10px;
-  font-weight: 400;
-
-  @media (max-width: 768px) {
-    font-size: 8px;
-  }
-
-  @media (min-width: 1150px) {
-    font-size: 12px;
-  }
 `;
 
 export default DreamPitcher;

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useRecoilValue } from "recoil";
 import styled from "styled-components";
 import { dreamTeamInfoState } from "../../../store/dreamteam";
@@ -32,21 +33,20 @@ const DreamBatter = ({ position }: IDreamPlayerProps) => {
         ))
       ) : (
         <PlayerWrapper>
-          <Description text="✕" />
+          <Description text={`${position} 선택하지 않음`} />
         </PlayerWrapper>
       )}
     </Wrapper>
   );
 };
 
-const Wrapper = styled.div`
-  width: 10.5em;
-  height: 16em;
-  margin: 1em;
-`;
+const Wrapper = styled.div``;
 
 const PlayerWrapper = styled.li`
   display: flex;
+  width: 10.5em;
+  height: 16em;
+  margin: 1em;
   flex-direction: column;
   justify-content: center;
   align-items: center;
