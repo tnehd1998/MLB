@@ -9,7 +9,7 @@ import {
 import BasicButton from "../../atoms/Buttons/BasicButton";
 import CloseButton from "../../atoms/Buttons/CloseButton";
 import Description from "../../atoms/Description";
-import PlayerImage from "../../atoms/PlayerImage";
+import PlayerImage from "../../atoms/Images/PlayerImage";
 import BasicTitle from "../../atoms/Titles/BasicTitle";
 
 const PlayerCard = () => {

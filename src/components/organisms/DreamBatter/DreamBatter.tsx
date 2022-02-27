@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { dreamTeamInfoState } from "../../../store/dreamteam";
 import { IDreamPlayerProps } from "../../../types/player.type";
 import Description from "../../atoms/Description";
-import PlayerImage from "../../atoms/PlayerImage";
+import PlayerImage from "../../atoms/Images/PlayerImage";
 
 const DreamBatter = ({ position }: IDreamPlayerProps) => {
   const dreamTeamPlayers = useRecoilValue(dreamTeamInfoState);

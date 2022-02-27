@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { getRanking } from "../../../api/ranking";
 import Description from "../../atoms/Description";
 import PlayerTitle from "../../atoms/Titles/PlayerTitle";
-import PlayerImage from "../../atoms/PlayerImage";
+import PlayerImage from "../../atoms/Images/PlayerImage";
 
 const TopPlayers = () => {
   const { data: players } = useQuery("topplayers", getRanking, {

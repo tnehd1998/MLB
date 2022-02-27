@@ -8,7 +8,7 @@ import { IPlayer } from "../../../types/player.type";
 import BasicButton from "../../atoms/Buttons/BasicButton";
 import Description from "../../atoms/Description";
 import PlayerTitle from "../../atoms/Titles/PlayerTitle";
-import PlayerImage from "../../atoms/PlayerImage";
+import PlayerImage from "../../atoms/Images/PlayerImage";
 
 const TeamPlayer = ({ playerInfo }: { playerInfo: IPlayer }) => {
   const setPlayerSelected = useSetRecoilState(playerSelectionState);

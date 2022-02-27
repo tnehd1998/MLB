@@ -5,7 +5,7 @@ import { getPayroll } from "../../../api/payroll";
 import Logo from "../../atoms/Logo";
 import Description from "../../atoms/Description";
 import PlayerTitle from "../../atoms/Titles/PlayerTitle";
-import PlayerImage from "../../atoms/PlayerImage";
+import PlayerImage from "../../atoms/Images/PlayerImage";
 
 const Payroll = () => {
   const { data: teams } = useQuery("payroll", getPayroll, {
