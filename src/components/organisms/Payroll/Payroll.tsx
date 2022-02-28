@@ -2,11 +2,8 @@ import styled from "styled-components";
 import { useQuery } from "react-query";
 import { useNavigate } from "react-router";
 import { getPayroll } from "../../../api/payroll";
-import Logo from "../../atoms/Logo";
-import Description from "../../atoms/Description";
-import PlayerTitle from "../../atoms/Titles/PlayerTitle";
-import PlayerImage from "../../atoms/Images/PlayerImage";
 import TeamRankingInfo from "../../molecules/TeamRankingInfo";
+import PayrollPlayerInfo from "../../molecules/PlayerInfo/PayrollPlayerInfo";
 
 const Payroll = () => {
   const { data: teams } = useQuery("payroll", getPayroll, {
@@ -18,19 +15,12 @@ const Payroll = () => {
     navigate(`/${team}`);
   };
 
-  console.log(teams);
-
   return (
     <Wrapper>
       {teams?.map((team) => (
         <RankingWrapper key={team.rank} onClick={() => onClickTeam(team.key)}>
           <TeamRankingInfo team={team} />
-          <PlayerWrapper>
-            <PlayerTitle text={"대표 선수"} />
-            <Description text={`${team.bestPlayer}`} />
-            <Description text={`포지션 : ${team.position}`} />
-            <PlayerImage imageUrl={team.playerImageUrl} imageType="card" />
-          </PlayerWrapper>
+          <PayrollPlayerInfo team={team} />
         </RankingWrapper>
       ))}
     </Wrapper>
@@ -60,16 +50,6 @@ const RankingWrapper = styled.div`
     background-color: ${({ theme }) => theme.textColor};
     color: ${({ theme }) => theme.bgColor};
   }
-`;
-
-const TeamWrapper = styled.div`
-  width: 55%;
-  padding: 1em;
-`;
-
-const PlayerWrapper = styled.div`
-  width: 45%;
-  padding: 1em;
 `;
 
 export default Payroll;
