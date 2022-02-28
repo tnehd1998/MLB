@@ -1,7 +1,10 @@
 import { Suspense } from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
+import { useQuery } from "react-query";
+import { useNavigate } from "react-router";
 import { useRecoilState } from "recoil";
 import styled from "styled-components";
+import { getPayroll } from "../api/payroll";
 import BasicButton from "../components/atoms/Buttons/BasicButton";
 import Loading from "../components/atoms/Loading";
 
@@ -11,7 +14,12 @@ import { showFARankingState } from "../store/ranking";
 
 const AllStarPage = () => {
   const [showFARanking, setShowFARanking] = useRecoilState(showFARankingState);
+  const { data: payrollTeams, isLoading } = useQuery("payroll", getPayroll);
+  const navigate = useNavigate();
 
+  const onClickTeam = (team: string) => {
+    navigate(`/${team}`);
+  };
   const changeToFARanking = (type: boolean) => {
     setShowFARanking(type);
   };
@@ -38,9 +46,11 @@ const AllStarPage = () => {
           <TopPlayers />
         </Suspense>
       ) : (
-        <Suspense fallback={<Loading />}>
-          <Payroll />
-        </Suspense>
+        <Payroll
+          teams={payrollTeams}
+          isLoading={isLoading}
+          onClickTeam={onClickTeam}
+        />
       )}
     </Wrapper>
   );

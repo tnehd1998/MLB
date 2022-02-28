@@ -1,22 +1,19 @@
 import styled from "styled-components";
-import { useQuery } from "react-query";
-import { useNavigate } from "react-router";
-import { getPayroll } from "../../../api/payroll";
 import TeamRankingInfo from "../../molecules/TeamRankingInfo";
 import PayrollPlayerInfo from "../../molecules/PlayerInfo/PayrollPlayerInfo";
+import Loading from "../../atoms/Loading";
+import { IPayroll } from "../../../types/payroll.type";
 
-const Payroll = () => {
-  const { data: teams } = useQuery("payroll", getPayroll, {
-    suspense: true,
-  });
-  const navigate = useNavigate();
+export interface IProps {
+  teams: IPayroll[] | null | undefined;
+  isLoading: boolean;
+  onClickTeam: (team: string) => void;
+}
 
-  const onClickTeam = (team: string) => {
-    navigate(`/${team}`);
-  };
-
+const Payroll = ({ teams, isLoading, onClickTeam }: IProps) => {
   return (
     <Wrapper>
+      {isLoading && <Loading />}
       {teams?.map((team) => (
         <RankingWrapper key={team.rank} onClick={() => onClickTeam(team.key)}>
           <TeamRankingInfo team={team} />
