@@ -1,16 +1,16 @@
 import { Story } from "@storybook/react";
-import Team, { IProps } from ".";
+import CardPlayerInfo, { IProps } from ".";
 
 export default {
-  title: "molecules/TeamPlayerInfo",
-  component: Team,
+  title: "molecules/CardPlayerInfo",
+  component: CardPlayerInfo,
 };
 
-const Template: Story<IProps> = (args) => <Team {...args} />;
+const Template: Story<IProps> = (args) => <CardPlayerInfo {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  playerInfo: {
+  showingPlayer: {
     BatHand: "R",
     BirthCountry: "USA",
     BirthDate: "1992-10-07T00:00:00",
