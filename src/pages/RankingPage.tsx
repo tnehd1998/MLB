@@ -3,8 +3,8 @@ import { Helmet, HelmetProvider } from "react-helmet-async";
 import { useRecoilState } from "recoil";
 import styled from "styled-components";
 import BasicButton from "../components/atoms/Buttons/BasicButton";
+import Loading from "../components/atoms/Loading";
 
-import Loading from "../components/organisms/Loading/Loading";
 import Payroll from "../components/organisms/Payroll/Payroll";
 import TopPlayers from "../components/organisms/TopPlayers/TopPlayers";
 import { showFARankingState } from "../store/ranking";

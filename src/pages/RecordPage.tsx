@@ -1,8 +1,8 @@
 import { Suspense } from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import styled from "styled-components";
+import Loading from "../components/atoms/Loading";
 import BasicTitle from "../components/atoms/Titles/BasicTitle";
-import Loading from "../components/organisms/Loading/Loading";
 import PostSeason from "../components/organisms/PostSeason/PostSeason";
 import Standing from "../components/organisms/Standing/Standing";
 

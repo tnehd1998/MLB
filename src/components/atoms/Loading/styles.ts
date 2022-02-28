@@ -1,10 +1,6 @@
 import styled from "styled-components";
 
-const Loading = () => {
-  return <LoadingWrapper>Loading...</LoadingWrapper>;
-};
-
-const LoadingWrapper = styled.div`
+export const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,5 +19,3 @@ const LoadingWrapper = styled.div`
     }
   }
 `;
-
-export default Loading;
