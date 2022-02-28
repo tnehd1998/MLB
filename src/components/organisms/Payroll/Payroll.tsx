@@ -6,6 +6,7 @@ import Logo from "../../atoms/Logo";
 import Description from "../../atoms/Description";
 import PlayerTitle from "../../atoms/Titles/PlayerTitle";
 import PlayerImage from "../../atoms/Images/PlayerImage";
+import TeamRankingInfo from "../../molecules/TeamRankingInfo";
 
 const Payroll = () => {
   const { data: teams } = useQuery("payroll", getPayroll, {
@@ -17,16 +18,13 @@ const Payroll = () => {
     navigate(`/${team}`);
   };
 
+  console.log(teams);
+
   return (
     <Wrapper>
       {teams?.map((team) => (
         <RankingWrapper key={team.rank} onClick={() => onClickTeam(team.key)}>
-          <TeamWrapper>
-            <PlayerTitle text={`랭킹 ${team.rank}위`} />
-            <Description text={`팀 이름 : ${team.team}`} />
-            <Description text={`연봉 총액 : ${team.payroll}`} />
-            <Logo imageUrl={team.teamLogoUrl} />
-          </TeamWrapper>
+          <TeamRankingInfo team={team} />
           <PlayerWrapper>
             <PlayerTitle text={"대표 선수"} />
             <Description text={`${team.bestPlayer}`} />
