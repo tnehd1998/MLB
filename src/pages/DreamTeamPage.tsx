@@ -1,15 +1,25 @@
 import { Helmet, HelmetProvider } from "react-helmet-async";
-import { useSetRecoilState } from "recoil";
+import { useRecoilState } from "recoil";
 import styled from "styled-components";
 import BasicButton from "../components/atoms/Buttons/BasicButton";
 import BasicTitle from "../components/atoms/Titles/BasicTitle";
-import DreamBatter from "../components/organisms/DreamBatter/DreamBatter";
+import DreamBatter from "../components/organisms/DreamBatter";
 import DreamPitcher from "../components/organisms/DreamPitcher/DreamPitcher";
 import { dreamTeamInfoState } from "../store/dreamteam";
 
 const DreamTeamPage = () => {
-  const setDreamTeamPlayers = useSetRecoilState(dreamTeamInfoState);
+  const [dreamTeamPlayers, setDreamTeamPlayers] =
+    useRecoilState(dreamTeamInfoState);
 
+  const findCertainPositionBatter = (position: string) => {
+    for (let dreamTeamPlayer in dreamTeamPlayers) {
+      let currentPlayer = dreamTeamPlayers[dreamTeamPlayer];
+      if (currentPlayer.Position === position) {
+        return [currentPlayer];
+      }
+    }
+    return [];
+  };
   const onClickDeleteAll = () => {
     if (window.confirm("선택한 선수를 전부 삭제하시겠습니까?")) {
       setDreamTeamPlayers([]);
@@ -26,18 +36,45 @@ const DreamTeamPage = () => {
       </HelmetProvider>
       <BasicTitle content="내야수" />
       <PlayerWrapper>
-        <DreamBatter position="C" />
-        <DreamBatter position="1B" />
-        <DreamBatter position="2B" />
-        <DreamBatter position="3B" />
-        <DreamBatter position="SS" />
+        <DreamBatter
+          position="C"
+          findCertainPositionBatter={findCertainPositionBatter}
+        />
+        <DreamBatter
+          position="1B"
+          findCertainPositionBatter={findCertainPositionBatter}
+        />
+        <DreamBatter
+          position="2B"
+          findCertainPositionBatter={findCertainPositionBatter}
+        />
+        <DreamBatter
+          position="3B"
+          findCertainPositionBatter={findCertainPositionBatter}
+        />
+        <DreamBatter
+          position="SS"
+          findCertainPositionBatter={findCertainPositionBatter}
+        />
       </PlayerWrapper>
       <BasicTitle content="외야수 / 지명타자" />
       <PlayerWrapper>
-        <DreamBatter position="LF" />
-        <DreamBatter position="CF" />
-        <DreamBatter position="RF" />
-        <DreamBatter position="DH" />
+        <DreamBatter
+          position="LF"
+          findCertainPositionBatter={findCertainPositionBatter}
+        />
+        <DreamBatter
+          position="CF"
+          findCertainPositionBatter={findCertainPositionBatter}
+        />
+        <DreamBatter
+          position="RF"
+          findCertainPositionBatter={findCertainPositionBatter}
+        />
+        <DreamBatter
+          position="DH"
+          findCertainPositionBatter={findCertainPositionBatter}
+        />
       </PlayerWrapper>
       <BasicTitle content="선발 투수" />
       <PlayerWrapper>

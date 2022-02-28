@@ -12,10 +12,6 @@ export interface IPlayer {
   ThrowHand: string;
 }
 
-export interface IDreamPlayerProps {
-  position: string;
-}
-
 export interface IRankingPlayerProps {
   ranking: number;
   name: string;

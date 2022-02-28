@@ -1,11 +1,14 @@
 import { useRecoilValue } from "recoil";
 import styled from "styled-components";
 import { dreamTeamInfoState } from "../../../store/dreamteam";
-import { IDreamPlayerProps } from "../../../types/player.type";
 import Description from "../../atoms/Description";
 import PlayerImage from "../../atoms/Images/PlayerImage";
 
-const DreamPitcher = ({ position }: IDreamPlayerProps) => {
+export interface IProps {
+  position: string;
+}
+
+const DreamPitcher = ({ position }: IProps) => {
   const dreamTeamPlayers = useRecoilValue(dreamTeamInfoState);
 
   const filterPitcherByPosition = () => {
