@@ -2,9 +2,8 @@ import { useQuery } from "react-query";
 import { useNavigate } from "react-router";
 import styled from "styled-components";
 import { getRanking } from "../../../api/ranking";
-import Description from "../../atoms/Description";
-import PlayerTitle from "../../atoms/Titles/PlayerTitle";
 import PlayerImage from "../../atoms/Images/PlayerImage";
+import TopPlayerInfo from "../../molecules/PlayerInfo/TopPlayerInfo";
 
 const TopPlayers = () => {
   const { data: players } = useQuery("topplayers", getRanking, {
@@ -24,15 +23,7 @@ const TopPlayers = () => {
           onClick={() => onClickPlayer(player.team)}
         >
           <PlayerImage imageUrl={player.playerImg} imageType="main" />
-          <DescriptionWrapper>
-            <PlayerTitle text={`Rank #${player.ranking} ${player.name}`} />
-            <Description text={`포지션 : ${player.position}`} />
-            <Description text={`소속팀 : ${player.team}`} />
-            <Description text={`${player.totalValue} ${player.years}년 계약`} />
-            <Description text={`계약 당시 나이 : ${player.SignedAge}`} />
-            <Description text={`평균 연봉 : ${player.averageValue}`} />
-            <Description text={`계약 기간 : ${player.period}`} />
-          </DescriptionWrapper>
+          <TopPlayerInfo player={player} />
         </PlayerWrapper>
       ))}
     </Wrapper>
@@ -59,14 +50,6 @@ const PlayerWrapper = styled.div`
     background-color: ${({ theme }) => theme.textColor};
     color: ${({ theme }) => theme.bgColor};
   }
-`;
-
-const DescriptionWrapper = styled.div`
-  padding: 1em;
-  font-size: 8px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 `;
 
 export default TopPlayers;
