@@ -4,7 +4,7 @@ import styled from "styled-components";
 import BasicButton from "../components/atoms/Buttons/BasicButton";
 import BasicTitle from "../components/atoms/Titles/BasicTitle";
 import DreamBatter from "../components/organisms/DreamBatter";
-import DreamPitcher from "../components/organisms/DreamPitcher/DreamPitcher";
+import DreamPitcher from "../components/organisms/DreamPitcher";
 import { dreamTeamInfoState } from "../store/dreamteam";
 
 const DreamTeamPage = () => {
@@ -20,6 +20,18 @@ const DreamTeamPage = () => {
     }
     return [];
   };
+
+  const filterPitcherByPosition = (position: string) => {
+    let result = [];
+    for (let dreamTeamPlayer in dreamTeamPlayers) {
+      let currentPlayer = dreamTeamPlayers[dreamTeamPlayer];
+      if (currentPlayer.Position === position) {
+        result.push(currentPlayer);
+      }
+    }
+    return result;
+  };
+
   const onClickDeleteAll = () => {
     if (window.confirm("선택한 선수를 전부 삭제하시겠습니까?")) {
       setDreamTeamPlayers([]);
@@ -78,11 +90,17 @@ const DreamTeamPage = () => {
       </PlayerWrapper>
       <BasicTitle content="선발 투수" />
       <PlayerWrapper>
-        <DreamPitcher position="SP" />
+        <DreamPitcher
+          position="SP"
+          filterPitcherByPosition={filterPitcherByPosition}
+        />
       </PlayerWrapper>
       <BasicTitle content="불펜 투수" />
       <PlayerWrapper>
-        <DreamPitcher position="RP" />
+        <DreamPitcher
+          position="RP"
+          filterPitcherByPosition={filterPitcherByPosition}
+        />
       </PlayerWrapper>
       <BasicButton onClick={onClickDeleteAll} content="전체 삭제" />
     </Wrapper>
