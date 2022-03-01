@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { getStanding } from "../api/standing";
 import BasicTitle from "../components/atoms/Titles/BasicTitle";
 import PostSeason from "../components/organisms/PostSeason";
-import Standing from "../components/organisms/Standing/Standing";
+import Standing from "../components/organisms/Standing";
 
 const RecordPage = () => {
   const [currentRegion, setCurrentRegion] = useState("AL East");

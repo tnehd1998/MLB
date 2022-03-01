@@ -9,8 +9,6 @@ export interface IProps {
 }
 
 const TeamPlayers = ({ players, isLoading }: IProps) => {
-  console.log(players);
-
   return (
     <Wrapper>
       {isLoading && <Loading />}
