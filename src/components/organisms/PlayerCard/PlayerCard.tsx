@@ -18,8 +18,6 @@ const PlayerCard = () => {
   const [dreamTeam, setDreamTeam] = useRecoilState(dreamTeamInfoState);
   const [isDreamTeamPlayer, setIsDreamTeamPlayer] = useState(false);
 
-  console.log(showingPlayer);
-
   const checkIsDreamTeamPlayer = useCallback(() => {
     const existingPlayer = dreamTeam.find(
       (player) => player.PlayerID === showingPlayer.PlayerID

@@ -5,6 +5,7 @@ import { useNavigate } from "react-router";
 import { useRecoilState } from "recoil";
 import styled from "styled-components";
 import { getPayroll } from "../api/payroll";
+import { getRanking } from "../api/ranking";
 import BasicButton from "../components/atoms/Buttons/BasicButton";
 import Loading from "../components/atoms/Loading";
 
@@ -14,12 +15,24 @@ import { showFARankingState } from "../store/ranking";
 
 const AllStarPage = () => {
   const [showFARanking, setShowFARanking] = useRecoilState(showFARankingState);
-  const { data: payrollTeams, isLoading } = useQuery("payroll", getPayroll);
+  const { data: payrollTeams, isLoading: isPayrollLoading } = useQuery(
+    "payroll",
+    getPayroll
+  );
+  const { data: topPlayers, isLoading: isTopPlayersLoading } = useQuery(
+    "topPlayers",
+    getRanking
+  );
   const navigate = useNavigate();
+
+  const onClickPlayer = (team: string) => {
+    navigate(`/${team}`);
+  };
 
   const onClickTeam = (team: string) => {
     navigate(`/${team}`);
   };
+
   const changeToFARanking = (type: boolean) => {
     setShowFARanking(type);
   };
@@ -42,13 +55,15 @@ const AllStarPage = () => {
         />
       </ButtonWrapper>
       {showFARanking ? (
-        <Suspense fallback={<Loading />}>
-          <TopPlayers />
-        </Suspense>
+        <TopPlayers
+          players={topPlayers}
+          isLoading={isTopPlayersLoading}
+          onClickPlayer={onClickPlayer}
+        />
       ) : (
         <Payroll
           teams={payrollTeams}
-          isLoading={isLoading}
+          isLoading={isPayrollLoading}
           onClickTeam={onClickTeam}
         />
       )}

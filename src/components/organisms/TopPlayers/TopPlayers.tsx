@@ -1,22 +1,19 @@
-import { useQuery } from "react-query";
-import { useNavigate } from "react-router";
 import styled from "styled-components";
-import { getRanking } from "../../../api/ranking";
+import { IRankingPlayerProps } from "../../../types/player.type";
 import PlayerImage from "../../atoms/Images/PlayerImage";
+import Loading from "../../atoms/Loading";
 import TopPlayerInfo from "../../molecules/PlayerInfo/TopPlayerInfo";
 
-const TopPlayers = () => {
-  const { data: players } = useQuery("topplayers", getRanking, {
-    suspense: true,
-  });
-  const navigate = useNavigate();
+export interface IProps {
+  players: IRankingPlayerProps[] | null | undefined;
+  isLoading: boolean;
+  onClickPlayer: (team: string) => void;
+}
 
-  const onClickPlayer = (team: string) => {
-    navigate(`/${team}`);
-  };
-
+const TopPlayers = ({ players, isLoading, onClickPlayer }: IProps) => {
   return (
     <Wrapper>
+      {isLoading && <Loading />}
       {players?.map((player) => (
         <PlayerWrapper
           key={player.ranking}
