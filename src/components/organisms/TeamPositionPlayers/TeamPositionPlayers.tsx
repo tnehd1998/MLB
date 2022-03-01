@@ -5,7 +5,7 @@ import { ITeam } from "../../../types/team.type";
 import BasicTitle from "../../atoms/Titles/BasicTitle";
 
 export interface IProps {
-  info: ITeam[];
+  info: ITeam[] | null | undefined;
   positions: string[];
   title: string;
 }
@@ -22,13 +22,14 @@ const PositionPlayer = ({ info, positions, title }: IProps) => {
     <Wrapper>
       <BasicTitle content={title} />
       <PlayerWrapper>
-        {[...info].map((playerInfo) =>
-          filterPosition(playerInfo, positions) ? (
-            <TeamPlayer key={playerInfo.PlayerID} playerInfo={playerInfo} />
-          ) : (
-            ""
-          )
-        )}
+        {info &&
+          [...info].map((playerInfo) =>
+            filterPosition(playerInfo, positions) ? (
+              <TeamPlayer key={playerInfo.PlayerID} playerInfo={playerInfo} />
+            ) : (
+              ""
+            )
+          )}
       </PlayerWrapper>
     </Wrapper>
   );

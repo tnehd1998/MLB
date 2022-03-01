@@ -1,4 +1,4 @@
-import { Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useParams } from "react-router";
 import { useRecoilState } from "recoil";
@@ -7,15 +7,19 @@ import TeamPlayers from "../components/organisms/TeamPlayers/TeamPlayers";
 import PlayerCard from "../components/organisms/PlayerCard/PlayerCard";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { playerSelectionState } from "../store/player";
-import Loading from "../components/atoms/Loading";
 import { useQuery } from "react-query";
 import { getTeams } from "../api/teams";
 import { ITeams } from "../types/teams.type";
+import { getCertainTeam } from "../api/team";
 
 const TeamPage = () => {
   const { teamName } = useParams<{ teamName: string }>();
   const [selectPlayer, setSelectPlayer] = useRecoilState(playerSelectionState);
   const { data: teams, isLoading: isTeamLoading } = useQuery("teams", getTeams);
+  const { data: players, isLoading: isPlayerLoading } = useQuery(
+    `${teamName}`,
+    () => getCertainTeam(teamName)
+  );
   const [currentTeam, setCurrentTeam] = useState<ITeams>({
     City: "",
     Key: "",
@@ -52,9 +56,7 @@ const TeamPage = () => {
       </HelmetProvider>
       <TeamWrapper selectPlayer={selectPlayer}>
         <TeamBanner currentTeam={currentTeam} isLoading={isTeamLoading} />
-        <Suspense fallback={<Loading />}>
-          <TeamPlayers teamName={teamName!} />
-        </Suspense>
+        <TeamPlayers players={players} isLoading={isPlayerLoading} />
       </TeamWrapper>
       {selectPlayer && <PlayerCard />}
     </Wrapper>
