@@ -1,12 +1,16 @@
-import { Suspense } from "react";
+import { useState } from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
+import { useQuery } from "react-query";
 import styled from "styled-components";
-import Loading from "../components/atoms/Loading";
+import { getStanding } from "../api/standing";
 import BasicTitle from "../components/atoms/Titles/BasicTitle";
 import PostSeason from "../components/organisms/PostSeason";
 import Standing from "../components/organisms/Standing/Standing";
 
 const RecordPage = () => {
+  const [currentRegion, setCurrentRegion] = useState("AL East");
+  const { data, isLoading } = useQuery("standing", getStanding);
+
   return (
     <Wrapper>
       <HelmetProvider>
@@ -17,9 +21,12 @@ const RecordPage = () => {
       <BasicTitle content="2021 MLB POSTSEASON" />
       <PostSeason />
       <BasicTitle content="2021 TEAM STANDING" />
-      <Suspense fallback={<Loading />}>
-        <Standing />
-      </Suspense>
+      <Standing
+        standing={data}
+        isLoading={isLoading}
+        currentRegion={currentRegion}
+        setCurrentRegion={setCurrentRegion}
+      />
     </Wrapper>
   );
 };

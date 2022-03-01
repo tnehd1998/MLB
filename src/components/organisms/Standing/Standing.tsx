@@ -1,18 +1,25 @@
-import { useState } from "react";
-import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { getStanding } from "../../../api/standing";
+import { IStanding } from "../../../types/standing.type";
 import Description from "../../atoms/Description";
+import Loading from "../../atoms/Loading";
 
-const Standing = () => {
-  const [currentRegion, setCurrentRegion] = useState("AL East");
-  const { data: standing } = useQuery("standing", getStanding, {
-    suspense: true,
-  });
+export interface IProps {
+  standing: IStanding[] | null | undefined;
+  isLoading: boolean;
+  currentRegion: string;
+  setCurrentRegion: (region: string) => void;
+}
 
+const Standing = ({
+  standing,
+  isLoading,
+  currentRegion,
+  setCurrentRegion,
+}: IProps) => {
   return (
     <Wrapper>
+      {isLoading && <Loading />}
       <RegionsWrapper>
         <RegionWrapper onClick={() => setCurrentRegion("AL East")}>
           <Description text="AL East" />
