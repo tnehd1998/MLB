@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useState } from "react";
-import styled from "styled-components";
 import { useParams } from "react-router";
 import { useRecoilState, useRecoilValue } from "recoil";
 import TeamBanner from "../../organisms/TeamBanner";

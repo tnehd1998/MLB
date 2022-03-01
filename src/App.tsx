@@ -10,8 +10,8 @@ import Header from "./components/organisms/Header";
 
 import Home from "./components/pages/Home";
 import Team from "./components/pages/Team";
-import RankingPage from "./components/pages/Ranking";
-import RecordPage from "./components/pages/RecordPage";
+import Ranking from "./components/pages/Ranking";
+import Record from "./components/pages/Record";
 import DreamTeamPage from "./components/pages/DreamTeamPage";
 
 import { darkTheme, lightTheme } from "./styles/theme";
@@ -46,8 +46,8 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path=":teamName" element={<Team />} />
-          <Route path="/ranking" element={<RankingPage />} />
-          <Route path="/record" element={<RecordPage />} />
+          <Route path="/ranking" element={<Ranking />} />
+          <Route path="/record" element={<Record />} />
           <Route path="/dreamteam" element={<DreamTeamPage />} />
           <Route path="/*" element={<Navigate to="/" />} />
         </Routes>

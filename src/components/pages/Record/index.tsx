@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { useQuery } from "react-query";
-import styled from "styled-components";
-import { getStanding } from "../../api/standing";
-import BasicTitle from "../atoms/Titles/BasicTitle";
-import PostSeason from "../organisms/PostSeason";
-import Standing from "../organisms/Standing";
+import { getStanding } from "../../../api/standing";
+import BasicTitle from "../../atoms/Titles/BasicTitle";
+import PostSeason from "../../organisms/PostSeason";
+import Standing from "../../organisms/Standing";
+import { Wrapper } from "./styles";
 
 const RecordPage = () => {
   const [currentRegion, setCurrentRegion] = useState("AL East");
@@ -30,14 +30,5 @@ const RecordPage = () => {
     </Wrapper>
   );
 };
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding-top: 12vh;
-  text-align: center;
-`;
 
 export default RecordPage;

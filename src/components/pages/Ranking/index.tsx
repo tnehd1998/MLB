@@ -2,7 +2,6 @@ import { Helmet, HelmetProvider } from "react-helmet-async";
 import { useQuery } from "react-query";
 import { useNavigate } from "react-router";
 import { useRecoilState } from "recoil";
-import styled from "styled-components";
 import { getPayroll } from "../../../api/payroll";
 import { getRanking } from "../../../api/ranking";
 import BasicButton from "../../atoms/Buttons/BasicButton";
