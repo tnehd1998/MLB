@@ -3,7 +3,7 @@ import { Helmet, HelmetProvider } from "react-helmet-async";
 import styled from "styled-components";
 import Loading from "../components/atoms/Loading";
 import BasicTitle from "../components/atoms/Titles/BasicTitle";
-import PostSeason from "../components/organisms/PostSeason/PostSeason";
+import PostSeason from "../components/organisms/PostSeason";
 import Standing from "../components/organisms/Standing/Standing";
 
 const RecordPage = () => {
