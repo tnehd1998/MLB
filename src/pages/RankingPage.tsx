@@ -10,7 +10,7 @@ import BasicButton from "../components/atoms/Buttons/BasicButton";
 import Loading from "../components/atoms/Loading";
 
 import Payroll from "../components/organisms/Payroll";
-import TopPlayers from "../components/organisms/TopPlayers/TopPlayers";
+import TopPlayers from "../components/organisms/TopPlayers";
 import { showFARankingState } from "../store/ranking";
 
 const AllStarPage = () => {

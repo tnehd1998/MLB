@@ -11,7 +11,6 @@ export interface IProps {
 }
 
 const Payroll = ({ teams, isLoading, onClickTeam }: IProps) => {
-  console.log(teams);
   return (
     <Wrapper>
       {isLoading && <Loading />}
