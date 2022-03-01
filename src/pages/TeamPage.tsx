@@ -1,16 +1,17 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
 import { useParams } from "react-router";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import TeamBanner from "../components/organisms/TeamBanner";
 import TeamPlayers from "../components/organisms/TeamPlayers";
-import PlayerCard from "../components/organisms/PlayerCard/PlayerCard";
+import PlayerCard from "../components/organisms/PlayerCard";
 import { Helmet, HelmetProvider } from "react-helmet-async";
-import { playerSelectionState } from "../store/player";
+import { currentPlayerState, playerSelectionState } from "../store/player";
 import { useQuery } from "react-query";
 import { getTeams } from "../api/teams";
 import { ITeams } from "../types/teams.type";
 import { getCertainTeam } from "../api/team";
+import { dreamTeamInfoState } from "../store/dreamteam";
 
 const TeamPage = () => {
   const { teamName } = useParams<{ teamName: string }>();
@@ -28,6 +29,95 @@ const TeamPage = () => {
     WikipediaLogoUrl: "",
     Name: "",
   });
+  const showingPlayer = useRecoilValue(currentPlayerState);
+  const [dreamTeam, setDreamTeam] = useRecoilState(dreamTeamInfoState);
+  const [isDreamTeamPlayer, setIsDreamTeamPlayer] = useState(false);
+
+  const checkIsDreamTeamPlayer = useCallback(() => {
+    const existingPlayer = dreamTeam.find(
+      (player) => player.PlayerID === showingPlayer.PlayerID
+    );
+    if (existingPlayer) return true;
+    return false;
+  }, [showingPlayer.PlayerID, dreamTeam]);
+
+  const addPitcherToDreamTeam = () => {
+    let samePositionPlayers = dreamTeam.filter(
+      (player) => player.Position === showingPlayer.Position
+    );
+    const existingPlayers = dreamTeam.filter(
+      (player) => player.Position !== showingPlayer.Position
+    );
+    switch (showingPlayer.Position) {
+      case "SP":
+        if (samePositionPlayers.length === 5) {
+          let deletedPlayer = samePositionPlayers.shift();
+          deletedPlayer &&
+            alert(
+              `${showingPlayer.Position}포지션 선수 ${deletedPlayer.FirstName} ${deletedPlayer.LastName}가 제거되고 ${showingPlayer.FirstName} ${showingPlayer.LastName}가 추가되었습니다.`
+            );
+        } else {
+          alert(
+            `${showingPlayer.FirstName} ${showingPlayer.LastName}가 ${showingPlayer.Position}에 추가되었습니다.`
+          );
+        }
+        samePositionPlayers.push(showingPlayer);
+        break;
+      case "RP":
+        if (samePositionPlayers.length === 6) {
+          let deletedPlayer = samePositionPlayers.shift();
+          deletedPlayer &&
+            alert(
+              `${showingPlayer.Position}포지션 선수 ${deletedPlayer.FirstName} ${deletedPlayer.LastName}가 제거되고 ${showingPlayer.FirstName} ${showingPlayer.LastName}가 추가되었습니다.`
+            );
+        } else {
+          alert(
+            `${showingPlayer.FirstName} ${showingPlayer.LastName}가 ${showingPlayer.Position}에 추가되었습니다.`
+          );
+        }
+        samePositionPlayers.push(showingPlayer);
+        break;
+      default:
+        break;
+    }
+
+    setDreamTeam([...existingPlayers, ...samePositionPlayers]);
+  };
+
+  const addBatterToDreamTeam = () => {
+    const samePositionPlayer = dreamTeam.find(
+      (player) => player.Position === showingPlayer.Position
+    );
+    const existingPlayers = dreamTeam.filter(
+      (player) => player.Position !== showingPlayer.Position
+    );
+    if (samePositionPlayer) {
+      alert(
+        `${showingPlayer.Position}포지션 선수가 ${samePositionPlayer.FirstName} ${samePositionPlayer.LastName}에서 ${showingPlayer.FirstName} ${showingPlayer.LastName}로 변경되었습니다.`
+      );
+    } else {
+      alert(
+        `${showingPlayer.FirstName} ${showingPlayer.LastName}가 ${showingPlayer.Position}에 추가되었습니다.`
+      );
+    }
+
+    setDreamTeam([...existingPlayers, showingPlayer]);
+  };
+
+  const addPlayerToDreamTeam = () => {
+    return showingPlayer.Position === "SP" || showingPlayer.Position === "RP"
+      ? addPitcherToDreamTeam()
+      : addBatterToDreamTeam();
+  };
+
+  useEffect(() => {
+    const checkPlayer = checkIsDreamTeamPlayer();
+    setIsDreamTeamPlayer(checkPlayer);
+  }, [checkIsDreamTeamPlayer]);
+
+  const onClickCloseButton = () => {
+    setSelectPlayer((selectPlayer) => !selectPlayer);
+  };
 
   useEffect(() => {
     function getCurrentTeam() {
@@ -58,7 +148,14 @@ const TeamPage = () => {
         <TeamBanner currentTeam={currentTeam} isLoading={isTeamLoading} />
         <TeamPlayers players={players} isLoading={isPlayerLoading} />
       </TeamWrapper>
-      {selectPlayer && <PlayerCard />}
+      {selectPlayer && (
+        <PlayerCard
+          showingPlayer={showingPlayer}
+          onClickCloseButton={onClickCloseButton}
+          isDreamTeamPlayer={isDreamTeamPlayer}
+          addPlayerToDreamTeam={addPlayerToDreamTeam}
+        />
+      )}
     </Wrapper>
   );
 };
