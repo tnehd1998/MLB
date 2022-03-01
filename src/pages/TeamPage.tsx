@@ -1,4 +1,4 @@
-import { Suspense, useEffect } from "react";
+import { Suspense, useEffect, useState } from "react";
 import styled from "styled-components";
 import { useParams } from "react-router";
 import { useRecoilState } from "recoil";
@@ -6,13 +6,36 @@ import TeamBanner from "../components/organisms/TeamBanner/TeamBanner";
 import TeamPlayers from "../components/organisms/TeamPlayers/TeamPlayers";
 import PlayerCard from "../components/organisms/PlayerCard/PlayerCard";
 import { Helmet, HelmetProvider } from "react-helmet-async";
-import { ITeamNameProps } from "../types/team.type";
 import { playerSelectionState } from "../store/player";
 import Loading from "../components/atoms/Loading";
+import { useQuery } from "react-query";
+import { getTeams } from "../api/teams";
+import { ITeams } from "../types/teams.type";
 
 const TeamPage = () => {
-  const { teamName } = useParams<ITeamNameProps>();
+  const { teamName } = useParams<{ teamName: string }>();
   const [selectPlayer, setSelectPlayer] = useRecoilState(playerSelectionState);
+  const { data: teams, isLoading: isTeamLoading } = useQuery("teams", getTeams);
+  const [currentTeam, setCurrentTeam] = useState<ITeams>({
+    City: "",
+    Key: "",
+    PrimaryColor: "",
+    TeamID: 0,
+    WikipediaLogoUrl: "",
+    Name: "",
+  });
+
+  useEffect(() => {
+    function getCurrentTeam() {
+      if (teams) {
+        const team = teams.find((team) => team.Key === teamName);
+        if (team) {
+          setCurrentTeam(team);
+        }
+      }
+    }
+    getCurrentTeam();
+  }, [teamName, teams]);
 
   useEffect(() => {
     return () => {
@@ -28,9 +51,7 @@ const TeamPage = () => {
         </Helmet>
       </HelmetProvider>
       <TeamWrapper selectPlayer={selectPlayer}>
-        <Suspense fallback={<Loading />}>
-          <TeamBanner teamName={teamName!} />
-        </Suspense>
+        <TeamBanner currentTeam={currentTeam} isTeamLoading={isTeamLoading} />
         <Suspense fallback={<Loading />}>
           <TeamPlayers teamName={teamName!} />
         </Suspense>

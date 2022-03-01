@@ -1,10 +1,13 @@
 import styled from "styled-components";
 import TeamPositionPlayers from "../TeamPositionPlayers/TeamPositionPlayers";
 import { getCertainTeam } from "../../../api/team";
-import { ITeamNameProps } from "../../../types/team.type";
 import { useQuery } from "react-query";
 
-const TeamPlayers = ({ teamName }: ITeamNameProps) => {
+export interface IProps {
+  teamName: string;
+}
+
+const TeamPlayers = ({ teamName }: IProps) => {
   const { data: info } = useQuery(
     `${teamName}`,
     () => getCertainTeam(teamName),

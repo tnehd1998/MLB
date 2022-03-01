@@ -1,44 +1,23 @@
-import { useEffect, useState } from "react";
-import { useQuery } from "react-query";
 import styled from "styled-components";
-import { getTeams } from "../../../api/teams";
-import { ITeamNameProps } from "../../../types/team.type";
 import { ITeams } from "../../../types/teams.type";
 import BasicButton from "../../atoms/Buttons/BasicButton";
+import Loading from "../../atoms/Loading";
 import Logo from "../../atoms/Logo";
 import TeamTitle from "../../atoms/Titles/TeamTitle";
 
-const TeamBanner = ({ teamName }: ITeamNameProps) => {
-  const { data: teams } = useQuery("teams", getTeams, {
-    suspense: true,
-  });
-  const [currentTeam, setCurrentTeam] = useState<ITeams>({
-    City: "",
-    Key: "",
-    PrimaryColor: "",
-    TeamID: 0,
-    WikipediaLogoUrl: "",
-    Name: "",
-  });
+export interface IProps {
+  currentTeam: ITeams;
+  isTeamLoading: boolean;
+}
 
+const TeamBanner = ({ currentTeam, isTeamLoading }: IProps) => {
   const changeNameForUrl = (teamName: string) => {
     return teamName.toLowerCase().replace(/(\s*)/g, "");
   };
 
-  useEffect(() => {
-    function getCurrentTeam() {
-      if (teams) {
-        const team = teams.find((team) => team.Key === teamName);
-        if (team) {
-          setCurrentTeam(team);
-        }
-      }
-    }
-    getCurrentTeam();
-  }, [teamName, teams]);
-
   return (
     <Wrapper>
+      {isTeamLoading && <Loading />}
       <Logo imageUrl={`${currentTeam.WikipediaLogoUrl}`} />
       <NameWrapper>
         <TeamTitle
