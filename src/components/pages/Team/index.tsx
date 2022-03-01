@@ -2,16 +2,20 @@ import { useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
 import { useParams } from "react-router";
 import { useRecoilState, useRecoilValue } from "recoil";
-import TeamBanner from "../organisms/TeamBanner";
-import TeamPlayers from "../organisms/TeamPlayers";
-import PlayerCard from "../organisms/PlayerCard";
+import TeamBanner from "../../organisms/TeamBanner";
+import TeamPlayers from "../../organisms/TeamPlayers";
+import PlayerCard from "../../organisms/PlayerCard";
 import { Helmet, HelmetProvider } from "react-helmet-async";
-import { currentPlayerState, playerSelectionState } from "../../store/player";
+import {
+  currentPlayerState,
+  playerSelectionState,
+} from "../../../store/player";
 import { useQuery } from "react-query";
-import { getTeams } from "../../api/teams";
-import { ITeams } from "../../types/teams.type";
-import { getCertainTeam } from "../../api/team";
-import { dreamTeamInfoState } from "../../store/dreamteam";
+import { getTeams } from "../../../api/teams";
+import { ITeams } from "../../../types/teams.type";
+import { getCertainTeam } from "../../../api/team";
+import { dreamTeamInfoState } from "../../../store/dreamteam";
+import { TeamWrapper, Wrapper } from "./styles";
 
 const TeamPage = () => {
   const { teamName } = useParams<{ teamName: string }>();
@@ -159,16 +163,5 @@ const TeamPage = () => {
     </Wrapper>
   );
 };
-
-const Wrapper = styled.div`
-  padding-top: 12vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const TeamWrapper = styled.div<{ selectPlayer: boolean }>`
-  filter: blur(${(props) => (props.selectPlayer ? "4px" : "0")});
-`;
 
 export default TeamPage;

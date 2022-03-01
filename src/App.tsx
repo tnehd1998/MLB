@@ -9,7 +9,7 @@ import {
 import Header from "./components/organisms/Header";
 
 import Home from "./components/pages/Home";
-import TeamPage from "./components/pages/TeamPage";
+import Team from "./components/pages/Team";
 import RankingPage from "./components/pages/RankingPage";
 import RecordPage from "./components/pages/RecordPage";
 import DreamTeamPage from "./components/pages/DreamTeamPage";
@@ -45,7 +45,7 @@ const App = () => {
         <Header isLightTheme={isLightTheme} toggleTheme={toggleTheme} />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path=":teamName" element={<TeamPage />} />
+          <Route path=":teamName" element={<Team />} />
           <Route path="/ranking" element={<RankingPage />} />
           <Route path="/record" element={<RecordPage />} />
           <Route path="/dreamteam" element={<DreamTeamPage />} />
