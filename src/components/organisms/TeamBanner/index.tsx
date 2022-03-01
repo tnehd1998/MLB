@@ -1,23 +1,23 @@
-import styled from "styled-components";
 import { ITeams } from "../../../types/teams.type";
 import BasicButton from "../../atoms/Buttons/BasicButton";
 import Loading from "../../atoms/Loading";
 import Logo from "../../atoms/Logo";
 import TeamTitle from "../../atoms/Titles/TeamTitle";
+import { LinkWrapper, NameWrapper, Wrapper } from "./styles";
 
 export interface IProps {
   currentTeam: ITeams;
-  isTeamLoading: boolean;
+  isLoading: boolean;
 }
 
-const TeamBanner = ({ currentTeam, isTeamLoading }: IProps) => {
+const TeamBanner = ({ currentTeam, isLoading }: IProps) => {
   const changeNameForUrl = (teamName: string) => {
     return teamName.toLowerCase().replace(/(\s*)/g, "");
   };
 
   return (
     <Wrapper>
-      {isTeamLoading && <Loading />}
+      {isLoading && <Loading />}
       <Logo imageUrl={`${currentTeam.WikipediaLogoUrl}`} />
       <NameWrapper>
         <TeamTitle
@@ -45,27 +45,5 @@ const TeamBanner = ({ currentTeam, isTeamLoading }: IProps) => {
     </Wrapper>
   );
 };
-
-const Wrapper = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  margin-bottom: 2vh;
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-  }
-`;
-
-const NameWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-
-const LinkWrapper = styled.a`
-  margin-top: 1em;
-`;
 
 export default TeamBanner;

@@ -2,7 +2,7 @@ import { Suspense, useEffect, useState } from "react";
 import styled from "styled-components";
 import { useParams } from "react-router";
 import { useRecoilState } from "recoil";
-import TeamBanner from "../components/organisms/TeamBanner/TeamBanner";
+import TeamBanner from "../components/organisms/TeamBanner";
 import TeamPlayers from "../components/organisms/TeamPlayers/TeamPlayers";
 import PlayerCard from "../components/organisms/PlayerCard/PlayerCard";
 import { Helmet, HelmetProvider } from "react-helmet-async";
@@ -51,7 +51,7 @@ const TeamPage = () => {
         </Helmet>
       </HelmetProvider>
       <TeamWrapper selectPlayer={selectPlayer}>
-        <TeamBanner currentTeam={currentTeam} isTeamLoading={isTeamLoading} />
+        <TeamBanner currentTeam={currentTeam} isLoading={isTeamLoading} />
         <Suspense fallback={<Loading />}>
           <TeamPlayers teamName={teamName!} />
         </Suspense>
