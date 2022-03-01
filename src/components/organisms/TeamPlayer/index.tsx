@@ -1,9 +1,13 @@
-import styled from "styled-components";
 import { IPlayer } from "../../../types/player.type";
 import PlayerImage from "../../atoms/Images/PlayerImage";
 import TeamPlayerInfo from "../../molecules/PlayerInfo/TeamPlayerInfo";
+import { Wrapper } from "./styles";
 
-const TeamPlayer = ({ playerInfo }: { playerInfo: IPlayer }) => {
+export interface IProps {
+  playerInfo: IPlayer;
+}
+
+const TeamPlayer = ({ playerInfo }: IProps) => {
   return (
     <Wrapper>
       <PlayerImage imageUrl={playerInfo.PhotoUrl} imageType="main" />
@@ -11,14 +15,5 @@ const TeamPlayer = ({ playerInfo }: { playerInfo: IPlayer }) => {
     </Wrapper>
   );
 };
-
-const Wrapper = styled.div`
-  display: flex;
-  text-align: center;
-  border: 2px solid ${({ theme }) => theme.textColor};
-  border-radius: 10px;
-  width: 24em;
-  margin: 1em;
-`;
 
 export default TeamPlayer;

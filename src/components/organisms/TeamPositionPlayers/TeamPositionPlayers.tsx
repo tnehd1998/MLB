@@ -1,18 +1,16 @@
-import TeamPlayer from "../TeamPlayer/TeamPlayer";
+import TeamPlayer from "../TeamPlayer";
 import styled from "styled-components";
 import { IPlayer } from "../../../types/player.type";
 import { ITeam } from "../../../types/team.type";
 import BasicTitle from "../../atoms/Titles/BasicTitle";
 
-const PositionPlayer = ({
-  info,
-  positions,
-  title,
-}: {
+export interface IProps {
   info: ITeam[];
   positions: string[];
   title: string;
-}) => {
+}
+
+const PositionPlayer = ({ info, positions, title }: IProps) => {
   const filterPosition = (playerInfo: IPlayer, positions: string[]) => {
     if (positions.includes(playerInfo.Position)) {
       return true;
