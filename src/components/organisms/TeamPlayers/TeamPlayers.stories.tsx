@@ -1,12 +1,12 @@
 import { Story } from "@storybook/react";
-import TeamBanner, { IProps } from ".";
+import TeamPlayers, { IProps } from ".";
 
 export default {
-  title: "organisms/TeamBanner",
-  component: TeamBanner,
+  title: "organisms/TeamPlayers",
+  component: TeamPlayers,
 };
 
-const Template: Story<IProps> = (args) => <TeamBanner {...args} />;
+const Template: Story<IProps> = (args) => <TeamPlayers {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

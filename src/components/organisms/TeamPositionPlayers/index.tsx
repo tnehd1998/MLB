@@ -2,14 +2,15 @@ import TeamPlayer from "../TeamPlayer";
 import styled from "styled-components";
 import { IPlayer } from "../../../types/player.type";
 import BasicTitle from "../../atoms/Titles/BasicTitle";
+import { PlayerWrapper, Wrapper } from "./styles";
 
 export interface IProps {
-  info: IPlayer[] | null | undefined;
+  players: IPlayer[] | null | undefined;
   positions: string[];
   title: string;
 }
 
-const PositionPlayer = ({ info, positions, title }: IProps) => {
+const PositionPlayer = ({ players, positions, title }: IProps) => {
   const filterPosition = (playerInfo: IPlayer, positions: string[]) => {
     if (positions.includes(playerInfo.Position)) {
       return true;
@@ -21,8 +22,8 @@ const PositionPlayer = ({ info, positions, title }: IProps) => {
     <Wrapper>
       <BasicTitle content={title} />
       <PlayerWrapper>
-        {info &&
-          [...info].map((playerInfo) =>
+        {players &&
+          [...players].map((playerInfo) =>
             filterPosition(playerInfo, positions) ? (
               <TeamPlayer key={playerInfo.PlayerID} playerInfo={playerInfo} />
             ) : (
@@ -33,19 +34,5 @@ const PositionPlayer = ({ info, positions, title }: IProps) => {
     </Wrapper>
   );
 };
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-
-const PlayerWrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-`;
 
 export default PositionPlayer;
