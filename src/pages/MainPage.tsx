@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Helmet, HelmetProvider } from "react-helmet-async";
-import TeamSelection from "../components/organisms/TeamSelection/TeamSelection";
+import TeamSelection from "../components/organisms/TeamSelection";
 import { useQuery } from "react-query";
 import { getTeams } from "../api/teams";
 import { useNavigate } from "react-router";
