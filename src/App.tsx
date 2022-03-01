@@ -12,7 +12,7 @@ import Home from "./components/pages/Home";
 import Team from "./components/pages/Team";
 import Ranking from "./components/pages/Ranking";
 import Record from "./components/pages/Record";
-import DreamTeamPage from "./components/pages/DreamTeamPage";
+import DreamTeam from "./components/pages/DreamTeam";
 
 import { darkTheme, lightTheme } from "./styles/theme";
 import { ThemeProvider } from "styled-components";
@@ -48,7 +48,7 @@ const App = () => {
           <Route path=":teamName" element={<Team />} />
           <Route path="/ranking" element={<Ranking />} />
           <Route path="/record" element={<Record />} />
-          <Route path="/dreamteam" element={<DreamTeamPage />} />
+          <Route path="/dreamteam" element={<DreamTeam />} />
           <Route path="/*" element={<Navigate to="/" />} />
         </Routes>
       </ThemeProvider>

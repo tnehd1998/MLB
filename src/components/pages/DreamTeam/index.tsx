@@ -1,11 +1,11 @@
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { useRecoilState } from "recoil";
-import styled from "styled-components";
-import BasicButton from "../atoms/Buttons/BasicButton";
-import BasicTitle from "../atoms/Titles/BasicTitle";
-import DreamBatter from "../organisms/DreamBatter";
-import DreamPitcher from "../organisms/DreamPitcher";
-import { dreamTeamInfoState } from "../../store/dreamteam";
+import BasicButton from "../../atoms/Buttons/BasicButton";
+import BasicTitle from "../../atoms/Titles/BasicTitle";
+import DreamBatter from "../../organisms/DreamBatter";
+import DreamPitcher from "../../organisms/DreamPitcher";
+import { dreamTeamInfoState } from "../../../store/dreamteam";
+import { Wrapper, PlayerWrapper } from "./styles";
 
 const DreamTeamPage = () => {
   const [dreamTeamPlayers, setDreamTeamPlayers] =
@@ -106,22 +106,5 @@ const DreamTeamPage = () => {
     </Wrapper>
   );
 };
-
-const Wrapper = styled.div`
-  padding-top: 12vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding-bottom: 5vh;
-`;
-
-const PlayerWrapper = styled.ul`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  margin: 1em 0;
-`;
 
 export default DreamTeamPage;
