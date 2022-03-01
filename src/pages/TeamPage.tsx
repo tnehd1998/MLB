@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useParams } from "react-router";
 import { useRecoilState } from "recoil";
 import TeamBanner from "../components/organisms/TeamBanner";
-import TeamPlayers from "../components/organisms/TeamPlayers/TeamPlayers";
+import TeamPlayers from "../components/organisms/TeamPlayers";
 import PlayerCard from "../components/organisms/PlayerCard/PlayerCard";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { playerSelectionState } from "../store/player";

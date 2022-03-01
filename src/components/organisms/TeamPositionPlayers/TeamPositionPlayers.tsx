@@ -1,11 +1,10 @@
 import TeamPlayer from "../TeamPlayer";
 import styled from "styled-components";
 import { IPlayer } from "../../../types/player.type";
-import { ITeam } from "../../../types/team.type";
 import BasicTitle from "../../atoms/Titles/BasicTitle";
 
 export interface IProps {
-  info: ITeam[] | null | undefined;
+  info: IPlayer[] | null | undefined;
   positions: string[];
   title: string;
 }

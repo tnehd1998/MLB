@@ -1,14 +1,16 @@
-import styled from "styled-components";
 import TeamPositionPlayers from "../TeamPositionPlayers/TeamPositionPlayers";
-import { ITeam } from "../../../types/team.type";
 import Loading from "../../atoms/Loading";
+import { Wrapper } from "./styles";
+import { IPlayer } from "../../../types/player.type";
 
 export interface IProps {
-  players: ITeam[] | null | undefined;
+  players: IPlayer[] | null | undefined;
   isLoading: boolean;
 }
 
 const TeamPlayers = ({ players, isLoading }: IProps) => {
+  console.log(players);
+
   return (
     <Wrapper>
       {isLoading && <Loading />}
@@ -35,12 +37,5 @@ const TeamPlayers = ({ players, isLoading }: IProps) => {
     </Wrapper>
   );
 };
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
 
 export default TeamPlayers;
