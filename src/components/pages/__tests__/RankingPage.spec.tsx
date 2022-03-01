@@ -1,4 +1,4 @@
-import { render } from "../../utils/test-util";
+import { render } from "../../../utils/test-util";
 import RankingPage from "../RankingPage";
 import { RenderResult, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";

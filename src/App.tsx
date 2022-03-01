@@ -8,11 +8,11 @@ import {
 } from "react-router-dom";
 import Header from "./components/organisms/Header";
 
-import MainPage from "./pages/MainPage";
-import TeamPage from "./pages/TeamPage";
-import RankingPage from "./pages/RankingPage";
-import RecordPage from "./pages/RecordPage";
-import DreamTeamPage from "./pages/DreamTeamPage";
+import Home from "./components/pages/Home";
+import TeamPage from "./components/pages/TeamPage";
+import RankingPage from "./components/pages/RankingPage";
+import RecordPage from "./components/pages/RecordPage";
+import DreamTeamPage from "./components/pages/DreamTeamPage";
 
 import { darkTheme, lightTheme } from "./styles/theme";
 import { ThemeProvider } from "styled-components";
@@ -44,7 +44,7 @@ const App = () => {
         <GlobalStyles />
         <Header isLightTheme={isLightTheme} toggleTheme={toggleTheme} />
         <Routes>
-          <Route path="/" element={<MainPage />} />
+          <Route path="/" element={<Home />} />
           <Route path=":teamName" element={<TeamPage />} />
           <Route path="/ranking" element={<RankingPage />} />
           <Route path="/record" element={<RecordPage />} />

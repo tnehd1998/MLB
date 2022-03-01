@@ -3,13 +3,13 @@ import { useQuery } from "react-query";
 import { useNavigate } from "react-router";
 import { useRecoilState } from "recoil";
 import styled from "styled-components";
-import { getPayroll } from "../api/payroll";
-import { getRanking } from "../api/ranking";
-import BasicButton from "../components/atoms/Buttons/BasicButton";
+import { getPayroll } from "../../api/payroll";
+import { getRanking } from "../../api/ranking";
+import BasicButton from "../atoms/Buttons/BasicButton";
 
-import Payroll from "../components/organisms/Payroll";
-import TopPlayers from "../components/organisms/TopPlayers";
-import { showFARankingState } from "../store/ranking";
+import Payroll from "../organisms/Payroll";
+import TopPlayers from "../organisms/TopPlayers";
+import { showFARankingState } from "../../store/ranking";
 
 const AllStarPage = () => {
   const [showFARanking, setShowFARanking] = useRecoilState(showFARankingState);

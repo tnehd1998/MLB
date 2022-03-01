@@ -1,9 +1,9 @@
-import styled from "styled-components";
 import { Helmet, HelmetProvider } from "react-helmet-async";
-import TeamSelection from "../components/organisms/TeamSelection";
+import TeamSelection from "../../organisms/TeamSelection";
 import { useQuery } from "react-query";
-import { getTeams } from "../api/teams";
+import { getTeams } from "../../../api/teams";
 import { useNavigate } from "react-router";
+import { Wrapper } from "./styles";
 
 const MainPage = () => {
   const { data: teams, isLoading } = useQuery("teams", getTeams);
@@ -28,12 +28,5 @@ const MainPage = () => {
     </Wrapper>
   );
 };
-
-const Wrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-top: 12vh;
-`;
 
 export default MainPage;

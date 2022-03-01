@@ -2,16 +2,16 @@ import { useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
 import { useParams } from "react-router";
 import { useRecoilState, useRecoilValue } from "recoil";
-import TeamBanner from "../components/organisms/TeamBanner";
-import TeamPlayers from "../components/organisms/TeamPlayers";
-import PlayerCard from "../components/organisms/PlayerCard";
+import TeamBanner from "../organisms/TeamBanner";
+import TeamPlayers from "../organisms/TeamPlayers";
+import PlayerCard from "../organisms/PlayerCard";
 import { Helmet, HelmetProvider } from "react-helmet-async";
-import { currentPlayerState, playerSelectionState } from "../store/player";
+import { currentPlayerState, playerSelectionState } from "../../store/player";
 import { useQuery } from "react-query";
-import { getTeams } from "../api/teams";
-import { ITeams } from "../types/teams.type";
-import { getCertainTeam } from "../api/team";
-import { dreamTeamInfoState } from "../store/dreamteam";
+import { getTeams } from "../../api/teams";
+import { ITeams } from "../../types/teams.type";
+import { getCertainTeam } from "../../api/team";
+import { dreamTeamInfoState } from "../../store/dreamteam";
 
 const TeamPage = () => {
   const { teamName } = useParams<{ teamName: string }>();

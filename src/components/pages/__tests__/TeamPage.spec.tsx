@@ -1,4 +1,4 @@
-import { render } from "../../utils/test-util";
+import { render } from "../../../utils/test-util";
 import TeamPage from "../TeamPage";
 
 describe("<TeamPage />", () => {

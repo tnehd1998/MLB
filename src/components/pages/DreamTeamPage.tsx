@@ -1,11 +1,11 @@
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { useRecoilState } from "recoil";
 import styled from "styled-components";
-import BasicButton from "../components/atoms/Buttons/BasicButton";
-import BasicTitle from "../components/atoms/Titles/BasicTitle";
-import DreamBatter from "../components/organisms/DreamBatter";
-import DreamPitcher from "../components/organisms/DreamPitcher";
-import { dreamTeamInfoState } from "../store/dreamteam";
+import BasicButton from "../atoms/Buttons/BasicButton";
+import BasicTitle from "../atoms/Titles/BasicTitle";
+import DreamBatter from "../organisms/DreamBatter";
+import DreamPitcher from "../organisms/DreamPitcher";
+import { dreamTeamInfoState } from "../../store/dreamteam";
 
 const DreamTeamPage = () => {
   const [dreamTeamPlayers, setDreamTeamPlayers] =
