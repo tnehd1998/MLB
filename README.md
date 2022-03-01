@@ -8,17 +8,11 @@
 
 사용 기술 목록
 
-- React
+- React (Atomic-Design)
 - Recoil
-- React-router
 - styled-components
-- axios
 - React-query
+- Storybook
+- Jest, React Testing Library
 
 사용한 언어 : TypeScript
-
-### 📌 수정 및 추가 예정 기술 및 언어 목록
-
-- Atomic-Design으로 컴포넌트 구성 변경
-- StoryBook 사용
-- 유닛 테스트, E2E 테스트
