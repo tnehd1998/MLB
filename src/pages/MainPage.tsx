@@ -1,11 +1,18 @@
-import { Suspense } from "react";
 import styled from "styled-components";
 import { Helmet, HelmetProvider } from "react-helmet-async";
-
 import TeamSelection from "../components/organisms/TeamSelection/TeamSelection";
-import Loading from "../components/atoms/Loading";
+import { useQuery } from "react-query";
+import { getTeams } from "../api/teams";
+import { useNavigate } from "react-router";
 
 const MainPage = () => {
+  const { data: teams, isLoading } = useQuery("teams", getTeams);
+  const navigate = useNavigate();
+
+  const onClickTeam = (team: string) => {
+    navigate(`/${team}`);
+  };
+
   return (
     <Wrapper>
       <HelmetProvider>
@@ -13,9 +20,11 @@ const MainPage = () => {
           <title>MLB | TEAMS</title>
         </Helmet>
       </HelmetProvider>
-      <Suspense fallback={<Loading />}>
-        <TeamSelection />
-      </Suspense>
+      <TeamSelection
+        teams={teams}
+        isLoading={isLoading}
+        onClickTeam={onClickTeam}
+      />
     </Wrapper>
   );
 };

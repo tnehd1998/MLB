@@ -1,21 +1,18 @@
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
-import { useQuery } from "react-query";
-import { getTeams } from "../../../api/teams";
 import TeamButton from "../../atoms/Buttons/TeamButton";
+import { ITeams } from "../../../types/teams.type";
+import Loading from "../../atoms/Loading";
 
-const TeamSelection = () => {
-  const { data: teams } = useQuery("teams", getTeams, {
-    suspense: true,
-  });
-  const navigate = useNavigate();
+export interface IProps {
+  teams: ITeams[] | null | undefined;
+  isLoading: boolean;
+  onClickTeam: (key: string) => void;
+}
 
-  const onClickTeam = (team: string) => {
-    navigate(`/${team}`);
-  };
-
+const TeamSelection = ({ teams, isLoading, onClickTeam }: IProps) => {
   return (
     <Wrapper>
+      {isLoading && <Loading />}
       {teams?.map(
         (team) =>
           team.WikipediaLogoUrl && (
