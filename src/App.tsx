@@ -10,7 +10,7 @@ import Header from "./components/organisms/Header";
 
 import Home from "./components/pages/Home";
 import Team from "./components/pages/Team";
-import RankingPage from "./components/pages/RankingPage";
+import RankingPage from "./components/pages/Ranking";
 import RecordPage from "./components/pages/RecordPage";
 import DreamTeamPage from "./components/pages/DreamTeamPage";
 
