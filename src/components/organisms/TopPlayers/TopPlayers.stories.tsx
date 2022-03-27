@@ -19,7 +19,6 @@ LoadedData.args = {
       period: "2019-2030",
       playerImg: "https://d1dglpr230r57l.cloudfront.net/headshots/mlb/8553.jpg",
       position: "CF",
-      ranking: 1,
       team: "LAA",
       totalValue: "$426,500,000",
       years: 12,
@@ -32,7 +31,6 @@ LoadedData.args = {
       playerImg:
         "https://d1dglpr230r57l.cloudfront.net/headshots/mlb/15744.jpg",
       position: "RF",
-      ranking: 2,
       team: "LAD",
       totalValue: "$365,000,000",
       years: 12,

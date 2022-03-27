@@ -14,13 +14,13 @@ const TopPlayers = ({ players, isLoading, onClickPlayer }: IProps) => {
   return (
     <Wrapper>
       {isLoading && <Loading />}
-      {players?.map((player) => (
+      {players?.map((player, index) => (
         <PlayerWrapper
-          key={player.ranking}
+          key={index + 1}
           onClick={() => onClickPlayer(player.team)}
         >
           <PlayerImage imageUrl={player.playerImg} imageType="main" />
-          <TopPlayerInfo player={player} />
+          <TopPlayerInfo ranking={index + 1} player={player} />
         </PlayerWrapper>
       ))}
     </Wrapper>

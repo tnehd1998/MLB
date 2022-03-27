@@ -4,13 +4,14 @@ import PlayerTitle from "../../../atoms/Titles/PlayerTitle";
 import { Wrapper } from "./styles";
 
 export interface IProps {
+  ranking: number;
   player: IRankingPlayerProps;
 }
 
-const TopPlayerInfo = ({ player }: IProps) => {
+const TopPlayerInfo = ({ player, ranking }: IProps) => {
   return (
     <Wrapper>
-      <PlayerTitle text={`Rank #${player.ranking} ${player.name}`} />
+      <PlayerTitle text={`Rank #${ranking} ${player.name}`} />
       <Description text={`포지션 : ${player.position}`} />
       <Description text={`소속팀 : ${player.team}`} />
       <Description text={`${player.totalValue} ${player.years}년 계약`} />

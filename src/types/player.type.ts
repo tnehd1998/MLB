@@ -13,7 +13,6 @@ export interface IPlayer {
 }
 
 export interface IRankingPlayerProps {
-  ranking: number;
   name: string;
   team: string;
   years: number;
