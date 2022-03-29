@@ -9,9 +9,12 @@ export interface IProps {
 }
 
 const TeamPlayers = ({ players, isLoading }: IProps) => {
+  if (isLoading) {
+    return <Loading />;
+  }
+
   return (
     <Wrapper>
-      {isLoading && <Loading />}
       <TeamPositionPlayers
         players={players}
         positions={["SP"]}

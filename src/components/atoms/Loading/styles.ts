@@ -5,6 +5,9 @@ export const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   font-size: 2em;
+  text-align: center;
+  margin: auto;
+  margin-top: 2em;
   animation: blinking 1s ease-in-out infinite;
 
   @keyframes blinking {

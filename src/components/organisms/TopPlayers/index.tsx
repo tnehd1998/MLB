@@ -11,9 +11,12 @@ export interface IProps {
 }
 
 const TopPlayers = ({ players, isLoading, onClickPlayer }: IProps) => {
+  if (isLoading) {
+    return <Loading />;
+  }
+
   return (
     <Wrapper>
-      {isLoading && <Loading />}
       {players?.map((player, index) => (
         <PlayerWrapper
           key={index + 1}

@@ -11,9 +11,12 @@ export interface IProps {
 }
 
 const Payroll = ({ teams, isLoading, onClickTeam }: IProps) => {
+  if (isLoading) {
+    return <Loading />;
+  }
+
   return (
     <Wrapper>
-      {isLoading && <Loading />}
       {teams?.map((team) => (
         <RankingWrapper key={team.rank} onClick={() => onClickTeam(team.key)}>
           <TeamRankingInfo team={team} />

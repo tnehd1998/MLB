@@ -10,9 +10,12 @@ export interface IProps {
 }
 
 const TeamSelection = ({ teams, isLoading, onClickTeam }: IProps) => {
+  if (isLoading) {
+    return <Loading />;
+  }
+
   return (
     <Wrapper>
-      {isLoading && <Loading />}
       {teams?.map(
         (team) =>
           team.WikipediaLogoUrl && (

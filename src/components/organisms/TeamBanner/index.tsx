@@ -15,9 +15,12 @@ const TeamBanner = ({ currentTeam, isLoading }: IProps) => {
     return teamName.toLowerCase().replace(/(\s*)/g, "");
   };
 
+  if (isLoading) {
+    return <Loading />;
+  }
+
   return (
     <Wrapper>
-      {isLoading && <Loading />}
       <Logo imageUrl={`${currentTeam.WikipediaLogoUrl}`} />
       <NameWrapper>
         <TeamTitle

@@ -25,9 +25,12 @@ const Standing = ({
   currentRegion,
   setCurrentRegion,
 }: IProps) => {
+  if (isLoading) {
+    return <Loading />;
+  }
+
   return (
     <Wrapper>
-      {isLoading && <Loading />}
       <RegionsWrapper>
         <RegionWrapper onClick={() => setCurrentRegion("AL East")}>
           <Description text="AL East" />
