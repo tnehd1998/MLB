@@ -24,6 +24,7 @@ Default.args = {
       Position: "SP",
       ProDebut: "2017-09-07T00:00:00",
       ThrowHand: "R",
+      Status: "Active",
     },
   ],
   positions: ["SP"],

@@ -15,6 +15,7 @@ import { ITeams } from "../../../types/teams.type";
 import { getCertainTeam } from "../../../api/team";
 import { dreamTeamInfoState } from "../../../store/dreamteam";
 import { TeamWrapper, Wrapper } from "./styles";
+import { IPlayer } from "../../../types/player.type";
 
 const TeamPage = () => {
   const { teamName } = useParams<{ teamName: string }>();
@@ -113,6 +114,10 @@ const TeamPage = () => {
       : addBatterToDreamTeam();
   };
 
+  const filterActivePlayers = (players: IPlayer[]) => {
+    return players.filter((player) => player.Status === "Active");
+  };
+
   useEffect(() => {
     const checkPlayer = checkIsDreamTeamPlayer();
     setIsDreamTeamPlayer(checkPlayer);
@@ -149,7 +154,10 @@ const TeamPage = () => {
       </HelmetProvider>
       <TeamWrapper selectPlayer={selectPlayer}>
         <TeamBanner currentTeam={currentTeam} isLoading={isTeamLoading} />
-        <TeamPlayers players={players} isLoading={isPlayerLoading} />
+        <TeamPlayers
+          players={players && filterActivePlayers(players)}
+          isLoading={isPlayerLoading}
+        />
       </TeamWrapper>
       {selectPlayer && (
         <PlayerCard

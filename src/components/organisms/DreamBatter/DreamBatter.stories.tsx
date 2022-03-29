@@ -25,6 +25,7 @@ Selected.args = {
       Position: "RF",
       ProDebut: "2014-06-29T00:00:00",
       ThrowHand: "R",
+      Status: "Active",
     },
   ],
 };

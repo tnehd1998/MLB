@@ -10,6 +10,7 @@ export interface IPlayer {
   Position: string;
   ProDebut: string;
   ThrowHand: string;
+  Status: string;
 }
 
 export interface IRankingPlayerProps {

@@ -25,6 +25,7 @@ SelectedAllSP.args = {
       Position: "SP",
       ProDebut: "2017-09-07T00:00:00",
       ThrowHand: "R",
+      Status: "Active",
     },
     {
       BatHand: "R",
@@ -39,6 +40,7 @@ SelectedAllSP.args = {
       Position: "SP",
       ProDebut: "2019-08-17T00:00:00",
       ThrowHand: "R",
+      Status: "Active",
     },
     {
       BatHand: "L",
@@ -53,6 +55,7 @@ SelectedAllSP.args = {
       Position: "SP",
       ProDebut: "2013-04-02T00:00:00",
       ThrowHand: "L",
+      Status: "Active",
     },
     {
       BatHand: "R",
@@ -67,6 +70,7 @@ SelectedAllSP.args = {
       Position: "SP",
       ProDebut: "2013-06-11T00:00:00",
       ThrowHand: "R",
+      Status: "Active",
     },
     {
       BatHand: "L",
@@ -81,6 +85,7 @@ SelectedAllSP.args = {
       Position: "SP",
       ProDebut: "2013-06-18T00:00:00",
       ThrowHand: "R",
+      Status: "Active",
     },
   ],
 };
@@ -102,6 +107,7 @@ SelectedTwoSP.args = {
       Position: "SP",
       ProDebut: "2017-09-07T00:00:00",
       ThrowHand: "R",
+      Status: "Active",
     },
     {
       BatHand: "R",
@@ -116,6 +122,7 @@ SelectedTwoSP.args = {
       Position: "SP",
       ProDebut: "2019-08-17T00:00:00",
       ThrowHand: "R",
+      Status: "Active",
     },
   ],
 };
@@ -143,6 +150,7 @@ SelectedAllRP.args = {
       Position: "RP",
       ProDebut: "2019-09-01T00:00:00",
       ThrowHand: "R",
+      Status: "Active",
     },
     {
       BatHand: "R",
@@ -157,6 +165,7 @@ SelectedAllRP.args = {
       Position: "RP",
       ProDebut: "2021-04-18T00:00:00",
       ThrowHand: "R",
+      Status: "Active",
     },
     {
       BatHand: "R",
@@ -171,6 +180,7 @@ SelectedAllRP.args = {
       Position: "RP",
       ProDebut: "2010-05-07T00:00:00",
       ThrowHand: "L",
+      Status: "Active",
     },
     {
       BatHand: "R",
@@ -185,6 +195,7 @@ SelectedAllRP.args = {
       Position: "RP",
       ProDebut: "2011-09-06T00:00:00",
       ThrowHand: "R",
+      Status: "Active",
     },
     {
       BatHand: "L",
@@ -199,6 +210,7 @@ SelectedAllRP.args = {
       Position: "RP",
       ProDebut: "2017-06-10T00:00:00",
       ThrowHand: "L",
+      Status: "Active",
     },
     {
       BatHand: "R",
@@ -213,6 +225,7 @@ SelectedAllRP.args = {
       Position: "RP",
       ProDebut: "2019-08-07T00:00:00",
       ThrowHand: "R",
+      Status: "Active",
     },
   ],
 };
@@ -234,6 +247,7 @@ SelectedTwoRP.args = {
       Position: "RP",
       ProDebut: "2019-09-01T00:00:00",
       ThrowHand: "R",
+      Status: "Active",
     },
     {
       BatHand: "R",
@@ -248,6 +262,7 @@ SelectedTwoRP.args = {
       Position: "RP",
       ProDebut: "2021-04-18T00:00:00",
       ThrowHand: "R",
+      Status: "Active",
     },
   ],
 };

@@ -15,6 +15,7 @@ export const currentPlayerState = atom<IPlayer>({
     Position: "",
     ProDebut: "",
     ThrowHand: "",
+    Status: "Active",
   },
 });
 

@@ -45,7 +45,7 @@ const AllStarPage = () => {
       <ButtonWrapper>
         <BasicButton
           onClick={() => changeToFARanking(true)}
-          content="FA 랭킹 Top50 확인하기"
+          content="FA 랭킹 Top100 확인하기"
         />
         <BasicButton
           onClick={() => changeToFARanking(false)}

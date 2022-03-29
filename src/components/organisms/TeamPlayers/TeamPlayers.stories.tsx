@@ -24,6 +24,7 @@ Default.args = {
       Position: "SP",
       ProDebut: "2017-09-07T00:00:00",
       ThrowHand: "R",
+      Status: "Active",
     },
     {
       BatHand: "R",
@@ -38,6 +39,7 @@ Default.args = {
       Position: "RP",
       ProDebut: "2009-09-04T00:00:00",
       ThrowHand: "R",
+      Status: "Active",
     },
     {
       BatHand: "L",
@@ -52,6 +54,7 @@ Default.args = {
       Position: "1B",
       ProDebut: "2015-04-25T00:00:00",
       ThrowHand: "R",
+      Status: "Active",
     },
     {
       BatHand: "R",
@@ -66,6 +69,7 @@ Default.args = {
       Position: "RF",
       ProDebut: "2014-06-29T00:00:00",
       ThrowHand: "R",
+      Status: "Active",
     },
   ],
   isLoading: false,
