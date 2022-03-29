@@ -1,5 +1,4 @@
 import TeamPlayer from "../TeamPlayer";
-import styled from "styled-components";
 import { IPlayer } from "../../../types/player.type";
 import BasicTitle from "../../atoms/Titles/BasicTitle";
 import { PlayerWrapper, Wrapper } from "./styles";
