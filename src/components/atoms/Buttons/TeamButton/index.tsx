@@ -9,7 +9,10 @@ export interface IProps {
 const TeamButton = ({ team, onClick }: IProps) => {
   return (
     <Button onClick={onClick} iconBgColor={`${team.PrimaryColor}`}>
-      <Logo src={`${team.WikipediaLogoUrl}`} alt={team.City} />
+      <Logo
+        src={`${team.WikipediaLogoUrl}`}
+        alt={`${team.City} ${team.Name}`}
+      />
     </Button>
   );
 };
