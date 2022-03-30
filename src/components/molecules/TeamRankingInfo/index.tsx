@@ -6,12 +6,13 @@ import { Wrapper } from "./styles";
 
 export interface IProps {
   team: IPayroll;
+  ranking: number;
 }
 
-const TeamRankingInfo = ({ team }: IProps) => {
+const TeamRankingInfo = ({ team, ranking }: IProps) => {
   return (
     <Wrapper>
-      <PlayerTitle text={`랭킹 ${team.rank}위`} />
+      <PlayerTitle text={`랭킹 ${ranking}위`} />
       <Description text={`팀 이름 : ${team.team}`} />
       <Description text={`연봉 총액 : ${team.payroll}`} />
       <Logo imageUrl={team.teamLogoUrl} />

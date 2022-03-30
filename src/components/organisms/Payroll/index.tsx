@@ -17,9 +17,9 @@ const Payroll = ({ teams, isLoading, onClickTeam }: IProps) => {
 
   return (
     <Wrapper>
-      {teams?.map((team) => (
+      {teams?.map((team, index) => (
         <RankingWrapper key={team.rank} onClick={() => onClickTeam(team.key)}>
-          <TeamRankingInfo team={team} />
+          <TeamRankingInfo team={team} ranking={index + 1} />
           <PayrollPlayerInfo team={team} />
         </RankingWrapper>
       ))}
