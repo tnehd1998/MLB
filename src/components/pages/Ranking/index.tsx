@@ -39,7 +39,7 @@ const AllStarPage = () => {
     <Wrapper>
       <HelmetProvider>
         <Helmet>
-          <title>MLB | ALL STAR</title>
+          <title>MLB | RANKING</title>
         </Helmet>
       </HelmetProvider>
       <ButtonWrapper>
