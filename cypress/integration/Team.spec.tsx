@@ -4,6 +4,7 @@ describe("Team Page", () => {
   });
 
   it("shows los angeles dodgers team page", () => {
+    cy.title().should("eq", "MLB | LAD");
     cy.contains("Los Angeles");
     cy.contains("Dodgers");
   });
