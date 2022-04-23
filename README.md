@@ -1,22 +1,31 @@
-# MLB 팬페이지
+<p align="middle" >
+  <img width="300px;" src="https://user-images.githubusercontent.com/72953316/164895137-0d176662-bde0-4cb0-a01f-20e3ddb1c875.png" alt="mlb"/>
 
-### 📌 프로젝트를 제작하게 된 계기
+</p>
 
-- 메이저리그 야구를 좋아하는 팬중 한명으로, 많은 사람들이 MLB를 즐겼으면 하는 마음에서 시작하게 된 프로젝트
+</br>
 
-### 📌 사용한 기술 및 언어
+## 🎤 프로젝트 소개
 
-사용 기술 목록
+메이저리그 야구를 좋아하는 팬중 한명으로, 많은 사람들이 MLB를 즐겼으면 하는 마음에서 시작하게 된 프로젝트
 
-- React (Atomic-Design)
+</br>
+
+## 🧩 프로젝트 사용 과정
+
+프로젝트의 사용 과정은 [MLB 작동 과정](https://github.com/tnehd1998/MLB/wiki)을 통해 확인하실 수 있습니다.
+
+</br>
+
+## 🛠 사용 기술
+
+- React (Atomic Design)
+- TypeScript
 - Recoil
 - styled-components
 - React-query
 - Storybook
 - Jest, React Testing Library
+- cypress
 
-사용한 언어 : TypeScript
-
-### 📌 수정 및 추가 예정 기술 및 언어 목록
-
-- cypress를 사용한 E2E 테스트
+</br>
